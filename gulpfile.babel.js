@@ -212,7 +212,7 @@ gulp.task('default', ['clean'], cb =>
   runSequence(
     'styles',
     ['jshint', 'html', 'scripts', 'images', 'fonts', 'copy'],
-    'generate-service-worker',
+    //'generate-service-worker',
     cb
   )
 );
