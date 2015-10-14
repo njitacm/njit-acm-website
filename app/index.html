@@ -44,6 +44,7 @@
     -->
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.css">
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
@@ -59,7 +60,7 @@
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
           <a href="#overview" class="mdl-layout__tab is-active">Home</a>
           <a href="#features" class="mdl-layout__tab">Gallery</a>
-          <a href="#features" class="mdl-layout__tab">Calendar</a>
+          <a href="#calendar" class="mdl-layout__tab">Calendar</a>
           <a href="#constitution" class="mdl-layout__tab">Constitution</a>
           <a href="#features" class="mdl-layout__tab">Contact Us</a>
         </div>
@@ -163,6 +164,15 @@
             </div>
           </section>
         </div>
+
+        <!-- Calendar Page -->
+        <div class="mdl-layout__tab-panel is-active" id="calendar">
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div id="calendar"></div>
+          </section>
+        </div>
+
+        <!-- Constitution Page -->
         <div class="mdl-layout__tab-panel" id="constitution">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col">
@@ -250,6 +260,10 @@
 
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
     <!-- build:js(app/) ../../scripts/main.min.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/gcal.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
