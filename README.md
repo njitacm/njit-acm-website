@@ -1,8 +1,8 @@
 ## NJIT ACM Website
 
-Maintained by NJIT ACM Webmaster
+Maintained by NJIT ACM Webmaster. Created using [Google Webstarter Kit](https://github.com/google/web-starter-kit)
 
-## Contributing
+## Contributin
 
 Found an issue? Create an issue in Github issues
 Want to Fix it? Create a pull request, please :)
