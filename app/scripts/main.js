@@ -71,16 +71,32 @@
 
   // Your custom JavaScript goes here
 
-	$('#calendar').fullCalendar({
-		googleCalendarApiKey: 'AIzaSyDMz_FvSnQ4_Lg-tamBTc_IPwIyyeKP5vE',
-    events: {
-        googleCalendarId: '9niid0lakg17i3rblct46bcafo@group.calendar.google.com'
-    },
-		defaultView : 'agendaWeek',
-		minTime : '08:00:00',
-		maxTime : '22:00:00',
-		height : 700,
-		allDaySlot : false,
-		hiddenDays : [0,6]
-	});
+  $('#calendar-tab').click(function(){
+  	$('#calendar').fullCalendar({
+  		googleCalendarApiKey: 'AIzaSyDMz_FvSnQ4_Lg-tamBTc_IPwIyyeKP5vE',
+      eventSources: [{
+          googleCalendarId: '9niid0lakg17i3rblct46bcafo@group.calendar.google.com',
+        },{
+          googleCalendarId: 'njitacm@gmail.com',
+          className : 'red-color'
+        },{
+          googleCalendarId: 'cg9i3g9ierto8cdoqk8ve0pgms@group.calendar.google.com',
+          className : 'purple-color'
+        },{
+          googleCalendarId: 'red91jue5povm3qv0losa5u8vg@group.calendar.google.com',
+        },{
+          googleCalendarId: 'hjpuc0eb814l7soblb58g3q66k@group.calendar.google.com'
+      }],
+  		defaultView : 'agendaWeek',
+  		minTime : '08:00:00',
+  		maxTime : '22:00:00',
+  		height : 700,
+  		allDaySlot : false,
+  		hiddenDays : [0,6]
+  	});
+  });
+
+  $('#slack-tab').click(function(){
+    window.open('https://njit-acm.slack.com/signup', '_blank');
+  });
 })();

@@ -51,18 +51,15 @@
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <img class="logo-img" src="images/logo.png">
           <h3>NJIT ACM</h3>
-        </div>
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
           <a href="#overview" class="mdl-layout__tab is-active">Home</a>
-          <a href="#features" class="mdl-layout__tab">Gallery</a>
-          <a href="#calendar" class="mdl-layout__tab">Calendar</a>
+          <a id="calendar-tab" href="#calendar" class="mdl-layout__tab">Calendar</a>
           <a href="#constitution" class="mdl-layout__tab">Constitution</a>
-          <a href="#features" class="mdl-layout__tab">Contact Us</a>
+          <a href="#contact" class="mdl-layout__tab">Contact Us</a>
+          <a id="slack-tab" href="#overview" class="mdl-layout__tab">Join Slack</a>
         </div>
       </header>
       <main class="mdl-layout__content">
@@ -252,6 +249,44 @@
             </div>
           </section>
         </div>
+
+        <!-- Contact -->
+        <div class="mdl-layout__tab-panel" id="contact">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h3>Contact Us</h3>
+              <form method="POST" action="#">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" required id="name" name="name"/>
+                  <label class="mdl-textfield__label" for="name">Name</label>
+                </div><br>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" required type="email" id="email" name="email"/>
+                  <label class="mdl-textfield__label" for="email">Email</label>
+                </div><br>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="tel" id="phone" name="phone"/>
+                  <label class="mdl-textfield__label" for="phone">Phone</label>
+                </div><br>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="org" name="org"/>
+                  <label class="mdl-textfield__label" for="org">Organization</label>
+                </div><br>
+                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </section>
+        </div>
+
+        <!-- Slack -->
+        <div class="mdl-layout__tab-panel" id="slack">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            Join <a href="https://njit-acm.slack.com">Slack</a>
+          </section>
+        </div>
+
         <footer class="mdl-mega-footer">
           Copyright © 2015 - 2016 NJIT ACM
         </footer>
