@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="description" content="The official website for NJIT's chapter of ACM.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NJIT ACM</title>
 
@@ -16,7 +16,7 @@
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Web Starter Kit">
-    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+    <link rel="icon" sizes="192x192" href="images/acm_logo.png">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -42,37 +42,55 @@
     material.blue-orange.min.css
     material.purple-indigo.min.css
     -->
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.red-indigo.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <img class="logo-img" src="images/logo.png">
-          <h3>NJIT ACM</h3>
+        <div class="mdl-layout--large-screen-only">
+          <a href="/">
+          <img style="width:160px; padding:16px;user-drag: none;-moz-user-select: none;-webkit-user-drag: none;" class="logo-img" src="images/njit_acm_logo.png">
+          </a>
+          <span style="float:right;padding-top:24px;padding-right:16px">
+          <a href="http://twitter.com/njitacm" title="Follow us on Twitter" target="_blank" style="background: #00acee; color: rgb(255, 255, 255)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-twitter fa-fw"></i> Twitter</a>
+          <a href="https://www.facebook.com/profile.php?id=2249388966" title="Like us on Facebook" style="background: #3b5998; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-facebook fa-fw"></i> Facebook</a>
+          <a href="https://www.instagram.com/njitacm" title="Follow us on Instagram" style="background: #9b6954; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-instagram fa-fw"></i> Instagram</a>
+          <a href="https://www.linkedin.com/groups/4314318" title="Join us on Linkedin" style="background: #0e76a8; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-linkedin fa-fw"></i> Linkedin</a>
+          </span>
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
           <a href="#overview" class="mdl-layout__tab is-active">Home</a>
-          <a id="calendar-tab" href="#calendar" class="mdl-layout__tab">Calendar</a>
+          <a id="eboard-tab" href="#eboard" class="mdl-layout__tab">E-Board</a>
+          <a href="#sigs" class="mdl-layout__tab">SIGs</a>
+          <a href="#tutoring" class="mdl-layout__tab">Tutoring</a>
+          <a id="hacknjit-tab" href="http://hacknjit.org/" class="mdl-layout__tab">HackNJIT</a>
+          <a id="hacknjit-tab" href="http://hacknjit.org/" class="mdl-layout__tab">Projects</a>
+          <a id="hacknjit-tab" href="http://hacknjit.org/" class="mdl-layout__tab">Stream</a>
+          <a href="#calendar" class="mdl-layout__tab">Calendar</a>
           <a href="#constitution" class="mdl-layout__tab">Constitution</a>
           <a href="#contact" class="mdl-layout__tab">Contact Us</a>
-          <a id="slack-tab" href="#overview" class="mdl-layout__tab">Join Slack</a>
         </div>
       </header>
       <main class="mdl-layout__content">
         <div class="mdl-layout__tab-panel is-active" id="overview">
-          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <h4 class="section--center">Beta Version of the Website (Still in development)</h4>
-          </section>
-        </div>
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <div style="width: 100%;height:300px;background:url(images/campus_image.jpg) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">
+              <div class="mdl-card__actions">
+                  <span style="font-weight: 700; color: #fff; font-size: 14px; height:52px; padding:16px; background:rgba(0, 0, 0, 0.4)" class="demo-card-image__filename">Welcome to the official website for NJIT's chapter of ACM!</span>
+              </div>
+            </div>
+            <p style="padding:32px">What is ACM you might ask? ACM stands for the <a href="https://www.acm.org/about-acm">Association for Computing Machinery</a>, and it is the world's largest educational computer science organization. ACM is divided up into many student chapters, and this one just happens to be located at, you guessed it, NJIT! If you're a student studying CS, IT, IS, or any other computer-related field, chances are that you'll find joining ACM to be useful. Whether you join for tutoring, use of ACM's vast array of online resources, or just to connect with fellow programmers, ACM is a great organization to be a part of.</p>
 
-        <!-- Calendar Page -->
-        <div class="mdl-layout__tab-panel is-active" id="calendar">
-          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <div id="calendar"></div>
+          </section>
+
+          <!-- Calendar -->
+          <div class="mdl-layout__tab-panel is-active" id="calendar"></div>
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+
           </section>
         </div>
 
@@ -81,6 +99,7 @@
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col">
               <h3>Constitution</h3>
+              <p>The following is NJIT ACM's official constitution. Our constitution defines the rules and regulations of our ACM chapter and is upheld by the NJIT Student Senate. As stated in our constitution, we also abide by the <a href="https://www.acm.org/about-acm/acm-code-of-ethics-and-professional-conduct">National ACM Code of Ethics and Professional Conduct</a>.</p>
               <div class="constitution">
                 <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
                   <h5>Article I. Name</h5>
@@ -162,24 +181,29 @@
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col">
               <h3>Contact Us</h3>
+              <p>If you have any questions regarding our organization, HackNJIT, or working with us, please fill out the form below. We will respond to any emails we receive as soon as possible.
               <form method="POST" action="#">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" type="text" required id="name" name="name"/>
-                  <label class="mdl-textfield__label" for="name">Name</label>
+                  <label class="mdl-textfield__label" for="name">Your Name</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" required type="email" id="email" name="email"/>
-                  <label class="mdl-textfield__label" for="email">Email</label>
+                  <label class="mdl-textfield__label" for="email">Your Email</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" type="tel" id="phone" name="phone"/>
-                  <label class="mdl-textfield__label" for="phone">Phone</label>
+                  <label class="mdl-textfield__label" for="phone">Your Phone #</label>
                 </div><br>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" type="text" id="org" name="org"/>
-                  <label class="mdl-textfield__label" for="org">Organization</label>
+                  <label class="mdl-textfield__label" for="org">Your Organization</label>
                 </div><br>
-                <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <textarea class="mdl-textfield__input" type="text" required id="message" name="message"></textarea>
+                  <label class="mdl-textfield__label" for="org">Message</label>
+                </div><br>
+                <button style="margin-top:16px;margin-bottom:16px" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                   Submit
                 </button>
               </form>
@@ -194,8 +218,10 @@
           </section>
         </div>
 
-        <footer class="mdl-mega-footer">
-          Copyright © 2015 - 2016 NJIT ACM
+        <footer style="text-align:center;cursor:default" class="mdl-mega-footer">
+          <p>Copyright © 2016 - 2017 NJIT ACM</p>
+          <img style="width:60px;user-drag: none;-moz-user-select: none;-webkit-user-drag: none;" class="logo-img" src="images/white_acm_logo.png">
+          <img style="width:120px;user-drag: none;-moz-user-select: none;-webkit-user-drag: none;" class="logo-img" src="images/ccs_logo.png">
         </footer>
       </main>
     </div>
