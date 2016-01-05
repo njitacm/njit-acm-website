@@ -63,38 +63,101 @@
           </span>
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-          <a href="#overview" class="mdl-layout__tab is-active">Home</a>
-          <a id="eboard-tab" href="#eboard" class="mdl-layout__tab">E-Board</a>
+          <a href="#home" class="mdl-layout__tab is-active">Home</a>
+          <a href="#eboard" class="mdl-layout__tab">E-Board</a>
           <a href="#sigs" class="mdl-layout__tab">SIGs</a>
           <a href="#tutoring" class="mdl-layout__tab">Tutoring</a>
-          <a id="hacknjit-tab" href="http://hacknjit.org/" class="mdl-layout__tab">HackNJIT</a>
-          <a id="hacknjit-tab" href="http://hacknjit.org/" class="mdl-layout__tab">Projects</a>
-          <a id="hacknjit-tab" href="http://hacknjit.org/" class="mdl-layout__tab">Stream</a>
-          <a href="#calendar" class="mdl-layout__tab">Calendar</a>
+          <a href="#hacknjit" class="mdl-layout__tab">HackNJIT</a>
+          <a href="#projects" class="mdl-layout__tab">Projects</a>
+          <a href="#stream" class="mdl-layout__tab">Stream</a>
+          <a id="calendar-tab" href="#calendartab" class="mdl-layout__tab">Calendar</a>
           <a href="#constitution" class="mdl-layout__tab">Constitution</a>
           <a href="#contact" class="mdl-layout__tab">Contact Us</a>
         </div>
       </header>
       <main class="mdl-layout__content">
-        <div class="mdl-layout__tab-panel is-active" id="overview">
+        <div class="mdl-layout__tab-panel is-active" id="home">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div style="width: 100%;height:300px;background:url(images/campus_image.jpg) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">
               <div class="mdl-card__actions">
                   <span style="font-weight: 700; color: #fff; font-size: 14px; height:52px; padding:16px; background:rgba(0, 0, 0, 0.4)" class="demo-card-image__filename">Welcome to the official website for NJIT's chapter of ACM!</span>
               </div>
             </div>
-            <p style="padding:32px">What is ACM you might ask? ACM stands for the <a href="https://www.acm.org/about-acm">Association for Computing Machinery</a>, and it is the world's largest educational computer science organization. ACM is divided up into many student chapters, and this one just happens to be located at, you guessed it, NJIT! If you're a student studying CS, IT, IS, or any other computer-related field, chances are that you'll find joining ACM to be useful. Whether you join for tutoring, use of ACM's vast array of online resources, or just to connect with fellow programmers, ACM is a great organization to be a part of.</p>
-
-          </section>
-
-          <!-- Calendar -->
-          <div class="mdl-layout__tab-panel is-active" id="calendar"></div>
-          <section class="section--center mdl-grid mdl-grid--no-spacing">
-
+            <section style="padding:32px">
+            <p>What is ACM you might ask? ACM stands for the <a href="https://www.acm.org/about-acm">Association for Computing Machinery</a>, and it is the world's largest educational computer science organization. ACM is divided up into many student chapters, and this one just happens to be located at, you guessed it, NJIT! If you're a student studying CS, IT, IS, or any other computer-related field, chances are that you'll find joining ACM to be useful. Whether you join for tutoring, use of ACM's vast array of online resources, or just to connect with fellow programmers, ACM is a great organization to be a part of.</p>
+            <p>More specifically, the NJIT chapter of ACM offers free tutoring for CS, IT, and IS classes, contains SIGs (special interest groups) dedicated to teaching various computer science topics, works on various computer science-related projects, and works closely with the NJIT CCS department to host a number events including HackNJIT, NJIT's own 24-hour hackathon. The NJIT chapter of ACM also occasionally takes trips to the headquarters of various companies to give students the opporunity to get an inside-look into real-world job environments. More information regarding our tutoring services, SIGs, projects, HackNJIT, and more is available through clicking the tabs above.</p>
+            <p>While ACM is a professional organization, we also pride ourselves in trying to make our office a fun, safe, and friendly work environment. After quiet hours end at 6 PM, the office becomes a place where people can play video games, watch movies, and relax after a hard day of work. NJIT ACM also offers an unofficial SIG called SIG Melee, which is a group dedicated to teaching, playing, and modding the game Super Smash Bros. Melee. While we do not allow new SIGs that are dedicated to video games to be formed, SIG Melee is a SIG that has been grandfathered into NJIT ACM over the years for its popularity amongst the NJIT student body. We urge all students to join us for both our professional services, and to simply unwind after a long day of classes.</p>
+            <h3>FAQ</h3>
+            <h4>How do I Sign Up?</h4>
+            <p>Becoming a member is easy, just come to the office to chat, or show up to our weekly meetings. Everyone is welcome. We promise we won't bite!</p>
+            <h4>Are You a Game Club?</h4>
+            <p>No. While we urge students to unwind with video games or other fun activities after class, we are not a video game club. Before anything else, NJIT ACM is a club dedicated to connecting students who share common interests in computers and programming. While we will not necessarily kick you out for only playing video games in our office, we strongly reccomend that you also participate in some of the other services or activities that we offer.</p>
+            <h4>Why Show up to the Meetings?</h4>
+            <p>There are certain perks we offer to members that show up to our meetings. For example, the ability to vote in elections, or first dibs on sign-ups for any trips we take as a club. While it isn't necessary to show up to our weekly meetings, by showing up you'll get to keep up with the latest news regarding the club or upcoming CCS events.</p>
+            <h4>When/Where are the Meetings?</h4>
+            <p>Our meetings are typically held every Friday at 12 pm in GITC 1100, although there are certain exceptions throughout the semester. Please check our calendar to know exactly when the next meeting is being held.</p>
+            <h4>Where are we Located?</h4>
+            <p>GITC 4400 (On the 4th floor to the right of the CCS offices).</p>
+            <h4>When is the Office Open?</h4>
+            <p>The office opens when the first E-Board member opens the door in the morning, typically at 10 am. The office will remain open as long as an E-Board member is present to supervise the office.</p>
+            <h4>What are the Office Rules?</h4>
+            <p>Just be courteous. Keep in mind that we consider any time before 6 PM to be quiet hours, meaning that while you can talk, we ask that you keep the sound levels to a minimum. During quiet hours, please use headphones when listening to any audio on an electronic device. Also, please do not touch anyone else's belongings without their permission. We have 24/7 video surveilance in the office, so if anything is stolen or moved without permission, we will know who did it.</p>
+            </section>
           </section>
         </div>
 
-        <!-- Constitution Page -->
+        <!-- E-Board -->
+        <div class="mdl-layout__tab-panel" id="eboard">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <p>E-Board</p>
+          </section>
+        </div>
+
+        <!-- Sigs -->
+        <div class="mdl-layout__tab-panel" id="sigs">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <p>sigs</p>
+          </section>
+        </div>
+
+        <!-- Tutoring -->
+        <div class="mdl-layout__tab-panel" id="tutoring">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <p>tutoring</p>
+          </section>
+        </div>
+
+        <!-- HackNJIT -->
+        <div class="mdl-layout__tab-panel" id="hacknjit">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <p>HackNJIT</p>
+          </section>
+        </div>
+
+        <!-- Projects -->
+        <div class="mdl-layout__tab-panel" id="projects">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <p>Projects</p>
+          </section>
+        </div>
+
+        <!-- Stream -->
+        <div class="mdl-layout__tab-panel" id="stream">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <p>Stream</p>
+          </section>
+        </div>
+
+        <!-- Calendar -->
+        <div class="mdl-layout__tab-panel" id="calendartab">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+          <h3>Calendar</h3>
+          <div id="calendar">
+          </div>
+          </section>
+        </div>
+
+        <!-- Constitution -->
         <div class="mdl-layout__tab-panel" id="constitution">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col">
@@ -203,18 +266,11 @@
                   <textarea class="mdl-textfield__input" type="text" required id="message" name="message"></textarea>
                   <label class="mdl-textfield__label" for="org">Message</label>
                 </div><br>
-                <button style="margin-top:16px;margin-bottom:16px" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <button style="margin-top:16px;margin-bottom:16px" type="submit" value="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                   Submit
                 </button>
               </form>
             </div>
-          </section>
-        </div>
-
-        <!-- Slack -->
-        <div class="mdl-layout__tab-panel" id="slack">
-          <section class="section--center mdl-grid mdl-grid--no-spacing">
-            Join <a href="https://njit-acm.slack.com">Slack</a>
           </section>
         </div>
 

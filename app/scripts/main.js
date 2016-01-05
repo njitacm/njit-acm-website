@@ -71,8 +71,9 @@
 
   // Your custom JavaScript goes here
 
-  $('#calendar-tab').click(function(){
-  	$('#calendar').fullCalendar({
+  $(document).ready(function() {
+
+    $('#calendar').fullCalendar({
   		googleCalendarApiKey: 'AIzaSyDMz_FvSnQ4_Lg-tamBTc_IPwIyyeKP5vE',
       eventSources: [{
           googleCalendarId: '9niid0lakg17i3rblct46bcafo@group.calendar.google.com',
@@ -96,7 +97,8 @@
   	});
   });
 
-  $('#slack-tab').click(function(){
-    window.open('https://njit-acm.slack.com/signup', '_blank');
+  $('#calendar-tab').click(function(){
+  	 $('#calendar').fullCalendar('render');
   });
+
 })();
