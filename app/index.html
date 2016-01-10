@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,9 +69,10 @@
           <a href="#tutoring" class="mdl-layout__tab">Tutoring</a>
           <a href="#hacknjit" class="mdl-layout__tab">HackNJIT</a>
           <a href="#projects" class="mdl-layout__tab">Projects</a>
-          <a href="#stream" class="mdl-layout__tab">Stream</a>
+          <a id="stream-tab" href="#stream" class="mdl-layout__tab">Stream</a>
           <a id="calendar-tab" href="#calendartab" class="mdl-layout__tab">Calendar</a>
           <a href="#constitution" class="mdl-layout__tab">Constitution</a>
+          <a href="#wiki" class="mdl-layout__tab">Wiki</a>
           <a href="#contact" class="mdl-layout__tab">Contact Us</a>
         </div>
       </header>
@@ -84,7 +85,7 @@
               </div>
             </div>
             <section style="padding:32px">
-            <p>What is ACM you might ask? ACM stands for the <a href="https://www.acm.org/about-acm">Association for Computing Machinery</a>, and it is the world's largest educational computer science organization. ACM is divided up into many student chapters, and this one just happens to be located at, you guessed it, NJIT! If you're a student studying CS, IT, IS, or any other computer-related field, chances are that you'll find joining ACM to be useful. Whether you join for tutoring, use of ACM's vast array of online resources, or just to connect with fellow programmers, ACM is a great organization to be a part of.</p>
+            <p>What is ACM you might ask? ACM stands for the <a href="https://www.acm.org/about-acm" target="_blank">Association for Computing Machinery</a>, and it is the world's largest educational computer science organization. ACM is divided up into many student chapters, and this one just happens to be located at, you guessed it, NJIT! If you're a student studying CS, IT, IS, or any other computer-related field, chances are that you'll find joining ACM to be useful. Whether you join for tutoring, use of ACM's vast array of online resources, or just to connect with fellow programmers, ACM is a great organization to be a part of.</p>
             <p>More specifically, the NJIT chapter of ACM offers free tutoring for CS, IT, and IS classes, contains SIGs (special interest groups) dedicated to teaching various computer science topics, works on various computer science-related projects, and works closely with the NJIT CCS department to host a number events including HackNJIT, NJIT's own 24-hour hackathon. The NJIT chapter of ACM also occasionally takes trips to the headquarters of various companies to give students the opporunity to get an inside-look into real-world job environments. More information regarding our tutoring services, SIGs, projects, HackNJIT, and more is available through clicking the tabs above.</p>
             <p>While ACM is a professional organization, we also pride ourselves in trying to make our office a fun, safe, and friendly work environment. After quiet hours end at 6 PM, the office becomes a place where people can play video games, watch movies, and relax after a hard day of work. NJIT ACM also offers an unofficial SIG called SIG Melee, which is a group dedicated to teaching, playing, and modding the game Super Smash Bros. Melee. While we do not allow new SIGs that are dedicated to video games to be formed, SIG Melee is a SIG that has been grandfathered into NJIT ACM over the years for its popularity amongst the NJIT student body. We urge all students to join us for both our professional services, and to simply unwind after a long day of classes.</p>
             <h3>FAQ</h3>
@@ -97,7 +98,7 @@
             <h4>When/Where are the Meetings?</h4>
             <p>Our meetings are typically held every Friday at 12 pm in GITC 1100, although there are certain exceptions throughout the semester. Please check our calendar to know exactly when the next meeting is being held.</p>
             <h4>Where are we Located?</h4>
-            <p>GITC 4400 (On the 4th floor to the right of the CCS offices).</p>
+            <p>GITC 4402 (On the 4th floor to the right of the CCS offices).</p>
             <h4>When is the Office Open?</h4>
             <p>The office opens when the first E-Board member opens the door in the morning, typically at 10 am. The office will remain open as long as an E-Board member is present to supervise the office.</p>
             <h4>What are the Office Rules?</h4>
@@ -109,42 +110,90 @@
         <!-- E-Board -->
         <div class="mdl-layout__tab-panel" id="eboard">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <p>E-Board</p>
+            <h3>E-Board</h3>
+              <div>
+              <h4>President</h4>
+              <div style="width: 300px;height:300px;background:url(images/president.jpg) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__actions">
+                </div>
+              </div>
+              </div>
+              <br>
+              <div>
+              <h4>Vice President</h4>
+              <div style="width: 300px;height:300px;background:url(images/vice_president.jpg) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__actions">
+                </div>
+              </div>
+              </div>
+              <div>
+              <h4>Treasurer</h4>
+              <div style="width: 300px;height:300px;background:url(images/treasurer.jpg) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__actions">
+                </div>
+              </div>
+              </div>
+              <div>
+              <h4>Webmaster</h4>
+              <div style="width: 300px;height:300px;background:url(images/webmaster.jpg) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__actions">
+                </div>
+              </div>
+              </div>
+              <div>
+              <h4>Secretary</h4>
+              <div style="width: 300px;height:300px;background:url(images/secretary.jpg) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__actions">
+                </div>
+              </div>
+              </div>
           </section>
         </div>
 
         <!-- Sigs -->
         <div class="mdl-layout__tab-panel" id="sigs">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <p>sigs</p>
+            <h3>SIGs</h3>
           </section>
         </div>
 
         <!-- Tutoring -->
         <div class="mdl-layout__tab-panel" id="tutoring">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <p>tutoring</p>
+            <h3>Tutoring</h3>
+            <p>One of the core services that NJIT ACM offers is free tutoring for CS, IT, and IS classes throughout the semester. Below is a list of our tutors for the semester, along with when they will be tutoring, the classes that they tutor for, and their email. All tutoring takes place in our office. Tutors may not be present on certain days, in which case you can contact them using their email listed below.</p>
           </section>
         </div>
 
         <!-- HackNJIT -->
         <div class="mdl-layout__tab-panel" id="hacknjit">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <p>HackNJIT</p>
+            <h3>HackNJIT</h3>
+            <p>HackNJIT is NJIT's official 24-hour hackathon sponsored by <a href="https://mlh.io/" target="_blank">Major League Hacking</a>. HackNJIT was started in 2014, and we have been working to improve it ever since. HackNJIT is held once per year during the fall semester. You can find out more information about HackNJIT by visiting the official HackNJIT website linked below. If you would like to sponsor HackNJIT, please fill out our site's built-in contact form.
           </section>
+          <br>
+          <div style="text-align:center;padding:16px">
+          <a href="http://hacknjit.org/" title="HackNJIT" style="background: #FFFF00; color: rgb(0, 0, 0)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Click Here to Visit the Official HackNJIT Website!</a>
+          </div>
         </div>
 
         <!-- Projects -->
         <div class="mdl-layout__tab-panel" id="projects">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <p>Projects</p>
+            <h3>Projects</h3>
+            <p>Below is a comprehensive list of projects that NJIT ACM has worked on, or is currently working on. You can find out more details about a particular project by clicking its link. If you have any questions regarding a particular project, you can contact us by using our site's built-in contact form, or stopping by our office sometime during the semester.</p>
+            <p>NOTE: We have just started making projects a main focus of ours, so we do not yet have many complete, but we hope to change that quickly!</p>
           </section>
         </div>
 
         <!-- Stream -->
         <div class="mdl-layout__tab-panel" id="stream">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
-            <p>Stream</p>
+            <h3>Stream</h3>
+            <p>The NJIT chapter of ACM has its own official Twitch.tv channel by the name of channelname. We will be using this channel to live stream HackNJIT, as well as various other NJIT ACM events throughout the year. You can watch the stream below or watch it on Twitch.tv by clicking the links below.</p>
+            <div style="width:100%" id="streamDiv">
+
+            </div>
           </section>
         </div>
 
@@ -162,7 +211,7 @@
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col">
               <h3>Constitution</h3>
-              <p>The following is NJIT ACM's official constitution. Our constitution defines the rules and regulations of our ACM chapter and is upheld by the NJIT Student Senate. As stated in our constitution, we also abide by the <a href="https://www.acm.org/about-acm/acm-code-of-ethics-and-professional-conduct">National ACM Code of Ethics and Professional Conduct</a>.</p>
+              <p>The following is NJIT ACM's official constitution. Our constitution defines the rules and regulations of our ACM chapter and is upheld by the NJIT Student Senate. As stated in our constitution, we also abide by the <a href="https://www.acm.org/about-acm/acm-code-of-ethics-and-professional-conduct" target="_blank">National ACM Code of Ethics and Professional Conduct</a>.</p>
               <div class="constitution">
                 <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
                   <h5>Article I. Name</h5>
@@ -239,12 +288,21 @@
           </section>
         </div>
 
+        <!-- Wiki -->
+        <div class="mdl-layout__tab-panel" id="wiki">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h3>Wiki</h3>
+              <p>We are currently working on reviving the Wiki that NJIT ACM once had, but was lost due to a server crash. The NJIT ACM Wiki will log the history of our chapter's various events, projects, E-Board members, and other information over the years. A link to the new (and now backed-up) Wiki will be posted here once it is completed. Thank you for your patience.</p>
+            </div>
+        </div>
+
         <!-- Contact -->
         <div class="mdl-layout__tab-panel" id="contact">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col">
               <h3>Contact Us</h3>
-              <p>If you have any questions regarding our organization, HackNJIT, or working with us, please fill out the form below. We will respond to any emails we receive as soon as possible.
+              <p>If you have any questions regarding our organization, HackNJIT, or working with us, please fill out the form below. We will respond to any emails we receive as soon as possible. In the event that this form does not work, you can always contact us by emailing <a href="mailto:njitacm@gmail.com">njitacm@gmail.com</a>.
               <form method="POST" action="#">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                   <input class="mdl-textfield__input" type="text" required id="name" name="name"/>
@@ -266,7 +324,7 @@
                   <textarea class="mdl-textfield__input" type="text" required id="message" name="message"></textarea>
                   <label class="mdl-textfield__label" for="org">Message</label>
                 </div><br>
-                <button style="margin-top:16px;margin-bottom:16px" type="submit" value="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <button style="margin-top:16px;margin-bottom:16px" type="submit" value="Submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
                   Submit
                 </button>
               </form>

@@ -101,4 +101,15 @@
   	 $('#calendar').fullCalendar('render');
   });
 
+  var clickedStream = false;
+
+  $('#stream-tab').click(function(){
+    if(!clickedStream)
+    {
+      var stream = $('#streamDiv');
+      stream.html('<iframe src="http://player.twitch.tv/?channel=sigmelee" frameborder="0" scrolling="no" height="378" width="620"></iframe><a href="http://www.twitch.tv/sigmelee?tt_medium=live_embed&tt_content=text_link" style="padding:2px 0px 4px; display:block; font-weight:normal; font-size:10px;text-decoration:underline;">Watch live video from sigmelee on www.twitch.tv</a><iframe src="http://www.twitch.tv/sigmelee/chat?popout=" frameborder="0" scrolling="no" height="378" width="620"></iframe>');
+      clickedStream = true;
+    }
+  });
+
 })();
