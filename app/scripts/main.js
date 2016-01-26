@@ -97,19 +97,60 @@
   	});
   });
 
+  $('#home-tab').click(function(){
+    var stream = $('#streamDiv');
+    stream.html('');
+  });
+
+  $('#eboard-tab').click(function(){
+    var stream = $('#streamDiv');
+    stream.html('');
+  });
+
+  $('#sigs-tab').click(function(){
+    var stream = $('#streamDiv');
+    stream.html('');
+  });
+
+  $('#tutoring-tab').click(function(){
+    var stream = $('#streamDiv');
+    stream.html('');
+  });
+
+  $('#hacknjit-tab').click(function(){
+    var stream = $('#streamDiv');
+    stream.html('');
+  });
+
+  $('#projects-tab').click(function(){
+    var stream = $('#streamDiv');
+    stream.html('');
+  });
+
+  $('#stream-tab').click(function(){
+      var stream = $('#streamDiv');
+      stream.html('<div id="progressbar1" class="mdl-progress mdl-js-progress"></div><iframe src="http://player.twitch.tv/?channel=njitacm" frameborder="0" scrolling="no" height="378" width="620"></iframe><a href="http://www.twitch.tv/njitacm?tt_medium=live_embed&tt_content=text_link" style="padding:2px 0px 4px; display:block; font-weight:normal; font-size:10px;text-decoration:underline;">Watch live video from njitacm on www.twitch.tv</a><div id="progressbar2" class="mdl-progress mdl-js-progress"></div><iframe src="http://www.twitch.tv/njitacm/chat?popout=" frameborder="0" scrolling="no" height="378" width="620"></iframe>');
+  });
+
   $('#calendar-tab').click(function(){
+     var stream = $('#streamDiv');
+     stream.html('');
   	 $('#calendar').fullCalendar('render');
   });
 
-  var clickedStream = false;
-
-  $('#stream-tab').click(function(){
-    if(!clickedStream)
-    {
+  $('#constitution-tab').click(function(){
       var stream = $('#streamDiv');
-      stream.html('<iframe src="http://player.twitch.tv/?channel=sigmelee" frameborder="0" scrolling="no" height="378" width="620"></iframe><a href="http://www.twitch.tv/sigmelee?tt_medium=live_embed&tt_content=text_link" style="padding:2px 0px 4px; display:block; font-weight:normal; font-size:10px;text-decoration:underline;">Watch live video from sigmelee on www.twitch.tv</a><iframe src="http://www.twitch.tv/sigmelee/chat?popout=" frameborder="0" scrolling="no" height="378" width="620"></iframe>');
-      clickedStream = true;
-    }
+      stream.html('');
+  });
+
+  $('#wiki-tab').click(function(){
+      var stream = $('#streamDiv');
+      stream.html('');
+  });
+
+  $('#contact-tab').click(function(){
+      var stream = $('#streamDiv');
+      stream.html('');
   });
 
 })();

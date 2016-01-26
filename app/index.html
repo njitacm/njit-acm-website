@@ -56,32 +56,33 @@
           <img style="width:160px; padding:16px;user-drag: none;-moz-user-select: none;-webkit-user-drag: none;" class="logo-img" src="images/njit_acm_logo.png">
           </a>
           <span style="float:right;padding-top:24px;padding-right:16px">
-          <a href="http://twitter.com/njitacm" title="Follow us on Twitter" target="_blank" style="background: #00acee; color: rgb(255, 255, 255)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-twitter fa-fw"></i> Twitter</a>
-          <a href="https://www.facebook.com/profile.php?id=2249388966" title="Like us on Facebook" style="background: #3b5998; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-facebook fa-fw"></i> Facebook</a>
-          <a href="https://www.instagram.com/njitacm" title="Follow us on Instagram" style="background: #9b6954; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-instagram fa-fw"></i> Instagram</a>
-          <a href="https://www.linkedin.com/groups/4314318" title="Join us on Linkedin" style="background: #0e76a8; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-linkedin fa-fw"></i> Linkedin</a>
+          <a href="http://twitter.com/njitacm" title="Follow us on Twitter" target="_blank" style="background: #00acee; color: rgb(255, 255, 255)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-twitter fa-fw"></i></a>
+          <a href="https://www.facebook.com/profile.php?id=2249388966" title="Like us on Facebook" style="background: #3b5998; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-facebook fa-fw"></i></a>
+          <a href="https://www.instagram.com/njitacm" title="Follow us on Instagram" style="background: #9b6954; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-instagram fa-fw"></i></a>
+          <a href="https://www.linkedin.com/groups/4314318" title="Join us on Linkedin" style="background: #0e76a8; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-linkedin fa-fw"></i></a>
           </span>
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-          <a href="#home" class="mdl-layout__tab is-active">Home</a>
-          <a href="#eboard" class="mdl-layout__tab">E-Board</a>
-          <a href="#sigs" class="mdl-layout__tab">SIGs</a>
-          <a href="#tutoring" class="mdl-layout__tab">Tutoring</a>
-          <a href="#hacknjit" class="mdl-layout__tab">HackNJIT</a>
-          <a href="#projects" class="mdl-layout__tab">Projects</a>
+          <a id="home-tab" href="#home" class="mdl-layout__tab is-active">Home</a>
+          <a id="eboard-tab" href="#eboard" class="mdl-layout__tab">E-Board</a>
+          <a id="sigs-tab" href="#sigs" class="mdl-layout__tab">SIGs</a>
+          <a id="tutoring-tab" href="#tutoring" class="mdl-layout__tab">Tutoring</a>
+          <a id="hacknjit-tab" href="#hacknjit" class="mdl-layout__tab">HackNJIT</a>
+          <a id="icpc-tab" href="#icpc" class="mdl-layout__tab">ICPC</a>
+          <a id="projects-tab" href="#projects" class="mdl-layout__tab">Projects</a>
           <a id="stream-tab" href="#stream" class="mdl-layout__tab">Stream</a>
           <a id="calendar-tab" href="#calendartab" class="mdl-layout__tab">Calendar</a>
-          <a href="#constitution" class="mdl-layout__tab">Constitution</a>
-          <a href="#wiki" class="mdl-layout__tab">Wiki</a>
-          <a href="#contact" class="mdl-layout__tab">Contact Us</a>
+          <a id="constitution-tab" href="#constitution" class="mdl-layout__tab">Constitution</a>
+          <a id="wiki-tab" href="#wiki" class="mdl-layout__tab">Wiki</a>
+          <a id="contact-tab" href="#contact" class="mdl-layout__tab">Contact Us</a>
         </div>
       </header>
       <main class="mdl-layout__content">
         <div class="mdl-layout__tab-panel is-active" id="home">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div style="width: 100%;height:300px;background:url(images/campus_image.jpg) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">
-              <div class="mdl-card__actions">
-                  <span style="font-weight: 700; color: #fff; font-size: 14px; height:52px; padding:16px; background:rgba(0, 0, 0, 0.4)" class="demo-card-image__filename">Welcome to the official website for NJIT's chapter of ACM!</span>
+              <div class="mdl-card__actions" style="text-align:center;width:100%">
+                  <div style="font-weight: 700; color: #fff; font-size: 14px; background:rgba(0, 0, 0, 0.4); width:100%">Welcome to the official website for NJIT's chapter of ACM!</div>
               </div>
             </div>
             <section style="padding:32px">
@@ -90,7 +91,8 @@
             <p>While ACM is a professional organization, we also pride ourselves in trying to make our office a fun, safe, and friendly work environment. After quiet hours end at 6 PM, the office becomes a place where people can play video games, watch movies, and relax after a hard day of work. NJIT ACM also offers an unofficial SIG called SIG Melee, which is a group dedicated to teaching, playing, and modding the game Super Smash Bros. Melee. While we do not allow new SIGs that are dedicated to video games to be formed, SIG Melee is a SIG that has been grandfathered into NJIT ACM over the years for its popularity amongst the NJIT student body. We urge all students to join us for both our professional services, and to simply unwind after a long day of classes.</p>
             <h3>FAQ</h3>
             <h4>How do I Sign Up?</h4>
-            <p>Becoming a member is easy, just come to the office to chat, or show up to our weekly meetings. Everyone is welcome. We promise we won't bite!</p>
+            <p>Becoming a member of NJIT ACM is easy, just come to the office to chat, or show up to our weekly meetings. Everyone is welcome. We promise we won't bite!</p>
+            <p>NOTE: In order to become a member of ACM National and gain access to ACM's online resources, you must sign up on <a href="http://www.acm.org/membership/join-acm" target="_blank">ACM's official website</a>. Being a member of ACM National also costs a yearly fee, but this fee is lower for students.</p>
             <h4>Are You a Game Club?</h4>
             <p>No. While we urge students to unwind with video games or other fun activities after class, we are not a video game club. Before anything else, NJIT ACM is a club dedicated to connecting students who share common interests in computers and programming. While we will not necessarily kick you out for only playing video games in our office, we strongly reccomend that you also participate in some of the other services or activities that we offer.</p>
             <h4>Why Show up to the Meetings?</h4>
@@ -111,6 +113,7 @@
         <div class="mdl-layout__tab-panel" id="eboard">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <h3>E-Board</h3>
+            <p>Below is a list of our current-acting E-Board members and their positions. E-Board elections are held every fall semester. In order to be qualified to vote, you must attend at least one-half of our meetings throughout the semester. Please check our constitution page for more information regarding our elections.<p>
               <div>
               <h4>President</h4>
               <div style="width: 300px;height:300px;background:url(images/president.jpg) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">
@@ -154,6 +157,7 @@
         <div class="mdl-layout__tab-panel" id="sigs">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <h3>SIGs</h3>
+            <p>SIGs (<a href="https://www.acm.org/special-interest-groups" target="_blank">special interest groups</a>) are a core part of the ACM organization. Special interest groups allow ACM members to study specific subjects under the umbrella of computing sciences. NJIT ACM is proud to offer multiple special interest groups recognized by ACM National, as well as a few special interest groups of our own. Below is a list of the special interest groups that we currently offer. If you wish to learn more about one of our special interest groups, feel free to contact one of the leaders of the particular group using the contact information listed.</p>
           </section>
         </div>
 
@@ -161,8 +165,28 @@
         <div class="mdl-layout__tab-panel" id="tutoring">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <h3>Tutoring</h3>
-            <p>One of the core services that NJIT ACM offers is free tutoring for CS, IT, and IS classes throughout the semester. Below is a list of our tutors for the semester, along with when they will be tutoring, the classes that they tutor for, and their email. All tutoring takes place in our office. Tutors may not be present on certain days, in which case you can contact them using their email listed below.</p>
-          </section>
+            <p>One of the main services that NJIT ACM offers is free tutoring for CS, IT, and IS classes throughout the semester. Below is a list of our tutors for the semester, along with when they will be tutoring, the classes that they tutor for, and their email. All tutoring takes place in our office. Tutors may not be present on certain days, in which case you can contact them using their email listed below.</p>
+          <div style="overflow:auto;width:100%">
+          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Tutor Name</th>
+              <th class="mdl-data-table__cell--non-numeric">Classes/Subjects</th>
+              <th class="mdl-data-table__cell--non-numeric">Days/Times Working</th>
+              <th class="mdl-data-table__cell--non-numeric">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">Brandon Ruggles</td>
+              <td class="mdl-data-table__cell--non-numeric">IT 202, CS 113, CS 114, Android, Java</td>
+              <td class="mdl-data-table__cell--non-numeric">Monday (10 AM - 1 PM), Wednesday (2 PM - 5 PM)</td>
+              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:btr2@njit.edu">btr2@njit.edu</a></td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        </section>
         </div>
 
         <!-- HackNJIT -->
@@ -173,16 +197,58 @@
           </section>
           <br>
           <div style="text-align:center;padding:16px">
-          <a href="http://hacknjit.org/" title="HackNJIT" style="background: #FFFF00; color: rgb(0, 0, 0)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Click Here to Visit the Official HackNJIT Website!</a>
+          <a href="http://hacknjit.org/" title="HackNJIT" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Show me HackNJIT!</a>
           </div>
+        </div>
+
+        <!-- ICPC -->
+        <div class="mdl-layout__tab-panel" id="icpc">
+          <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <h3>ICPC</h3>
+            <p>NJIT ACM is proud to participate in the ACM ICPC competition, which is a team-based intercollegiate programming competition held in different regions throughout the world.</p>
+          </section>
         </div>
 
         <!-- Projects -->
         <div class="mdl-layout__tab-panel" id="projects">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <h3>Projects</h3>
-            <p>Below is a comprehensive list of projects that NJIT ACM has worked on, or is currently working on. You can find out more details about a particular project by clicking its link. If you have any questions regarding a particular project, you can contact us by using our site's built-in contact form, or stopping by our office sometime during the semester.</p>
+            <p>Below is a comprehensive list of projects that NJIT ACM has worked on, or is currently working on. You can find out more details about a particular project by clicking its link. If you have any questions regarding a particular project, or if you have an idea for a new project for us to work on, you can contact us by using our site's built-in contact form, or by stopping by our office sometime during the semester.</p>
             <p>NOTE: We have just started making projects a main focus of ours, so we do not yet have many complete, but we hope to change that quickly!</p>
+            <div style="overflow:auto;width:100%">
+            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
+            <thead>
+              <tr>
+                <th class="mdl-data-table__cell--non-numeric">Current Projects</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric"><a href="projectpage.php?name=wheatley" target="_blank">Wheatley</a></td>
+              </tr>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric"><a href="projectpage.php?name=foodtruckcams" target="_blank">Food Truck Cams</a></td>
+              </tr>
+              <tr>
+                <td class="mdl-data-table__cell--non-numeric"><a href="projectpage.php?name=smartdisplay" target="_blank">Smart Display Revival</a></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+          <div style="overflow:auto;width:100%;padding-top:32px">
+          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Completed Projects</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">None</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
           </section>
         </div>
 
@@ -190,7 +256,7 @@
         <div class="mdl-layout__tab-panel" id="stream">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <h3>Stream</h3>
-            <p>The NJIT chapter of ACM has its own official Twitch.tv channel by the name of channelname. We will be using this channel to live stream HackNJIT, as well as various other NJIT ACM events throughout the year. You can watch the stream below or watch it on Twitch.tv by clicking the links below.</p>
+            <p>The NJIT chapter of ACM has its own official Twitch.tv channel with the name njitacm. We will be using this channel to live stream HackNJIT, as well as various other NJIT ACM events throughout the year. You can watch the stream below or watch it on Twitch.tv by clicking the links below.</p>
             <div style="width:100%" id="streamDiv">
 
             </div>
@@ -333,6 +399,12 @@
         </div>
 
         <footer style="text-align:center;cursor:default" class="mdl-mega-footer">
+          <span class="mdl-layout--small-screen-only">
+            <a href="http://twitter.com/njitacm" title="Follow us on Twitter" target="_blank" style="background: #00acee; color: rgb(255, 255, 255)" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-twitter fa-fw"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=2249388966" title="Like us on Facebook" style="background: #3b5998; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-facebook fa-fw"></i></a>
+            <a href="https://www.instagram.com/njitacm" title="Follow us on Instagram" style="background: #9b6954; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-instagram fa-fw"></i></a>
+            <a href="https://www.linkedin.com/groups/4314318" title="Join us on Linkedin" style="background: #0e76a8; color: rgb(255, 255, 255)" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"><i class="fa fa-linkedin fa-fw"></i></a>
+          </span>
           <p>Copyright © 2016 - 2017 NJIT ACM</p>
           <img style="width:60px;user-drag: none;-moz-user-select: none;-webkit-user-drag: none;" class="logo-img" src="images/white_acm_logo.png">
           <img style="width:120px;user-drag: none;-moz-user-select: none;-webkit-user-drag: none;" class="logo-img" src="images/ccs_logo.png">
@@ -349,15 +421,6 @@
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-XXXXX-X', 'auto');
-      ga('send', 'pageview');
-    </script>
     <!-- Built with love using Web Starter Kit -->
   </body>
 </html>
