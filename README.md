@@ -12,4 +12,4 @@ Want to Fix it? Then create a pull request, please :).
 ## License
 
 Apache 2.0  
-Copyright 2015 - 2016 NJIT ACM
+Copyright 2016 - 2017 NJIT ACM
