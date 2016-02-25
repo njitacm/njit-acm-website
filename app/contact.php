@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="The official website for NJIT's chapter of ACM.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php $name = $_GET['name']; echo $name; ?></title>
+    <title>Thank You!</title>
 
     <!-- Disable tap highlight on IE -->
     <meta name="msapplication-tap-highlight" content="no">
@@ -48,17 +48,18 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-        <h3 style="text-align:center">NJIT ACM Project: <?php echo $name; ?></h3>
         <?php
-        echo '<section style="padding-bottom:20px" class="section--center mdl-grid mdl-grid--no-spacing">';
-        if($name == 'Food Truck Cams')
-          echo 'The Food Truck Camera project is a plan to set up indoor cameras around select areas of campus where the food trucks are frequently parked. These cameras will be used for a 24-hour live video feed so people can check when the food trucks are on campus without leaving our office.';
-        else if($name == 'Smart Display')
-          echo 'The Smart Display project is the revival of the old laptop we had mounted on the door of our office which displayed our calendar to people passing by. The new smart display will most likely run on a raspberry pi and will display more information about our organization alongside our calendar.';
-        else if($name == 'Wheatley')
-          echo 'The Wheatley project is a plan to create a working replica of the robot Wheatley from the popular game Portal 2. The idea is to have Wheatley mounted on the walls of the office and to use artificial intelligence to allow him to answer questions posed by students.';
-        echo '</section>';
+          $name = $_POST['name'];
+          $email = $_POST['email'];
+          $phone = $_POST['phone'];
+          $org = $_POST['org'];
+          $subject = $_POST['subject'];
+          $message = $_POST['message'];
+          mail('njitacm@gmail.com', $subject, $phone."\r\n".$org."\r\n".$message, "MIME-Version: 1.0 \r\n Content-type: text/html; charset=iso-8859-1 \r\n From: NJIT ACM Website <njithostingacm@hosting.acm.org> \r\n Reply-To: ".$name." <".$email."> \r\n");
         ?>
+        <p style="text-align:center;padding:100px">
+          Thank you for reaching out to contact us! We will reply to you as soon as possible. This page will automatically redirect in 5 seconds. Click <a href="/">here</a> if it does not.
+        </p>
         <footer style="text-align:center;cursor:default" class="mdl-mega-footer">
           <p>Copyright © 2016 - 2017 NJIT ACM</p>
           <img style="width:60px;user-drag: none;-moz-user-select: none;-webkit-user-drag: none;" class="logo-img" src="images/white_acm_logo.png">
