@@ -49,17 +49,23 @@
   </head>
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
         <?php
-          $name = $_POST['name'];
-          $email = $_POST['email'];
-          $phone = $_POST['phone'];
-          $org = $_POST['org'];
-          $subject = $_POST['subject'];
-          $message = $_POST['message'];
-          mail('njitacm@gmail.com', $subject, $phone."\r\n".$org."\r\n".$message, "MIME-Version: 1.0 \r\n Content-type: text/html; charset=iso-8859-1 \r\n From: NJIT ACM Website <njithostingacm@hosting.acm.org> \r\n Reply-To: ".$name." <".$email."> \r\n");
+          $name = $_POST["name"];
+          $email = $_POST["email"];
+          $phone = $_POST["phone"];
+          $org = $_POST["org"];
+          $subject = $_POST["subject"];
+          $message = $_POST["message"];
+          $message = $message."\r\n\r\nOrganization: ".$org."\r\nPhone Number: ".$phone;
+          $to = "njitacm@gmail.com";
+          $headers = "From: ".$name."<".$email.">\r\n".
+          "Reply-To: ".$name."<".$email. ">\r\n".
+          "X-Mailer: PHP/" . phpversion();
+          mail($to, $subject, $message, $headers);
         ?>
         <p style="text-align:center;padding:100px">
           Thank you for reaching out to contact us! We will reply to you as soon as possible. This page will automatically redirect in 5 seconds. Click <a href="/">here</a> if it does not.
         </p>
+        <script type="text/javascript">setTimeout(function(){window.location="/";}, 5000)</script>
         <footer style="text-align:center;cursor:default" class="mdl-mega-footer">
           <p>Copyright © 2016 - 2017 NJIT ACM</p>
           <img style="width:60px;user-drag: none;-moz-user-select: none;-webkit-user-drag: none;" class="logo-img" src="images/white_acm_logo.png">
