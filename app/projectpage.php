@@ -48,15 +48,20 @@
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
-        <h3 style="text-align:center">NJIT ACM Project: <?php echo $name; ?></h3>
+        <h3 style="text-align:center">NJIT ACM Project:</h3>
+	<h3 style="text-align:center"><?php echo $name; ?></h3>
         <?php
         echo '<section style="padding-bottom:20px" class="section--center mdl-grid mdl-grid--no-spacing">';
-        if($name == 'Food Truck Cams')
-          echo 'The Food Truck Camera project is a plan to set up indoor cameras around select areas of campus where the food trucks are frequently parked. These cameras will be used for a 24-hour live video feed so people can check when the food trucks are on campus without leaving our office.';
-        else if($name == 'Smart Display')
-          echo 'The Smart Display project is the revival of the old laptop we had mounted on the door of our office which displayed our calendar to people passing by. The new smart display will most likely run on a raspberry pi and will display more information about our organization alongside our calendar.';
-        else if($name == 'Wheatley')
-          echo 'The Wheatley project is a plan to create a working replica of the robot Wheatley from the popular game Portal 2. The idea is to have Wheatley mounted on the walls of the office and to use artificial intelligence to allow him to answer questions posed by students.';
+	$conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+	if($conn->connect_error)
+	{
+		die("Error connecting to the database! ".$conn->connect_error);
+	}
+	$results = $conn->query("select * from `Current Projects` where Name='".$name."'");
+	$row = $results->fetch_assoc();
+	echo $row['Description'];
+	$conn->close();		 
+
         echo '</section>';
         ?>
         <footer style="text-align:center;cursor:default" class="mdl-mega-footer">

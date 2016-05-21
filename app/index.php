@@ -114,8 +114,8 @@
         <div class="mdl-layout__tab-panel" id="eboard">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <h3>E-Board (2016 Term)</h3>
-            <p>Below is a list of our current-acting E-Board members and their positions. E-Board elections are held every fall semester. In order to be qualified to vote, you must attend at least one-half of our meetings throughout the semester. Please check our constitution page for more information regarding our elections.<p>
-              <div style="margin:50px">
+            <p>Below is a list of our current-acting E-Board members and their positions. E-Board elections are held every fall semester. In order to be qualified to vote, you must attend at least one-half of our meetings throughout the semester. Please check our constitution page for more information regarding our elections.</p>
+	              <div style="margin:50px">
               <h4>President</h4>
               <div style="width: 300px;height:300px;background:url(images/president.png) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__actions">
@@ -162,6 +162,14 @@
               <h6>Email: <a href="mailto:jnm26@njit.edu">jnm26@njit.edu</a></h6>
               </div>
           </section>
+		<div style="text-align:center">
+		<label>View Eboard for Term:</label>
+		<br>
+		<select id="yearBox">
+			<option value="2015">2015</option>
+			<option value="2016" selected="selected">2016</option>
+		</select>
+		</div>
         </div>
 
         <!-- Sigs -->
@@ -170,35 +178,33 @@
               <h3>SIGs</h3>
               <p>SIGs (<a href="https://www.acm.org/special-interest-groups" target="_blank">special interest groups</a>) are a core part of the ACM organization. Special interest groups allow ACM members to study specific subjects under the umbrella of computing sciences. NJIT ACM is proud to offer multiple special interest groups recognized by ACM National, as well as a few special interest groups of our own. Below is a list of the special interest groups that we currently offer. The meeting times for our special interest groups are listed on our calendar. If you wish to learn more about one of our special interest groups (including where they will be meeting), feel free to contact one of the leaders of the particular group using the contact information listed. If you have an idea for a new special interest group, contact us, and we may be able to add it to our list.</p>
               <section>
-              <h4>SIG Algorithms</h4>
-              <p>Study computer science algorithms and learn how to make them efficient.</p>
-              <p>Leader(s): Arian Moslem (<a href="mailto:am2235@njit.edu">am2235@njit.edu</a>)</p>
-              <h4>SIG Android</h4>
-              <p>Learn the basics of creating mobile apps for the Android platform.</p>
-              <p>Leader(s): Anthony Morales (<a href="mailto:amm87@njit.edu">amm87@njit.edu</a>), Manish Lakhiani (<a href="mailto:ml394@njit.edu">ml394@njit.edu</a>)</p>
-              <h4>SIG Functional Programming</h4>
-              <p>Learn the basics of functional programming languages using Haskell.</p>
-              <p>Leader(s): Michael Selsky (<a href="mailto:mps36@njit.edu">mps36@njit.edu</a>)</p>
-              <h4>SIG Game Development</h4>
-              <p>Learn the process of game development on both a basic and advanced level using various game engines.</p>
-              <p>Leader(s): Ulysee "Bo" Thompson (<a href="mailto:ust3@njit.edu">ust3@njit.edu</a>), Ed Conroy (<a href="mailto:epc5@njit.edu">epc5@njit.edu</a>)</p>
-              <p>Alternate Email: <a href="mailto:njitgamedev@gmail.com">njitgamedev@gmail.com</a></p>
-              <h4>SIG GNU/Linux</h4>
-              <p>Learn various topics about a number of Linux operating systems.</p>
-              <p>Leader(s): John Gant (<a href="mailto:jpg33@njit.edu">jpg33@njit.edu</a>)</p>
-              <h4>SIG GPU</h4>
-              <p>Learn advanced graphics programming topics using OpenGL and Direct3D.</p>
-              <p>Leader(s): Jacob Moorman (<a href="mailto:jdm47@njit.edu">jdm47@njit.edu</a>), Alex Bradbury-Wallad (<a href="mailto:alb25@njit.edu">alb25@njit.edu</a>)</p>
-              <p>Alternate Email: <a href="mailto:njitgpu@gmail.com">njitgpu@gmail.com</a></p>
-              <h4>SIG Interview</h4>
-              <p>Learn how to master technical interview questions for computer science-related jobs.</p>
-              <p>Leader(s): Arian Moslem (<a href="mailto:am2235@njit.edu">am2235@njit.edu</a>)</p>
-              <h4>SIG iOS (Canceled Until More Interest)</h4>
-              <p>Learn the basics of creating mobile apps for the iOS platform.</p>
-              <p>Leader(s): Michael Selsky (<a href="mailto:mps36@njit.edu">mps36@njit.edu</a>)</p>
-              <h4>SIG Web</h4>
-              <p>Learn how to create modern webpages and use the latest in web software. </p>
-              <p>Leader(s): Jay Ravaliya (<a href="mailto:jhr3@njit.edu">jhr3@njit.edu</a>), Ali Kalkandelen (<a href="mailto:ak634@njit.edu">ak634@njit.edu</a>)</p>
+		<?php
+			$conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+			if($conn->connect_error)
+			{
+				die("Error connecting to the database! ".$conn->connect_error);
+			}
+			$results = $conn->query("select * from SIGs");
+			if($results->num_rows > 0)
+			{
+				while($row = $results->fetch_assoc())
+				{
+					$leaders = explode(',',$row['Leaders']);
+					$emails = explode(',',$row['Leader Emails']);
+					echo '<h4>'.$row['Name'].'</h4><p>'.$row['Description'].'</p><p>Leader(s): ';
+					for($i = 0; $i < count($leaders); $i++)
+					{	if($i < count($leaders) - 1)
+							echo $leaders[$i].' (<a href="mailto:'.$emails[$i].'">'.$emails[$i].'</a>), ';
+						else
+							echo $leaders[$i].' (<a href="mailto:'.$emails[$i].'">'.$emails[$i].'</a>)';
+					}
+					echo '</p>';		
+					if($row['Email'] != '')
+						echo '<p>Alternate Email: <a href="mailto:'.$row['Email'].'">'.$row['Email'].'</a></p>';
+				}
+			}
+			$conn->close();		
+		?> 
               </section>
           </section>
         </div>
@@ -219,114 +225,30 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">AiLi Lim</td>
-              <td class="mdl-data-table__cell--non-numeric">All Network Security and Lower Level IT Classes</td>
-              <td class="mdl-data-table__cell--non-numeric">Monday (10 AM - 11:30 AM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:al322@njit.edu">al322@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Andres Altamirano</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113, CS 114</td>
-              <td class="mdl-data-table__cell--non-numeric">Monday (4 PM - 6 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:ala25@njit.edu">ala25@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Andrew Rendon</td>
-              <td class="mdl-data-table__cell--non-numeric">All Network Security and Lower Level IT Classes</td>
-              <td class="mdl-data-table__cell--non-numeric">Thursday (1:30 PM - 4:30 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:asr48@njit.edu">asr48@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Atsuki Imamura</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113, CS 114, CS 241, CS 252, CS 280, CS 332, MATLAB</td>
-              <td class="mdl-data-table__cell--non-numeric">Friday (2:30 PM - 4 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:ai64@njit.edu">ai64@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Babatunde Ojo</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113, Java, Python, HTML, CSS</td>
-              <td class="mdl-data-table__cell--non-numeric">Monday (12 PM - 1:30 PM), Tuesday (11:30 AM - 1 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:bjo7@njit.edu">bjo7@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">David Etler</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 113, CS 114, CS 115, CS 116, CS 280</td>
-              <td class="mdl-data-table__cell--non-numeric">Thursday (1:30 PM - 3:00 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:dre3@njit.edu">dre3@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Eduardo Preciado</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113, CS 114, CS 241, CS 252, CS 280, CS 288, CS 332, CS 433</td>
-              <td class="mdl-data-table__cell--non-numeric">Thursday (3 PM - 4:30 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:ejp9@njit.edu">ejp9@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Edward Conroy</td>
-              <td class="mdl-data-table__cell--non-numeric">IT 114, IT 256, IT 266, IT 276, IT 286, 3D Game Development, CS 114</td>
-              <td class="mdl-data-table__cell--non-numeric">Monday (2:30 PM - 4 PM), Wednesday (2:30 PM - 4 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:epc5@njit.edu">epc5@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Elizabeth Egan</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113, CS 114</td>
-              <td class="mdl-data-table__cell--non-numeric">Monday (11:30 AM - 1 PM), Friday (2:30 PM - 4 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:eme8@njit.edu">eme8@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Inderpal Singh</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113</td>
-              <td class="mdl-data-table__cell--non-numeric">Friday (10 AM - 11:30 AM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:is223@njit.edu">is223@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Joshua Olayinka</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113, CS 114, CS 115</td>
-              <td class="mdl-data-table__cell--non-numeric">Tuesday (12 PM - 2 PM), Thursday (1 PM - 2 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:jbo5@njit.edu">jbo5@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Khadir Williams</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113, CS 114</td>
-              <td class="mdl-data-table__cell--non-numeric">Tuesday (2:30 PM - 4 PM), Wednesday (1 PM - 2:30 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:kjw26@njit.edu">kjw26@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Michael Selsky</td>
-              <td class="mdl-data-table__cell--non-numeric">All CS Classes</td>
-              <td class="mdl-data-table__cell--non-numeric">Tuesday</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:mps36@njit.edu">mps36@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Mikhail Zharov</td>
-              <td class="mdl-data-table__cell--non-numeric">All CS Classes</td>
-              <td class="mdl-data-table__cell--non-numeric">Monday (1 PM - 2:30 PM), Wednesday (3:30 PM - 5 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:maz9@njit.edu">maz9@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Mohit Nakrani</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113, CS 114, CS 241, CS 252, CS 280, CS 288, CS 332</td>
-              <td class="mdl-data-table__cell--non-numeric">Wednesday (11:30 AM - 1:30 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:mn249@njit.edu">mn249@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Nicholas Devlin</td>
-              <td class="mdl-data-table__cell--non-numeric">Any CS Class Below CS 490</td>
-              <td class="mdl-data-table__cell--non-numeric">By Appointment</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:njd37@njit.edu">njd37@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Sidney Carr</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113, CS 114, CS 241, CS 252, CS 280, CS 288, CS 332, MATLAB</td>
-              <td class="mdl-data-table__cell--non-numeric">Thursday (1 PM - 2:30 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:sac45@njit.edu">sac45@njit.edu</a></td>
-            </tr>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">Stephen Morrison</td>
-              <td class="mdl-data-table__cell--non-numeric">CS 100, CS 113, CS 241, CS 252, CS 280, CS 288, CS 332, CS 341, CS 345, CS 356, CS 431, CS 435</td>
-              <td class="mdl-data-table__cell--non-numeric">Thursday (11:30 AM - 1 PM)</td>
-              <td class="mdl-data-table__cell--non-numeric"><a href="mailto:srm56@njit.edu">srm56@njit.edu</a></td>
-            </tr>
+	    <?php
+		$conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+		if($conn->connect_error)
+		{
+			die("Error connecting to the database! ".$conn->connect_error);		
+		}
+		$results = $conn->query("select * from Tutors");
+		if($results->num_rows > 0)
+		{
+			while($row = $results->fetch_assoc())
+			{
+				$name = $row['Name'];
+				$subjects = $row['Classes/Subjects'];
+				$times = $row['Days/Times'];
+				$ucid = $row['UCID'];
+				echo '<tr>';
+				echo '<td class="mdl-data-table__cell--non-numeric">'.$name.'</td>';
+				echo '<td class="mdl-data-table__cell--non-numeric">'.$subjects.'</td>';
+				echo '<td class="mdl-data-table__cell--non-numeric">'.$times.'</td>';	
+				echo '<td class="mdl-data-table__cell--non-numeric"><a href="mailto:'.$ucid.'@njit.edu">'.$ucid.'@njit.edu</a></td>';
+				echo '</tr>';		
+			}
+		}				 
+	    ?>
           </tbody>
         </table>
         </div>
@@ -366,16 +288,29 @@
                 <th class="mdl-data-table__cell--non-numeric">Current Projects</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric"><a href="projectpage.php?name=Wheatley" target="_blank">Wheatley</a></td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric"><a href="projectpage.php?name=Food+Truck+Cams" target="_blank">Food Truck Cams</a></td>
-              </tr>
-              <tr>
-                <td class="mdl-data-table__cell--non-numeric"><a href="projectpage.php?name=Smart+Display" target="_blank">Smart Display Revival</a></td>
-              </tr>
+            <tbody>	
+	    <?php
+		$conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+		if($conn->connect_error)
+		{
+			die("Error connecting to the database! ".$conn->connect_error);		
+		}
+		$results = $conn->query("select * from `Current Projects`");
+		if($results->num_rows > 0)
+		{
+			while($row = $results->fetch_assoc())
+			{
+				$name = $row['Name'];
+				echo '<tr>';
+				echo '<td class="mdl-data-table__cell--non-numeric"><a href="projectpage.php?name='.$name.'" target="_blank">'.$name.'</a></td>';
+				echo '</tr>';		
+			}
+		}
+		else
+		{
+			echo '<tr><td class="mdl-data-table__cell--non-numeric">None</td></tr>';
+		}				 
+	    ?>
             </tbody>
           </table>
           </div>
@@ -387,9 +322,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td class="mdl-data-table__cell--non-numeric">None</td>
-            </tr>
+             <?php
+		$conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+		if($conn->connect_error)
+		{
+			die("Error connecting to the database! ".$conn->connect_error);		
+		}
+		$results = $conn->query("select * from `Finished Projects`");
+		if($results->num_rows > 0)
+		{
+			while($row = $results->fetch_assoc())
+			{
+				$name = $row['Name'];
+				echo '<tr>';
+				echo '<td class="mdl-data-table__cell--non-numeric"><a href="projectpage.php?name='.$name.'" target="_blank">'.$name.'</a></td>';
+				echo '</tr>';		
+			}
+		}
+		else
+		{
+			echo '<tr><td class="mdl-data-table__cell--non-numeric">None</td></tr>';
+		}				 
+	    ?>
           </tbody>
         </table>
         </div>
