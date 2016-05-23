@@ -241,6 +241,11 @@
           <div style="text-align:center;padding:16px">
           <a href="http://hacknjit.org/" title="HackNJIT" target="_blank" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">Show me HackNJIT!</a>
           </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
         </div>
 
         <!-- ICPC -->
@@ -248,6 +253,15 @@
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <h3>ICPC</h3>
             <p>NJIT ACM is proud to participate in the <a href="https://icpc.baylor.edu/" target="_blank">ACM ICPC (International Collegiate Programming Contest)</a>, which is a team-based intercollegiate programming competition held in different regions throughout the world. More information about our team and the contest dates will be posted here in the future.</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
           </section>
         </div>
 
