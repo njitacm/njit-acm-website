@@ -70,6 +70,13 @@
   }
 
   // Your custom JavaScript goes here
+  function getEboard()
+  {
+    $.get("geteboard.php", {year:$('#yearBox').val()}, function(data)
+    {
+        $('#contentDiv').html(data);
+    });
+  }
 
   $(document).ready(function() {
 
@@ -152,5 +159,11 @@
       var stream = $('#streamDiv');
       stream.html('');
   });
+
+  $('#yearBox').change(function(){
+      getEboard();
+  });
+
+  getEboard();
 
 })();

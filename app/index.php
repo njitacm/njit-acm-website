@@ -132,89 +132,10 @@
                   array_push($yearList, $row["Term"]);
               }
             }
-            $results = $conn->query("select * from Eboard where Term=".$highestYear);
-
-            $president = NULL;
-            $vp = NULL;
-            $treasurer = NULL;
-            $webmaster = NULL;
-            $secretary = NULL;
-
-            if($results->num_rows > 0)
-            {
-              while($row = $results->fetch_assoc())
-              {
-                if($row["Role"] == "President")
-                  $president = $row;
-                else if($row["Role"] == "Vice President")
-                  $vp = $row;
-                else if($row["Role"] == "Treasurer")
-                  $treasurer = $row;
-                else if($row["Role"] == "Webmaster")
-                  $webmaster = $row;
-                else if($row["Role"] == "Secretary")
-                  $secretary = $row;
-              }
-            }
-            $conn->close();
-            echo '<section class="section--center mdl-grid mdl-grid--no-spacing">';
-            echo '<h3>E-Board ('.$highestYear.' Term)</h3>';
-            echo '<p>Below is a list of our current-acting E-Board members and their positions. E-Board elections are held every fall semester. In order to be qualified to vote, you must attend at least one-half of our meetings throughout the semester. Please check our constitution page for more information regarding our elections.</p>';
-            echo '<div style="margin:50px">';
-            echo '<h4>President</h4>';
-            echo '<div style="width: 300px;height:300px;background:url(images/'.$highestYear.'/president.png) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">';
-            echo '<div class="mdl-card__actions">';
+            echo '<div id="contentDiv">';
             echo '</div>';
-            echo '</div>';
-            echo '<h6>'.$president["Name"].', '.$president["Year"].' '.$president["Major"].' Major</h6>';
-            echo '<h6>Email: <a href="mailto:'.$president["UCID"].'@njit.edu">'.$president["UCID"].'@njit.edu</a></h6>';
-            echo '</div>';
-            echo '<br>';
-            echo '<div style="margin:50px">';
-            echo '<h4>Vice President</h4>';
-            echo '<div style="width: 300px;height:300px;background:url(images/'.$highestYear.'/vice_president.png) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">';
-            echo '<div class="mdl-card__actions">';
-            echo '</div>';
-            echo '</div>';
-            echo '<h6>'.$vp["Name"].', '.$vp["Year"].' '.$vp["Major"].' Major</h6>';
-            echo '<h6>Email: <a href="mailto:'.$vp["UCID"].'@njit.edu">'.$vp["UCID"].'@njit.edu</a></h6>';
-            echo '</div>';
-            echo '<br>';
-            echo '<div style="margin:50px">';
-            echo '<h4>Treasurer</h4>';
-            echo '<div style="width: 300px;height:300px;background:url(images/'.$highestYear.'/treasurer.png) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">';
-            echo '<div class="mdl-card__actions">';
-            echo '</div>';
-            echo '</div>';
-            echo '<h6>'.$treasurer["Name"].', '.$treasurer["Year"].' '.$treasurer["Major"].' Major</h6>';
-            echo '<h6>Email: <a href="mailto:'.$treasurer["UCID"].'@njit.edu">'.$treasurer["UCID"].'@njit.edu</a></h6>';
-            echo '</div>';
-            echo '<br>';
-            echo '<div style="margin:50px">';
-            echo '<h4>Webmaster</h4>';
-            echo '<div style="width: 300px;height:300px;background:url(images/'.$highestYear.'/webmaster.png) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">';
-            echo '<div class="mdl-card__actions">';
-            echo '</div>';
-            echo '</div>';
-            echo '<h6>'.$webmaster["Name"].', '.$webmaster["Year"].' '.$webmaster["Major"].' Major</h6>';
-            echo '<h6>Email: <a href="mailto:'.$webmaster["UCID"].'@njit.edu">'.$webmaster["UCID"].'@njit.edu</a></h6>';
-            echo '</div>';
-            echo '<br>';
-            echo '<div style="margin:50px">';
-            echo '<h4>Secretary</h4>';
-            echo '<div style="width: 300px;height:300px;background:url(images/'.$highestYear.'/secretary.png) no-repeat center" class="demo-card-image mdl-card mdl-shadow--2dp">';
-            echo '<div class="mdl-card__actions">';
-            echo '</div>';
-            echo '</div>';
-            echo '<h6>'.$secretary["Name"].', '.$secretary["Year"].' '.$secretary["Major"].' Major</h6>';
-            echo '<h6>Email: <a href="mailto:'.$secretary["UCID"].'@njit.edu">'.$secretary["UCID"].'@njit.edu</a></h6>';
-            echo '</div>';
-            echo '<br>';
-            echo '</section>';
             echo '<div style="text-align:center">';
-        		echo '<label>View Eboard for Term:</label>';
-        		echo '<br>';
-        		echo '<select id="yearBox">';
+            echo '<select id="yearBox">';
             for($i = 0; $i < count($yearList); $i++)
             {
               if($highestYear != $yearList[$i])
