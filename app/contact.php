@@ -49,12 +49,12 @@
   </head>
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
         <?php
-          $name = filter_var($_POST["name"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH);
+          $name = filter_var($_POST["name"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
           $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
           $phone = filter_var($_POST["phone"], FILTER_SANITIZE_NUMBER_INT);
-          $org = filter_var($_POST["org"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH);
-          $subject = filter_var($_POST["subject"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH);
-          $message = filter_var($_POST["message"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH);
+          $org = filter_var($_POST["org"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+          $subject = filter_var($_POST["subject"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
+          $message = filter_var($_POST["message"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH);
           $message = $message."\r\n\r\nOrganization: ".$org."\r\nPhone Number: ".$phone;
           $to = "njitacm@gmail.com";
           $headers = "From: ".$name."<".$email.">\r\n".
