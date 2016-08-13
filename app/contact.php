@@ -22,10 +22,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
-    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="images/acm_logo.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileImage" content="images/acm_logo.png">
     <meta name="msapplication-TileColor" content="#3372DF">
 
     <meta name="theme-color" content="#3372DF">
@@ -49,12 +49,12 @@
   </head>
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
         <?php
-          $name = $_POST["name"];
-          $email = $_POST["email"];
-          $phone = $_POST["phone"];
-          $org = $_POST["org"];
-          $subject = $_POST["subject"];
-          $message = $_POST["message"];
+          $name = filter_var($_POST["name"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH);
+          $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL);
+          $phone = filter_var($_POST["phone"], FILTER_SANITIZE_NUMBER_INT);
+          $org = filter_var($_POST["org"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH);
+          $subject = filter_var($_POST["subject"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH);
+          $message = filter_var($_POST["message"], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW, FILTER_FLAG_STRIP_HIGH);
           $message = $message."\r\n\r\nOrganization: ".$org."\r\nPhone Number: ".$phone;
           $to = "njitacm@gmail.com";
           $headers = "From: ".$name."<".$email.">\r\n".
@@ -74,13 +74,7 @@
       </main>
     </div>
 
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
     <!-- build:js(app/) ../../scripts/main.min.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/gcal.js"></script>
-    <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
     <!-- Built with love using Web Starter Kit -->

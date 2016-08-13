@@ -22,10 +22,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
-    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="images/acm_logo.png">
 
     <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileImage" content="images/acm_logo.png">
     <meta name="msapplication-TileColor" content="#3372DF">
 
     <meta name="theme-color" content="#3372DF">
@@ -72,13 +72,7 @@
       </main>
     </div>
 
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
     <!-- build:js(app/) ../../scripts/main.min.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/gcal.js"></script>
-    <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
     <!-- Built with love using Web Starter Kit -->
