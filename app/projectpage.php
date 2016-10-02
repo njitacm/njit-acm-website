@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="The official website for NJIT's chapter of ACM.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php $name = $_GET['name']; echo $name; ?></title>
+    <title><?php $name = htmlspecialchars($_GET['name']); echo $name; ?></title>
 
     <!-- Disable tap highlight on IE -->
     <meta name="msapplication-tap-highlight" content="no">
@@ -57,9 +57,14 @@
 	{
 		die("Error connecting to the database! ".$conn->connect_error);
 	}
-	$results = $conn->query("select * from `Current Projects` where Name='".$name."'");
-	$row = $results->fetch_assoc();
-	echo $row['Description'];
+	$stmt = $conn->prepare("select * from `Current Projects` where Name=?");
+	$stmt->bind_param("s", $name);
+	$results = $stmt->execute();
+	$projectname = '';
+	$projectdesc = '';
+	$stmt->bind_result($projectname, $projectdesc);
+	$stmt->fetch();
+	echo $projectdesc;
 	$conn->close();		 
 
         echo '</section>';

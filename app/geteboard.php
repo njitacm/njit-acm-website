@@ -1,6 +1,6 @@
 <?php
 
-$year = $_GET["year"];
+$year = htmlspecialchars($_GET["year"]);
 $conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
 if($conn->connect_error)
 {
@@ -14,7 +14,7 @@ $treasurer = NULL;
 $webmaster = NULL;
 $secretary = NULL;
 
-if($results->num_rows > 0)
+/*if($results->num_rows > 0)
 {
   while($row = $results->fetch_assoc())
   {
@@ -29,7 +29,7 @@ if($results->num_rows > 0)
     else if($row["Role"] == "Secretary")
       $secretary = $row;
   }
-}
+}*/
 $conn->close();
 echo '<section class="section--center mdl-grid mdl-grid--no-spacing">';
 echo '<h3>E-Board ('.$year.' Term)</h3>';
