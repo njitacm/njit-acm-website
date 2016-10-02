@@ -113,7 +113,7 @@
         <!-- E-Board -->
         <div class="mdl-layout__tab-panel" id="eboard">
             <?php
-            $conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+            $conn = new mysqli("localhost","njithostingacm","WhereIsGehani?","njithost_acm_website");
             if($conn->connect_error)
             {
               die("Error connecting to the database! ".$conn->connect_error);
@@ -155,7 +155,7 @@
               <p>SIGs (<a href="https://www.acm.org/special-interest-groups" target="_blank">special interest groups</a>) are a core part of the ACM organization. Special interest groups allow ACM members to study specific subjects under the umbrella of computing sciences. NJIT ACM is proud to offer multiple special interest groups recognized by ACM National, as well as a few special interest groups of our own. Below is a list of the special interest groups that we currently offer. The meeting times for our special interest groups are listed on our calendar. If you wish to learn more about one of our special interest groups (including where they will be meeting), feel free to contact one of the leaders of the particular group using the contact information listed. If you have an idea for a new special interest group, contact us, and we may be able to add it to our list.</p>
               <section>
 		<?php
-			$conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+			$conn = new mysqli("localhost","njithostingacm","WhereIsGehani?","njithost_acm_website");
 			if($conn->connect_error)
 			{
 				die("Error connecting to the database! ".$conn->connect_error);
@@ -202,7 +202,7 @@
           </thead>
           <tbody>
 	    <?php
-		$conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+		$conn = new mysqli("localhost","njithostingacm","WhereIsGehani?","njithost_acm_website");
 		if($conn->connect_error)
 		{
 			die("Error connecting to the database! ".$conn->connect_error);
@@ -280,7 +280,7 @@
             </thead>
             <tbody>
 	    <?php
-		$conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+		$conn = new mysqli("localhost","njithostingacm","WhereIsGehani?","njithost_acm_website");
 		if($conn->connect_error)
 		{
 			die("Error connecting to the database! ".$conn->connect_error);
@@ -313,7 +313,7 @@
           </thead>
           <tbody>
              <?php
-		$conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+		$conn = new mysqli("localhost","njithostingacm","WhereIsGehani?","njithost_acm_website");
 		if($conn->connect_error)
 		{
 			die("Error connecting to the database! ".$conn->connect_error);

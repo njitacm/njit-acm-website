@@ -1,7 +1,7 @@
 <?php
 
 $year = htmlspecialchars($_GET["year"]);
-$conn = new mysqli("localhost","njithostingacm","Changethedoorcode!","njithost_acm_website");
+$conn = new mysqli("localhost","njithostingacm","WhereIsGehani?","njithost_acm_website");
 if($conn->connect_error)
 {
   die("Error connecting to the database! ".$conn->connect_error);
