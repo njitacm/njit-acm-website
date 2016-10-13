@@ -160,7 +160,7 @@
 			{
 				die("Error connecting to the database! ".$conn->connect_error);
 			}
-			$results = $conn->query("select * from SIGs");
+			$results = $conn->query("select * from SIGs order by Name");
 			if($results->num_rows > 0)
 			{
 				while($row = $results->fetch_assoc())
@@ -207,7 +207,7 @@
 		{
 			die("Error connecting to the database! ".$conn->connect_error);
 		}
-		$results = $conn->query("select * from Tutors");
+		$results = $conn->query("select * from Tutors order by Name");
 		if($results->num_rows > 0)
 		{
 			while($row = $results->fetch_assoc())
