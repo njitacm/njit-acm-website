@@ -16,9 +16,28 @@ $treasurer = NULL;
 $webmaster = NULL;
 $secretary = NULL;
 
-stmt->bind_result($president, $vp, $treasurer, $webmaster, $secretary);
+$name = NULL;
+$role = NULL;
+$ucid = NULL;
+$yearm = NULL;
+$major = NULL;
+$term = NULL;
 
-$stmt->fetch();
+$stmt->bind_result($name, $role, $ucid, $yearm, $major, $term);
+
+while($stmt->fetch())
+{
+	if($role == "President")
+		$president = array("Name"=>$name, "Role"=>$role, "UCID"=>$ucid, "Year"=>$yearm, "Major"=>$major, "Term"=>$term);
+	else if($role == "Vice President")
+		$vp = array("Name"=>$name, "Role"=>$role, "UCID"=>$ucid, "Year"=>$yearm, "Major"=>$major, "Term"=>$term);
+	else if($role == "Treasurer")
+		$treasurer = array("Name"=>$name, "Role"=>$role, "UCID"=>$ucid, "Year"=>$yearm, "Major"=>$major, "Term"=>$term);
+	else if($role == "Webmaster")
+		$webmaster = array("Name"=>$name, "Role"=>$role, "UCID"=>$ucid, "Year"=>$yearm, "Major"=>$major, "Term"=>$term);
+	else if($role == "Secretary")
+		$secretary = array("Name"=>$name, "Role"=>$role, "UCID"=>$ucid, "Year"=>$yearm, "Major"=>$major, "Term"=>$term);
+}
 
 $conn->close();
 echo '<section class="section--center mdl-grid mdl-grid--no-spacing">';
