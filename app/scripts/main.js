@@ -75,6 +75,7 @@
     $.get('geteboard.php', {year:$('#yearBox').val()}, function(data)
     {
         $('#contentDiv').html(data);
+	console.log("Data: " + data);
     });
   }
 

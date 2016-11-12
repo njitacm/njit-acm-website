@@ -6,7 +6,9 @@ if($conn->connect_error)
 {
   die("Error connecting to the database! ".$conn->connect_error);
 }
-$results = $conn->query("select * from Eboard where Term=".$year);
+$stmt = $conn->prepare("select * from Eboard where Term=?");
+$stmt->bind_param("s", $year);
+$results = $stmt->execute();
 
 $president = NULL;
 $vp = NULL;
@@ -14,22 +16,10 @@ $treasurer = NULL;
 $webmaster = NULL;
 $secretary = NULL;
 
-/*if($results->num_rows > 0)
-{
-  while($row = $results->fetch_assoc())
-  {
-    if($row["Role"] == "President")
-      $president = $row;
-    else if($row["Role"] == "Vice President")
-      $vp = $row;
-    else if($row["Role"] == "Treasurer")
-      $treasurer = $row;
-    else if($row["Role"] == "Webmaster")
-      $webmaster = $row;
-    else if($row["Role"] == "Secretary")
-      $secretary = $row;
-  }
-}*/
+stmt->bind_result($president, $vp, $treasurer, $webmaster, $secretary);
+
+$stmt->fetch();
+
 $conn->close();
 echo '<section class="section--center mdl-grid mdl-grid--no-spacing">';
 echo '<h3>E-Board ('.$year.' Term)</h3>';
