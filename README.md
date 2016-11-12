@@ -7,11 +7,11 @@ Maintained by the NJIT ACM webmaster. Created using [Google Webstarter Kit](http
 - [ ] Add more past eboard members to the eboard table of the database.
 - [ ] Add info about/a link to our youtube channel (maybe under the stream tab).
 - [ ] Fix the calendar which glitches out in some browsers.
-- [ ] Remove dependencies on PHP and replace them with Node.js (Make sure to access the database with prepared statements to avoid SQL injection!).
+- [ ] Remove dependencies on PHP and replace them with Node.js (make sure to access the database with prepared statements to avoid SQL injection).
 - [ ] Add more photos of our members and events in general to the homepage.
 - [ ] Do something with the near-empty projects page.
 - [ ] Add information about our ICPC team to the ICPC page (if we actually compete next year).
-- [ ] Anything else that you can think of, be creative!.
+- [ ] Anything else that you can think of, be creative!
 
 ## Contribution
 
