@@ -189,6 +189,7 @@
         <div class="mdl-layout__tab-panel" id="tutoring">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <h3>Tutoring</h3>
+            <p>One of the main services that NJIT ACM offers is free tutoring for CS, IT, and IS classes throughout the semester. Below is a list of our tutors for the semester, along with when they will be tutoring, the classes that they tutor for, and their email. Tutoring is held at our office. NOTICE! All tutoring will take place at GITC 3700 between Monday Feb 27 to Friday March 3. Tutors may not be present on certain days, in which case you can contact them using their email listed below.</p>
           <div style="overflow:auto;width:100%">
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
           <thead>
