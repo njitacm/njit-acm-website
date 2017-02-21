@@ -99,7 +99,7 @@
             <h4>When/Where are the Meetings?</h4>
             <p>Our meetings are typically held every Friday at 12 pm in GITC 1100, although there are certain exceptions throughout the semester. Please check our calendar to know exactly when the next meeting is being held.</p>
             <h4>Help! I missed a meeting!</h4>
-            <p>Do not fear. All of the slides from our meetings for the semester are available at this <a href="https://drive.google.com/folderview?id=0B4mJPDCZquqsbW5JSEdxdnRqV00&usp=sharing" target="_blank">link</a>, which is updated weekly after our meeting.</p>
+            <p>Do not fear. All of the slides from our meetings for the semester are available at this <a href="https://drive.google.com/drive/folders/0B6Puqp3KC-R9M1FQRlhJWkFuUXc?usp=sharings" target="_blank">link</a>, which is updated weekly after our meeting.</p>
             <h4>Where are we Located?</h4>
             <p>GITC 4402 (On the 4th floor to the right of the CCS offices).</p>
             <h4>When is the Office Open?</h4>
@@ -189,7 +189,6 @@
         <div class="mdl-layout__tab-panel" id="tutoring">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <h3>Tutoring</h3>
-            <p>One of the main services that NJIT ACM offers is free tutoring for CS, IT, and IS classes throughout the semester. Below is a list of our tutors for the semester, along with when they will be tutoring, the classes that they tutor for, and their email. All tutoring takes place in our office. Tutors may not be present on certain days, in which case you can contact them using their email listed below.</p>
           <div style="overflow:auto;width:100%">
           <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="width:100%">
           <thead>
