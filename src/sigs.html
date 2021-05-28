@@ -1,0 +1,28 @@
+<template>
+<div class="jumbotron jumbotron-njitacm">
+	<div class="container">
+		<!-- <div><img src="amc_k_flat_vtag_rev.tif"></div> -->
+		<h1>Special Interest Groups</h1>
+		<p></p>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="container col-md-4">
+		<ul class="media-list">
+			<li class="media sig ${sig.selected ? 'sig-selected' : ''}" repeat.for="sig of sigs">
+				<div class="media-left">
+					<a>
+						<img class="media-object sig-logo" src="http://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Association_for_Computing_Machinery_(ACM)_logo.svg/300px-Association_for_Computing_Machinery_(ACM)_logo.svg.png">
+					</a>
+				</div>
+				<div class="media-body">
+					<h3 class="media-heading">SIG ${sig.name}</h3>
+					<h4 show.bind="!!sig.fullname">${sig.fullname}</h4>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+</template>

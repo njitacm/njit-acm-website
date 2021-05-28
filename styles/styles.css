@@ -1,0 +1,160 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    color: #444;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.splash {
+    text-align: center;
+    margin: 10% 0 0 0;
+    box-sizing: border-box;
+}
+
+.splash .message {
+    font-size: 72px;
+    line-height: 72px;
+    text-shadow: rgba(0, 0, 0, 0.5) 0 0 15px;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.splash .fa-spinner {
+    text-align: center;
+    display: inline-block;
+    font-size: 72px;
+    margin-top: 50px;
+}
+
+.page-host {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50px;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+section {
+    margin: 0 20px;
+}
+
+.navbar-nav li.loader {
+    margin: 12px 24px 0 6px;
+}
+
+.pictureDetail {
+    max-width: 425px;
+}
+
+.jumbotron > .container {
+    margin-top: 0;
+}
+
+$darker-red: #220D0F;
+$dark-red: #3E0508;
+$off-white: #E7E7E7;
+$light-blue: #00AEEF;
+$blue: #1C75BC;
+$dark-blue: 262262
+
+body {
+    
+}
+
+a {
+    color: #1C75BC;
+}
+
+li.sig {
+    cursor: pointer;
+}
+
+.jumbotron-njitacm {
+    background-color: #00AEEF !important;
+    color: white !important;
+}
+
+nav.navbar-njitacm {
+    border-bottom: 0;
+    border-radius: 0;
+    background-color: #1C75BC;
+    color: white;
+}
+
+nav.navbar-njitacm
+.navbar-nav > li > a,
+nav.navbar-njitacm
+.navbar-header > *,
+nav.navbar-njitacm
+.navbar-header > *:visited {
+    color: white;
+}
+
+nav.navbar-njitacm
+.navbar-nav > li:hover > a,
+nav.navbar-njitacm
+.navbar-header > *:hover {
+    color: #96202E;
+}
+
+nav.navbar-njitacm
+.navbar-nav > li:hover,
+nav.navbar-njitacm
+.navbar-nav > li.active > a,
+nav.navbar-njitacm
+.navbar-header > *:hover {
+    background-color: white;
+}
+
+td.tutor-info {
+    max-width: 150px;
+}
+
+img.eboard-profile {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+img.acm-logo-welcome {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+img.acm-logo-navbar {
+    max-width: 25px;
+    max-height: 25px;
+    display: inline-block !important;
+}
+
+div.header-offset {
+    margin-top: 40px;
+}
+
+img.sig-logo {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+div.panel-njitacm > div.panel-heading,
+.njitacm-footer {
+    background-color: #3c3b3f;
+    color: white;
+}
+
+.njitacm-footer {
+    margin-top: 40px;
+}
+
+.njitacm-footer p {
+    margin-top: 10px;
+}
+
+router-view {
+    min-height: 100vh;
+    display: block;
+}

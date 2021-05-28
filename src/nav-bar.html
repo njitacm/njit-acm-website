@@ -1,0 +1,28 @@
+<template>
+  <nav class="navbar navbar-default navbar-fixed-top navbar-njitacm" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img class="acm-logo-navbar" src="http://upload.wikimedia.org/wikipedia/en/thumb/8/8e/Association_for_Computing_Machinery_(ACM)_logo.svg/300px-Association_for_Computing_Machinery_(ACM)_logo.svg.png">
+        <span>${router.title}</span>
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
+          <a href.bind="row.href">${row.title}</a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="http://bb.njitacm.org">Forum</a></li> -->
+      </ul>
+    </div>
+  </nav>
+</template>

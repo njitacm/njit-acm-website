@@ -1,0 +1,12 @@
+<template>
+  <import from="./nav-bar"></import>
+  <import from="./nav-footer"></import>
+
+  <nav-bar router.bind="router"></nav-bar>
+
+  <div class="page-host">
+    <router-view></router-view>
+  	<nav-footer router.bind="router"></nav-footer>
+  </div>
+
+</template>
