@@ -1,0 +1,49 @@
+.navbar {
+    padding: 0px;
+    /* height: 65px; */
+    background: linear-gradient(90deg, rgb(220, 7, 7), rgb(247, 61, 61) 100%);
+    box-shadow: 0px 0px 10px;
+    z-index: 100;
+}
+
+.card{
+    background-color: #d1d2d4;
+    box-shadow: 0px 0px 15px rgb(185, 184, 184);
+}
+.nav-item {
+    padding-right: 10px;
+    padding-bottom: 10px;
+    transition: background .25s;
+
+}
+.nav-link{
+    color: white !important;
+}
+.navbar-brand {
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar-toggler {
+    margin-right: 5px;
+}
+
+.nav-item:hover {
+    background: #ec6b6b
+}
+
+.navbar-nav {
+    /* background: linear-gradient(90deg, rgb(220,7,7), rgb(247,61,61) 100%); */
+    /* padding-right: 20px; */
+    margin-left: auto;
+    /*padding-top: 15px;*/
+
+}
+
+.dot {
+    height: 50px;
+    width: 50px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
