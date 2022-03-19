@@ -1,10 +1,24 @@
-## New NJIT ACM Website Template
+# acm-site
 
-This branch is a template html site which the currently in progress site is based off of. It will be stored in this branch for refrence.
+## Project setup
+```
+npm install
+```
 
-The pages that are templated are:
-* Home (index.html)<br>
-* SIGS<br>
-* Events
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-The rest of the pages are similar enough to these pages, and will be based on these pages
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
