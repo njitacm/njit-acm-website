@@ -1,12 +1,16 @@
 <template>
   <div>
     <b-navbar type="light">
-        <b-navbar-brand href="#">Logo</b-navbar-brand>
+        <b-navbar-brand ><router-link class="nav-link" to="/">Logo</router-link></b-navbar-brand>
         <b-navbar-nav class="navbar-nav">
-            <b-nav-item href="#">SIGS*</b-nav-item>
-            <b-nav-item href="#">Events*</b-nav-item>
-            <b-nav-item href="#">Eboard*</b-nav-item>
-            <b-nav-item href="#">Partner Orgs*</b-nav-item>
+            <li class="nav-item"><router-link class="nav-link" to="/sigs">SIGS</router-link></li>
+            <li class="nav-item"><router-link class="nav-link" to="/sigs">Events*</router-link></li>
+            <li class="nav-item"><router-link class="nav-link" to="/sigs">Eboard*</router-link></li>
+            <li class="nav-item"><router-link class="nav-link" to="/sigs">Partner Orgs*</router-link></li>
+<!--
+            <b-nav-item><router-link class="nav-link" to="/sigs">Events*</router-link></b-nav-item>
+            <b-nav-item><router-link class="nav-link" to="/sigs">Eboard*</router-link></b-nav-item>
+            <b-nav-item><router-link class="nav-link" to="/sigs">Partner Orgs*</router-link></b-nav-item>-->
         </b-navbar-nav>
     </b-navbar>
   </div>
@@ -24,7 +28,7 @@
     }
 
     .nav-item {
-        padding: 5px;
+        padding: 10px;
         transition: background .25s;
     }
 
