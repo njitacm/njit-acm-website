@@ -25,19 +25,16 @@
     </b-carousel-slide>
   </b-carousel>
 
-  <div class="card" style="width: 100%; margin: 30px 0px 30px 0px; border-radius: 0 !important;">
-    <div class="card-body">
-      <p class="card-text" style="margin-bottom: 300px;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  <b-card style="width: 100%; margin: 30px 0px 30px 0px; border-radius: 0 !important;">
+      <b-card-body style="margin-bottom: 300px;">Some quick example text to build on the card title and make up the bulk of the card's content.</b-card-body>
       
-    </div>
-  </div>
+  </b-card>
   <div style="margin:300px"></div>
-  <div class="card" style="width: 100%; margin: 30px 0px 30px 0px; border-radius: 0 !important;">
-    <div class="card-body">
-      <p class="card-text" style="margin-bottom: 300px;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+  <b-card style="width: 100%; margin: 30px 0px 30px 0px; border-radius: 0 !important;">
+      <b-card-body style="margin-bottom: 300px;">Some quick example text to build on the card title and make up the bulk of the card's content.</b-card-body>
       
-    </div>
-  </div>
+  </b-card>
   <div style="margin:300px"></div>
   </div>
 </template>
@@ -50,5 +47,8 @@ export default {
 </script>
 
 <style>
-
+  .card{
+      background-color: #d1d2d4 !important;
+      box-shadow: 0px 0px 15px rgb(185, 184, 184);
+  }
 </style>
