@@ -46,11 +46,10 @@
             </b-row>
           </b-col>
         </b-row>
-
-        <b-row class="text-center">
+        <b-row class="icons">
           <b-nav v-for="value in socials" v-bind:key="value.title">
             <b-col>
-              <b-nav-item v-bind:href="value.url">
+              <b-nav-item v-bind:href="value.url" class="icon">
                 <img v-bind:src="value.img_source" />
               </b-nav-item>
             </b-col>
@@ -133,27 +132,36 @@ footer {
   text-align: center;
   position: relative;
   bottom: 0%;
-  margin-bottom: -11px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.icons {
   padding-top: 5px;
 }
 
-li a:hover {
-  background-color: #5f2121;
+.icon {
+  background-color: rgba(255, 125, 125, 0.589);
+  border-radius: 30%;
+  padding: 1px;
+  margin: 1px;
 }
 
-a:hover {
-  border-radius: 6px;
-  background-color: #5f2121;
+.icon:hover {
+  border-radius: 20px;
+  background-color: rgba(124, 69, 69, 0.644);
 }
 
 .contact-us {
-  border: 1px solid #5f2121;
+  border: 1px #5f2121;
+  border-style: dashed;
   margin-left: 5px;
   margin-right: 5px;
 }
 
 .links {
-  border: 1px solid #5f2121;
+  border: 1px #5f2121;
+  border-style: dashed;
   margin-left: 5px;
   margin-right: 5px;
 }
