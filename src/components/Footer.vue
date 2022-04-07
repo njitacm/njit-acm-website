@@ -19,7 +19,7 @@
           </b-col>
           <b-col class="links">
             <h5>Links</h5>
-            <div name="link-redirects">
+            <div class="link-redirects">
               <a href="#">Constitution</a>
             </div>
           </b-col>
@@ -56,6 +56,7 @@
           </b-nav>
         </b-row>
       </b-container>
+      <h6>NJIT ACM Chapter</h6>
     </div>
   </footer>
 </template>
@@ -128,22 +129,21 @@ export default {
 <style scoped>
 footer {
   color: antiquewhite;
-  background: linear-gradient(90deg, rgb(220, 7, 7), rgb(247, 61, 61) 95%);
+  background: linear-gradient(90deg, rgb(202, 61, 61), rgb(247, 61, 61) 95%);
   text-align: center;
   position: relative;
   bottom: 0%;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 .icons {
   padding-top: 5px;
+  justify-content: center;
+  text-align: center;
 }
 
 .icon {
-  background-color: rgba(255, 125, 125, 0.589);
-  border-radius: 30%;
-  padding: 1px;
   margin: 1px;
 }
 
@@ -154,14 +154,7 @@ footer {
 
 .contact-us {
   border: 1px #5f2121;
-  border-style: dashed;
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.links {
-  border: 1px #5f2121;
-  border-style: dashed;
+  border-style: solid;
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -169,11 +162,25 @@ footer {
 .contact-info {
   float: initial;
   overflow: auto;
-  margin-top: -10px;
   list-style: none;
   text-align: left;
 }
 
+.links {
+  border: 1px #5f2121;
+  border-style: solid;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .link-redirects {
+  text-align: left;
+  font-style: italic;
+}
+
+a:link,
+a:visited {
+  color: #5f2121;
+  text-decoration: none;
 }
 </style>
