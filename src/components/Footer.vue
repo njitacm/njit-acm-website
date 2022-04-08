@@ -20,7 +20,9 @@
           <b-col class="links">
             <h5>Links</h5>
             <div class="link-redirects">
-              <a href="#">Constitution</a>
+              <a href="#">Our Constitution</a> <br />
+              <a href="#">Other</a> <br />
+              <a href="#">ACM National</a> <br />
             </div>
           </b-col>
           <b-col class="contact-us" cols="5">
@@ -81,43 +83,49 @@ export default {
         {
           title: "LinkedIn",
           img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/youtube-48.png",
+            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/linkedin-48.png",
           url: "",
         },
         {
           title: "Discord",
           img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/youtube-48.png",
+            "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-48.png",
           url: "https://njit.acm.org/discord",
         },
         {
           title: "Instagram",
           img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/youtube-48.png",
+            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/instagram-48.png",
           url: "https://www.instagram.com/NJITACM/",
         },
         {
           title: "Facebook",
           img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/youtube-48.png",
+            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/facebook-48.png",
           url: "https://www.facebook.com/groups/njtacm",
         },
         {
           title: "Twitch",
           img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/youtube-48.png",
+            "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/twitch-48.png",
           url: "https://www.twitch.tv/NJITACM",
         },
         {
           title: "TikTok",
           img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/youtube-48.png",
+            "https://cdn2.iconfinder.com/data/icons/social-media-2421/512/TikTok-48.png", //not same person
           url: "",
         },
         {
           title: "Reddit",
           img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/youtube-48.png",
+            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/reddit-48.png",
+          url: "",
+        },
+        {
+          title: "GitHub",
+          img_source:
+            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/github-48.png",
           url: "",
         },
       ],
@@ -129,27 +137,30 @@ export default {
 <style scoped>
 footer {
   color: antiquewhite;
-  background: linear-gradient(90deg, rgb(202, 61, 61), rgb(247, 61, 61) 95%);
+  background: linear-gradient(90deg, rgb(185, 59, 59), rgb(241, 87, 87) 95%);
   text-align: center;
   position: relative;
   bottom: 0%;
-  padding-top: 10px;
+  padding-top: 15px;
   padding-bottom: 5px;
 }
 
 .icons {
   padding-top: 5px;
+  padding-bottom: 5px;
   justify-content: center;
   text-align: center;
 }
 
 .icon {
-  margin: 1px;
+  padding: 0%;
 }
 
 .icon:hover {
   border-radius: 20px;
-  background-color: rgba(124, 69, 69, 0.644);
+  background-color: rgba(153, 153, 153, 0.205);
+  animation: raiseIn 200ms ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 .contact-us {
@@ -176,11 +187,25 @@ footer {
 .link-redirects {
   text-align: left;
   font-style: italic;
+  text-decoration-line: underline;
 }
 
 a:link,
 a:visited {
-  color: #5f2121;
+  color: #ffc8c8;
   text-decoration: none;
+}
+
+a:hover {
+  color: #fcfcfc;
+}
+
+@keyframes raiseIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0.85);
+  }
 }
 </style>
