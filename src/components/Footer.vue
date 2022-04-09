@@ -67,6 +67,7 @@
 export default {
   data() {
     return {
+      //Social media links to be displayed in the footer
       socials: [
         {
           title: "YouTube",
