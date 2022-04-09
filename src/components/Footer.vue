@@ -3,21 +3,21 @@
     <div class="footer">
       <b-container class="footer-boot">
         <b-row>
-          <b-col name="Logos">
+          <b-col class="logos">
             <img
-              src="https://www.gstatic.com/images/branding/product/2x/keep_48dp.png"
+              src="../assets/logos/njit_full.png"
               name="NJIT"
+              width="200px"
+              height="100px"
             />
             <img
-              src="https://www.gstatic.com/images/branding/product/2x/keep_48dp.png"
+              src="../assets/logos/acmLogo.png"
               name="ACM"
-            />
-            <img
-              src="https://www.gstatic.com/images/branding/product/2x/keep_48dp.png"
-              name="YWCC"
+              width="150px"
+              height="125px"
             />
           </b-col>
-          <b-col class="links">
+          <b-col class="links" cols="3">
             <h5>Links</h5>
             <div class="link-redirects">
               <a href="#">Our Constitution</a> <br />
@@ -25,13 +25,13 @@
               <a href="#">ACM National</a> <br />
             </div>
           </b-col>
-          <b-col class="contact-us" cols="5">
+          <b-col class="contact-us" cols="4">
             <h5>Contact Us</h5>
             <b-row>
               <b-col>
                 <ul class="contact-info">
                   <li style="font-size: 105%">Phone:</li>
-                  <li style="font-size: 90%">222-222-2222</li>
+                  <li style="font-size: 90%">973-596-2861</li>
                   <li style="font-size: 105%">Email:</li>
                   <li style="font-size: 90%">acm.njit.edu</li>
                 </ul>
@@ -58,7 +58,7 @@
           </b-nav>
         </b-row>
       </b-container>
-      <h6>NJIT ACM Chapter</h6>
+      <h6>@ NJIT ACM 2022</h6>
     </div>
   </footer>
 </template>
@@ -113,7 +113,7 @@ export default {
         {
           title: "TikTok",
           img_source:
-            "https://cdn2.iconfinder.com/data/icons/social-media-2421/512/TikTok-48.png", //not same person
+            "https://cdn3.iconfinder.com/data/icons/social-media-flat-black/512/tiktok_flat_black-48.png", //not same person
           url: "",
         },
         {
@@ -136,13 +136,19 @@ export default {
 
 <style scoped>
 footer {
-  color: antiquewhite;
-  background: linear-gradient(90deg, rgb(185, 59, 59), rgb(241, 87, 87) 95%);
+  color: whitesmoke;
+  background: linear-gradient(0deg, rgb(128, 120, 120), rgb(128, 128, 128) 95%);
   text-align: center;
-  position: relative;
+  justify-content: center;
   bottom: 0%;
   padding-top: 15px;
   padding-bottom: 5px;
+}
+
+.logos {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .icons {
@@ -164,10 +170,12 @@ footer {
 }
 
 .contact-us {
-  border: 1px #5f2121;
+  border: 1px #3d1717;
   border-style: solid;
   margin-left: 5px;
   margin-right: 5px;
+  justify-content: center;
+  text-align: center;
 }
 
 .contact-info {
@@ -175,24 +183,30 @@ footer {
   overflow: auto;
   list-style: none;
   text-align: left;
+  justify-content: center;
+  padding: 0;
+  width: 3fr;
 }
 
 .links {
-  border: 1px #5f2121;
+  border: 1px #3d1717;
   border-style: solid;
   margin-left: 5px;
   margin-right: 5px;
+  justify-content: center;
+  text-align: center;
 }
 
 .link-redirects {
   text-align: left;
   font-style: italic;
   text-decoration-line: underline;
+  width: 2fr;
 }
 
 a:link,
 a:visited {
-  color: #ffc8c8;
+  color: whitesmoke;
   text-decoration: none;
 }
 
