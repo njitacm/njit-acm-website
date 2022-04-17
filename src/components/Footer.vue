@@ -138,7 +138,7 @@ export default {
 <style scoped>
 footer {
   color: whitesmoke;
-  background: linear-gradient(0deg, rgb(128, 120, 120), rgb(128, 128, 128) 95%);
+  background: linear-gradient(0deg, rgb(158, 151, 151), rgb(128, 128, 128) 95%);
   text-align: center;
   justify-content: center;
   bottom: 0%;
