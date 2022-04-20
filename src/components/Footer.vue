@@ -2,7 +2,7 @@
   <footer>
     <div class="footer">
       <b-container class="footer-boot">
-        <b-row>
+        <b-row cols-lg="12">
           <b-col class="logos">
             <img
               src="../assets/logos/njit_full.png"
@@ -16,8 +16,9 @@
               width="150px"
               height="125px"
             />
+            <!-- <img src="..\assets\logos\instagram.png" /> -->
           </b-col>
-          <b-col class="links" cols="3">
+          <b-col class="links">
             <h5>Links</h5>
             <div class="link-redirects">
               <a href="#">Our Constitution</a> <br />
@@ -25,20 +26,20 @@
               <a href="#">ACM National</a> <br />
             </div>
           </b-col>
-          <b-col class="contact-us" cols="4">
+          <b-col class="contact-us">
             <h5>Contact Us</h5>
             <b-row>
               <b-col>
                 <ul class="contact-info">
-                  <li style="font-size: 105%">Phone:</li>
+                  <li style="font-size: 105%; font-style: bold">Phone:</li>
                   <li style="font-size: 90%">973-596-2861</li>
-                  <li style="font-size: 105%">Email:</li>
+                  <li style="font-size: 105%; font-style: bold">Email:</li>
                   <li style="font-size: 90%">acm.njit.edu</li>
                 </ul>
               </b-col>
               <b-col>
                 <ul class="contact-info">
-                  <li style="font-size: 105%">Located:</li>
+                  <li style="font-size: 105%; font-style: bold">Located:</li>
                   <li style="font-size: 90%">GITC 3704</li>
                   <li style="font-size: 90%">
                     218 Central Ave, Newark, NJ 07102
@@ -49,10 +50,14 @@
           </b-col>
         </b-row>
         <b-row class="icons">
-          <b-nav v-for="value in socials" v-bind:key="value.title">
+          <b-nav v-for="item in socials" v-bind:key="item.title">
             <b-col>
-              <b-nav-item v-bind:href="value.url" class="icon">
-                <img v-bind:src="value.img_source" />
+              <b-nav-item v-bind:href="item.url" class="icon">
+                <img
+                  :src="item.img_source"
+                  class="icon-img"
+                  :key="item.title"
+                />
               </b-nav-item>
             </b-col>
           </b-nav>
@@ -64,6 +69,17 @@
 </template>
 
 <script>
+import insta from "../assets/socials/instagram.png";
+import facebook from "../assets/socials/facebook.png";
+import github from "../assets/socials/github.png";
+import linkedin from "../assets/socials/linkedin.png";
+import twitter from "../assets/socials/twitter.png";
+import youtube from "../assets/socials/youtube.png";
+import reddit from "../assets/socials/reddit.png";
+import discord from "../assets/socials/discord.png";
+import twitch from "../assets/socials/twitch.png";
+import tiktok from "../assets/socials/tiktok.png";
+
 export default {
   data() {
     return {
@@ -71,62 +87,52 @@ export default {
       socials: [
         {
           title: "YouTube",
-          img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/youtube-48.png",
+          img_source: youtube,
           url: "https://www.youtube.com/channel/UC3stSn7UK5-IX6mNnlWlRLw",
         },
         {
           title: "Twitter",
-          img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/twitter-48.png",
+          img_source: twitter,
           url: "https://twitter.com/NJITACM",
         },
         {
           title: "LinkedIn",
-          img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/linkedin-48.png",
-          url: "",
+          img_source: linkedin,
+          url: "https://njit.acm.org/linkedin",
         },
         {
           title: "Discord",
-          img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-48.png",
+          img_source: discord,
           url: "https://njit.acm.org/discord",
         },
         {
           title: "Instagram",
-          img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/instagram-48.png",
+          img_source: insta,
           url: "https://www.instagram.com/NJITACM/",
         },
         {
           title: "Facebook",
-          img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/facebook-48.png",
+          img_source: facebook,
           url: "https://www.facebook.com/groups/njtacm",
         },
         {
           title: "Twitch",
-          img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/twitch-48.png",
+          img_source: twitch,
           url: "https://www.twitch.tv/NJITACM",
         },
         {
           title: "TikTok",
-          img_source:
-            "https://cdn3.iconfinder.com/data/icons/social-media-flat-black/512/tiktok_flat_black-48.png", //not same person
+          img_source: tiktok, //not same person
           url: "",
         },
         {
           title: "Reddit",
-          img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/reddit-48.png",
+          img_source: reddit,
           url: "",
         },
         {
           title: "GitHub",
-          img_source:
-            "https://cdn3.iconfinder.com/data/icons/popular-services-brands/512/github-48.png",
+          img_source: github,
           url: "",
         },
       ],
@@ -137,19 +143,13 @@ export default {
 
 <style scoped>
 footer {
-  color: whitesmoke;
-  background: linear-gradient(0deg, rgb(128, 120, 120), rgb(128, 128, 128) 95%);
+  color: rgb(73, 73, 73);
+  background: linear-gradient(0deg, rgb(199, 199, 199), rgb(196, 196, 196) 95%);
   text-align: center;
   justify-content: center;
   bottom: 0%;
   padding-top: 15px;
   padding-bottom: 5px;
-}
-
-.logos {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 }
 
 .icons {
@@ -170,7 +170,8 @@ footer {
   animation-fill-mode: forwards;
 }
 
-.contact-us {
+.contact-us,
+.links {
   border: 1px #3d1717;
   border-style: solid;
   margin-left: 5px;
@@ -189,15 +190,6 @@ footer {
   width: 3fr;
 }
 
-.links {
-  border: 1px #3d1717;
-  border-style: solid;
-  margin-left: 5px;
-  margin-right: 5px;
-  justify-content: center;
-  text-align: center;
-}
-
 .link-redirects {
   text-align: left;
   font-style: italic;
@@ -207,7 +199,7 @@ footer {
 
 a:link,
 a:visited {
-  color: whitesmoke;
+  color: rgb(73, 73, 73);
   text-decoration: none;
 }
 
@@ -219,6 +211,7 @@ a:hover {
   from {
     transform: scale(1);
   }
+
   to {
     transform: scale(0.85);
   }
