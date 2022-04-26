@@ -1,24 +1,7 @@
 <template>
   <div>
-    <div class="card text-center w-75" style="margin: auto; margin-top: 50px">
-      <div class="card-body">
-        <h1 class="card-title" style="font-size: 100px">HackNJIT</h1>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-
-    <div class="card text-center w-75" style="margin: auto; margin-top: 50px">
-      <div class="card-body">
-        <h1 class="card-title" style="font-size: 100px">JerseyCTF</h1>
-        <p class="card-text">
-          With supporting text below as a natural lead-in to additional content.
-        </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+    <MajEvent eventName="HackNJIT" desc="HackNJIT is a 24-hour hackathon at the New Jersey Institute of Technology, run by its ACM student chapter in conjunction with the Ying Wu College of Computing." siteURL="https://hacknjit.org/"/>
+    <MajEvent eventName="JerseyCTF" desc="JerseyCTF is a beginner-friendly Capture the Flag competition that aims to inspire interest in cybersecurity. Hosted by the NJIT ACM organization and NJIT SCI program, it is geared towards students, beginners, and professionals alike." siteURL="https://jerseyctf.com/"/>
     <hr />
     <div class="row w-100">
       <div class="col">
@@ -68,14 +51,15 @@
 </template>
 
 <script>
-export default {
-  name: "Events",
-};
+  import MajEvent from "../components/MajEvent";
+
+  export default {
+    components: {
+      MajEvent,
+    }
+  }
 </script>
 
 <style>
-.card {
-  background-color: #d1d2d4 !important;
-  box-shadow: 0px 0px 15px rgb(185, 184, 184);
-}
+
 </style>
