@@ -7,6 +7,7 @@
             <li class="nav-item"><router-link class="nav-link" to="/events">Events*</router-link></li>
             <li class="nav-item"><router-link class="nav-link" to="/eboard">Eboard*</router-link></li>
             <li class="nav-item"><router-link class="nav-link" to="/partnorg">Partner Orgs*</router-link></li>
+            <li class="nav-item"><router-link class="nav-link" to="/tutoring">Tutoring*</router-link></li>
 <!--
             <b-nav-item><router-link class="nav-link" to="/sigs">Events*</router-link></b-nav-item>
             <b-nav-item><router-link class="nav-link" to="/sigs">Eboard*</router-link></b-nav-item>
