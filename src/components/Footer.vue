@@ -4,18 +4,8 @@
       <b-container class="footer-boot">
         <b-row cols-lg="12">
           <b-col class="logos">
-            <img
-              src="../assets/logos/njit_full.png"
-              name="NJIT"
-              width="200px"
-              height="100px"
-            />
-            <img
-              src="../assets/logos/acmLogo.png"
-              name="ACM"
-              width="150px"
-              height="125px"
-            />
+            <img src="../assets/logos/njit_full.png" name="NJIT" width="200px" height="100px" />
+            <img src="../assets/logos/acmLogo.png" name="ACM" width="150px" height="125px" />
             <!-- <img src="..\assets\logos\instagram.png" /> -->
           </b-col>
           <b-col class="links">
@@ -53,11 +43,7 @@
           <b-nav v-for="item in socials" v-bind:key="item.title">
             <b-col>
               <b-nav-item v-bind:href="item.url" class="icon">
-                <img
-                  :src="item.img_source"
-                  class="icon-img"
-                  :key="item.title"
-                />
+                <img :src="item.img_source" class="icon-img" :key="item.title" />
               </b-nav-item>
             </b-col>
           </b-nav>
@@ -141,7 +127,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 footer {
   color: rgb(73, 73, 73);
   background: linear-gradient(0deg, rgb(199, 199, 199), rgb(196, 196, 196) 95%);
@@ -150,6 +136,12 @@ footer {
   bottom: 0%;
   padding-top: 15px;
   padding-bottom: 5px;
+}
+
+.logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icons {
