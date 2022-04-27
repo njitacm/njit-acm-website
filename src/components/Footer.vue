@@ -2,20 +2,24 @@
   <footer>
     <div class="footer">
       <b-container class="footer-boot">
+        <!-- Initiates the logos for njit and acm -->
         <b-row cols-lg="12">
           <b-col class="logos">
             <img src="../assets/logos/njit_full.png" name="NJIT" width="200px" height="100px" />
             <img src="../assets/logos/acmLogo.png" name="ACM" width="150px" height="125px" />
-            <!-- <img src="..\assets\logos\instagram.png" /> -->
           </b-col>
+
+          <!-- Adds links for the main pages -->
           <b-col class="links">
             <h5>Links</h5>
             <div class="link-redirects">
-              <a href="#">Our Constitution</a> <br />
-              <a href="#">Other</a> <br />
-              <a href="#">ACM National</a> <br />
+              <a href="#" target="_blank">Our Constitution</a> <br />
+              <a href="#" target="_blank">Other</a> <br />
+              <a href="#" target="_blank">ACM National</a> <br />
             </div>
           </b-col>
+
+          <!-- Adds the contact information segment -->
           <b-col class="contact-us">
             <h5>Contact Us</h5>
             <b-row>
@@ -24,7 +28,7 @@
                   <li style="font-size: 105%; font-style: bold">Phone:</li>
                   <li style="font-size: 90%">973-596-2861</li>
                   <li style="font-size: 105%; font-style: bold">Email:</li>
-                  <li style="font-size: 90%">acm.njit.edu</li>
+                  <li style="font-size: 90%"><a href="mailto:acm@njit.edu">acm@njit.edu</a></li>
                 </ul>
               </b-col>
               <b-col>
@@ -39,6 +43,8 @@
             </b-row>
           </b-col>
         </b-row>
+
+        <!-- Adds the social icons to the site -->
         <b-row class="icons">
           <b-nav v-for="item in socials" v-bind:key="item.title">
             <b-col>
@@ -49,12 +55,15 @@
           </b-nav>
         </b-row>
       </b-container>
+
+      <!-- General copyright/ownership to ACM -->
       <h6>@ NJIT ACM 2022</h6>
     </div>
   </footer>
 </template>
 
 <script>
+//Imports for the source images
 import insta from "../assets/socials/instagram.png";
 import facebook from "../assets/socials/facebook.png";
 import github from "../assets/socials/github.png";
@@ -128,7 +137,7 @@ export default {
 </script>
 
 <style>
-footer {
+.footer {
   color: rgb(73, 73, 73);
   background: linear-gradient(0deg, rgb(199, 199, 199), rgb(196, 196, 196) 95%);
   text-align: center;
@@ -144,6 +153,8 @@ footer {
   align-items: center;
 }
 
+/* Icons css */
+
 .icons {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -155,12 +166,21 @@ footer {
   padding: 0%;
 }
 
+.icon:focus,
 .icon:hover {
   border-radius: 20px;
   background-color: rgba(153, 153, 153, 0.205);
   animation: raiseIn 200ms ease-in-out;
   animation-fill-mode: forwards;
 }
+
+.icon:not(:hover) {
+  animation: raiseOut 200ms ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+
+/* Contact Us css */
 
 .contact-us,
 .links {
@@ -189,15 +209,19 @@ footer {
   width: 2fr;
 }
 
-a:link,
+/* General anchor css to make links feel more in style with footer */
+
+.footer a:link,
 a:visited {
   color: rgb(73, 73, 73);
   text-decoration: none;
 }
 
-a:hover {
+.footer a:hover {
   color: #fcfcfc;
 }
+
+/* Animations */
 
 @keyframes raiseIn {
   from {
@@ -206,6 +230,16 @@ a:hover {
 
   to {
     transform: scale(0.85);
+  }
+}
+
+@keyframes raiseOut {
+  from {
+    transform: scale(0.85);
+  }
+
+  to {
+    transform: scale(1);
   }
 }
 </style>
