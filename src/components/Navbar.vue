@@ -1,6 +1,7 @@
 <template>
   <div>
-    <b-navbar v-if="windowWidth > 720" type="light">
+    <!-- <b-navbar v-if="windowWidth > 720" type="light"> -->
+       <b-navbar type="light">
       <b-navbar-brand
         ><router-link class="nav-link" to="/">Logo</router-link></b-navbar-brand
       >
