@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/Home";
 import Sigs from "../views/Sigs";
 import Events from "../views/Events";
+import Tutoring from "../views/Tutoring";
 
 Vue.use(VueRouter);
 
@@ -21,6 +22,11 @@ const routes = [
     path: "/events",
     name: "Events",
     component: Events
+  },
+  {
+    path: "/tutoring",
+    name: "Tutoring",
+    component: Tutoring
   },
   {
     path: "*",
