@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar type="light">
+    <b-navbar v-if="windowWidth > 720" type="light">
       <b-navbar-brand
         ><router-link class="nav-link" to="/">Logo</router-link></b-navbar-brand
       >
@@ -29,6 +29,18 @@
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      windowWidth: window.innerWidth,
+    };
+  },
+  mounted() {
+    window.onresize = () => {
+      this.windowWidth = window.innerWidth;
+    };
+  },
+};
 </script>
 
 <style scoped>
