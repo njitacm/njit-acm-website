@@ -3,74 +3,19 @@
     <h1 class="m-2 text-center">SIGS</h1>
     <SIG v-for="(sig, index) in Sigs" :sig="sig" :key="index"/>
     <hr />
-    <div class="row w-100" style="margin: auto">
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <ItemGrid :li="PastSigs"/>
   </div>
 </template>
 
 <script>
     import SIG from "../components/Sig";
+    import ItemGrid from "../components/ItemGrid.vue";
 
 export default {
   name: "SIGS",
       components: {
       SIG,
+      ItemGrid,
     },
     data() {
       return {
@@ -92,6 +37,28 @@ export default {
             desc:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
             leader:"Ethan",
             time:"All the time"
+          },
+        ],
+        PastSigs:[
+          {
+            name:"Test title1",
+            desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
+          },
+          {
+            name:"Test title2",
+            desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
+          },
+          {
+            name:"Test title3",
+            desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
+          },
+          {
+            name:"Test title4",
+            desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
+          },
+          {
+            name:"Test title5",
+            desc:"Some quick example text to build on the card title and make up the bulk of the card's content.",
           },
         ]
       }

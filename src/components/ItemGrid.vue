@@ -1,59 +1,18 @@
 <template>
   <div>
-    <div class="row w-100" style="margin: auto">
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+    <div v-for="(item, i) in li" :key="i">
+      <div class="row w-100" style="margin: auto" v-if="i % 4 == 0">
+        <div class="col" v-for="j in 4" :key="j">
+          <div class="card" v-if="i+j<=li.length">
+            <div class="card-body">
+              <h5 class="card-title">{{ li[i+j-1].name }}</h5>
+              <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
+              <p class="card-text">
+                {{ li[i+j-1].desc }}
+              </p>
+            <!--  <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>-->
+            </div>
           </div>
         </div>
       </div>
@@ -64,7 +23,7 @@
 <script>
 export default {
   props: {
-    sig: Object,
+    li: Array,
   },
 };
 </script>
