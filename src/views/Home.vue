@@ -1,33 +1,23 @@
 <template>
   <div>
-    <b-row style="margin:0px;">
+    <h1>Welcome to NJIT ACM</h1>
+<b-row style="margin: 0px">
       <b-col offset="0" offset-sm="2" cols="12" sm="8">
+
+    
     <b-carousel
-    class="caros"
+    class="im"
       id="carousel-1"
       v-model="slide"
       controls
       responsive
-      indicators
-    >
+      indicators>
+    
       <!-- Slides with image only -->
-      <b-carousel-slide
-        img-src="https://picsum.photos/1024/480/?image=58"
+      <b-carousel-slide v-for="i in 6"
+      :key="i"
+      :img-src="require('../assets/ACM'+i+'.jpg')"
       ></b-carousel-slide>
-
-      <!-- Slides with img slot -->
-      <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-      <b-carousel-slide>
-        <template #img>
-          <img
-            class="d-block img-fluid w-100"
-            width="1024"
-            height="480"
-            src="https://picsum.photos/1024/480/?image=55"
-            alt="image slot"
-          />
-        </template>
-      </b-carousel-slide>
     </b-carousel>
 </b-col>
     </b-row>
@@ -36,7 +26,7 @@
         width: 100%;
         margin: 30px 0px 30px 0px;
         border-radius: 0 !important;
-        margin:auto;
+        margin: auto;
       "
     >
       <b-card-body class="about"
@@ -102,14 +92,19 @@ export default {
 </script>
 
 <style>
-.caros{
-  margin-top: 20px; 
-  margin-bottom: 20px; 
+h1{
+  text-align: center;
+  display:block;
+  margin:50px auto 0 auto !important;
+}
+.im {
+  width: 75%;
 
+  margin:0 auto 20px auto;
 }
 .about {
   text-align: center;
-  margin-left:5%;
-  margin-right:5%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 </style>

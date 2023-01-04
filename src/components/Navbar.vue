@@ -2,13 +2,13 @@
   <div>
     <!-- <b-navbar v-if="windowWidth > 720" type="light"> -->
        <b-navbar type="light">
-        <b-navbar-brand ><router-link class="nav-link" to="/">Logo</router-link></b-navbar-brand>
+        <b-navbar-brand ><router-link class="nav-link" style="padding: 0;" to="/"><img src="../assets/logos/ACMSpinningLogo.gif"/></router-link></b-navbar-brand>
         <b-navbar-nav class="navbar-nav">
             <li class="nav-item"><router-link class="nav-link" to="/sigs">SIGS</router-link></li>
             <li class="nav-item"><router-link class="nav-link" to="/events">Events*</router-link></li>
             <li class="nav-item"><router-link class="nav-link" to="/eboard">Eboard*</router-link></li>
             <li class="nav-item"><router-link class="nav-link" to="/partnorg">Partner Orgs*</router-link></li>
-            <li class="nav-item"><router-link class="nav-link" to="/tutoring">Tutoring*</router-link></li>
+            <li class="nav-item"><a class="nav-link" target="_blank" href="https://computing.njit.edu/tutoring">Tutoring</a></li>
 <!--
 
             <b-nav-item><router-link class="nav-link" to="/sigs">Events*</router-link></b-nav-item>
@@ -35,9 +35,12 @@ export default {
 </script>
 
 <style scoped>
+img{
+  max-width: 10%;
+}
 .navbar {
   padding: 0px;
-  background: linear-gradient(90deg, rgb(220, 7, 7), rgb(247, 61, 61) 100%);
+  background: linear-gradient(90deg, #FF0707, #FF2121 100%);
   box-shadow: 0px 0px 10px;
   z-index: 100;
 }

@@ -14,8 +14,8 @@
             <h5>Links</h5>
             <div class="link-redirects">
               <a href="#" target="_blank">Our Constitution</a> <br />
-              <a href="#" target="_blank">Other</a> <br />
-              <a href="#" target="_blank">ACM National</a> <br />
+             <!-- <a href="#" target="_blank">Other</a> <br />-->
+              <a href="https://www.acm.org/" target="_blank">ACM National</a> <br />
             </div>
           </b-col>
 
@@ -48,7 +48,7 @@
         <b-row class="icons">
           <b-nav v-for="item in socials" v-bind:key="item.title">
             <b-col>
-              <b-nav-item v-bind:href="item.url" class="icon">
+              <b-nav-item v-bind:href="item.url" target="_blank" class="icon">
                 <img :src="item.img_source" class="icon-img" :key="item.title" />
               </b-nav-item>
             </b-col>
@@ -118,17 +118,17 @@ export default {
         {
           title: "TikTok",
           img_source: tiktok, //not same person
-          url: "",
+          url: "https://www.tiktok.com/@njitacm",
         },
         {
           title: "Reddit",
           img_source: reddit,
-          url: "",
+          url: "https://www.reddit.com/user/NJITACM/",
         },
         {
           title: "GitHub",
           img_source: github,
-          url: "",
+          url: "https://github.com/njitacm",
         },
       ],
     };
