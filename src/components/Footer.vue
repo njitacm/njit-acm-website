@@ -138,8 +138,8 @@ export default {
 
 <style>
 .footer {
-  color: rgb(73, 73, 73);
-  background: linear-gradient(0deg, rgb(199, 199, 199), rgb(196, 196, 196) 95%);
+  color: #494949;
+  background:#c3a2a2;
   text-align: center;
   justify-content: center;
   bottom: 0%;
