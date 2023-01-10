@@ -57,7 +57,7 @@
       </b-container>
 
       <!-- General copyright/ownership to ACM -->
-      <h6>@ NJIT ACM 2022</h6>
+      <h6>@ NJIT ACM 2023</h6>
     </div>
   </footer>
 </template>
@@ -138,8 +138,8 @@ export default {
 
 <style>
 .footer {
-  color: #494949;
-  background:#c3a2a2;
+  color: #5e4040;
+  background:#e3b1b1;
   text-align: center;
   justify-content: center;
   bottom: 0%;

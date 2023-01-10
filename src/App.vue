@@ -28,7 +28,7 @@ font-family: "Ubuntu";
 
 }
 .card{
-      background-color: #f87777bc !important;
+      background-color: #ff7373 !important;
       box-shadow: 0px 0px 15px rgb(185, 184, 184);
   }
 </style>

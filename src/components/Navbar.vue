@@ -40,7 +40,7 @@ img{
 }
 .navbar {
   padding: 0px;
-  background: linear-gradient(90deg, #FF0707, #FF2121 100%);
+  background: #d22020;
   box-shadow: 0px 0px 10px;
   z-index: 100;
 }
@@ -60,7 +60,7 @@ img{
 }
 
 .nav-item:hover {
-  background: #ec6b6b;
+  background: #ff7373;
 }
 
 .navbar-nav {
