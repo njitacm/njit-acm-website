@@ -13,7 +13,7 @@
           <b-col class="links">
             <h5>Links</h5>
             <div class="link-redirects">
-              <a href="#" target="_blank">Our Constitution</a> <br />
+              <a href="constitution">Our Constitution</a> <br />
              <!-- <a href="#" target="_blank">Other</a> <br />-->
               <a href="https://www.acm.org/" target="_blank">ACM National</a> <br />
             </div>
