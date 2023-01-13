@@ -15,7 +15,7 @@
           <b-carousel-slide
             v-for="i in 6"
             :key="i"
-            :img-src="require('../assets/ACM' + i + '.jpg')"
+            :img-src="require('../assets/carousel/ACM' + i + '.jpg')"
           ></b-carousel-slide>
         </b-carousel>
       </b-col>
