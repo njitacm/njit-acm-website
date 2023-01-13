@@ -9,6 +9,7 @@
       </b-col>
     </b-row>
     <hr />
+    <h1>Upcoming Events</h1>
     <ItemGrid :li="MinorEv" />
   </div>
 </template>
@@ -31,7 +32,7 @@ export default {
       },
       JerseyCTF: {
         name: "JerseyCTF",
-        desc: "JerseyCTF is a beginner-friendly Capture the Flag competition that aims to inspire interest in cybersecurity. Hosted by the NJIT ACM organization and NJIT SCI program, it is geared towards students, beginners, and professionals alike.",
+        desc: "JerseyCTF is a beginner-friendly Capture the Flag competition that aims to inspire interest in cybersecurity. Hosted by the NJIT ACM and NICC organizations and NJIT SCI program, it is geared towards students, beginners, and professionals alike.",
         siteURL: "https://jerseyctf.com/",
       },
       MinorEv: [

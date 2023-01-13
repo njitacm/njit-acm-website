@@ -1,45 +1,38 @@
 <template>
-  <div style="display:flex">
-    <div class="card text-center w-100" style="margin-top: 50px;">
+  <div style="display: flex">
+    <div class="card text-center w-100" style="margin-top: 50px">
       <div class="card-body">
-        <div class="backIm" ><!--:style="{background:'url('+require('../assets/'+ev.name.toLowerCase() + '.png')+')'}"-->
-          <div style="position: relative;">
-        <h1 class="card-title" style="font-size: 100px">{{ev.name}}</h1>
-        <p class="card-text">
-          {{ev.desc}}
-        </p>
-        <a :href="ev.siteURL" target="_blank" class="btn btn-primary">Go somewhere</a>
-      </div>
-      </div>
+        <div
+          :style="{
+            background:'url(' + require('../assets/' + ev.name.toLowerCase() + '.png') + ')',
+            'background-repeat': 'no-repeat',
+            'background-size': 'contain',
+            'background-position': 'center',
+          }"
+        >
+          <div style="position: relative">
+            <h1 class="card-title" style="font-size: 100px">{{ ev.name }}</h1>
+            <p class="card-text" style="font-weight:500">
+              {{ ev.desc }}
+            </p>
+            
+            <a :href="ev.siteURL" target="_blank"
+              ><b-button style="background-color:#e3b1b1; color:black">Learn More</b-button></a
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    props:{
-      ev:Object,
-    }
-  }
+export default {
+  props: {
+    ev: Object,
+  },
+};
 </script>
 
 <style scoped>
-
-.backIm:before{
-  /*This part is required for having an opaque image*/
-  content:" ";
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-
-  /*background: url("../assets/hacknjit.png");*/
-  background-repeat: no-repeat;
-  background-size: 50%;
-  background-position: center;
-  opacity: .9;
-}
 </style>
