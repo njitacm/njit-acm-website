@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h1 class="m-2 text-center">SIGS</h1>
+    <h1 class="m-2 text-center">SIGs</h1>
     <SIG v-for="(sig, index) in Sigs" :sig="sig" :key="index"/>
     <hr />
+    <h1 class="m-4">Past SIGs</h1>
     <ItemGrid :li="PastSigs"/>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="title">Welcome to NJIT ACM</h1>
-    <b-row style="margin: 0px">
+    <b-row class="m-0">
       <b-col offset="0" offset-sm="2" cols="12" sm="8">
         <b-carousel
           class="im"
@@ -20,15 +20,7 @@
         </b-carousel>
       </b-col>
     </b-row>
-    <b-card
-      style="
-        text-align: center;
-        width: 100%;
-        margin: 30px 0px 30px 0px;
-        border-radius: 0 !important;
-        margin: auto;
-      "
-    >
+    <b-card class="majSection">
       <b-card-body class="about">
         <h2>Who We Are</h2>
 
@@ -69,7 +61,7 @@
         community. We hope to see you around.
       </b-card-body>
     </b-card>
-    <div class="about" style="margin-bottom: 5%">
+    <div class="about mb-5">
       <h1 class="subheading">FAQ</h1>
       <div
         class="accordion"
@@ -91,7 +83,7 @@
           accordion="my-accordion"
           role="tabpanel"
         >
-          <p class="FAQAnswer"><span v-html="item.answer"></span></p>
+          <p class="faqAnswer"><span v-html="item.answer"></span></p>
         </b-collapse>
       </div>
     </div>
@@ -161,12 +153,18 @@ export default {
   margin: 20px 0 10px 0;
   text-align: center;
 }
-.FAQAnswer {
+.faqAnswer {
   font-size: 1em;
   margin: 15px;
 }
 .button {
   background-color: #dd2020 !important;
   border-color: #b81c1c !important;
+}
+.majSection {
+  text-align: center;
+  width: 100% !important;
+  margin: 30px 0px 30px 0px !important;
+  border-radius: 0 !important;
 }
 </style>

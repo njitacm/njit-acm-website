@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="constTitle">NJIT ACM Constitution</h1>
-        <div class="contain container">
+        <div class="sect container">
         <h3>Article I. Name</h3>
         <p>The name of this organization shall be the Association for Computing Machinery (ACM). In reference to the ACM when in the context of the international organization, the name shall be the New Jersey Institute of Technology Chapter of the Association for Computing Machinery (NJIT ACM).</p>
         <h3>Article II. Purpose</h3>
@@ -53,7 +53,7 @@
         </ul>
     </div>
     <h1 style="text-align:center">NJIT ACM By-laws</h1>
-    <div class="contain container">
+    <div class="sect container">
         <h3>Article I. Specialized Interest Groups</h3>
         <ul>
             <li>Section 1. A Specialized Interest Group is a group of active members who share a common computing related interest. SIG is a valid abbreviation of Specialized Interest Group. Activities of a SIG include, but are not limited to, teaching, discussing, and creating projects related to their topic.</li>
@@ -87,17 +87,17 @@
   </script>
   
   <style>
-    .constTitle{
+  .constTitle{
     text-align:center;
     margin-top:1% !important;
   }
-  .contain{
+  .sect{
     margin:0 5% 3% 5%;
   }
-  .contain p{
+  .sect p{
     margin:1% 1% 1% 3%;
   }
-  .contain ul{
+  .sect ul{
     margin:1%
   }
   </style>

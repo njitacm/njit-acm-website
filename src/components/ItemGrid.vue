@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-for="(item, i) in li" :key="i">
-      <div class="row w-100" style="margin: auto" v-if="i % 4 == 0">
+      <div class="row w-100 m-auto"  v-if="i % 4 == 0">
         <div class="col" v-for="j in 4" :key="j">
           <div class="card" v-if="i+j<=li.length">
             <div class="card-body">
