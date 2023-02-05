@@ -1,5 +1,10 @@
 <template>
   <div>
+    <h1 class="m-0 title">Events</h1>
+    <h6 style="text-align: center; padding:0 25% 0 25%">
+      Our club runs a variety of events, including our biannual hackathon and
+      capture the flag competition. We hope you'll join us in one of our events!
+    </h6>
     <b-row>
       <b-col>
         <MajEvent :ev="HackNJIT" />
@@ -9,7 +14,7 @@
       </b-col>
     </b-row>
     <hr />
-    <h1>Upcoming Events</h1>
+    <h1 style="text-align: center">Upcoming</h1>
     <ItemGrid :li="MinorEv" />
   </div>
 </template>
@@ -38,22 +43,32 @@ export default {
       MinorEv: [
         {
           name: "Test title1",
+          timedate: "Febuaray 6th 4:00-5:00",
+          location: "GITC 3600",
           desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
         },
         {
           name: "Test title2",
+          timedate: "Febuaray 6th 4:00-5:00",
+          location: "GITC 3600",
           desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
         },
         {
           name: "Test title3",
+          timedate: "Febuaray 6th 4:00-5:00",
+          location: "GITC 3600",
           desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
         },
         {
           name: "Test title4",
+          timedate: "Febuaray 6th 4:00-5:00",
+          location: "GITC 3600",
           desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
         },
         {
           name: "Test title5",
+          timedate: "Febuaray 6th 4:00-5:00",
+          location: "GITC 3600",
           desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
         },
       ],
@@ -63,7 +78,7 @@ export default {
 </script>
 
 <style scoped>
-.col{
-  display:flex
+.col {
+  display: flex;
 }
 </style>

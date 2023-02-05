@@ -1,6 +1,6 @@
 <template>
   <div style="display: flex">
-    <div class="card text-center w-100" style="margin-top: 50px">
+    <div class="card text-center w-100" style="margin-top: 10px">
       <div class="card-body">
         <div
           :style="{

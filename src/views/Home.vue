@@ -112,7 +112,7 @@ export default {
         //     "No. While we urge students to unwind with video games or other fun activities after class, we are not a video game club. Before anything else, NJIT ACM is a club dedicated to connecting students who share common interests in computers and programming. While we will not necessarily kick you out for only playing video games in our office, we strongly reccomend that you also participate in some of the other services or activities that we offer.",
         // },
         {
-          question: "When/Where Are Meetings? What If I Miss One?",
+          question: "What's the time and location of meetings?",
           answer:
             "Our meetings are currently held every Friday at 12 pm in GITC 3600. You can join our <a href='https://njit.campuslabs.com/engage/organization/acm' target='_blank'>Highlander Hub</a> or our <a href='https://njit.acm.org/discord' target='_blank'>Discord</a> to be notified when general body meetings happen, or other important events. <br/><br/> If you happen to miss a meeting, we keep all our meeting slides for the semester in a channel on our discord for anyone to download and view.",
         },
@@ -133,12 +133,6 @@ export default {
 </script>
 
 <style>
-.title {
-  text-align: center;
-  display: block;
-  margin: 35px auto 20px auto !important;
-  font-size: 3.5em !important;
-}
 .im {
   width: 75%;
   margin: 0 auto 20px auto;
