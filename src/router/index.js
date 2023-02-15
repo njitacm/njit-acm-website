@@ -5,6 +5,7 @@ import Sigs from "../views/Sigs";
 import Events from "../views/Events";
 import Tutoring from "../views/Tutoring";
 import Constitution from "../views/Constitution";
+import Eboard from "../views/Eboard"
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/constitution",
     name: "Constitution",
     component: Constitution
+  },
+  {
+    path: "/eboard",
+    name: "Eboard",
+    component: Eboard
   },
   {
     path: "*",

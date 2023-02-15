@@ -36,4 +36,8 @@ body * {
   margin: 35px auto 20px auto !important;
   font-size: 3.5em !important;
 }
+.subtitle{
+  text-align: center;
+   padding: 0 25% 0 25%
+}
 </style>

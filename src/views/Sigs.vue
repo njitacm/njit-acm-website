@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="m-2 text-center title">SIGs</h1>
-    <h6 style="text-align: center; padding: 0 25% 0 25%">
+    <h6 class="subtitle">
       Student Interest Groups, or SIGs for short, are student run initiatives
       where a student teaches about a subject they are passionate in. Join any
       of the SIGs below, or start your own through our Discord!

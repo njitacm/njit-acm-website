@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="m-0 title">Events</h1>
-    <h6 style="text-align: center; padding:0 25% 0 25%">
+    <h6 class="subtitle">
       Our club runs a variety of events, including our biannual hackathon and
       capture the flag competition. We hope you'll join us in one of our events!
     </h6>
