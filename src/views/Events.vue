@@ -21,7 +21,7 @@
 
 <script>
 import MajEvent from "../components/MajEvent";
-import ItemGrid from "../components/ItemGrid.vue";
+import ItemGrid from "../components/ItemGrid";
 
 export default {
   components: {

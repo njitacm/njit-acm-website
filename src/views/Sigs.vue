@@ -28,22 +28,22 @@ export default {
     return {
       Sigs: [
         {
-          name: "Sig Playas but Better Faster Harder Stronger",
-          desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-          leader: "Ethan",
-          time: "All the time",
+          name: "sig-castles-n-crusaders",
+          desc: "This SIG focuses on building \"castles\" in  the cloud using tools such as Terraform, and strengthening its security with tools like Ansible and Puppet. Afterwards they will be breaching the security they set up using various open source tools.",
+          leader: "A",
+          time: "TBD",
         },
         {
-          name: "Sig Playas but Better Faster Harder Stronger",
-          desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-          leader: "Ethan",
-          time: "All the time",
+          name: "sig-lambda",
+          desc: "A SIG about functional programming (FP), a programming paradigm that emphasizes the use of functions and compositions instead of iteration and state mutation (imperative programming).",
+          leader: "Patrick Wu",
+          time: "Wednesdays 10:00 A.M. | GITC 2400",
         },
         {
-          name: "Sig Playas but Better Faster Harder Stronger",
-          desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
-          leader: "Ethan",
-          time: "All the time",
+          name: "sig-stable",
+          desc: "A new SIG focused on new developments in open source AI image generation using Stable Diffusion, covering topics such as how the technology works, how to use Stable Diffusion, training AI models, and tracking the latest developments.",
+          leader: "Cade Riegler",
+          time: "Tuesdays 4:00 P.M. | GITC 3700",
         },
       ],
       PastSigs: [

@@ -2,19 +2,21 @@
   <div>
     <div v-if="this.$vnode.key%2==0">
       <div class="card-body row">
+        <div class="col-1"/>
         <div class="col">
           <img
-            class="w-100 d-block"
-            src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
+            class="w-75 d-block m-auto"
+            :src="require('../assets/SIGS/' + sig.name + '.png')"
           />
         </div>
-        <div class="col-8" style="text-align: center">
+        <div class="col-6" style="text-align: center">
           <h3>{{sig.name}}</h3>
           <h5>{{sig.leader}} | {{sig.time}}</h5>
           <p>
             {{sig.desc}}
           </p>
         </div>
+        <div class="col-1"/>
       </div>
     </div>
     <div v-if="this.$vnode.key%2==1"
@@ -26,19 +28,23 @@
       "
     >
       <div class="card-body row">
-        <div class="col-8" style="text-align: center">
+        <div class="col-1"/>
+        <div class="col-6" style="text-align: center">
           <h3>{{sig.name}}</h3>
           <h5>{{sig.leader}} | {{sig.time}}</h5>
           <p>
             {{sig.desc}}
           </p>
         </div>
+        
         <div class="col">
           <img
-            class="w-100 d-block"
-            src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
+            class="w-75 d-block m-auto"
+            :src="require('../assets/SIGS/' + sig.name + '.png')"
           />
         </div>
+        <div class="col-1"/>
+
       </div>
     </div>
   </div>
