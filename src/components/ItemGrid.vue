@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-for="(item, i) in li" :key="i">
-      <div class="row w-100 m-auto"  v-if="i % 3 == 0">
-        <div class="col" v-for="j in 3" :key="j">
+      <div class="row w-100 m-auto"  v-if="i % size == 0">
+        <div class="col" v-for="j in size" :key="j">
           <div class="card" v-if="i+j<=li.length">
             <div class="card-body">
               <h4 class="card-title" style="text-align:center">{{ li[i+j-1].name }}</h4>
@@ -33,6 +33,7 @@
 export default {
   props: {
     li: Array,
+    size: Number 
   },
 };
 </script>

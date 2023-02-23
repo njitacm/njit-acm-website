@@ -15,7 +15,7 @@
     </b-row>
     <hr />
     <h1 style="text-align: center">Upcoming</h1>
-    <ItemGrid :li="MinorEv" />
+    <ItemGrid :li="MinorEv" :size="2"/>
   </div>
 </template>
 
@@ -42,34 +42,10 @@ export default {
       },
       MinorEv: [
         {
-          name: "Test title1",
-          timedate: "Febuaray 6th 4:00-5:00",
-          location: "GITC 3600",
-          desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        },
-        {
-          name: "Test title2",
-          timedate: "Febuaray 6th 4:00-5:00",
-          location: "GITC 3600",
-          desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        },
-        {
-          name: "Test title3",
-          timedate: "Febuaray 6th 4:00-5:00",
-          location: "GITC 3600",
-          desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        },
-        {
-          name: "Test title4",
-          timedate: "Febuaray 6th 4:00-5:00",
-          location: "GITC 3600",
-          desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        },
-        {
-          name: "Test title5",
-          timedate: "Febuaray 6th 4:00-5:00",
-          location: "GITC 3600",
-          desc: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+          name: "BattleSnake",
+          timedate: "March 25th-26th 3:00-6:00",
+          location: "GITC 1400",
+          desc: "Battlesnake is a multiplayer programming game where your code is your controller. Piloted by a web server you build, and the code you write, Battlesnakes move to find food, avoid others, and stay alive. All you need is a web server that responds to the Battlesnake API.",
         },
       ],
     };
