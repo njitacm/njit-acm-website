@@ -1,0 +1,2199 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NJIT ACM - sig-device-repair</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <style>
+        /* General */
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-300.woff);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-400.woff);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-500.woff);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-600.woff);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Whitney;
+    src: url(https://cdn.jsdelivr.net/gh/Tyrrrz/DiscordFonts@master/whitney-700.woff);
+    font-weight: 700;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    object-fit: contain;
+}
+
+.markdown {
+    max-width: 100%;
+    line-height: 1.3;
+    overflow-wrap: break-word;
+}
+
+.preserve-whitespace {
+    white-space: pre-wrap;
+}
+
+.spoiler {
+    /* width: fit-content; */
+    display: inline-block;
+    /* This is more consistent across browsers, the old attribute worked well under Chrome but not FireFox. */
+}
+
+.spoiler--hidden {
+    cursor: pointer;
+}
+
+.spoiler-text {
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-text {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler--hidden .spoiler-text::selection {
+    color: rgba(0, 0, 0, 0);
+}
+
+.spoiler-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.spoiler--hidden .spoiler-image {
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.spoiler--hidden .spoiler-image * {
+    filter: blur(44px);
+}
+
+.spoiler--hidden .spoiler-image:after {
+    content: "SPOILER";
+    color: #dcddde;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 600;
+    padding: 100%;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    font-size: 0.9em;
+}
+
+.spoiler--hidden:hover .spoiler-image:after {
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.quote {
+    margin: 0.1em 0;
+    padding-left: 0.6em;
+    border-left: 4px solid;
+    border-radius: 3px;
+}
+
+.pre {
+    font-family: "Consolas", "Courier New", Courier, monospace;
+}
+
+.pre--multiline {
+    margin-top: 0.25em;
+    padding: 0.5em;
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+.pre--inline {
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 0.85em;
+}
+
+.mention {
+    border-radius: 3px;
+    padding: 0 2px;
+    color: #7289da;
+    background: rgba(114, 137, 218, .1);
+    font-weight: 500;
+}
+
+.emoji {
+    width: 1.25em;
+    height: 1.25em;
+    margin: 0 0.06em;
+    vertical-align: -0.4em;
+}
+
+.emoji--small {
+    width: 1em;
+    height: 1em;
+}
+
+.emoji--large {
+    width: 2.8em;
+    height: 2.8em;
+}
+
+/* Preamble */
+
+.preamble {
+    display: grid;
+    margin: 0 0.3em 0.6em 0.3em;
+    max-width: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.preamble__guild-icon-container {
+    grid-column: 1;
+}
+
+.preamble__guild-icon {
+    max-width: 88px;
+    max-height: 88px;
+}
+
+.preamble__entries-container {
+    grid-column: 2;
+    margin-left: 0.6em;
+}
+
+.preamble__entry {
+    font-size: 1.4em;
+}
+
+.preamble__entry--small {
+    font-size: 1em;
+}
+
+/* Chatlog */
+
+.chatlog {
+    max-width: 100%;
+}
+
+.chatlog__message-group {
+    display: grid;
+    margin: 0 0.6em;
+    padding: 0.9em 0;
+    border-top: 1px solid;
+    grid-template-columns: auto 1fr;
+}
+
+.chatlog__reference-symbol {
+    grid-column: 1;
+    border-style: solid;
+    border-width: 2px 0 0 2px;
+    border-radius: 8px 0 0 0;
+    margin-left: 16px;
+    margin-top: 8px;
+}
+
+.chatlog__reference {
+    display: flex;
+    grid-column: 2;
+    margin-left: 1.2em;
+    margin-bottom: 0.25em;
+    font-size: 0.875em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+}
+
+.chatlog__reference-avatar {
+    border-radius: 50%;
+    height: 16px;
+    width: 16px;
+    margin-right: 0.25em;
+}
+
+.chatlog__reference-name {
+    margin-right: 0.25em;
+    font-weight: 600;
+}
+
+.chatlog__reference-link {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatlog__reference-link:hover {
+    text-decoration: none;
+}
+
+.chatlog__reference-content > * {
+    display: inline;
+}
+
+.chatlog__reference-edited-timestamp {
+    margin-left: 0.25em;
+    font-size: 0.8em;
+}
+
+.chatlog__author-avatar-container {
+    grid-column: 1;
+    width: 40px;
+    height: 40px;
+}
+
+.chatlog__author-avatar {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.chatlog__messages {
+    grid-column: 2;
+    margin-left: 1.2em;
+    min-width: 50%;
+}
+
+.chatlog__author-name {
+    font-weight: 500;
+}
+
+.chatlog__timestamp {
+    margin-left: 0.3em;
+    font-size: 0.75em;
+}
+
+.chatlog__message {
+    padding: 0.1em 0.3em;
+    margin: 0 -0.3em;
+    background-color: transparent;
+    transition: background-color 1s ease;
+}
+
+.chatlog__content {
+    font-size: 0.95em;
+    word-wrap: break-word;
+}
+
+.chatlog__edited-timestamp {
+    margin-left: 0.15em;
+    font-size: 0.8em;
+}
+
+.chatlog__attachment {
+    margin-top: 0.3em;
+}
+
+.chatlog__attachment-thumbnail {
+    vertical-align: top;
+    max-width: 45vw;
+    max-height: 500px;
+    border-radius: 3px;
+}
+
+.chatlog__attachment-container {
+    height: 40px;
+    width: 100%;
+    max-width: 520px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.chatlog__attachment-icon {
+    float: left;
+    height: 100%;
+    margin-right: 10px;
+}
+
+.chatlog__attachment-icon > .a {
+    fill: #f4f5fb;
+    d: path("M50,935a25,25,0,0,1-25-25V50A25,25,0,0,1,50,25H519.6L695,201.32V910a25,25,0,0,1-25,25Z");
+}
+
+.chatlog__attachment-icon > .b {
+    fill: #7789c4;
+    d: path("M509.21,50,670,211.63V910H50V50H509.21M530,0H50A50,50,0,0,0,0,50V910a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50h0V191Z");
+}
+
+.chatlog__attachment-icon > .c {
+    fill: #f4f5fb;
+    d: path("M530,215a25,25,0,0,1-25-25V50a25,25,0,0,1,16.23-23.41L693.41,198.77A25,25,0,0,1,670,215Z");
+}
+
+.chatlog__attachment-icon > .d {
+    fill: #7789c4;
+    d: path("M530,70.71,649.29,190H530V70.71M530,0a50,50,0,0,0-50,50V190a50,50,0,0,0,50,50H670a50,50,0,0,0,50-50Z");
+}
+
+.chatlog__attachment-filesize {
+    color: #72767d;
+    font-size: 12px;
+}
+
+.chatlog__attachment-filename {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.chatlog__embed {
+    display: flex;
+    margin-top: 0.3em;
+    max-width: 520px;
+}
+
+.chatlog__embed-color-pill {
+    flex-shrink: 0;
+    width: 0.25em;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.chatlog__embed-content-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 0.6em;
+    border: 1px solid;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.chatlog__embed-content {
+    display: flex;
+    width: 100%;
+}
+
+.chatlog__embed-text {
+    flex: 1;
+}
+
+.chatlog__embed-author {
+    display: flex;
+    margin-bottom: 0.3em;
+    align-items: center;
+}
+
+.chatlog__embed-author-icon {
+    margin-right: 0.5em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.chatlog__embed-author-name {
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-title {
+    margin-bottom: 0.2em;
+    font-size: 0.875em;
+    font-weight: 600;
+}
+
+.chatlog__embed-description {
+    font-weight: 500;
+    font-size: 0.85em;
+}
+
+.chatlog__embed-fields {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chatlog__embed-field {
+    flex: 0;
+    min-width: 100%;
+    max-width: 506px;
+    padding-top: 0.6em;
+    font-size: 0.875em;
+}
+
+.chatlog__embed-field--inline {
+    flex: 1;
+    flex-basis: auto;
+    min-width: 150px;
+}
+
+.chatlog__embed-field-name {
+    margin-bottom: 0.2em;
+    font-weight: 600;
+}
+
+.chatlog__embed-field-value {
+    font-weight: 500;
+}
+
+.chatlog__embed-thumbnail {
+    flex: 0;
+    margin-left: 1.2em;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-image-container {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-image {
+    max-width: 500px;
+    max-height: 400px;
+    border-radius: 3px;
+}
+
+.chatlog__embed-footer {
+    margin-top: 0.6em;
+}
+
+.chatlog__embed-footer-icon {
+    margin-right: 0.2em;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+.chatlog__embed-footer-text {
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.chatlog__reactions {
+    display: flex;
+}
+
+.chatlog__reaction {
+    display: flex;
+    align-items: center;
+    margin: 0.35em 0.1em 0.1em 0.1em;
+    padding: 0.2em 0.35em;
+    border-radius: 3px;
+}
+
+.chatlog__reaction-count {
+    min-width: 9px;
+    margin-left: 0.35em;
+    font-size: 0.875em;
+}
+
+.chatlog__bot-tag {
+    position: relative;
+    top: -.2em;
+    margin-left: 0.3em;
+    padding: 0.05em 0.3em;
+    border-radius: 3px;
+    vertical-align: middle;
+    line-height: 1.3;
+    background: #7289da;
+    color: #ffffff;
+    font-size: 0.625em;
+    font-weight: 500;
+}
+
+/* Postamble */
+
+.postamble {
+    margin: 1.4em 0.3em 0.6em 0.3em;
+    padding: 1em;
+    border-top: 1px solid;
+}
+    </style>
+    <style>
+        /* General */
+
+body {
+    background-color: #36393e;
+    color: #dcddde;
+}
+
+a {
+    color: #0096cf;
+}
+
+.spoiler-text {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler--hidden .spoiler-text {
+    background-color: #202225;
+}
+
+.spoiler--hidden:hover .spoiler-text {
+    background-color: rgba(32, 34, 37, 0.8);
+}
+
+.quote {
+    border-color: #4f545c;
+}
+
+.pre {
+    background-color: #2f3136 !important;
+}
+
+.pre--multiline {
+    border-color: #282b30 !important;
+    color: #b9bbbe !important;
+}
+
+/* === Preamble === */
+
+.preamble__entry {
+    color: #ffffff;
+}
+
+/* Chatlog */
+
+.chatlog__message-group {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.chatlog__reference-symbol {
+    border-color: #4f545c;
+}
+
+.chatlog__reference {
+    color: #b5b6b8;
+}
+
+.chatlog__reference-link {
+    color: #b5b6b8;
+}
+
+.chatlog__reference-link:hover {
+    color: #ffffff;
+}
+
+.chatlog__reference-edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__author-name {
+    color: #ffffff;
+}
+
+.chatlog__timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__message--highlighted {
+    background-color: rgba(114, 137, 218, 0.2) !important;
+}
+
+.chatlog__message--pinned {
+    background-color: rgba(249, 168, 37, 0.05);
+}
+
+.chatlog__attachment-container {
+    background-color: #2f3136;
+    border-color: #292b2f;
+}
+
+.chatlog__edited-timestamp {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.chatlog__embed-color-pill--default {
+    background-color: rgba(79, 84, 92, 1);
+}
+
+.chatlog__embed-content-container {
+    background-color: rgba(46, 48, 54, 0.3);
+    border-color: rgba(46, 48, 54, 0.6);
+}
+
+.chatlog__embed-author-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-author-name-link {
+    color: #ffffff;
+}
+
+.chatlog__embed-title {
+    color: #ffffff;
+}
+
+.chatlog__embed-description {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-field-name {
+    color: #ffffff;
+}
+
+.chatlog__embed-field-value {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__embed-footer {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.chatlog__reaction {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.chatlog__reaction-count {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Postamble */
+
+.postamble {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.postamble__entry {
+    color: #ffffff;
+}
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/solarized-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.pre--multiline').forEach(block => hljs.highlightBlock(block));
+        });
+    </script>
+
+    <script>
+        function scrollToMessage(event, id) {
+            var element = document.getElementById('message-' + id);
+
+            if (element) {
+                event.preventDefault();
+
+                element.classList.add('chatlog__message--highlighted');
+
+                window.scrollTo({
+                    top: element.getBoundingClientRect().top - document.body.getBoundingClientRect().top - (window.innerHeight / 2),
+                    behavior: 'smooth'
+                });
+
+                window.setTimeout(function() {
+                    element.classList.remove('chatlog__message--highlighted');
+                }, 2000);
+            }
+        }
+
+        function showSpoiler(event, element) {
+            if (element && element.classList.contains('spoiler--hidden')) {
+                event.preventDefault();
+                element.classList.remove('spoiler--hidden');
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="preamble">
+    <div class="preamble__guild-icon-container">
+        <img class="preamble__guild-icon" src="https://cdn.discordapp.com/icons/370975199111413760/a_3f46c97c13fc57315384e9a04a2a36ea.png" alt="Guild icon">
+    </div>
+    <div class="preamble__entries-container">
+        <div class="preamble__entry">NJIT ACM</div>
+        <div class="preamble__entry">SIGs: Inactive / sig-device-repair</div>
+
+
+    </div>
+</div>
+
+<div class="chatlog">
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248829600577093632/4b65b4b125d6cb7722369736b7539e78.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cancer#9720" data-user-id="248829600577093632" style="">Gavin Byrne</span>
+
+
+        <span class="chatlog__timestamp">28-Sep-19 12:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="627542135427694642" id="message-627542135427694642">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">First</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/180760515839131648/5a54dc3f39ae8951a077b2bac06c62da.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="otters#2686" data-user-id="180760515839131648" style="color: rgb(153,45,34)">Jacob Fuhr</span>
+
+
+        <span class="chatlog__timestamp">28-Sep-19 12:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="627545645405700106" id="message-627545645405700106">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">First</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/503435325633331201/434e59bffcfce8efe5eccab95a9e1606.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="WishMoon#5335" data-user-id="503435325633331201" style="color: rgb(155,89,182)">Mehvish Ali (ma663)</span>
+
+
+        <span class="chatlog__timestamp">28-Sep-19 10:53 PM</span>
+
+            <div class="chatlog__message " data-message-id="627699548151611425" id="message-627699548151611425">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">What do?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/118510550412951554/f473c9f5c07d36ff070419a6531e8262.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="sumgai#2517" data-user-id="118510550412951554" style="">Enrick Jaugan</span>
+
+
+        <span class="chatlog__timestamp">29-Sep-19 12:15 AM</span>
+
+            <div class="chatlog__message " data-message-id="627719981400064021" id="message-627719981400064021">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">4th</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/474250603611160616/e0a8635f2b18110ef1387a6adeaeb8bb.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="miglebyte#6532" data-user-id="474250603611160616" style="color: rgb(153,45,34)">Migle Surblyte</span>
+
+
+        <span class="chatlog__timestamp">03-Oct-19 10:43 AM</span>
+
+            <div class="chatlog__message " data-message-id="629327595426676737" id="message-629327595426676737">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Use ?rank in the <span class="mention">#bot-commands</span> channel to give yourself the sig-device-repair role and enable alerts! ❤ <img class="emoji " alt="ping" title="ping" src="https://cdn.discordapp.com/emojis/542519260296118282.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">03-Oct-19 12:13 PM</span>
+
+            <div class="chatlog__message " data-message-id="629350421177040949" id="message-629350421177040949">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">i typed out that message asking but I forgot to hit send lol^</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/474250603611160616/e0a8635f2b18110ef1387a6adeaeb8bb.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="miglebyte#6532" data-user-id="474250603611160616" style="color: rgb(153,45,34)">Migle Surblyte</span>
+
+
+        <span class="chatlog__timestamp">03-Oct-19 12:15 PM</span>
+
+            <div class="chatlog__message " data-message-id="629350819707224114" id="message-629350819707224114">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ディ#0845">@Dee Duncker (ディ)</span> i tried to DM you but wasn’t allowed. If you still intend to run this, you need to save a reserved room, day, and time before tomorrow’s meeting.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">03-Oct-19 12:17 PM</span>
+
+            <div class="chatlog__message " data-message-id="629351248616882228" id="message-629351248616882228">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="miglebyte#6532">@Migle Surblyte</span>I&#39;m taking emails + polls and formulating that atm</span>
+
+                                <span class="chatlog__edited-timestamp" title="03-Oct-19 12:17 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463767329705033730/47b01bfa35884e46e07c04664989815e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Superboy2_0#9224" data-user-id="463767329705033730" style="">Stephane Estim&#233; (se283)</span>
+
+
+        <span class="chatlog__timestamp">06-Oct-19 06:08 PM</span>
+
+            <div class="chatlog__message " data-message-id="630526768054272011" id="message-630526768054272011">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ディ#0845">@Dee Duncker (ディ)</span>  Where&#39;s the first meeting taking place?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">06-Oct-19 06:10 PM</span>
+
+            <div class="chatlog__message " data-message-id="630527221693546497" id="message-630527221693546497">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Superboy2_0#9224">@Stephane Estim&#233; (se283)</span>  Room 3703 in the GITC building</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">08-Oct-19 03:10 AM</span>
+
+            <div class="chatlog__message " data-message-id="631025488357359616" id="message-631025488357359616">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">This first meeting is 2:30-3:30pm on Thursday</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">10-Oct-19 09:26 AM</span>
+
+            <div class="chatlog__message " data-message-id="631845079895506954" id="message-631845079895506954">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@sig-device-repair</span> Hey just as a reminder, the first meeting is today in GITC room 3703 from 2:30-3:30pm</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248829600577093632/4b65b4b125d6cb7722369736b7539e78.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cancer#9720" data-user-id="248829600577093632" style="">Gavin Byrne</span>
+
+
+        <span class="chatlog__timestamp">10-Oct-19 02:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="631921012732198942" id="message-631921012732198942">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Where&#39;s 3703?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/244514347026612224/a_f9f96cfabf9b06666824f705dd336032.gif" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Taranack#7777" data-user-id="244514347026612224" style="color: rgb(255,0,0)">Matt Gasin</span>
+
+
+        <span class="chatlog__timestamp">10-Oct-19 02:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="631921104449175553" id="message-631921104449175553">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">the room next to the acm office</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="631921129656942634" id="message-631921129656942634">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">its one of the side rooms of 3700</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">13-Oct-19 06:09 PM</span>
+
+            <div class="chatlog__message " data-message-id="633063828191444992" id="message-633063828191444992">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@sig-device-repair</span> Hey everyone, I said I was going to be in the office Monday at 4:00pm to host a cellphone/tablet repair workshop but I had a scheduling mix-up and forgot the CS113 midterm was at the same time <img class="emoji " alt="udayRee" title="udayRee" src="https://cdn.discordapp.com/emojis/631623640290426891.png"> .
+The next meeting will still be 2:30-3:30pm on Thursday in the GITC room 3703. This week&#39;s topic will still be cellphone/tablet repair and I&#39;ll be showing how to repair a tablet and potentially an iPhone 7 battery + screen (if the parts come in this week).</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">17-Oct-19 08:40 AM</span>
+
+            <div class="chatlog__message " data-message-id="634370210895495169" id="message-634370210895495169">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@sig-device-repair</span> Cellphone/Tablet repair workshop and meeting today in the GITC room 3703 from 2-3:30</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">17-Oct-19 01:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="634449907066994698" id="message-634449907066994698">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;ll be a few mins late because I left my laptop in campus center so I&#39;m running back</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/458802813955473411/9b29b0f6d0d7e9ef2b7bf5b5c7dcbef8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Dream Runner X#1731" data-user-id="458802813955473411" style="color: rgb(52,152,219)">Dream Runner X</span>
+
+
+        <span class="chatlog__timestamp">17-Oct-19 04:07 PM</span>
+
+            <div class="chatlog__message " data-message-id="634482726816317452" id="message-634482726816317452">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Are there other meeting dates? I want to attend, but I have class at that time.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">19-Oct-19 12:37 AM</span>
+
+            <div class="chatlog__message " data-message-id="634973463647354900" id="message-634973463647354900">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Dream Runner X#1731">@Dream Runner X</span> Sorry for the late reply, I&#39;ll send an email out about that</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/449189594391642112/66da55188d064d68aff60c7beecfd64f.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="rodrigomv29#5102" data-user-id="449189594391642112" style="color: rgb(17,128,106)">Rodrigo Morales</span>
+
+
+        <span class="chatlog__timestamp">20-Oct-19 12:42 AM</span>
+
+            <div class="chatlog__message " data-message-id="635337084260843530" id="message-635337084260843530">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">yo sig algorithm ends at 2:20</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="635337117643571210" id="message-635337117643571210">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">so if anyone interrupts</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="635337144600100898" id="message-635337144600100898">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">i will literally cry</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="635337193589702657" id="message-635337193589702657">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">dont come early</span>
+
+                        </div>
+                    </div>
+
+
+
+                    <div class="chatlog__reactions">
+                            <div class="chatlog__reaction">
+                                <img class="emoji emoji--small" alt="&#128076;&#127998;" title="&#128076;&#127998;" src="https://twemoji.maxcdn.com/2/72x72/1f44c-1f3fe.png">
+                                <span class="chatlog__reaction-count">1</span>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">22-Oct-19 10:37 AM</span>
+
+            <div class="chatlog__message " data-message-id="636211433771761669" id="message-636211433771761669">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@sig-device-repair</span> Cellphone/Tablet repair workshop pt.2 and meeting this Thursday in the GITC room 3703 from 2:30-3:30. We&#39;ll be hopefully finishing repairing a Surface RT and repairing an iPhone 6 screen. Next week we&#39;ll be opening up a few wii remotes to expose a common flaw in nintendo controllers that could save money instead of buying replacement remotes.
+
+I&#39;m trying to see if we can get a meeting next week wednesday at 4pm. I found this to be one of the best times from the emailed poll.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248829600577093632/4b65b4b125d6cb7722369736b7539e78.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cancer#9720" data-user-id="248829600577093632" style="">Gavin Byrne</span>
+
+
+        <span class="chatlog__timestamp">24-Oct-19 02:35 PM</span>
+
+            <div class="chatlog__message " data-message-id="636996194475704320" id="message-636996194475704320">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Are we meeting today?  <span class="mention" title="ディ#0845">@Dee Duncker (ディ)</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">24-Oct-19 03:20 PM</span>
+
+            <div class="chatlog__message " data-message-id="637007419423064074" id="message-637007419423064074">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Sorry for the late notice I had a family emergency earlier today</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/248829600577093632/4b65b4b125d6cb7722369736b7539e78.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Cancer#9720" data-user-id="248829600577093632" style="">Gavin Byrne</span>
+
+
+        <span class="chatlog__timestamp">24-Oct-19 07:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="637073535566610458" id="message-637073535566610458">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Understandable</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">30-Oct-19 10:22 AM</span>
+
+            <div class="chatlog__message " data-message-id="639106950033965075" id="message-639106950033965075">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@sig-device-repair</span> Cellphone/Tablet repair workshop pt.2 and meeting this Thursday in the GITC room 3703 from 2:30-3:30. We&#39;ll be hopefully finishing repairing a Surface RT as well as opening up a few wii remotes to expose a common flaw in nintendo controllers that could save money instead of buying replacement remotes.
+
+Pretty much what was going to be last week.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/458802813955473411/9b29b0f6d0d7e9ef2b7bf5b5c7dcbef8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Dream Runner X#1731" data-user-id="458802813955473411" style="color: rgb(52,152,219)">Dream Runner X</span>
+
+
+        <span class="chatlog__timestamp">31-Oct-19 04:03 PM</span>
+
+            <div class="chatlog__message " data-message-id="639554980230987776" id="message-639554980230987776">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ディ#0845">@Dee Duncker (ディ)</span>  Any news on Wednesday meetings?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463767329705033730/47b01bfa35884e46e07c04664989815e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Superboy2_0#9224" data-user-id="463767329705033730" style="">Stephane Estim&#233; (se283)</span>
+
+
+        <span class="chatlog__timestamp">01-Nov-19 07:05 AM</span>
+
+            <div class="chatlog__message " data-message-id="639782013104291861" id="message-639782013104291861">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Dream Runner X#1731">@Dream Runner X</span> Couldn&#39;t open up the Wii remote, continued off with fixing the Surface RT, and additional meeting take place from 3:30-5pm.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">01-Nov-19 03:40 PM</span>
+
+            <div class="chatlog__message " data-message-id="639911597749567538" id="message-639911597749567538">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Dream Runner X#1731">@Dream Runner X</span> Nothing on Wednesday meetings yet.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463767329705033730/47b01bfa35884e46e07c04664989815e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Superboy2_0#9224" data-user-id="463767329705033730" style="">Stephane Estim&#233; (se283)</span>
+
+
+        <span class="chatlog__timestamp">04-Nov-19 03:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="641011012190863360" id="message-641011012190863360">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ディ#0845">@Dee Duncker (ディ)</span> Are we meeting up today?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">04-Nov-19 03:48 PM</span>
+
+            <div class="chatlog__message " data-message-id="641015894276964372" id="message-641015894276964372">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">yeah im actually wrapping up a screen replacement for an iphone 7 in the campus center</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="641015933694902272" id="message-641015933694902272">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ill be over right after</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463767329705033730/47b01bfa35884e46e07c04664989815e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Superboy2_0#9224" data-user-id="463767329705033730" style="">Stephane Estim&#233; (se283)</span>
+
+
+        <span class="chatlog__timestamp">04-Nov-19 03:57 PM</span>
+
+            <div class="chatlog__message " data-message-id="641018110639472644" id="message-641018110639472644">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Alright let me know when you get there</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">04-Nov-19 04:42 PM</span>
+
+            <div class="chatlog__message " data-message-id="641029536506445855" id="message-641029536506445855">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">im omw sorry im late, I fixed  a screen, camera and a smart watch, idk why I thought I&#39;d get it done faster</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463767329705033730/47b01bfa35884e46e07c04664989815e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Superboy2_0#9224" data-user-id="463767329705033730" style="">Stephane Estim&#233; (se283)</span>
+
+
+        <span class="chatlog__timestamp">04-Nov-19 07:12 PM</span>
+
+            <div class="chatlog__message " data-message-id="641067373113376778" id="message-641067373113376778">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">That&#39;s alright. I already left but we&#39;ll try again next Monday.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">07-Nov-19 10:23 AM</span>
+
+            <div class="chatlog__message " data-message-id="642021360050372610" id="message-642021360050372610">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@sig-device-repair</span> Meeting today, in GITC room 3703 from 2:30-3:30</span>
+
+                                <span class="chatlog__edited-timestamp" title="07-Nov-19 11:28 AM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="644618842924122162" id="message-644618842924122162">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@sig-device-repair</span> Sorry but I just realized I left my ifixit kit at my shop which is a 40-minute drive. Today&#39;s meeting will be postponed until next week.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="644618919373570048" id="message-644618919373570048">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Should I host a workshop Monday?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/463767329705033730/47b01bfa35884e46e07c04664989815e.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Superboy2_0#9224" data-user-id="463767329705033730" style="">Stephane Estim&#233; (se283)</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="644618981298143232" id="message-644618981298143232">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">No, I have a common exam.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/180760515839131648/5a54dc3f39ae8951a077b2bac06c62da.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="otters#2686" data-user-id="180760515839131648" style="color: rgb(153,45,34)">Jacob Fuhr</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:25 PM</span>
+
+            <div class="chatlog__message " data-message-id="644619031516807188" id="message-644619031516807188">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">u wanna browwow mine <span class="mention" title="ディ#0845">@Dee Duncker (ディ)</span></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="644619191969644558" id="message-644619191969644558">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="otters#2686">@Jacob Fuhr</span> I had a set of Nintendo tools, does it include it? It&#39;s the only thing I don&#39;t have</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/180760515839131648/5a54dc3f39ae8951a077b2bac06c62da.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="otters#2686" data-user-id="180760515839131648" style="color: rgb(153,45,34)">Jacob Fuhr</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:26 PM</span>
+
+            <div class="chatlog__message " data-message-id="644619246562967552" id="message-644619246562967552">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">idk i have a ton of triwings</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="644619353597149184" id="message-644619353597149184">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Okay, I&#39;ll be over in a bit</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/180760515839131648/5a54dc3f39ae8951a077b2bac06c62da.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="otters#2686" data-user-id="180760515839131648" style="color: rgb(153,45,34)">Jacob Fuhr</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:27 PM</span>
+
+            <div class="chatlog__message " data-message-id="644619417979846667" id="message-644619417979846667">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ill come up to 3700 in like 5 mins</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="644619447289774090" id="message-644619447289774090">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">ive opened a wii with it</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="644619575425761281" id="message-644619575425761281">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Oh okay, then we should be good</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="644619621059788820" id="message-644619621059788820">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;ll still have to see</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/180760515839131648/5a54dc3f39ae8951a077b2bac06c62da.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="otters#2686" data-user-id="180760515839131648" style="color: rgb(153,45,34)">Jacob Fuhr</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="644619649463484417" id="message-644619649463484417">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">tru</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="644619692098453546" id="message-644619692098453546">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">lmk when u here im at work rn</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="644619755944411136" id="message-644619755944411136">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;ll be over in 10 mins</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/180760515839131648/5a54dc3f39ae8951a077b2bac06c62da.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="otters#2686" data-user-id="180760515839131648" style="color: rgb(153,45,34)">Jacob Fuhr</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:28 PM</span>
+
+            <div class="chatlog__message " data-message-id="644619777410727960" id="message-644619777410727960">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">can do</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 02:36 PM</span>
+
+            <div class="chatlog__message " data-message-id="644621811358892072" id="message-644621811358892072">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">I&#39;m here</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/458802813955473411/9b29b0f6d0d7e9ef2b7bf5b5c7dcbef8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Dream Runner X#1731" data-user-id="458802813955473411" style="color: rgb(52,152,219)">Dream Runner X</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 03:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="644639100254683147" id="message-644639100254683147">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="ディ#0845">@Dee Duncker (ディ)</span> Are Wednesday meetings not happening then?</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 07:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="644696040863432724" id="message-644696040863432724">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" title="Dream Runner X#1731">@Dream Runner X</span> As of now, no. I work all day Wednesdays so I won&#39;t be able to be there.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/458802813955473411/9b29b0f6d0d7e9ef2b7bf5b5c7dcbef8.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="Dream Runner X#1731" data-user-id="458802813955473411" style="color: rgb(52,152,219)">Dream Runner X</span>
+
+
+        <span class="chatlog__timestamp">14-Nov-19 07:43 PM</span>
+
+            <div class="chatlog__message " data-message-id="644698940067020811" id="message-644698940067020811">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Aww</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">21-Nov-19 12:45 PM</span>
+
+            <div class="chatlog__message " data-message-id="647130405182636068" id="message-647130405182636068">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@sig-device-repair</span> Meeting in GITC 37XX today! We won&#39;t be repairing today but I&#39;ll be showing you all how to source device parts for free and how to finesse on Ebay.</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+            <div class="chatlog__message " data-message-id="647130476158517279" id="message-647130476158517279">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">2:30-3:30*</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">25-Nov-19 05:21 PM</span>
+
+            <div class="chatlog__message " data-message-id="648649512784625696" id="message-648649512784625696">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@sig-device-repair</span> Hey guys, this week&#39;s meeting is cancelled because I work at the meeting time this Tuesday</span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/228633062819233792/fe1893f818f003b72bb4f993ab154a72.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="ディ#0845" data-user-id="228633062819233792" style="">Dee Duncker (ディ)</span>
+
+
+        <span class="chatlog__timestamp">05-Dec-19 01:31 PM</span>
+
+            <div class="chatlog__message " data-message-id="652215472749674501" id="message-652215472749674501">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace"><span class="mention" style="">@sig-device-repair</span> Meeting in GITC 37XX today from 3-3:30! Today&#39;s the last meeting. It&#39;ll be a brief recap, evaluation and what&#39;s in store for next semester. We won&#39;t be gold plating this meeting because the gold plated parts for the iPhone 7 didn&#39;t come in time. I hoped 18-30 day shipping didn&#39;t mean I&#39;d get the parts on the last day <img class="emoji " alt="😭" title="😭" src="https://twemoji.maxcdn.com/2/72x72/1f62d.png"></span>
+
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+
+<div class="chatlog__message-group">
+    <div class="chatlog__author-avatar-container">
+        <img class="chatlog__author-avatar" src="https://cdn.discordapp.com/avatars/503435325633331201/434e59bffcfce8efe5eccab95a9e1606.png" alt="Avatar">
+    </div>
+    <div class="chatlog__messages">
+        <span class="chatlog__author-name" title="WishMoon#5335" data-user-id="503435325633331201" style="color: rgb(155,89,182)">Mehvish Ali (ma663)</span>
+
+
+        <span class="chatlog__timestamp">16-Jan-20 07:06 PM</span>
+
+            <div class="chatlog__message " data-message-id="667520062768283649" id="message-667520062768283649">
+                    <div class="chatlog__content">
+                        <div class="markdown">
+                            <span class="preserve-whitespace">Greetings. Amnesty International and Art Club are planning to host an Activism Month in March alongside a slew of other organizations. I&#39;ve sent out an email, but, if SIG: Device Repair is interested in hosting or participating in any events, please let me know.
+
+<a href="https://discord.gg/cFXkqdr">https://discord.gg/cFXkqdr</a></span>
+
+                                <span class="chatlog__edited-timestamp" title="26-Jan-20 07:05 PM">(edited)</span>
+                        </div>
+                    </div>
+
+
+
+            </div>
+    </div>
+</div>
+
+</div>
+
+<div class="postamble">
+    <div class="postamble__entry">Exported 63 message(s)</div>
+</div>
+
+</body>
+
+</html>
