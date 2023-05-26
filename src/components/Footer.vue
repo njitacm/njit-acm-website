@@ -13,7 +13,8 @@
           <b-col class="links">
             <h5>Links</h5>
             <div class="link-redirects">
-              <a href="constitution">Our Constitution</a> <br />
+              <router-link class="nav-link" style="padding: 0;" to="/constitution">Our Constitution</router-link>
+            <br />
              <!-- <a href="#" target="_blank">Other</a> <br />-->
               <a href="https://www.acm.org/" target="_blank">ACM National</a> <br />
             </div>
@@ -93,12 +94,12 @@ export default {
         {
           title: "LinkedIn",
           img_source: linkedin,
-          url: "https://njit.acm.org/linkedin",
+          url: "https://www.linkedin.com/company/njit-acm",
         },
         {
           title: "Discord",
           img_source: discord,
-          url: "https://njit.acm.org/discord",
+          url: "https://discord.com/invite/XR6qPze",
         },
         {
           title: "Instagram",
