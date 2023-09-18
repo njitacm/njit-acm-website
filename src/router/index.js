@@ -40,6 +40,14 @@ const routes = [
     name: "Eboard",
     component: Eboard
   },
+  { 
+    path: "/discord",
+    beforeEnter() {window.location.href = "https://njit.gg/acm"}
+  },
+  { 
+    path: "/instagram",
+    beforeEnter() {window.location.href = "https://instagram.com/NJITACM/"}
+  },
   {
     path: "*",
     redirect: "/"

@@ -99,7 +99,7 @@ export default {
         {
           title: "Discord",
           img_source: discord,
-          url: "https://discord.com/invite/XR6qPze",
+          url: "https://njit.gg/acm",
         },
         {
           title: "Instagram",
