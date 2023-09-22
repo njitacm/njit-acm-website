@@ -15,7 +15,7 @@
     </b-row>
     <hr />
     <h1 style="text-align: center">Upcoming</h1>
-    <ItemGrid :li="MinorEv" :size="2"/>
+    <ItemGrid :li="MinorEv" :size="3"/>
   </div>
 </template>
 
@@ -42,10 +42,22 @@ export default {
       },
       MinorEv: [
         {
-          name: "BattleSnake",
-          timedate: "March 25th-26th 3:00-6:00",
-          location: "GITC 1400",
-          desc: "Battlesnake is a multiplayer programming game where your code is your controller. Piloted by a web server you build, and the code you write, Battlesnakes move to find food, avoid others, and stay alive. All you need is a web server that responds to the Battlesnake API.",
+          name: "Guardian Life: AI + Automation",
+          timedate: "October 11th 2023 2:30-3:15",
+          location: "GITC 3600",
+          desc: "Learn how artificial intelligence can be applied to enhance and scale with automation!",
+        },
+        {
+          name: "Guardian Life: Security",
+          timedate: "October 25th 2023 2:30-3:15",
+          location: "GITC 3700",
+          desc: "Join us to see how cybersecurity practices are implemented to protect important data!",
+        },
+        {
+          name: "Guardian Life: Networking",
+          timedate: "November 15th 2023 2:30-3:15",
+          location: "GITC 3700",
+          desc: "Learn about the inner workings of computer networks!",
         },
       ],
     };

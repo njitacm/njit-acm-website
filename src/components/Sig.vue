@@ -9,14 +9,13 @@
             :src="require('../assets/SIGS/' + sig.name + '.png')"
           />
         </div>
-        <div class="col-6" style="text-align: center">
+        <div class="col-7" style="text-align: center">
           <h3>{{sig.name}}</h3>
           <h5>{{sig.leader}} | {{sig.time}}</h5>
           <p>
             {{sig.desc}}
           </p>
         </div>
-        <div class="col-1"/>
       </div>
     </div>
     <div v-if="this.$vnode.key%2==1"
@@ -29,7 +28,7 @@
     >
       <div class="card-body row">
         <div class="col-1"/>
-        <div class="col-6" style="text-align: center">
+        <div class="col-7" style="text-align: center">
           <h3>{{sig.name}}</h3>
           <h5>{{sig.leader}} | {{sig.time}}</h5>
           <p>
@@ -43,7 +42,6 @@
             :src="require('../assets/SIGS/' + sig.name + '.png')"
           />
         </div>
-        <div class="col-1"/>
 
       </div>
     </div>

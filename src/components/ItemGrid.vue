@@ -33,7 +33,7 @@
 export default {
   props: {
     li: Array,
-    size: Number 
+    size: Number,
   },
 };
 </script>
