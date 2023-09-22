@@ -28,43 +28,60 @@ export default {
     return {
       Sigs: [
         {
-          name: "sig-castles-n-crusaders",
-          desc: "This SIG focuses on building \"castles\" in  the cloud using tools such as Terraform, and strengthening its security with tools like Ansible and Puppet. Afterwards they will be breaching the security they set up using various open source tools.",
-          leader: "A",
+          name: "sig-ai",
+          desc: "SIG AI covers anything under AI/ML- meetings are focused around learning more about AI/ML, by way of workshops, reviewing recent papers/news in the field, or just talking about it.",
+          leader: "Kamil Arif",
+          time: "Fridays 6:00-7:00 P.M. | GITC 3600",
+        },
+        {
+          name: "sig-stream",
+          desc: "SIG STREAM goes over basic stream technology and guidelines. We learn what cables do what in regards to video and audio, and where to use them. Workshops will be held to try out and set up mid range video equipment for a real production.",
+          leader: "Will Simkins",
+          time: "Tuesdays 2:30-3:30 P.M. & 9:00-11:00 P.M. | GITC 3600",
+        },
+        {
+          name: "sig-melee",
+          desc: "SIG Melee is an introduction to some basic modding tools for Super Smash Bros Melee. This will focus on the installation process and how to use the programs for modding.",
+          leader: "Ivan Rivera",
+          time: "Fridays 4:00-5:00 P.M. | TBD",
+        },
+        {
+          name: "sig-soft-skills",
+          desc: "SIG Soft Skills covers a variety of topics centered around enhancing professionalism and building a skillset to augment your technical skills in academic/personal projects, the interview/recruitment process, and in the workplace.  Topics will center around developing and practicing communication, collaboration, critical thinking, curiosity, and creativity.",
+          leader: "Maciej Gajda",
           time: "TBD",
         },
-        {
-          name: "sig-lambda",
-          desc: "A SIG about functional programming (FP), a programming paradigm that emphasizes the use of functions and compositions instead of iteration and state mutation (imperative programming).",
-          leader: "Patrick Wu",
-          time: "Wednesdays 10:00 A.M. | GITC 2400",
-        },
-        {
-          name: "sig-stable",
-          desc: "A new SIG focused on new developments in open source AI image generation using Stable Diffusion, covering topics such as how the technology works, how to use Stable Diffusion, training AI models, and tracking the latest developments.",
-          leader: "Cade Riegler",
-          time: "Tuesdays 4:00 P.M. | GITC 3700",
-        },
-        {
-          name: "sig-ai",
-          desc: "A SIG where you will go over a variety of AI topics, from reinforcement learning and neural networks to markov models and decision trees, while making small projects with them.",
-          leader: "Jose Mojica Perez",
-          time: "Mon 6:00 P.M. & Wedn 4:30 P.M. | Variable",
-        },
-        {
-          name: "sig-linux",
-          desc: "A SIG where you will be able to familiarize yourself with the Linux operating system. They will be going over everything from how to download the OS, to getting practice using bash commands. An excellent primer to CS288.",
-          leader: "Mikel Alcazar",
-          time: "Fridays 1:30 P.M. | GITC 3600",
-        },
-        {
-          name: "sig-xr",
-          desc: "A SIG focused on XR development topics. If you want an introduction to working with XR technologies in Unity or ever wanted to create a VR application with AGILE development, this is the SIG for you.",
-          leader: "David Garcia",
-          time: "Fridays 3:00 P.M. | GITC 3700",
-        },
+
       ],
       PastSigs: [
+      {
+          name: "sig-castles-n-crusaders",
+          semester:"Spring 2023",
+          desc: "A SIG focused on building secure servers in the cloud and then finding ways to bypass said security.",
+        },        
+
+      {
+          name: "sig-lambda",
+          semester:"Spring 2023",
+          desc: "A SIG all about functional programming and the different ways it can be applied.",
+        },        
+
+      {
+          name: "sig-stable",
+          semester:"Spring 2023",
+          desc: "Focused on new developments in open source AI image generation using Stable Diffusion",
+        },        
+        
+        {
+          name: "sig-linux",
+          semester:"Spring 2023",
+          desc: "Learned about the Linux operating system, familiarizing students with everything relating to the OS.",
+        },        
+        {
+          name: "sig-xr",
+          semester:"Spring 2023",
+          desc: "A SIG focused on XR development topics, where they made VR applications.",
+        },
         {
           name: "sig-lang",
           semester:"Fall 2022",

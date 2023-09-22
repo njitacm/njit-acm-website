@@ -3,7 +3,7 @@
     <div v-if="this.$vnode.key%2==0">
       <div class="card-body row">
         <div class="col-1"/>
-        <div class="col">
+        <div class="col-3">
           <img
             class="w-75 d-block m-auto"
             :src="require('../assets/SIGS/' + sig.name + '.png')"
@@ -37,7 +37,7 @@
           </p>
         </div>
         
-        <div class="col">
+        <div class="col-3">
           <img
             class="w-75 d-block m-auto"
             :src="require('../assets/SIGS/' + sig.name + '.png')"
