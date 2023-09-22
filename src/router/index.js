@@ -58,7 +58,7 @@ function scrollBehavior(){
   return { x: 0, y: 0 };
 }
 const router = new VueRouter({
-  mode: "history",
+  // mode: "history", //Add back when we figure out server https://router.vuejs.org/guide/essentials/history-mode.html#HTML5-Mode
   routes,
   scrollBehavior
 });
