@@ -41,6 +41,12 @@ export default {
         siteURL: "https://jerseyctf.com/",
       },
       MinorEv: [
+      {
+          name:"FAST Enterprises Information Panel",
+          timedate: "September 26th, 2023 5:30-6:30",
+          location: "GITC 3700",
+          desc: "Learn more about FAST Enterprises, a software development and IT consulting company."
+        },
         {
           name: "Guardian Life: AI + Automation",
           timedate: "October 11th 2023 2:30-3:15",
