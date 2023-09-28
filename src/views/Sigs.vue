@@ -51,6 +51,12 @@ export default {
           leader: "Maciej Gajda",
           time: "TBD",
         },
+        {
+          name: "sig-vim",
+          desc: "SIG Vim is an introduction to the text editor Vim, and its many features and mechanics. It will cover topics ranging from installation, to usage, to personalization, and much more in between.",
+          leader: "Logan Kriebel",
+          time: "Fridays 1:00-2:00 P.M. | TBD"
+        }
 
       ],
       PastSigs: [
