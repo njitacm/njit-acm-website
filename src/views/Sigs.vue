@@ -6,6 +6,9 @@
       where a student teaches about a subject they are passionate in. Join any
       of the SIGs below, or start your own through our Discord!
     </h6>
+    <b-card class="majSection">
+      <h3 class="majSection">Sig creation in progress for Spring 2024</h3>
+    </b-card>
     <hr/>
     <SIG v-for="(sig, index) in Sigs" :sig="sig" :key="index" />
     <hr />
@@ -27,45 +30,38 @@ export default {
   data() {
     return {
       Sigs: [
-        {
-          name: "sig-ai",
-          desc: "SIG AI covers anything under AI/ML- meetings are focused around learning more about AI/ML, by way of workshops, reviewing recent papers/news in the field, or just talking about it.",
-          leader: "Kamil Arif",
-          time: "Fridays 6:00-7:00 P.M. | GITC 3600",
-        },
-        {
-          name: "sig-stream",
-          desc: "SIG STREAM goes over basic stream technology and guidelines. We learn what cables do what in regards to video and audio, and where to use them. Workshops will be held to try out and set up mid range video equipment for a real production.",
-          leader: "Will Simkins",
-          time: "Tuesdays 2:30-3:30 P.M. & 9:00-11:00 P.M. | GITC 3600",
-        },
-        {
-          name: "sig-melee",
-          desc: "SIG Melee is an introduction to some basic modding tools for Super Smash Bros Melee. This will focus on the installation process and how to use the programs for modding.",
-          leader: "Ivan Rivera",
-          time: "Fridays 4:00-5:00 P.M. | TBD",
-        },
-        {
-          name: "sig-soft-skills",
-          desc: "SIG Soft Skills covers a variety of topics centered around enhancing professionalism and building a skillset to augment your technical skills in academic/personal projects, the interview/recruitment process, and in the workplace.  Topics will center around developing and practicing communication, collaboration, critical thinking, curiosity, and creativity.",
-          leader: "Maciej Gajda",
-          time: "TBD",
-        },
-        {
-          name: "sig-vim",
-          desc: "SIG Vim is an introduction to the text editor Vim, and its many features and mechanics. It will cover topics ranging from installation, to usage, to personalization, and much more in between.",
-          leader: "Logan Kriebel",
-          time: "Fridays 1:00-2:00 P.M. | TBD"
-        }
-
       ],
       PastSigs: [
+      {
+          name: "sig-ai",
+          semester:"Fall 2023",
+          desc: "A SIG focused on AI. Focused around learning more about AI/ML, by way of workshops, reviewing recent papers/news in the field, or just talking about it.",
+      },
+      {
+          name: "sig-stream",
+          semester:"Fall 2024",
+          desc: "A SIG focused on basic stream technology and guidelines. Taught cables do what in regards to video and audio, and where to use them. Workshops held to try out and set up mid range video equipment for a real production."
+        },
+      {
+          name: "sig-melee",
+          semester:"Fall 2024",
+          desc: "A SIG that introduces some basic modding tools for Super Smash Bros Melee. Focused on the installation process and how to use the programs for modding.",
+      },
+      {
+          name: "sig-soft-skills",
+          semester:"Fall 2024",
+          desc: "SIG Soft Skills covers a variety of topics centered around enhancing professionalism and building a skillset to augment your technical skills in academic/personal projects, the interview/recruitment process, and in the workplace.  Topics will center around developing and practicing communication, collaboration, critical thinking, curiosity, and creativity.",
+      },
+      {
+          name: "sig-vim",
+          semester:"Fall 2024",
+          desc: "SIG Vim is an introduction to the text editor Vim, and its many features and mechanics. It will cover topics ranging from installation, to usage, to personalization, and much more in between.",
+      },
       {
           name: "sig-castles-n-crusaders",
           semester:"Spring 2023",
           desc: "A SIG focused on building secure servers in the cloud and then finding ways to bypass said security.",
-        },        
-
+      },        
       {
           name: "sig-lambda",
           semester:"Spring 2023",

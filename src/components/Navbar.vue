@@ -2,7 +2,11 @@
   <div>
     <!-- <b-navbar v-if="windowWidth > 720" type="light"> -->
        <b-navbar type="light">
-        <b-navbar-brand ><router-link class="nav-link p-0" to="/"><img src="../assets/logos/ACMSpinningLogo.gif"/></router-link></b-navbar-brand>
+        <b-navbar-brand>
+          <router-link class="nav-link p-0" to="/">
+            <img class="home-logo" src="../assets/logos/ACMSpinningLogo.gif"/>
+          </router-link>
+        </b-navbar-brand>
         <b-navbar-nav class="navbar-nav">
             <li class="nav-item"><router-link class="nav-link" to="/sigs">SIGS</router-link></li>
             <li class="nav-item"><router-link class="nav-link" to="/events">Events</router-link></li>

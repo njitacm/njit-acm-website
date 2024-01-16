@@ -161,4 +161,7 @@ export default {
   margin: 30px 0px 30px 0px !important;
   border-radius: 0 !important;
 }
+a {
+  color: blue !important;
+}
 </style>
