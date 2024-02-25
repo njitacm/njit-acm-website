@@ -28,36 +28,47 @@ export default {
     return {
       Sigs: [
         {
-          name: "sig-ai",
-          desc: "SIG AI covers anything under AI/ML- meetings are focused around learning more about AI/ML, by way of workshops, reviewing recent papers/news in the field, or just talking about it.",
-          leader: "Kamil Arif",
-          time: "Fridays 6:00-7:00 P.M. | GITC 3600",
+          name: "sig-bioinformatics",
+          desc: "SIG Bioinformatics goes over bioinformatics and computational biology",
+          leader: "Olivia Gorska and Brian Ochoa",
+          time: "TBD"
         },
         {
-          name: "sig-stream",
-          desc: "SIG STREAM goes over basic stream technology and guidelines. We learn what cables do what in regards to video and audio, and where to use them. Workshops will be held to try out and set up mid range video equipment for a real production.",
-          leader: "Will Simkins",
-          time: "Tuesdays 2:30-3:30 P.M. & 9:00-11:00 P.M. | GITC 3600",
+          name: "sig-cloud",
+          desc: "SIG Cloud focuses on learning and understanding how and what cloud computing is by exploring its principles, benefits, and use-cases together.",
+          leader: "Isaac Guerrero",
+          time: "TBD",
         },
         {
-          name: "sig-melee",
-          desc: "SIG Melee is an introduction to some basic modding tools for Super Smash Bros Melee. This will focus on the installation process and how to use the programs for modding.",
-          leader: "Ivan Rivera",
-          time: "Fridays 4:00-5:00 P.M. | TBD",
-        },
-        {
-          name: "sig-soft-skills",
-          desc: "SIG Soft Skills covers a variety of topics centered around enhancing professionalism and building a skillset to augment your technical skills in academic/personal projects, the interview/recruitment process, and in the workplace.  Topics will center around developing and practicing communication, collaboration, critical thinking, curiosity, and creativity.",
+          name: "sig-cog-comp",
+          desc: "SIG CogComp is a learning group for Computational Neuroscience. We will be trying to learn more about brain computation by looking at mathematical modeling, computer simulation and AI.",
           leader: "Maciej Gajda",
           time: "TBD",
         },
         {
-          name: "sig-vim",
-          desc: "SIG Vim is an introduction to the text editor Vim, and its many features and mechanics. It will cover topics ranging from installation, to usage, to personalization, and much more in between.",
-          leader: "Logan Kriebel",
-          time: "Fridays 1:00-2:00 P.M. | TBD"
-        }
-
+          name: "sig-embdedded",
+          desc: "SIG-Embedded is dedicating to exploring different embedded systems and related fields. We will be  going over computer networking, operating systems, RaspberryPi programming, CDH Engineering basics, Core Flight System Framework, and other topics.",
+          leader: "Brian Ochoa",
+          time: "Wednesdays 1:00-2:00 P.M. | GITC 3600",
+        },
+        {
+          name: "sig-frontline",
+          desc: "SIG Frontline is all about using each other's skills and strengths to build large scale projects for ourselves and other students!",
+          leader: "Ethan Ho",
+          time: "Tuesdays 6:00-7:00 P.M. | GITC 3700 / Virtual",
+        },
+        {
+          name: "sig-web-dev",
+          desc: "SIG Web Dev is all about web development, including frontend, backend. Utilizes  HTML, javascript, and CSS",
+          leader: "Tergel Sukhee",
+          time: "Thursays 1:00-2:00 P.M. | GITC 3600",
+        },
+        {
+          name: "sig-xr",
+          desc: "SIG XR aims to explore what VR tech can do, have fun playing games, and discuss general design topics. The SIG will also delve into project set-up, programming, and designing interactions. ",
+          leader: "David Garcia",
+          time: "Mondays 6:00-7:00 P.M. | GITC 3700",
+        },
       ],
       PastSigs: [
       {
