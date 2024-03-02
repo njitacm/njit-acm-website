@@ -6,9 +6,6 @@
       where a student teaches about a subject they are passionate in. Join any
       of the SIGs below, or start your own through our Discord!
     </h6>
-    <b-card class="majSection">
-      <h3 class="majSection">Sig creation in progress for Spring 2024</h3>
-    </b-card>
     <hr/>
     <SIG v-for="(sig, index) in Sigs" :sig="sig" :key="index" />
     <hr />
