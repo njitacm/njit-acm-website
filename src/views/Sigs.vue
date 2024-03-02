@@ -46,7 +46,7 @@ export default {
           time: "TBD",
         },
         {
-          name: "sig-embdedded",
+          name: "sig-embedded",
           desc: "SIG-Embedded is dedicating to exploring different embedded systems and related fields. We will be  going over computer networking, operating systems, RaspberryPi programming, CDH Engineering basics, Core Flight System Framework, and other topics.",
           leader: "Brian Ochoa",
           time: "Wednesdays 1:00-2:00 P.M. | GITC 3600",
