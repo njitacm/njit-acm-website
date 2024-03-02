@@ -30,6 +30,48 @@ export default {
   data() {
     return {
       Sigs: [
+              {
+          name: "sig-bioinformatics",
+          desc: "SIG Bioinformatics goes over bioinformatics and computational biology",
+          leader: "Olivia Gorska and Brian Ochoa",
+          time: "TBD"
+        },
+        {
+          name: "sig-cloud",
+          desc: "SIG Cloud focuses on learning and understanding how and what cloud computing is by exploring its principles, benefits, and use-cases together.",
+          leader: "Isaac Guerrero",
+          time: "TBD",
+        },
+        {
+          name: "sig-cog-comp",
+          desc: "SIG CogComp is a learning group for Computational Neuroscience. We will be trying to learn more about brain computation by looking at mathematical modeling, computer simulation and AI.",
+          leader: "Maciej Gajda",
+          time: "TBD",
+        },
+        {
+          name: "sig-embedded",
+          desc: "SIG-Embedded is dedicating to exploring different embedded systems and related fields. We will be  going over computer networking, operating systems, RaspberryPi programming, CDH Engineering basics, Core Flight System Framework, and other topics.",
+          leader: "Brian Ochoa",
+          time: "Wednesdays 1:00-2:00 P.M. | GITC 3600",
+        },
+        {
+          name: "sig-frontline",
+          desc: "SIG Frontline is all about using each other's skills and strengths to build large scale projects for ourselves and other students!",
+          leader: "Ethan Ho",
+          time: "Tuesdays 6:00-7:00 P.M. | GITC 3700 / Virtual",
+        },
+        {
+          name: "sig-web-dev",
+          desc: "SIG Web Dev is all about web development, including frontend, backend. Utilizes  HTML, javascript, and CSS",
+          leader: "Tergel Sukhee",
+          time: "Thursays 1:00-2:00 P.M. | GITC 3600",
+        },
+        {
+          name: "sig-xr",
+          desc: "SIG XR aims to explore what VR tech can do, have fun playing games, and discuss general design topics. The SIG will also delve into project set-up, programming, and designing interactions. ",
+          leader: "David Garcia",
+          time: "Mondays 6:00-7:00 P.M. | GITC 3700",
+        },
       ],
       PastSigs: [
       {
