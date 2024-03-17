@@ -38,6 +38,6 @@ body * {
 }
 .subtitle{
   text-align: center;
-   padding: 0 25% 0 25%
+  padding: 0 25% 0 25%;
 }
 </style>
