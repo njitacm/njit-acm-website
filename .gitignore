@@ -1,7 +1,3 @@
-.tmp
-app.yaml
-app.tar.gz
-
 .DS_Store
 node_modules
 /dist

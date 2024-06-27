@@ -1,19 +1,15 @@
+import { createApp } from 'vue'
+import router from "./router.js"
 import App from './App.vue'
-import BootstrapVue from 'bootstrap-vue'
-import VueMeta from 'vue-meta'
-import Vue from 'vue'
-import router from "./router";
+import TheHeader from './components/TheHeader.vue';
+import TheFooter from './components/TheFooter.vue';
+import 'material-symbols';
 
+const app = createApp(App);
 
-// Import Bootstrap an BootstrapVue CSS files (order is important)
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+app.component("TheHeader", TheHeader)
+app.component("TheFooter", TheFooter)
 
-// Make BootstrapVue available throughout your project
-Vue.use(BootstrapVue)
-Vue.use(VueMeta)
-new Vue({
-  router,
-  el: '#app',
-  render: h => h(App)
-})
+app.use(router)
+
+app.mount('#app')

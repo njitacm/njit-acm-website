@@ -1,43 +1,51 @@
 <template>
-  <span>
-    <Navbar />
-    <router-view />
-    <Footer />
-  </span>
+  <TheHeader />
+  <router-view v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component" />
+    </transition>
+  </router-view>
+  <TheFooter />
 </template>
-
 <script>
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import { RouterView } from "vue-router";
 
 export default {
+  name: "App",
   components: {
-    Navbar,
-    Footer,
-  },
-  metaInfo: {
-    title: "NJIT ACM",
+    RouterView,
   },
 };
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Ubuntu");
-body * {
-  font-family: "Ubuntu";
+/*
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 /48 /64 /80 /96 / 128
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Times New Roman", Times, serif;
 }
-.card {
-  background-color: #ff7373 !important;
-  box-shadow: 0px 0px 15px rgb(185, 184, 184);
+html {
+  background-color: whitesmoke;
+  font-size: 62.5%;
 }
-.title {
-  text-align: center;
-  display: block;
-  margin: 35px auto 20px auto !important;
-  font-size: 3.5em !important;
+p {
+  font-size: 1.6rem;
 }
-.subtitle{
-  text-align: center;
-  padding: 0 25% 0 25%;
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 500ms ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
