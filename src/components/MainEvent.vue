@@ -1,6 +1,6 @@
 <template>
   <section class="main-event">
-    <div>
+    <div class="main-event-content">
       <h3>{{ title }}</h3>
       <p class="main-event-desc">
         {{ desc }}
@@ -23,19 +23,6 @@ export default {
 </script>
 
 <style scoped>
-.main-event {
-  margin: 4.8rem 0;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 40%;
-  border: 2px red solid;
-  border-radius: 8px;
-  position: relative;
-  height: 50rem;
-  min-width: 550px;
-}
 /*
 - Font sizes (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
@@ -43,8 +30,25 @@ export default {
 - Spacing system (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 /48 /64 /80 /96 / 128
 */
+.main-event {
+  margin: 4.8rem 0;
+  padding: 2rem;
+
+  width: 40%;
+  border: 2px red solid;
+  border-radius: 8px;
+  position: relative;
+  height: auto;
+  min-width: 550px;
+}
+.main-event-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
 .main-event h3 {
-  font-size: 3.6rem;
+  font-size: 7.4rem;
   text-align: center;
 }
 .main-event p {
@@ -69,9 +73,27 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  /* position: absolute;
-  bottom: 4rem;
-  left: 50%; */
-  transform: translateX(-50%);
+
+  padding: 0.8rem;
+  font-size: 3rem;
+  font-weight: bold;
+  background-color: lightpink;
+  border: 2px lightgrey solid;
+  border-radius: 8px;
+}
+
+@media (max-width: 700px) {
+  .main {
+    gap: 3.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-event p {
+    font-size: 2.4rem;
+  }
+  .main-event h3 {
+    font-size: 6.2rem;
+  }
 }
 </style>

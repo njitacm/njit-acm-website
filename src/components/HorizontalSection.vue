@@ -73,6 +73,9 @@ img {
     margin-left: auto;
     margin-right: auto;
   }
+  h3 {
+    text-align: center;
+  }
 }
 
 @media (max-width: 500px) {
@@ -84,17 +87,4 @@ img {
     text-indent: 25px;
   }
 }
-
-/* @media (max-width: 700px) {
-  img {
-    min-width: 80%;
-  }
-  .section-content {
-    min-width: 80%;
-  }
-  section {
-    margin-left: auto;
-    margin-right: auto;
-  }
-} */
 </style>

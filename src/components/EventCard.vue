@@ -46,11 +46,15 @@ export default {
   data() {
     return {
       modalOpen: false,
+      windowWidth: window.innerWidth,
     };
+  },
+  onResize() {
+    this.windowWidth = window.innerWidth;
   },
   methods: {
     openModal() {
-      this.modalOpen = true;
+      window.open(this.$props.link);
     },
     closeModal() {
       this.modalOpen = false;
@@ -198,6 +202,19 @@ button {
     border: 2px rgb(206, 181, 181) solid;
     border-bottom: none;
     border-radius: 8px 8px 0 0;
+  }
+}
+
+@media (max-width: 500px) {
+  aside {
+    flex-direction: column;
+  }
+  aside * {
+    width: 100%;
+  }
+  .wherewhen {
+    width: 100%;
+    text-align: center;
   }
 }
 </style>

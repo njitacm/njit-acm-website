@@ -184,4 +184,10 @@ p {
     margin-bottom: 50px;
   }
 }
+
+@media (max-width: 500px) {
+  p {
+    font-size: 2.4rem;
+  }
+}
 </style>
