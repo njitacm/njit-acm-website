@@ -1,8 +1,15 @@
 <template>
   <div>
-    <span @click="toggleNav" id="mmmBorger" class="material-symbols-sharp"
-      >format_align_justify</span
-    >
+    <button @focusout="closeNav">
+      <span
+        ref="navIcon"
+        @click="toggleNav"
+        id="mmmBorger"
+        class="material-symbols-sharp"
+        >format_align_justify</span
+      >
+    </button>
+
     <Transition>
       <nav class="openNav" v-if="showNav">
         <slot></slot>
@@ -20,14 +27,19 @@ export default {
     };
   },
   methods: {
-    toggleNav(event) {
+    toggleNav() {
       if (!this.navOpen) {
-        event.target.style.transform = "rotate(-90deg)";
+        this.$refs.navIcon.style.transform = "rotate(-90deg)";
         this.navOpen = true;
       } else {
-        event.target.style.transform = "";
+        this.$refs.navIcon.style.transform = "";
         this.navOpen = false;
+        console.log(this.$refs);
       }
+    },
+    closeNav() {
+      this.$refs.navIcon.style.transform = "";
+      this.navOpen = false;
     },
     onResize() {
       this.windowWidth = window.innerWidth;
@@ -69,6 +81,10 @@ export default {
 }
 .v-enter-from, .v-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
+}
+button {
+  background-color: transparent;
+  border: none;
 }
 
 @media (max-width: 550px) {
