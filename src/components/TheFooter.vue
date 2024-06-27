@@ -2,7 +2,7 @@
   <footer>
     <div class="logos">
       <img src="../assets/logos/NJIT.png" />
-      <img src="../assets/logos/NJIT_ACM_LOGO.svg" />
+      <!-- <img src="../assets/logos/NJIT_ACM_LOGO.svg" /> -->
     </div>
 
     <div class="socials">
