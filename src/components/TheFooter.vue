@@ -92,7 +92,10 @@ img {
 }
 .footer-buttons button {
   padding: 5px;
+  border-radius: 8px;
   font-size: 2rem;
+  background-color: lightpink;
+  border: 2px lightgrey solid;
   border-radius: 8px;
 }
 .router-link {
