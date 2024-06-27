@@ -30,7 +30,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Times New Roman", Times, serif;
+  font-family: sans-serif;
 }
 html {
   background-color: whitesmoke;
