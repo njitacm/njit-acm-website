@@ -78,12 +78,12 @@ footer {
 img {
   width: 100%;
 }
-.logos img:first-child {
+/* .logos img:first-child {
   flex: 2;
 }
 .logos img:last-child {
   flex: 1;
-}
+} */
 .footer-buttons {
   flex: 1;
   display: flex;
@@ -157,7 +157,7 @@ a {
     width: 70%;
   }
   .logos img {
-    max-width: 60%;
+    max-width: 100%;
   }
   .socials {
     flex-wrap: wrap;
