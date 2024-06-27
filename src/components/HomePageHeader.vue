@@ -466,4 +466,14 @@ h2 {
     width: fit-content;
   }
 }
+
+@media (max-width: 450px) {
+  #img16 {
+    width: 41%;
+    z-index: -6;
+    right: unset;
+    left: 6rem;
+    bottom: 11.5%;
+  }
+}
 </style>
