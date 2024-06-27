@@ -61,7 +61,7 @@ export default {
   
   <style scoped>
 footer {
-  margin: 2.4rem 1.5rem;
+  margin: 2.4rem auto;
   margin-bottom: 0;
   padding: 24px 16px;
   display: flex;
