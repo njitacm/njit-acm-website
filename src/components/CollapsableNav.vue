@@ -85,6 +85,7 @@ export default {
 button {
   background-color: transparent;
   border: none;
+  color: black;
 }
 
 @media (max-width: 550px) {
