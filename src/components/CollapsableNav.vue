@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @focusout="closeNav">
+    <button @click="giveFocus()" @focusout="closeNav">
       <span
         ref="navIcon"
         @click="toggleNav"
@@ -27,6 +27,9 @@ export default {
     };
   },
   methods: {
+    giveFocus(event) {
+      event.target.focus();
+    },
     toggleNav() {
       if (!this.navOpen) {
         this.$refs.navIcon.style.transform = "rotate(-90deg)";
