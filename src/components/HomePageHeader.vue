@@ -187,6 +187,7 @@ h2 {
   }
   #img11 {
     top: 0.5rem;
+    left: 25%;
   }
   #img13 {
     transform: scaleX(1);
@@ -208,6 +209,7 @@ h2 {
     bottom: 9.5rem;
     right: 1.5rem;
     width: 32.8rem;
+    z-index: -1;
   }
   #img7 {
     bottom: 14rem;
@@ -233,6 +235,7 @@ h2 {
   }
   #img11 {
     top: 0.5rem;
+    left: 25%;
   }
   #img13 {
     transform: scaleX(1);
@@ -255,9 +258,110 @@ h2 {
   }
 }
 
+@media (max-width: 940px) {
+  h2 {
+    font-size: 8em;
+  }
+  #img4 {
+    bottom: 9.5rem;
+    right: 9%;
+    width: 32.8rem;
+    z-index: -1;
+  }
+  #img5 {
+    top: 1rem;
+    left: 12.5%;
+    width: 10.2rem;
+  }
+  #img7 {
+    bottom: 14rem;
+    right: 65rem;
+    width: 22.2rem;
+    right: unset;
+    left: 3%;
+  }
+  #img12 {
+    bottom: 7.5rem;
+    left: unset;
+    width: 27.2rem;
+    object-fit: cover;
+    height: 22rem;
+    object-position: 0 100%;
+    right: 1rem;
+    z-index: -1;
+    object-position: 5% 75%;
+    height: 14rem;
+  }
+  #img16 {
+    top: 23.5rem;
+    right: 1rem;
+    width: 39rem;
+  }
+}
+
+@media (max-width: 775px) {
+  h2 {
+    font-size: 7.4rem;
+  }
+  #img15 {
+    top: 14.5rem;
+    right: unset;
+    width: 25.2rem;
+    left: 1%;
+  }
+}
+
+@media (max-width: 700px) {
+  h2 {
+    font-size: 6.2rem;
+  }
+  #img8 {
+    top: 19rem;
+    left: unset;
+    width: 27.16rem;
+    z-index: -5;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  h2 {
+    font-size: 5.2rem;
+  }
+  #main-logo {
+    min-width: 100%;
+  }
+  #img6 {
+    left: 1%;
+    right: unset;
+  }
+  #img7 {
+    bottom: 6rem;
+    top: unset;
+  }
+  #img12 {
+    bottom: 4.5rem;
+  }
+  #img14 {
+    bottom: 4.5rem;
+    width: 6.5rem;
+    left: 1%;
+  }
+  #img16 {
+    top: unset;
+    right: 24rem;
+    width: 20rem;
+    bottom: 10%;
+    z-index: -1;
+  }
+}
+
 @media (max-width: 500px) {
   #header-centerpiece {
     width: 80%;
+  }
+  h2 {
+    font-size: 4.4rem;
   }
   #header-centerpiece > img {
     opacity: 0.8;
@@ -299,7 +403,7 @@ h2 {
   }
   #img5 {
     top: unset;
-    bottom: 8rem;
+    bottom: 5rem;
     right: 0.75rem;
     width: 45%;
     left: unset;

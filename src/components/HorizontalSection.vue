@@ -75,6 +75,16 @@ img {
   }
 }
 
+@media (max-width: 500px) {
+  h3 {
+    font-size: 6.2rem;
+    text-align: center;
+  }
+  p {
+    text-indent: 25px;
+  }
+}
+
 /* @media (max-width: 700px) {
   img {
     min-width: 80%;

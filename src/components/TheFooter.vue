@@ -112,4 +112,49 @@ a {
   text-decoration: none;
   color: black;
 }
+@media (max-width: 1400px) {
+  .socials {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1200px) {
+  footer {
+    gap: 10rem;
+  }
+  .socials {
+    flex-wrap: wrap;
+    flex: 1.5;
+  }
+}
+
+@media (max-width: 900px) {
+  footer {
+    gap: 7.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  footer {
+    flex-direction: column;
+    gap: 5rem;
+  }
+  .logos {
+    width: 75%;
+  }
+  .footer-buttons button {
+    padding: 5px 50px;
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .socials {
+    flex-wrap: nowrap;
+  }
+  .footer-buttons button {
+    padding: 5px 35px;
+    font-size: 2.4rem;
+  }
+}
 </style>
