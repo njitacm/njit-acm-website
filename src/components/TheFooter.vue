@@ -69,6 +69,7 @@ footer {
   align-items: center;
   justify-content: space-between;
   gap: 20.4rem;
+  width: 100%;
 }
 .logos {
   flex: 1;
@@ -152,8 +153,15 @@ a {
 }
 
 @media (max-width: 500px) {
+  .logos {
+    width: 70%;
+  }
+  .logos img {
+    max-width: 60%;
+  }
   .socials {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    gap: 1.75rem;
   }
   .footer-buttons button {
     padding: 5px 35px;

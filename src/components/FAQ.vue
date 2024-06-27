@@ -87,6 +87,7 @@ button {
   background-color: lightpink;
   border: 2px lightgrey solid;
   border-radius: 8px;
+  color: black;
 }
 p.question {
   font-size: 2.4rem;

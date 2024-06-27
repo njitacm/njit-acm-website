@@ -1,6 +1,7 @@
 <template>
   <div>
     <EboardSpotlight
+      id="spotlight"
       :position="selectedEboard.Role"
       :positionDesc="eboardDescs[selectedEboard.Role]"
       :incumbent="selectedEboard.Name"
@@ -59,6 +60,7 @@ export default {
         (member) => member.Role === position && member.Term == "2024"
       )[0];
       this.selectedEboard.isSelected = true;
+      document.getElementById("spotlight").scrollIntoView();
     },
     getImagePath(role, year) {
       let path = "webmaster.png";
