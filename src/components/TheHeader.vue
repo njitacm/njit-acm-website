@@ -2,7 +2,7 @@
   <header>
     <RouterLink to="/" class="router-link-left">ACM</RouterLink>
     <RouterLink to="/" class="router-link-center meme-title">
-      Association for Creating Memes</RouterLink
+      Association for Computing Machinery</RouterLink
     >
     <CollapsableNav>
       <RouterLink to="/sigs" class="router-link">SIGs</RouterLink>
