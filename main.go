@@ -13,7 +13,7 @@ var port string = ":8080"
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(r.URL.Path)
-		http.FileServer(http.Dir("./Site-Vue-App/dist")).ServeHTTP(w, r)
+		http.FileServer(http.Dir("./dist")).ServeHTTP(w, r)
 	})
 	http.HandleFunc("/api/tutors", func(w http.ResponseWriter, r *http.Request) {
 		w.Write(tutoring.GetTutors())
