@@ -6,7 +6,7 @@
         <component :is="Component" />
       </transition>
     </router-view>
-    <TheFooter />~
+    <TheFooter />
   </body>
 </template>
 <script>

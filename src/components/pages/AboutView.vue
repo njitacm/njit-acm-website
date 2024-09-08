@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="outer-container">
     <EboardSpotlight
       :position="selectedEboard.Role"
       :positionDesc="eboardDescs[selectedEboard.Role]"
@@ -7,46 +7,71 @@
       :incumbentDesc="selectedEboard.desc"
       :imageName="getImagePath(selectedEboard.Role, selectedEboard.Term)"
     ></EboardSpotlight>
-    <h2>2024 Eboard</h2>
-    <div class="eboardContainer">
-      <EBoardCard
-        @selectEboard="setSelected"
-        v-for="member in currentEboard"
-        :key="member.Role"
-        :position="member.Role"
-        :positionDesc="member.desc"
-        :incumbent="member.Name"
-        :incumbentDesc="member.desc"
-        :imageName="getImagePath(member.Role, member.Term)"
-        :isSelected="member.isSelected"
-        currEboard="true"
-      />
-    </div>
+    <header>
+      <h2>2024 Eboard</h2>
+      <span
+        class="svg material-symbols-outlined"
+        :class="{ open: showEboard['2024'] }"
+        @click="toggleEboard('2024')"
+        >keyboard_arrow_down</span
+      >
+      <!-- Outlined -->
+    </header>
+    <Transition>
+      <div class="eboardContainer" v-show="showEboard['2024']">
+        <div class="spacer1"></div>
+        <EBoardCard
+          @selectEboard="setSelected"
+          v-for="member in currentEboard"
+          :key="member.Role"
+          :position="member.Role"
+          :positionDesc="member.desc"
+          :incumbent="member.Name"
+          :incumbentDesc="member.desc"
+          :imageName="getImagePath(member.Role, member.Term)"
+          :isSelected="member.isSelected"
+          currEboard="true"
+        />
+        <div class="spacer2"></div>
+      </div>
+    </Transition>
     <div class="pastEboard">
       <div v-for="year in years" :key="year">
-        <h2>{{ year }} Eboard</h2>
-        <div class="eboardContainer">
-          <EBoardCard
-            v-for="member in getEboard(year)"
-            :key="member.Role"
-            :position="member.Role"
-            :positionDesc="member.desc"
-            :incumbent="member.Name"
-            :incumbentDesc="member.desc"
-            :imageName="getImagePath(member.Role, member.Term)"
-            :isSelected="member.isSelected"
-          />
-        </div>
+        <header>
+          <h2>{{ year }} Eboard</h2>
+          <span
+            class="svg material-symbols-outlined"
+            :class="{ open: showEboard[year] }"
+            @click="toggleEboard(year)"
+            >keyboard_arrow_down</span
+          >
+        </header>
+        <Transition>
+          <div class="eboardContainer" v-show="showEboard[year]">
+            <div class="spacer1"></div>
+            <EBoardCard
+              v-for="member in getEboard(year)"
+              :key="member.Role"
+              :position="member.Role"
+              :positionDesc="member.desc"
+              :incumbent="member.Name"
+              :incumbentDesc="member.desc"
+              :imageName="getImagePath(member.Role, member.Term)"
+              :isSelected="member.isSelected"
+            />
+            <div class="spacer2"></div>
+          </div>
+        </Transition>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import "material-symbols";
 import EBoardCard from "../EBoardCard.vue";
 import EboardSpotlight from "../EboardSpotlight.vue";
 import jsonEboard from "../../assets/data/eboard.js";
-
 export default {
   components: {
     EBoardCard,
@@ -95,12 +120,22 @@ export default {
     getEboard(year) {
       return this.eboard.filter((member) => member.Term == year);
     },
+    toggleEboard(year) {
+      console.log(year);
+      if (!this.showEboard[year]) {
+        this.showEboard[year] = false;
+      }
+      this.showEboard[year] = !this.showEboard[year];
+    },
   },
 
   data() {
     let currEboard = jsonEboard.filter((member) => member.Term == "2024");
     currEboard[0].isSelected = true;
     return {
+      showEboard: {
+        2024: true,
+      },
       eboardDescs: {
         President:
           "The President of ACM is responsible for leading the club. You'll see them take center stage during our general body meetings with a gavel passed down through generations of Presidents. The President presides over all functions of the club, with all other eboard officers reporting directly to and being managed by them.",
@@ -137,17 +172,54 @@ export default {
 </script>
 
 <style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: all 1s ease-in-out;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(-60px);
+}
+.outer-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
 .eboardContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  width: 95%;
+  display: grid;
+  grid-template-rows: 250px 250px;
+  grid-template-columns: repeat(6, 17.5%);
   margin: 0 auto;
+  flex-wrap: wrap;
+}
+.eboardContainer * {
+  justify-self: center;
+}
+.spacer1 {
+  grid-column: 1;
+  grid-row: 1/3;
+}
+.spacer2 {
+  grid-column: 6;
+  grid-row: 1/3;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  margin: 2.5rem 4rem;
+  border-bottom: red 4px solid;
 }
 h2 {
-  margin: 2.5rem 4rem;
   font-size: 48px;
-  border-bottom: red 4px solid;
+}
+.svg {
+  font-size: 5rem;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+.open {
+  transform: rotate(180deg);
 }
 
 @media (max-width: 1700px) {

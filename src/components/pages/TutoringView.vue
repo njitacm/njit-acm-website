@@ -1,21 +1,5 @@
 <template>
   <div>
-    <button @click="getTutors">Get Tutors</button>
-    <button @click="getAttendance">Get Attendance</button>
-    <button @click="getVisits">Get Visits</button>
-    <button @click="getBusiness">Get Business</button>
-    <!-- <table>
-      <th v-for="header in headers" :key="header">{{ header }}</th>
-      <tr v-for="tutor in tutors" :key="tutor.FirstName">
-        <td>{{ tutor.Email }}</td>
-        <td>{{ tutor.LastName }}</td>
-        <td>{{ tutor.FirstName }}</td>
-        <td>{{ tutor.FullName }}</td>
-        <td>{{ tutor.TimeSlots }}</td>
-        <td>{{ tutor.ParsedTimeSlots }}</td>
-        <td>{{ tutor.Courses }}</td>
-      </tr>
-    </table> -->
     <div class="container">
       <header class="tutoring-header">
         <button>MON</button>
@@ -50,14 +34,25 @@
             alt="reset-button"
           />
         </div>
-        <div v-if="dateSelected && classSelected" class="selectionInfo">
+        <div v-if="selectionInfo.empty">
+          <h1 class="day-time">
+            {{ selectionInfo.day }} {{ selectionInfo.time }}
+          </h1>
+          <h1 class="no-tutors">
+            There is no tutoring available during this time slot
+          </h1>
+        </div>
+        <div v-else-if="dateSelected && classSelected" class="selectionInfo">
           <h1 class="day-time">
             {{ selectionInfo.day }} {{ selectionInfo.time }}
           </h1>
           <h3>In-Person AND Virtual</h3>
           <br />
           <h2>
-            Typically <b>{{ selectionInfo.business }}</b>
+            Typically
+            <b :style="'color: ' + selectionInfo.businessColor">{{
+              selectionInfo.business
+            }}</b>
           </h2>
           <br />
           <h2>Tutors</h2>
@@ -126,20 +121,16 @@ export default {
       this.tutors = tutors;
       this.getCourses();
     },
-    async getAttendance() {
-      const response = await fetch("/api/attendance");
-      var data = await response.json();
-      console.log(data);
-    },
-    async getVisits() {
-      const response = await fetch("/api/visits");
-      var data = await response.json();
-      console.log(data);
-    },
+    // async getAttendance() {
+    //   const response = await fetch("/api/attendance");
+    //   var data = await response.json();
+    // },
+    // async getVisits() {
+    //   const response = await fetch("/api/visits");
+    //   var data = await response.json();
+    // },
     async getBusiness() {
       this.business = business;
-      this.colorClasses();
-      console.log(business);
     },
     getRow(index) {
       return Math.floor((index - 1) / 6) + 1;
@@ -172,24 +163,38 @@ export default {
       );
     },
     selectDate(index) {
+      this.undoBorders();
       const day = this.getDay(index);
       const time = this.getTime(index);
-
+      this.$refs[index][0].style.border = "2px solid black";
       var selectedTutors = [];
       var coursesSet = new Set();
       var tutors = this.getTutorsBySlot(day, time);
       tutors.forEach((tutor) => {
-        selectedTutors.push(tutor.FirstName + " " + tutor.LastName);
+        selectedTutors.push(
+          tutor.FirstName + " " + tutor.LastName + " (" + tutor.Email + ")"
+        );
         tutor.Courses.forEach((course) => {
           coursesSet.add(course);
         });
       });
-
+      this.selectionInfo.business = this.getBusinessDescription(index);
+      this.selectionInfo.businessColor = this.getBusinessColor(index);
       this.selectionInfo.tutors = selectedTutors;
       this.selectionInfo.day = this.dayIntToString(day);
       this.selectionInfo.time = this.timeIntToString(time);
       this.selectionInfo.courses = Array.from(coursesSet);
       this.dateSelected = true;
+      this.selectionInfo.empty = false;
+
+      if (!this.selectionInfo.tutors.length) {
+        this.selectionInfo.empty = true;
+      }
+    },
+    undoBorders() {
+      for (var i = 1; i <= 72; i++) {
+        this.$refs[i][0].style.border = "";
+      }
     },
     dayIntToString(day) {
       switch (day) {
@@ -226,6 +231,7 @@ export default {
     },
     selectClass() {
       this.dateSelected = false;
+      this.undoBorders();
       if (this.selectedCourse == "-1") return;
       var tutors = this.getTutorsByClass(this.selectedCourse);
       var selectedTutors = [];
@@ -234,6 +240,7 @@ export default {
         selectedTutors.push(tutor.FirstName + " " + tutor.LastName);
       });
       this.selectionInfo.tutors = selectedTutors;
+      this.colorDatesByClass(this.selectedCourse);
     },
     getTutorsByClass(selectedCourse) {
       console.log(
@@ -246,7 +253,6 @@ export default {
       );
     },
     getCourses() {
-      console.log(this.tutors);
       var courseSet = new Set();
       this.tutors.forEach((tutor) => {
         tutor.Courses.forEach((course) => {
@@ -259,11 +265,36 @@ export default {
     reset() {
       this.selectedCourse = "-1";
       this.dateSelected = false;
+      this.undoBorders();
+      this.uncolorAllDates();
+      this.selectionInfo.empty = false;
     },
-    colorClasses() {
+    uncolorAllDates() {
       for (var i = 1; i <= 72; i++) {
-        this.$refs[i][0].style.background = this.getColor(i);
+        this.$refs[i][0].style.background = "";
       }
+    },
+    colorDatesByClass(selectedClass) {
+      for (var i = 1; i <= 72; i++) {
+        var coursesSet = new Set();
+        var tutors = this.getTutorsBySlot(this.getDay(i), this.getTime(i));
+        tutors.forEach((tutor) => {
+          tutor.Courses.forEach((course) => {
+            coursesSet.add(course);
+          });
+        });
+        if (coursesSet.has(selectedClass)) {
+          this.colorDate(i);
+        } else {
+          this.uncolorDate(i);
+        }
+      }
+    },
+    colorDate(date) {
+      this.$refs[date][0].style.background = this.getColor(date);
+    },
+    uncolorDate(date) {
+      this.$refs[date][0].style.background = "#e9e9ed";
     },
     getBusinessFromIndex(index) {
       var row = this.getRow(index);
@@ -286,6 +317,28 @@ export default {
       var gradient = gradientFunction(percent);
       console.log(business, this.maxBusiness, percent, gradient);
       return gradient;
+    },
+    getBusinessDescription(index) {
+      var business = this.getBusinessFromIndex(index);
+      var percent = business / this.maxBusiness;
+      if (percent < 0.33) {
+        return "Not Busy";
+      } else if (percent < 0.67) {
+        return "Moderately Busy";
+      } else {
+        return "Busy";
+      }
+    },
+    getBusinessColor(index) {
+      var business = this.getBusinessFromIndex(index);
+      var percent = business / this.maxBusiness;
+      if (percent < 0.33) {
+        return "green";
+      } else if (percent < 0.67) {
+        return "yellow";
+      } else {
+        return "red";
+      }
     },
   },
   data() {
@@ -355,6 +408,9 @@ export default {
   color: white;
   text-align: center;
   padding: 2rem;
+}
+.no-tutors {
+  margin-top: 10rem;
 }
 .tutoring-sidebar h1.title {
   font-size: 4rem;
@@ -428,8 +484,7 @@ button {
 }
 .day-time {
   font-size: 3.6rem;
-  text-align: left;
-  margin-left: 4rem;
+  text-align: center;
   margin-top: 2rem;
 }
 .selectionInfo h3 {

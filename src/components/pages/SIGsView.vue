@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="outer-container">
     <HorizontalSection imagePath="sigs/SIG_Frontline_Meeting.jpg">
       <template v-slot:title>SIGs</template>
       <template v-slot:content>
@@ -28,7 +28,7 @@
       </template>
     </HorizontalSection>
     <div class="current-sigs">
-      <h3>Current SIGs</h3>
+      <h3>Past SIGs</h3>
       <div class="sig-container">
         <SIGsCard
           v-for="sig in sigs"
@@ -137,6 +137,10 @@ export default {
 </script>
 
 <style scoped>
+.outer-container {
+  width: 80%;
+  margin: 0 auto;
+}
 .sig-container {
   width: 90%;
   display: flex;

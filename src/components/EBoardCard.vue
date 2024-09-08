@@ -55,6 +55,7 @@ export default {
   transform: translateY(0);
   box-shadow: none;
   opacity: 0.9;
+  width: fit-content;
 }
 .currEboard {
   cursor: pointer;
