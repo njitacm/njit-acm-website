@@ -1,0 +1,16 @@
+{
+  "name": "njit-acm-website",
+  "version": "1.0.0",
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "material-symbols": "^0.23.0",
+    "vue": "^3.5.3",
+    "vue-router": "^4.4.3"
+  }
+}
