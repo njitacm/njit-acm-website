@@ -270,11 +270,68 @@ h2 {
 
 @media (max-width: 1700px) {
   .eboardContainer {
-    width: 70%;
+    margin: 0 auto;
   }
 }
-
-@media (max-width: 1250px) {
+@media (max-width: 1700px) {
+  .eboardContainer {
+    grid-template-columns: repeat(5, 20%);
+  }
+  .spacer1 {
+    grid-column: 1;
+    grid-row: 1/4;
+  }
+  .spacer2 {
+    grid-column: 5;
+    grid-row: 1/4;
+  }
+}
+@media (max-width: 1350px) {
+  .card {
+    min-width: 30%;
+  }
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(4, 20%);
+    gap: 1rem;
+  }
+  .spacer1 {
+    display: none;
+  }
+  .spacer2 {
+    display: none;
+  }
+}
+@media (max-width: 1050px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(3, 30%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 800px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 40%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 550px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 40%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 550px) {
+  header {
+    margin: 0 1rem;
+  }
+  h2 {
+    font-size: 3.5rem;
+  }
+}
+/* @media (max-width: 1250px) {
   .eboardContainer {
     width: 82.5%;
   }
@@ -290,5 +347,5 @@ h2 {
   .eboardContainer {
     width: 100%;
   }
-}
+} */
 </style>

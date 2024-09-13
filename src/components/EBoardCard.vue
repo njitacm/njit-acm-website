@@ -86,4 +86,16 @@ img {
     width: 12rem;
   } */
 }
+@media (max-width: 600px) {
+  img {
+    width: 18rem;
+    height: 18rem;
+  }
+}
+@media (max-width: 400px) {
+  img {
+    width: 15rem;
+    height: 15rem;
+  }
+}
 </style>
