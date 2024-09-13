@@ -2,7 +2,7 @@
   <footer>
     <div class="logos">
       <img src="../assets/logos/NJIT.png" />
-      <img src="../assets/logos/NJIT_ACM_LOGO.svg" />
+      <!-- <img src="../assets/logos/NJIT_ACM_LOGO.svg" /> -->
     </div>
 
     <div class="socials">
@@ -61,14 +61,15 @@ export default {
   
   <style scoped>
 footer {
-  margin: 2.4rem 0;
+  margin: 2.4rem auto;
   margin-bottom: 0;
-  padding: 24px 3.5rem;
+  padding: 24px 16px;
   display: flex;
   border-top: red 4px solid;
   align-items: center;
   justify-content: space-between;
   gap: 20.4rem;
+  width: 100%;
 }
 .logos {
   flex: 1;
@@ -77,12 +78,12 @@ footer {
 img {
   width: 100%;
 }
-.logos img:first-child {
+/* .logos img:first-child {
   flex: 2;
 }
 .logos img:last-child {
   flex: 1;
-}
+} */
 .footer-buttons {
   flex: 1;
   display: flex;
@@ -92,7 +93,10 @@ img {
 }
 .footer-buttons button {
   padding: 5px;
+  border-radius: 8px;
   font-size: 2rem;
+  background-color: lightpink;
+  border: 2px lightgrey solid;
   border-radius: 8px;
 }
 .router-link {
@@ -111,5 +115,57 @@ a {
   width: 5.2rem;
   text-decoration: none;
   color: black;
+}
+@media (max-width: 1400px) {
+  .socials {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 1200px) {
+  footer {
+    gap: 10rem;
+  }
+  .socials {
+    flex-wrap: wrap;
+    flex: 1.5;
+  }
+}
+
+@media (max-width: 900px) {
+  footer {
+    gap: 7.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  footer {
+    flex-direction: column;
+    gap: 5rem;
+  }
+  .logos {
+    width: 75%;
+  }
+  .footer-buttons button {
+    padding: 5px 50px;
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .logos {
+    width: 70%;
+  }
+  .logos img {
+    max-width: 100%;
+  }
+  .socials {
+    flex-wrap: wrap;
+    gap: 1.75rem;
+  }
+  .footer-buttons button {
+    padding: 5px 35px;
+    font-size: 2.4rem;
+  }
 }
 </style>
