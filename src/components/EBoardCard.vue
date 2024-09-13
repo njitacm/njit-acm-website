@@ -55,6 +55,8 @@ export default {
   transform: translateY(0);
   box-shadow: none;
   opacity: 0.9;
+  width: fit-content;
+  transform: translateY(1.6rem);
 }
 .currEboard {
   cursor: pointer;
@@ -69,11 +71,11 @@ img {
   border-radius: 8px;
 }
 .selected {
-  transform: translateY(-1.6rem);
   box-shadow: 0px 0px 7.5px 1px red;
-  scale: 1.05;
   opacity: 1;
+  transform: translateY(0rem);
 }
+
 .selected img {
   filter: grayscale(0%);
   border-radius: 8px 8px 0px 0px;

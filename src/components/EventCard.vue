@@ -46,15 +46,11 @@ export default {
   data() {
     return {
       modalOpen: false,
-      windowWidth: window.innerWidth,
     };
-  },
-  onResize() {
-    this.windowWidth = window.innerWidth;
   },
   methods: {
     openModal() {
-      window.open(this.$props.link);
+      this.modalOpen = true;
     },
     closeModal() {
       this.modalOpen = false;

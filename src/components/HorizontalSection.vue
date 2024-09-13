@@ -73,18 +73,24 @@ img {
     margin-left: auto;
     margin-right: auto;
   }
+}
+@media (max-width: 500px) {
   h3 {
+    font-size: 4rem;
     text-align: center;
   }
 }
 
-@media (max-width: 500px) {
-  h3 {
-    font-size: 6.2rem;
-    text-align: center;
+/* @media (max-width: 700px) {
+  img {
+    min-width: 80%;
   }
-  p {
-    text-indent: 25px;
+  .section-content {
+    min-width: 80%;
   }
-}
+  section {
+    margin-left: auto;
+    margin-right: auto;
+  }
+} */
 </style>

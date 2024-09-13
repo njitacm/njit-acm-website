@@ -23,6 +23,19 @@ export default {
 </script>
 
 <style scoped>
+.main-event {
+  margin: 4.8rem 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40%;
+  border: 2px red solid;
+  border-radius: 8px;
+  position: relative;
+  height: 50rem;
+  min-width: 550px;
+}
 /*
 - Font sizes (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98

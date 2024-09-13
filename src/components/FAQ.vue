@@ -65,6 +65,7 @@ export default {
   width: 80%;
   margin: 4.8rem auto;
   background-color: none;
+  border: 4px red solid;
   border-radius: 8px;
   display: flex;
   justify-content: space-around;
@@ -83,11 +84,10 @@ button {
   font-size: 2.4rem;
   padding: 0.8rem;
   text-align: center;
-  cursor: pointer;
-  background-color: lightpink;
-  border: 2px lightgrey solid;
+  border: black 3px solid;
   border-radius: 8px;
-  color: black;
+  cursor: pointer;
+  background: whitesmoke;
 }
 p.question {
   font-size: 2.4rem;

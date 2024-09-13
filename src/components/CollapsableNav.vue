@@ -1,15 +1,8 @@
 <template>
   <div>
-    <button @click="giveFocus()" @focusout="closeNav">
-      <span
-        ref="navIcon"
-        @click="toggleNav"
-        id="mmmBorger"
-        class="material-symbols-sharp"
-        >format_align_justify</span
-      >
-    </button>
-
+    <span @click="toggleNav" id="mmmBorger" class="material-symbols-sharp"
+      >format_align_justify</span
+    >
     <Transition>
       <nav class="openNav" v-if="showNav">
         <slot></slot>
@@ -27,22 +20,14 @@ export default {
     };
   },
   methods: {
-    giveFocus(event) {
-      event.target.focus();
-    },
-    toggleNav() {
+    toggleNav(event) {
       if (!this.navOpen) {
-        this.$refs.navIcon.style.transform = "rotate(-90deg)";
+        event.target.style.transform = "rotate(-90deg)";
         this.navOpen = true;
       } else {
-        this.$refs.navIcon.style.transform = "";
+        event.target.style.transform = "";
         this.navOpen = false;
-        console.log(this.$refs);
       }
-    },
-    closeNav() {
-      this.$refs.navIcon.style.transform = "";
-      this.navOpen = false;
     },
     onResize() {
       this.windowWidth = window.innerWidth;
@@ -84,11 +69,6 @@ export default {
 }
 .v-enter-from, .v-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
-}
-button {
-  background-color: transparent;
-  border: none;
-  color: black;
 }
 
 @media (max-width: 550px) {

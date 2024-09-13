@@ -14,17 +14,15 @@ const routes = [
     {
         path: '/tutoring',
         beforeEnter: () => {
-            window.open('https://computing.njit.edu/tutoring'); return false;
+            if (window.innerWidth < 1100)
+                window.open('https://computing.njit.edu/tutoring'); return false;
         },
         component: TutoringView
     },
     { path: '/constitution', component: ConstitutionView },
 
     { path: '/about', component: AboutView },
-    {
-        path: '/:pathMatch(.*)*',
-        redirect: '/'
-    }
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: HomePage },
 ]
 
 const router = createRouter({

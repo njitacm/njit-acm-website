@@ -108,6 +108,10 @@ export default {
 </script>
 
 <style scoped>
+.outer {
+  width: 80%;
+  margin: 0 auto;
+}
 .main {
   display: flex;
   justify-content: center;
@@ -150,7 +154,7 @@ export default {
   top: 50%;
   left: 50%;
   z-index: -1;
-  transform: translateX(-50%) translateY(-50%);
+  transform: translateY(-50%);
   opacity: 0.4;
 }
 .main-event button {
@@ -163,7 +167,6 @@ export default {
   /* position: absolute;
   bottom: 4rem;
   left: 50%; */
-  transform: translateX(-50%);
 }
 h2 {
   margin: 2.5rem 4rem;
