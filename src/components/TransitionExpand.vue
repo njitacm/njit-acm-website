@@ -12,6 +12,7 @@
 <script>
 export default {
   name: "TransitionExpand",
+  emits: ["leave"],
   methods: {
     enter(element) {
       const width = getComputedStyle(element).width;
@@ -56,6 +57,8 @@ export default {
       requestAnimationFrame(() => {
         element.style.height = 0;
       });
+
+      this.$emit("leave");
     },
   },
 };

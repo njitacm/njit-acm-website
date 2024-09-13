@@ -7,34 +7,36 @@
       :incumbentDesc="selectedEboard.desc"
       :imageName="getImagePath(selectedEboard.Role, selectedEboard.Term)"
     ></EboardSpotlight>
-    <header>
-      <h2>2024 Eboard</h2>
-      <span
-        class="svg material-symbols-outlined"
-        :class="{ open: showEboard['2024'] }"
-        @click="toggleEboard('2024')"
-        >keyboard_arrow_down</span
-      >
-      <!-- Outlined -->
-    </header>
-    <Transition>
-      <div class="eboardContainer" v-show="showEboard['2024']">
-        <div class="spacer1"></div>
-        <EBoardCard
-          @selectEboard="setSelected"
-          v-for="member in currentEboard"
-          :key="member.Role"
-          :position="member.Role"
-          :positionDesc="member.desc"
-          :incumbent="member.Name"
-          :incumbentDesc="member.desc"
-          :imageName="getImagePath(member.Role, member.Term)"
-          :isSelected="member.isSelected"
-          currEboard="true"
-        />
-        <div class="spacer2"></div>
-      </div>
-    </Transition>
+    <div class="year-container">
+      <header>
+        <h2>2024 Eboard</h2>
+        <span
+          class="svg material-symbols-outlined"
+          :class="{ open: showEboard['2024'] }"
+          @click="toggleEboard('2024')"
+          >keyboard_arrow_down</span
+        >
+        <!-- Outlined -->
+      </header>
+      <TransitionExpand>
+        <div class="eboardContainer" v-show="showEboard['2024']" :ref="'2024'">
+          <div class="spacer1"></div>
+          <EBoardCard
+            @selectEboard="setSelected"
+            v-for="member in currentEboard"
+            :key="member.Role"
+            :position="member.Role"
+            :positionDesc="member.desc"
+            :incumbent="member.Name"
+            :incumbentDesc="member.desc"
+            :imageName="getImagePath(member.Role, member.Term)"
+            :isSelected="member.isSelected"
+            currEboard="true"
+          />
+          <div class="spacer2"></div>
+        </div>
+      </TransitionExpand>
+    </div>
     <div class="pastEboard">
       <div v-for="year in years" :key="year">
         <header>
@@ -46,8 +48,12 @@
             >keyboard_arrow_down</span
           >
         </header>
-        <Transition>
-          <div class="eboardContainer" v-show="showEboard[year]">
+        <TransitionExpand>
+          <div
+            class="eboardContainer"
+            :ref="year.toString()"
+            v-show="showEboard[year]"
+          >
             <div class="spacer1"></div>
             <EBoardCard
               v-for="member in getEboard(year)"
@@ -61,7 +67,7 @@
             />
             <div class="spacer2"></div>
           </div>
-        </Transition>
+        </TransitionExpand>
       </div>
     </div>
   </div>
@@ -72,10 +78,13 @@ import "material-symbols";
 import EBoardCard from "../EBoardCard.vue";
 import EboardSpotlight from "../EboardSpotlight.vue";
 import jsonEboard from "../../assets/data/eboard.js";
+import TransitionExpand from "../TransitionExpand.vue";
+
 export default {
   components: {
     EBoardCard,
     EboardSpotlight,
+    TransitionExpand,
   },
   methods: {
     setSelected(position) {
@@ -121,11 +130,15 @@ export default {
       return this.eboard.filter((member) => member.Term == year);
     },
     toggleEboard(year) {
-      console.log(year);
       if (!this.showEboard[year]) {
         this.showEboard[year] = false;
       }
       this.showEboard[year] = !this.showEboard[year];
+      for (let index = 2000; index <= 2024; index++) {
+        if (index != year) {
+          this.showEboard[index] = false;
+        }
+      }
     },
   },
 
@@ -192,10 +205,29 @@ export default {
   grid-template-columns: repeat(6, 17.5%);
   margin: 0 auto;
   flex-wrap: wrap;
+  margin: 0 0;
 }
 .eboardContainer * {
   justify-self: center;
 }
+/* .eboard-hidden {
+  animation-name: close-margin;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.eboard-hidden::after {
+  margin: 0;
+}
+.eboard-show {
+  animation-name: open-margin;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+.eboard-show::after {
+  margin: 2.5rem 0;
+} */
 .spacer1 {
   grid-column: 1;
   grid-row: 1/3;
@@ -207,8 +239,10 @@ export default {
 header {
   display: flex;
   justify-content: space-between;
-  margin: 2.5rem 4rem;
+  margin: 0 4rem;
   border-bottom: red 4px solid;
+  padding-bottom: 1rem;
+  padding-top: 2rem;
 }
 h2 {
   font-size: 48px;
@@ -217,9 +251,21 @@ h2 {
   font-size: 5rem;
   transition: all 0.25s ease-in-out;
   cursor: pointer;
+  color: black;
 }
 .open {
   transform: rotate(180deg);
+}
+
+@keyframes close-margin {
+  100% {
+    margin: 0;
+  }
+}
+@keyframes open-margin {
+  100% {
+    margin: 2.5rem 0;
+  }
 }
 
 @media (max-width: 1700px) {

@@ -64,7 +64,7 @@ export default {
 .outer {
   width: 80%;
   margin: 4.8rem auto;
-  background-color: lightcoral;
+  border: 4px red solid;
   border-radius: 8px;
   display: flex;
   justify-content: space-around;
@@ -86,6 +86,7 @@ button {
   border: black 3px solid;
   border-radius: 8px;
   cursor: pointer;
+  background: whitesmoke;
 }
 p.question {
   font-size: 2.4rem;

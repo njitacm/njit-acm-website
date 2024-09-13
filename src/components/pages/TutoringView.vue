@@ -34,54 +34,56 @@
             alt="reset-button"
           />
         </div>
-        <div v-if="selectionInfo.empty">
-          <h1 class="day-time">
-            {{ selectionInfo.day }} {{ selectionInfo.time }}
-          </h1>
-          <h1 class="no-tutors">
-            There is no tutoring available during this time slot
-          </h1>
-        </div>
-        <div v-else-if="dateSelected && classSelected" class="selectionInfo">
-          <h1 class="day-time">
-            {{ selectionInfo.day }} {{ selectionInfo.time }}
-          </h1>
-          <h3>In-Person AND Virtual</h3>
-          <br />
-          <h2>
-            Typically
-            <b :style="'color: ' + selectionInfo.businessColor">{{
-              selectionInfo.business
-            }}</b>
-          </h2>
-          <br />
-          <h2>Tutors</h2>
-          <div class="tutors-container">
-            <p v-for="tutor in selectionInfo.tutors" :key="tutor">
-              {{ tutor }}
-            </p>
+        <Transition mode="out-in">
+          <div v-if="selectionInfo.empty">
+            <h1 class="day-time">
+              {{ selectionInfo.day }} {{ selectionInfo.time }}
+            </h1>
+            <h1 class="no-tutors">
+              There is no tutoring available during this time slot
+            </h1>
           </div>
-        </div>
-        <div v-else-if="dateSelected" class="selectionInfo">
-          <h1 class="day-time">
-            {{ selectionInfo.day }} {{ selectionInfo.time }}
-          </h1>
-          <h3>In-Person AND Virtual</h3>
-          <br />
-          <h2 class="courses-title">Tutoring Offered</h2>
-          <div class="courses-container">
-            <p v-for="course in selectionInfo.courses" :key="course">
-              {{ course }}
-            </p>
+          <div v-else-if="dateSelected && classSelected" class="selectionInfo">
+            <h1 class="day-time">
+              {{ selectionInfo.day }} {{ selectionInfo.time }}
+            </h1>
+            <h3>In-Person AND Virtual</h3>
+            <br />
+            <h2>
+              Typically
+              <b :style="'color: ' + selectionInfo.businessColor">{{
+                selectionInfo.business
+              }}</b>
+            </h2>
+            <br />
+            <h2>Tutors</h2>
+            <div class="tutors-container">
+              <p v-for="tutor in selectionInfo.tutors" :key="tutor">
+                {{ tutor }}
+              </p>
+            </div>
           </div>
-          <br />
-          <h2>Tutors</h2>
-          <div class="tutors-container">
-            <p v-for="tutor in selectionInfo.tutors" :key="tutor">
-              {{ tutor }}
-            </p>
+          <div v-else-if="dateSelected" class="selectionInfo">
+            <h1 class="day-time">
+              {{ selectionInfo.day }} {{ selectionInfo.time }}
+            </h1>
+            <h3>In-Person AND Virtual</h3>
+            <br />
+            <h2 class="courses-title">Tutoring Offered</h2>
+            <div class="courses-container">
+              <p v-for="course in selectionInfo.courses" :key="course">
+                {{ course }}
+              </p>
+            </div>
+            <br />
+            <h2>Tutors</h2>
+            <div class="tutors-container">
+              <p v-for="tutor in selectionInfo.tutors" :key="tutor">
+                {{ tutor }}
+              </p>
+            </div>
           </div>
-        </div>
+        </Transition>
       </nav>
       <main class="tutoring-calendar">
         <div
@@ -91,10 +93,12 @@
           :style="getPosition(index)"
           :class="{ 'even-row': (Math.floor((index - 1) / 6) + 1) % 2 == 0 }"
         >
-          <button :ref="index" @click="selectDate(index)"></button>
+          <button :ref="index" @click="selectDate(index)">
+            {{ getTimeString(index) }}
+          </button>
         </div>
 
-        <div class="calendar-time">9AM</div>
+        <!-- <div class="calendar-time">9AM</div>
         <div class="calendar-time">10AM</div>
         <div class="calendar-time">11AM</div>
         <div class="calendar-time">12PM</div>
@@ -105,7 +109,7 @@
         <div class="calendar-time">5PM</div>
         <div class="calendar-time">6PM</div>
         <div class="calendar-time">7PM</div>
-        <div class="calendar-time">8PM</div>
+        <div class="calendar-time">8PM</div> -->
       </main>
     </div>
   </div>
@@ -152,6 +156,19 @@ export default {
       var row = Math.floor((index - 1) / 6) + 1;
       return row + 8;
     },
+    getTimeString(index) {
+      let currTime = this.getTime(index) % 12;
+      if (currTime == 0) {
+        currTime = 12;
+      }
+      return (
+        currTime +
+        this.getTimeOfDay(index) +
+        "-" +
+        (currTime + 1) +
+        this.getTimeOfDay(index)
+      );
+    },
     inTime(slot, time) {
       return slot.StartTime <= time && slot.EndTime > time;
     },
@@ -163,10 +180,12 @@ export default {
       );
     },
     selectDate(index) {
-      this.undoBorders();
+      this.undoStyle();
       const day = this.getDay(index);
       const time = this.getTime(index);
       this.$refs[index][0].style.border = "2px solid black";
+      this.$refs[index][0].style.transform = "scale(1.05)";
+
       var selectedTutors = [];
       var coursesSet = new Set();
       var tutors = this.getTutorsBySlot(day, time);
@@ -191,9 +210,10 @@ export default {
         this.selectionInfo.empty = true;
       }
     },
-    undoBorders() {
+    undoStyle() {
       for (var i = 1; i <= 72; i++) {
         this.$refs[i][0].style.border = "";
+        this.$refs[i][0].style.transform = "";
       }
     },
     dayIntToString(day) {
@@ -215,23 +235,22 @@ export default {
     },
     timeIntToString(timeStart) {
       var timeEnd = timeStart + 1;
-      var timeOfDayStart = getTimeOfDay(timeStart);
-      var timeOfDayEnd = getTimeOfDay(timeEnd);
+      var timeOfDayStart = this.getTimeOfDay(timeStart);
+      var timeOfDayEnd = this.getTimeOfDay(timeEnd);
       if (timeStart > 12) timeStart -= 12;
       if (timeEnd > 12) timeEnd -= 12;
 
       return timeStart + timeOfDayStart + "-" + timeEnd + timeOfDayEnd;
-
-      function getTimeOfDay(time) {
-        if (time >= 12) {
-          return "PM";
-        }
-        return "AM";
+    },
+    getTimeOfDay(time) {
+      if (time >= 12) {
+        return "PM";
       }
+      return "AM";
     },
     selectClass() {
       this.dateSelected = false;
-      this.undoBorders();
+      this.undoStyle();
       if (this.selectedCourse == "-1") return;
       var tutors = this.getTutorsByClass(this.selectedCourse);
       var selectedTutors = [];
@@ -265,13 +284,29 @@ export default {
     reset() {
       this.selectedCourse = "-1";
       this.dateSelected = false;
-      this.undoBorders();
-      this.uncolorAllDates();
+      this.undoStyle();
+      this.colorAllDates();
       this.selectionInfo.empty = false;
     },
     uncolorAllDates() {
       for (var i = 1; i <= 72; i++) {
         this.$refs[i][0].style.background = "";
+      }
+    },
+    colorAllDates() {
+      for (var i = 1; i <= 72; i++) {
+        var coursesSet = new Set();
+        var tutors = this.getTutorsBySlot(this.getDay(i), this.getTime(i));
+        tutors.forEach((tutor) => {
+          tutor.Courses.forEach((course) => {
+            coursesSet.add(course);
+          });
+        });
+        if (coursesSet.size > 0) {
+          this.colorDate(i);
+        } else {
+          this.uncolorDate(i);
+        }
       }
     },
     colorDatesByClass(selectedClass) {
@@ -294,7 +329,7 @@ export default {
       this.$refs[date][0].style.background = this.getColor(date);
     },
     uncolorDate(date) {
-      this.$refs[date][0].style.background = "#e9e9ed";
+      this.$refs[date][0].style.background = "black";
     },
     getBusinessFromIndex(index) {
       var row = this.getRow(index);
@@ -369,6 +404,7 @@ export default {
   mounted() {
     this.getTutors();
     this.getBusiness();
+    this.colorAllDates();
   },
 };
 </script>
@@ -377,6 +413,7 @@ export default {
 <style scoped>
 * {
   transition: all 0.2s linear;
+  font-family: sans-serif;
 }
 .container {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -391,7 +428,7 @@ export default {
   grid-column: 2 / 8;
   display: flex;
   justify-content: space-around;
-  padding-left: 50px;
+  padding: 0 2%;
 }
 .tutoring-header button {
   border: none;
@@ -408,6 +445,7 @@ export default {
   color: white;
   text-align: center;
   padding: 2rem;
+  margin-bottom: -2.4rem;
 }
 .no-tutors {
   margin-top: 10rem;
@@ -447,8 +485,10 @@ option {
   grid-row: 2;
   grid-column: 2;
   display: grid;
-  grid-template-columns: 4% repeat(6, 16%);
+  grid-template-columns: 1fr repeat(6, 16%) 1fr;
   grid-template-rows: repeat(12, 1fr);
+  padding: 1.5rem 0;
+  margin-bottom: -2rem;
 }
 .tutoring-calendar .times {
   grid-row: 1 / 12;
@@ -467,11 +507,12 @@ option {
 }
 .date {
   font-size: 3.2rem;
-  margin: 0;
+  margin: 0.125rem;
   height: 100%;
   display: flex;
   justify-content: center;
   align-content: center;
+  border: none;
 }
 button {
   box-sizing: border-box;
@@ -540,6 +581,15 @@ button {
   width: 4.25rem;
   cursor: pointer;
 }
+.v-enter-active,
+.v-leave-active {
+  transition: all 0.25s ease-in-out;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(-60px);
+}
 /* h3 {
   margin: 40px 0 0;
 }
@@ -565,4 +615,60 @@ th {
   margin: 0px;
   border-collapse: collapse;
 } */
+
+@media (max-width: 1350px) {
+  .tutoring-sidebar h1.title {
+    font-size: 2.75rem;
+  }
+  .tutoring-sidebar h2.subtitle {
+    font-size: 1.75rem;
+  }
+  .tutoring-sidebar select {
+    font-size: 2rem;
+  }
+  button {
+    font-size: 2rem;
+  }
+  .courses-container {
+    gap: 0.5rem;
+    margin-left: 1rem;
+  }
+  .courses-container p {
+    font-size: 1.75rem;
+  }
+  .tutors-container p {
+    font-size: 1.5rem;
+  }
+  .tutoring-sidebar h1 {
+    font-size: 2.75rem;
+  }
+  .tutoring-sidebar h2 {
+    width: 100%;
+  }
+}
+@media (max-width: 1200px) {
+  .tutoring-sidebar h1.title {
+    font-size: 1.75rem;
+  }
+  .tutoring-sidebar h2.subtitle {
+    font-size: 1.25rem;
+  }
+  .tutoring-sidebar select {
+    font-size: 1.5rem;
+  }
+  button {
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 1000px) {
+  .selectionInfo h3 {
+    margin: 0 10px;
+  }
+  .courses-container {
+    grid-template-columns: 33% 33% 33%;
+  }
+  .tutoring-sidebar h2 {
+    margin-left: 0;
+  }
+}
 </style>

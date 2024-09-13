@@ -74,6 +74,12 @@ img {
     margin-right: auto;
   }
 }
+@media (max-width: 500px) {
+  h3 {
+    font-size: 4rem;
+    text-align: center;
+  }
+}
 
 /* @media (max-width: 700px) {
   img {

@@ -106,7 +106,7 @@ func getTutorTimes(timeSlots []string) []TimeSlot {
 				log.Panic(err)
 			}
 			if !re.MatchString(timeOfDay) {
-				hour += 12
+				hour = (hour % 12) + 12
 			}
 			temp = append(temp, hour)
 		}
