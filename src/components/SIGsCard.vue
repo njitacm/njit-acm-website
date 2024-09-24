@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      imagePath: require("../assets/sigs/" + this.$props.name + ".svg"),
+      imagePath: require("../assets/sigs/" + this.$props.filename + ""),
     };
   },
   props: {
@@ -25,6 +25,10 @@ export default {
     leaders: String,
     time: String,
     loc: String,
+    filename: String,
+  },
+  mounted() {
+    console.log("../assets/sigs/" + this.$props.filename);
   },
 };
 </script>
@@ -67,5 +71,8 @@ p {
   overflow: scroll;
   font-size: 1.8rem;
   padding: 0 10px;
+}
+img {
+  width: 100%;
 }
 </style>

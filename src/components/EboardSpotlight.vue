@@ -78,6 +78,8 @@ img {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 8px;
+  align-self: center;
+  margin-left: 8px;
 }
 
 @media (max-width: 1500px) {
