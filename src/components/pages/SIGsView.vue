@@ -125,16 +125,16 @@ export default {
         },
         {
           name: "sig-supercomputer",
-          desc: "SIG SuperComputer is a group dedicating to learning about advanced computing, and competing in the national Student Cluster Competition.",
-          leaders: "Garrett",
+          desc: "SIG-Supercomputer is a group dedicating to learning about advanced computing, and competing in the national Student Cluster Competition.",
+          leaders: "Garrett Gonzalez-Rivas",
           time: "Time TBA",
           loc: "TBA",
-          filename: "sig-supercomputer.svg",
+          filename: "sig-supercomputer.png",
         },
         {
           name: "sig-vue",
           desc: "Sig-Vue is an ACM Special Interest Group that focuses on teaching the Vue web development framework through a series of workshops.",
-          leaders: "Abudllah Imran",
+          leaders: "Abdullah Imran",
           time: "Fridays 4:00-5:00 P.M.",
           loc: "GITC 3700",
           filename: "sig-vue.svg",
@@ -149,11 +149,15 @@ export default {
 .outer-container {
   width: 80%;
   margin: 0 auto;
+  margin-bottom: 10rem;
 }
 .sig-container {
-  width: 90%;
-  display: flex;
-  gap: 3rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  grid-template-rows: 700px 700px 700px;
+  row-gap: 8rem;
+  column-gap: 5rem;
   flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
@@ -167,5 +171,16 @@ h3 {
 }
 p {
   font-size: 3rem;
+}
+@media (max-width: 1400px) {
+  .sig-container {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+@media (max-width: 900px) {
+  .sig-container {
+    grid-template-columns: repeat(1, 100%);
+    margin: 0 auto;
+  }
 }
 </style>

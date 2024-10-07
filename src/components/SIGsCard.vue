@@ -1,14 +1,13 @@
 <template>
   <div>
+    <h3>{{ name }}</h3>
+    <h4>Led by {{ leaders }}</h4>
+
+    <img :src="imagePath" />
     <section>
-      <h3>{{ name }}</h3>
-      <h4>Led by {{ leaders }}</h4>
-    </section>
-    <section>
-      <img :src="imagePath" />
       <p>{{ desc }}</p>
+      <h5>{{ time }} | {{ loc }}</h5>
     </section>
-    <h5>{{ time }} | {{ loc }}</h5>
   </div>
 </template>
 
@@ -27,9 +26,6 @@ export default {
     loc: String,
     filename: String,
   },
-  mounted() {
-    console.log("../assets/sigs/" + this.$props.filename);
-  },
 };
 </script>
 
@@ -43,23 +39,27 @@ export default {
 */
 div {
   background-color: inherit;
-  border: red 3px solid;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 100px 50px 380px 1fr;
+  align-content: center;
   width: 40rem;
   gap: 1.2rem;
   padding: 1.2rem;
   border-radius: 8px;
-  justify-content: space-between;
+  justify-self: center;
 }
+.sig-header {
+  display: grid;
+}
+
 h3 {
   font-size: 3.6rem;
   text-align: center;
+  align-self: center;
 }
 h4 {
-  margin-top: 0.8rem;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 2.4rem;
 }
 h5 {
   margin-top: 0.8rem;
@@ -67,6 +67,7 @@ h5 {
   font-size: 1.8rem;
 }
 p {
+  text-align: center;
   height: 14rem;
   overflow: scroll;
   font-size: 1.8rem;
@@ -74,5 +75,6 @@ p {
 }
 img {
   width: 100%;
+  border-radius: 16px;
 }
 </style>
