@@ -72,8 +72,8 @@
     </div>
   </div>
 </template>
-
-<script>
+  
+  <script>
 import "material-symbols";
 import EBoardCard from "../EBoardCard.vue";
 import EboardSpotlight from "../EboardSpotlight.vue";
@@ -183,8 +183,8 @@ export default {
   },
 };
 </script>
-
-<style scoped>
+  
+  <style scoped>
 .v-enter-active,
 .v-leave-active {
   transition: all 1s ease-in-out;
@@ -211,23 +211,23 @@ export default {
   justify-self: center;
 }
 /* .eboard-hidden {
-  animation-name: close-margin;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-.eboard-hidden::after {
-  margin: 0;
-}
-.eboard-show {
-  animation-name: open-margin;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-.eboard-show::after {
-  margin: 2.5rem 0;
-} */
+    animation-name: close-margin;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+  .eboard-hidden::after {
+    margin: 0;
+  }
+  .eboard-show {
+    animation-name: open-margin;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+  }
+  .eboard-show::after {
+    margin: 2.5rem 0;
+  } */
 .spacer1 {
   grid-column: 1;
   grid-row: 1/3;
@@ -270,25 +270,82 @@ h2 {
 
 @media (max-width: 1700px) {
   .eboardContainer {
-    width: 70%;
+    margin: 0 auto;
   }
 }
-
-@media (max-width: 1250px) {
+@media (max-width: 1700px) {
   .eboardContainer {
-    width: 82.5%;
+    grid-template-columns: repeat(5, 20%);
+  }
+  .spacer1 {
+    grid-column: 1;
+    grid-row: 1/4;
+  }
+  .spacer2 {
+    grid-column: 5;
+    grid-row: 1/4;
   }
 }
-
-@media (max-width: 1100px) {
+@media (max-width: 1350px) {
+  .card {
+    min-width: 30%;
+  }
   .eboardContainer {
-    width: 82.5%;
+    justify-content: space-between;
+    grid-template-columns: repeat(4, 20%);
+    gap: 1rem;
+  }
+  .spacer1 {
+    display: none;
+  }
+  .spacer2 {
+    display: none;
   }
 }
-
-@media (max-width: 600px) {
+@media (max-width: 1050px) {
   .eboardContainer {
-    width: 100%;
+    justify-content: space-between;
+    grid-template-columns: repeat(3, 30%);
+    gap: 1rem;
   }
 }
+@media (max-width: 800px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 40%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 550px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 40%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 550px) {
+  header {
+    margin: 0 1rem;
+  }
+  h2 {
+    font-size: 3.5rem;
+  }
+}
+/* @media (max-width: 1250px) {
+    .eboardContainer {
+      width: 82.5%;
+    }
+  }
+  
+  @media (max-width: 1100px) {
+    .eboardContainer {
+      width: 82.5%;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .eboardContainer {
+      width: 100%;
+    }
+  } */
 </style>
