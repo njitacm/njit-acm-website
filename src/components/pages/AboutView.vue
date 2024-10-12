@@ -84,8 +84,8 @@
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 import "material-symbols";
 import EBoardCard from "../EBoardCard.vue";
 import jsonEboard from "../../assets/data/eboard.js";
@@ -210,17 +210,8 @@ export default {
   },
 };
 </script>
-  
-  <style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: all 1s ease-in-out;
-}
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-  transform: translateY(-60px);
-}
+
+<style scoped>
 .outer-container {
   width: 80%;
   margin: 0 auto;
@@ -281,12 +272,7 @@ header.page-header {
 .eboardContainer * {
   justify-self: center;
 }
-/* .eboard-hidden {
-  animation-name: close-margin;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
+
 .eboard-hidden::after {
   margin: 0;
 }
@@ -298,8 +284,8 @@ header.page-header {
 }
 .eboard-show::after {
   margin: 2.5rem 0;
-} */
-.spacer1 {
+}
+* .spacer1 {
   grid-column: 1;
   grid-row: 1/3;
 }
@@ -360,11 +346,75 @@ h2 {
 
 @media (max-width: 1700px) {
   .eboardContainer {
-    width: 70%;
+    grid-template-columns: repeat(5, 20%);
+  }
+
+  .spacer1 {
+    grid-column: 1;
+    grid-row: 1/4;
+  }
+  .spacer2 {
+    grid-column: 5;
+    grid-row: 1/4;
   }
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1400px) {
+  .spotlight {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+@media (max-width: 1350px) {
+  .card {
+    min-width: 30%;
+  }
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(4, 20%);
+    gap: 1rem;
+  }
+  .spacer1 {
+    display: none;
+  }
+  .spacer2 {
+    display: none;
+  }
+}
+@media (max-width: 1050px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(3, 30%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 1000px) {
+  .spotlight {
+    grid-template-columns: repeat(1, 100%);
+  }
+}
+@media (max-width: 800px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 40%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 550px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 40%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 550px) {
+  header {
+    margin: 0 1rem;
+  }
+  h2 {
+    font-size: 3.5rem;
+  }
+}
+/* @media (max-width: 1250px) {
   .eboardContainer {
     width: 82.5%;
   }
@@ -380,5 +430,5 @@ h2 {
   .eboardContainer {
     width: 100%;
   }
-}
+} */
 </style>
