@@ -64,6 +64,7 @@ export default {
 .outer {
   width: 80%;
   margin: 4.8rem auto;
+  background-color: none;
   border: 4px red solid;
   border-radius: 8px;
   display: flex;

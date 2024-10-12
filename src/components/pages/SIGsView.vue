@@ -28,7 +28,7 @@
       </template>
     </HorizontalSection>
     <div class="current-sigs">
-      <h3>Past SIGs</h3>
+      <h3>Current SIGs</h3>
       <div class="sig-container">
         <SIGsCard
           v-for="sig in sigs"
@@ -38,6 +38,7 @@
           :leaders="sig.leaders"
           :time="sig.time"
           :loc="sig.loc"
+          :filename="sig.filename"
         ></SIGsCard>
       </div>
     </div>
@@ -75,60 +76,68 @@ export default {
     return {
       sigs: [
         {
-          name: "sig-bioinformatics",
-          desc: "SIG Bioinformatics goes over bioinformatics and computational biology",
-          leaders: "Olivia Gorska and Brian Ochoa",
-          time: "Time TBD",
-          loc: "Location TBD",
+          name: "sig-print",
+          desc: "A place to discuss and learn about 3D-Printers and 3D-Printing. From maintenance to modeling, if you have any interest in the hobby, feel free to stop by!",
+          leaders: "Max Hammond",
+          time: "Mondays 3:00-4:00 P.M.",
+          loc: "GITC 3700",
+          filename: "sig-print.png",
         },
         {
-          name: "sig-cloud",
-          desc: "SIG Cloud focuses on learning and understanding how and what cloud computing is by exploring its principles, benefits, and use-cases together.",
-          leaders: "Isaac Guerrero",
-          time: "Time TBD",
-          loc: "Location TBD",
+          name: "sig-ai",
+          desc: "Join us for this semester's project, where we will be coding a transformer model and utilizing its different capabilities, like text summarization!",
+          leaders: "Ashwin Selvendran",
+          time: "Thursdays 11:30-1:00 P.M.",
+          loc: "GITC 3700",
+          filename: "sig-ai.png",
         },
         {
           name: "sig-embedded",
-          desc: "SIG-Embedded is dedicating to exploring different embedded systems and related fields. We will be  going over computer networking, operating systems, RaspberryPi programming, CDH Engineering basics, Core Flight System Framework, and other topics.",
-          leaders: "Brian Ochoa",
-          time: "Wednesdays 1:00-2:00 P.M.",
-          loc: "GITC 3600",
-        },
-        {
-          name: "sig-frontline",
-          desc: "SIG Frontline is all about using each other's skills and strengths to build large scale projects for ourselves and other students! The team is currently working on building a new version of NJIT's Schedule Builder app.",
-          leaders: "Ethan Ho",
-          time: "Tuesdays 6:00-7:00 P.M.",
-          loc: "GITC 3700 / Virtual",
-        },
-        {
-          name: "sig-web-dev",
-          desc: "SIG Web Dev is all about web development, including frontend, backend. Utilizes  HTML, javascript, and CSS",
-          leaders: "Tergel Sukhee",
-          time: "Thursays 1:00-2:00 P.M.",
-          loc: "GITC 3600",
-        },
-        {
-          name: "sig-xr",
-          desc: "SIG XR aims to explore what VR tech can do, have fun playing games, and discuss general design topics. The SIG will also delve into project set-up, programming, and designing interactions. ",
-          leaders: "David Garcia",
-          time: "Mondays 6:00-7:00 P.M.",
+          desc: "We'll cover serial communications protocols, the basics of microcontrollers, and the importance of C/C++ within this and more!",
+          leaders: "Mathew Padilla",
+          time: "Fridays 2:15-3:15 P.M.",
           loc: "GITC 3700",
+          filename: "sig-embedded.png",
+        },
+        {
+          name: "sig-emulation-development",
+          desc: "Interested in learning about developing emulators to play games like Zelda, Kirby, Mario, etc? Build one with us this semester and leave with a great resume project.",
+          leaders: "Yonden Sawyers",
+          time: "Tuesdays 5:00-6:00 P.M.",
+          loc: "GITC 3700",
+          filename: "sig-emu.png",
+        },
+        {
+          name: "sig-data-engineering",
+          desc: "Join our SIG and jump into the essentials of data engineering, including data pipelines, ETL processes, and how to design data to be utilized by ML models.",
+          leaders: "Kamil Arif",
+          time: "Tuesdays 3:00-4:00 P.M.",
+          loc: "Online",
+          filename: "sig-data.png",
+        },
+        {
+          name: "sig-quantum",
+          desc: "Learn all about quantum computing! We're open to all experience levels, so come join to learn and play around with some really cool stuff!",
+          leaders: "Sameer Butt",
+          time: "Thursdays 5:30-6:00 P.M.",
+          loc: "GITC 3700",
+          filename: "sig-quantum.png",
         },
         {
           name: "sig-supercomputer",
-          desc: "SIG SuperComputer is a group dedicating to learning about advanced computing, and competing in the national Student Cluster Competition.",
-          leaders: "Garrett",
-          time: "Time TBD",
-          loc: "GITC 3600",
+          desc: "SIG-Supercomputer is a group dedicating to learning about advanced computing, and competing in the national Student Cluster Competition.",
+          leaders: "Garrett Gonzalez-Rivas",
+          time: "Time TBA",
+          loc: "TBA",
+          filename: "sig-supercomputer.png",
         },
         {
-          name: "sig-cog-comp",
-          desc: "SIG CogComp is a learning group for Computational Neuroscience. We will be trying to learn more about brain computation by looking at mathematical modeling, computer simulation and AI.",
-          leaders: "Maciej Gajda",
-          time: "Time TBD",
-          loc: "Location TBD",
+          name: "sig-vue",
+          desc: "Sig-Vue is an ACM Special Interest Group that focuses on teaching the Vue web development framework through a series of workshops.",
+          leaders: "Abdullah Imran",
+          time: "Fridays 4:00-5:00 P.M.",
+          loc: "GITC 3700",
+          filename: "sig-vue.svg",
         },
       ],
     };
@@ -140,11 +149,15 @@ export default {
 .outer-container {
   width: 80%;
   margin: 0 auto;
+  margin-bottom: 10rem;
 }
 .sig-container {
-  width: 90%;
-  display: flex;
-  gap: 3rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  grid-template-rows: 700px 700px 700px;
+  row-gap: 8rem;
+  column-gap: 5rem;
   flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
@@ -158,5 +171,16 @@ h3 {
 }
 p {
   font-size: 3rem;
+}
+@media (max-width: 1400px) {
+  .sig-container {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+@media (max-width: 900px) {
+  .sig-container {
+    grid-template-columns: repeat(1, 100%);
+    margin: 0 auto;
+  }
 }
 </style>

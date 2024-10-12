@@ -1,41 +1,54 @@
 <template>
   <div class="outer-container">
-    <EboardSpotlight
-      :position="selectedEboard.Role"
-      :positionDesc="eboardDescs[selectedEboard.Role]"
-      :incumbent="selectedEboard.Name"
-      :incumbentDesc="selectedEboard.desc"
-      :imageName="getImagePath(selectedEboard.Role, selectedEboard.Term)"
-    ></EboardSpotlight>
-    <div class="year-container">
-      <header>
-        <h2>2024 Eboard</h2>
-        <span
-          class="svg material-symbols-outlined"
-          :class="{ open: showEboard['2024'] }"
-          @click="toggleEboard('2024')"
-          >keyboard_arrow_down</span
+    <HorizontalSection imagePath="eboard/2024/WholeBoard.png">
+      <template v-slot:title>About Us</template>
+      <template v-slot:content>
+        <p style="font-size: 2.5rem">
+          If you're new to clubs at NJIT, the Eboard is the group of students,
+          elected at the end of every Fall, that run ACM! We handle all event
+          planning and daily operations of the club. The current Eboard is
+          comprised on eight position listed below. Scroll down further to find
+          out more about out current Eboard!
+        </p>
+      </template>
+    </HorizontalSection>
+    <!-- <div class="positions-spotlight">
+      <img style="width: 25%" src="../../assets/logos/NJIT_ACM_LOGO.svg" />
+      <div class="positions">
+        <div
+          v-for="position in eboardPositions"
+          :key="position"
+          class="position-buttons"
         >
-        <!-- Outlined -->
-      </header>
-      <TransitionExpand>
-        <div class="eboardContainer" v-show="showEboard['2024']" :ref="'2024'">
-          <div class="spacer1"></div>
-          <EBoardCard
-            @selectEboard="setSelected"
-            v-for="member in currentEboard"
-            :key="member.Role"
-            :position="member.Role"
-            :positionDesc="member.desc"
-            :incumbent="member.Name"
-            :incumbentDesc="member.desc"
-            :imageName="getImagePath(member.Role, member.Term)"
-            :isSelected="member.isSelected"
-            currEboard="true"
-          />
-          <div class="spacer2"></div>
+          <button
+            class="position-button"
+            :class="{
+              selected_position: selectedPosition == position,
+            }"
+            @click="setPosition(position)"
+          >
+            {{ position }}
+          </button>
         </div>
-      </TransitionExpand>
+      </div>
+      <div class="position-desc">
+        <p>{{ eboardDescs[selectedPosition] }}</p>
+      </div>
+    </div> -->
+    <header style="margin: 1.5rem 4rem">
+      <h2>Current Eboard</h2>
+    </header>
+    <div class="spotlight">
+      <MainEboardCard
+        v-for="(member, i) in currentEboard"
+        :key="member"
+        :position="member.Role"
+        :name="member.Name"
+        :personalDesc="member.desc"
+        :imageName="getImagePath(member.Role, member.Term)"
+        :id="i"
+      >
+      </MainEboardCard>
     </div>
     <div class="pastEboard">
       <div v-for="year in years" :key="year">
@@ -63,7 +76,6 @@
               :incumbent="member.Name"
               :incumbentDesc="member.desc"
               :imageName="getImagePath(member.Role, member.Term)"
-              :isSelected="member.isSelected"
             />
             <div class="spacer2"></div>
           </div>
@@ -76,24 +88,18 @@
 <script>
 import "material-symbols";
 import EBoardCard from "../EBoardCard.vue";
-import EboardSpotlight from "../EboardSpotlight.vue";
 import jsonEboard from "../../assets/data/eboard.js";
 import TransitionExpand from "../TransitionExpand.vue";
-
+import MainEboardCard from "../MainEboardCard.vue";
+import HorizontalSection from "../HorizontalSection.vue";
 export default {
   components: {
     EBoardCard,
-    EboardSpotlight,
     TransitionExpand,
+    MainEboardCard,
+    HorizontalSection,
   },
   methods: {
-    setSelected(position) {
-      this.selectedEboard.isSelected = false;
-      this.selectedEboard = this.currentEboard.filter(
-        (member) => member.Role === position && member.Term == "2024"
-      )[0];
-      this.selectedEboard.isSelected = true;
-    },
     getImagePath(role, year) {
       let path = "webmaster.png";
       switch (role) {
@@ -129,12 +135,15 @@ export default {
     getEboard(year) {
       return this.eboard.filter((member) => member.Term == year);
     },
+    setPosition(position) {
+      this.selectedPosition = position;
+    },
     toggleEboard(year) {
       if (!this.showEboard[year]) {
         this.showEboard[year] = false;
       }
       this.showEboard[year] = !this.showEboard[year];
-      for (let index = 2000; index <= 2024; index++) {
+      for (let index = 2000; index <= 2023; index++) {
         if (index != year) {
           this.showEboard[index] = false;
         }
@@ -143,12 +152,21 @@ export default {
   },
 
   data() {
-    let currEboard = jsonEboard.filter((member) => member.Term == "2024");
-    currEboard[0].isSelected = true;
     return {
+      selectedPosition: "President",
       showEboard: {
         2024: true,
       },
+      eboardPositions: [
+        "President",
+        "Vice President",
+        "Secretary",
+        "Treasurer",
+        "Graphic Designer",
+        "Webmaster",
+        "Event Master",
+        "Public Relations",
+      ],
       eboardDescs: {
         President:
           "The President of ACM is responsible for leading the club. You'll see them take center stage during our general body meetings with a gavel passed down through generations of Presidents. The President presides over all functions of the club, with all other eboard officers reporting directly to and being managed by them.",
@@ -176,33 +194,77 @@ export default {
           "ACM's Head of Public Relations is responsible for all advertisting, including running our various social media accounts, putting up posters, and spreading ACM news by word of mouth. ",
       },
       eboard: jsonEboard,
-      selectedEboard: currEboard[0],
-      currentEboard: currEboard,
-      years: ["2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016"],
+      currentEboard: jsonEboard.filter((member) => member.Term == "2024"),
+      years: [
+        //"2024",
+        "2023",
+        "2022",
+        "2021",
+        "2020",
+        "2019",
+        "2018",
+        "2017",
+        "2016",
+      ],
     };
   },
 };
 </script>
 
 <style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: all 1s ease-in-out;
-}
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-  transform: translateY(-60px);
-}
 .outer-container {
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+}
+header.page-header {
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+}
+.position-button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+}
+.selected_position {
+  transform: scale(1.05);
+  color: red;
+}
+.spotlight {
+  margin: 0 auto;
+  display: grid;
+  row-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, 25%);
+  justify-content: center;
+  justify-items: center;
+}
+.positions-spotlight {
+  display: flex;
+  gap: 1rem;
+}
+.positions-spotlight img {
+  min-width: 25%;
+}
+.positions {
+  min-width: 17.5%;
+  display: grid;
+  grid-template-rows: repeat(8, 12.5%);
+}
+.position-buttons {
+  font-size: 2rem;
+  padding-left: 2rem;
+}
+.position-buttons label {
+  padding-left: 1rem;
+}
+.position-desc p {
+  font-size: 2.5rem;
 }
 .eboardContainer {
   display: grid;
   grid-template-rows: 250px 250px;
   grid-template-columns: repeat(6, 17.5%);
+  row-gap: 2rem;
   margin: 0 auto;
   flex-wrap: wrap;
   margin: 0 0;
@@ -210,12 +272,7 @@ export default {
 .eboardContainer * {
   justify-self: center;
 }
-/* .eboard-hidden {
-  animation-name: close-margin;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
+
 .eboard-hidden::after {
   margin: 0;
 }
@@ -227,8 +284,8 @@ export default {
 }
 .eboard-show::after {
   margin: 2.5rem 0;
-} */
-.spacer1 {
+}
+* .spacer1 {
   grid-column: 1;
   grid-row: 1/3;
 }
@@ -252,11 +309,20 @@ h2 {
   transition: all 0.25s ease-in-out;
   cursor: pointer;
   color: black;
+  align-self: center;
 }
 .open {
   transform: rotate(180deg);
 }
-
+.v-enter-active,
+.v-leave-active {
+  transition: all 1s ease-in-out;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+  transform: translateY(-60px);
+}
 @keyframes close-margin {
   100% {
     margin: 0;
@@ -267,14 +333,88 @@ h2 {
     margin: 2.5rem 0;
   }
 }
-
+@media (max-width: 1800px) {
+  .spotlight {
+    grid-template-columns: repeat(3, 33%);
+  }
+}
 @media (max-width: 1700px) {
   .eboardContainer {
-    width: 70%;
+    margin: 0 auto;
   }
 }
 
-@media (max-width: 1250px) {
+@media (max-width: 1700px) {
+  .eboardContainer {
+    grid-template-columns: repeat(5, 20%);
+  }
+
+  .spacer1 {
+    grid-column: 1;
+    grid-row: 1/4;
+  }
+  .spacer2 {
+    grid-column: 5;
+    grid-row: 1/4;
+  }
+}
+
+@media (max-width: 1400px) {
+  .spotlight {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+@media (max-width: 1350px) {
+  .card {
+    min-width: 30%;
+  }
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(4, 20%);
+    gap: 1rem;
+  }
+  .spacer1 {
+    display: none;
+  }
+  .spacer2 {
+    display: none;
+  }
+}
+@media (max-width: 1050px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(3, 30%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 1000px) {
+  .spotlight {
+    grid-template-columns: repeat(1, 100%);
+  }
+}
+@media (max-width: 800px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 40%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 550px) {
+  .eboardContainer {
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 40%);
+    gap: 1rem;
+  }
+}
+@media (max-width: 550px) {
+  header {
+    margin: 0 1rem;
+  }
+  h2 {
+    font-size: 3.5rem;
+  }
+}
+/* @media (max-width: 1250px) {
   .eboardContainer {
     width: 82.5%;
   }
@@ -290,5 +430,5 @@ h2 {
   .eboardContainer {
     width: 100%;
   }
-}
+} */
 </style>

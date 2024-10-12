@@ -39,7 +39,7 @@ export default {
   components: { CollapsableNav },
   data() {
     return {
-      showHeader: true,
+      showHeader: false,
       fixedHeader: false,
     };
   },
