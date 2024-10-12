@@ -200,4 +200,17 @@ button {
     border-radius: 8px 8px 0 0;
   }
 }
+
+@media (max-width: 500px) {
+  aside {
+    flex-direction: column;
+  }
+  aside * {
+    width: 100%;
+  }
+  .wherewhen {
+    width: 100%;
+    text-align: center;
+  }
+}
 </style>

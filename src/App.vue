@@ -1,13 +1,11 @@
 <template>
-  <body>
-    <TheHeader />
-    <router-view v-slot="{ Component }">
-      <transition name="fade" mode="out-in">
-        <component :is="Component" />
-      </transition>
-    </router-view>
-    <TheFooter />
-  </body>
+  <TheHeader />
+  <router-view v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component" />
+    </transition>
+  </router-view>
+  <TheFooter />
 </template>
 <script>
 import { RouterView } from "vue-router";
@@ -32,7 +30,7 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Times New Roman", Times, serif;
+  font-family: sans-serif;
 }
 html {
   background-color: whitesmoke;

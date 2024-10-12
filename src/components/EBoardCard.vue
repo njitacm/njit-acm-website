@@ -57,6 +57,7 @@ export default {
   opacity: 0.9;
   width: fit-content;
   transform: translateY(1.6rem);
+  height: 100%;
 }
 .currEboard {
   cursor: pointer;
@@ -74,6 +75,7 @@ img {
   box-shadow: 0px 0px 7.5px 1px red;
   opacity: 1;
   transform: translateY(0rem);
+  height: 100%;
 }
 
 .selected img {
@@ -85,5 +87,17 @@ img {
   /* .card {
     width: 12rem;
   } */
+}
+@media (max-width: 600px) {
+  img {
+    width: 18rem;
+    height: 18rem;
+  }
+}
+@media (max-width: 400px) {
+  img {
+    width: 15rem;
+    height: 15rem;
+  }
 }
 </style>

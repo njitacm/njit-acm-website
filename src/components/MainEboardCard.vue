@@ -22,8 +22,8 @@
     </div>
   </main>
 </template>
-  
-  <script>
+
+<script>
 import { store } from "../store.js";
 
 export default {
@@ -49,8 +49,8 @@ export default {
   },
 };
 </script>
-  
-  <style scoped>
+
+<style scoped>
 * {
   transition: all 0.25s ease-in-out;
 }
