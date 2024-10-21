@@ -16,7 +16,7 @@ const routes = [
         beforeEnter: () => {
             if (window.innerWidth < 1100) {
                 window.open('https://computing.njit.edu/tutoring');
-                return false;
+                return { path: '/' }
             }
         },
         component: TutoringView
