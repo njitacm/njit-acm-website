@@ -123,6 +123,7 @@ export default {
   methods: {
     async getTutors() {
       this.tutors = tutors;
+      console.log("Test");
       this.getCourses();
     },
     // async getAttendance() {
