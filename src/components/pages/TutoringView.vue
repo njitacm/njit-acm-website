@@ -94,7 +94,7 @@
           :class="{ 'even-row': (Math.floor((index - 1) / 6) + 1) % 2 == 0 }"
         >
           <button :ref="index" @click="selectDate(index)">
-            {{ getTimeString(index) }}
+            {{ timeIntToString(this.getTime(index))}}
           </button>
         </div>
 
