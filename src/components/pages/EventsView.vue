@@ -11,49 +11,40 @@
         </p>
         <p>
           To learn more about what we have to offer, follow ACM on
-          <a href="https://njit.campuslabs.com/engage/organization/acm"
-            >Highlander Hub</a
-          >, or stop by one of our weekly General Body Meetings to learn how you
+          <a href="https://njit.campuslabs.com/engage/organization/acm">Highlander Hub</a>, or stop by one of our weekly
+          General Body Meetings to learn how you
           can get involved with ACM!
         </p>
       </template>
     </HorizontalSection>
     <div class="main">
-      <MainEvent
-        v-for="event in mainEvents"
-        :key="event.title"
-        :title="event.title"
-        :desc="event.desc"
-        :imgName="event.imgName"
-      >
+      <MainEvent v-for="event in mainEvents" :key="event.title" :title="event.title" :desc="event.desc"
+        :imgName="event.imgName">
       </MainEvent>
     </div>
     <div class="upcoming-events">
       <h2>Upcoming Events</h2>
-      <EventCard
-        v-for="event in events"
-        :event="event"
-        :key="event.name"
-        :name="event.name"
-        :desc="event.desc"
-        :day="event.day"
-        :month="event.month"
-        :year="event.year"
-        :location="event.location"
-        :type="event.type"
-        :link="event.link"
-        :imgName="event.img"
-      ></EventCard>
+      <div v-if="events" class="events-grid">
+        <EventCard v-for="event in events" :key="event.Title" :title="event.Title" :location="event.Location"
+          :time="event.Time" :imageUrl="event.Url"></EventCard>
+      </div>
+      <div v-else class="no-events">
+        <h1>There are no events currently scheduled</h1>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import HorizontalSection from "../HorizontalSection.vue";
-import EventCard from "../EventCard.vue";
 import MainEvent from "../MainEvent.vue";
+import eventsJSON from "../../assets/data/events.json";
+import EventCard from "../EventCard.vue";
 export default {
-  components: { HorizontalSection, EventCard, MainEvent },
+  components: { HorizontalSection, MainEvent, EventCard },
+  mounted() {
+    console.log(this.events)
+  },
   data() {
     return {
       mainEvents: [
@@ -68,40 +59,7 @@ export default {
           imgName: "jerseyctf.png",
         },
       ],
-      events: [
-        {
-          name: "Test Driven Development Workshop with Guardian Life",
-          type: "Workshop",
-          desc: "Come join Guardian Life, a life insurance company, ACM, GDSC, and WiCS for a test driven development (TDD) workshop. This event is open to anybody with an interest TDD! ",
-          month: "April",
-          day: 12,
-          location: "GITC 1400",
-          year: 2024,
-          img: "ShazamBuzzer.gif",
-        },
-        {
-          name: "Movie/Video Game Pool Night!!",
-          type: "Fun Event",
-          desc: "Join us to watch a movie, play some games, and swim! Meet people of different passions at the WEC Pool. Collaborating with Anime Club, Esports Club, ACM, and RHA.",
-          month: "April",
-          day: 19,
-          year: 2024,
-          location: "WEC Pool",
-          link: "https://njit.campuslabs.com/engage/event/10081972",
-          img: "Movie__Game_Night.png",
-        },
-        {
-          name: "Shazam Buzzer Beater",
-          type: "Fun Event",
-          desc: "Join Association of Computing Machinery and Society of Musical Arts in night of friendly tourament-style competition, music, or just hang out and enjoy free pizza! Individuals will verse each other and test their musical knowledge by being the first one to guess a random song as quick as possible! One person will make it out in the end and win a Squishmellow!",
-          month: "April",
-          day: 23,
-          year: 2024,
-          location: "GITC 3700",
-          link: "https://njit.campuslabs.com/engage/event/10126079",
-          img: "ShazamBuzzer.gif",
-        },
-      ],
+      events: eventsJSON,
     };
   },
 };
@@ -112,12 +70,14 @@ export default {
   width: 80%;
   margin: 0 auto;
 }
+
 .main {
   display: flex;
   justify-content: center;
   gap: 7.5rem;
   flex-wrap: wrap;
 }
+
 .main-event {
   margin: 4.8rem 0;
   padding: 2rem;
@@ -131,6 +91,7 @@ export default {
   height: 50rem;
   min-width: 550px;
 }
+
 /*
 - Font sizes (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
@@ -142,11 +103,13 @@ export default {
   font-size: 3.6rem;
   text-align: center;
 }
+
 .main-event p {
   font-size: 3rem;
   padding: 1.6rem;
   font-weight: 400;
 }
+
 .main-event img {
   position: absolute;
   width: 100%;
@@ -157,6 +120,7 @@ export default {
   transform: translateY(-50%);
   opacity: 0.4;
 }
+
 .main-event button {
   font-size: 2.4rem;
   border-radius: 0.8rem;
@@ -168,14 +132,32 @@ export default {
   bottom: 4rem;
   left: 50%; */
 }
+
 h2 {
   margin: 2.5rem 4rem;
   font-size: 48px;
   border-bottom: red 4px solid;
 }
+
 p {
   font-size: 3.6rem;
   line-height: 4rem;
+}
+
+.no-events {
+  width: 100%;
+  text-align: center;
+  margin: auto 0;
+}
+
+.no-events h1 {
+  font-size: 4rem;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4, 25%);
 }
 
 @media (max-width: 600px) {
@@ -183,6 +165,7 @@ p {
     width: 90%;
     min-width: 0;
   }
+
   .main-event p {
     margin-bottom: 50px;
   }
