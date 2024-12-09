@@ -17,7 +17,7 @@
         </p>
       </template>
     </HorizontalSection>
-    <div class="main">
+    <div class="main-events-container">
       <MainEvent v-for="event in mainEvents" :key="event.title" :title="event.title" :desc="event.desc"
         :imgName="event.imgName">
       </MainEvent>
@@ -78,20 +78,6 @@ export default {
   flex-wrap: wrap;
 }
 
-.main-event {
-  margin: 4.8rem 0;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 40%;
-  border: 2px red solid;
-  border-radius: 8px;
-  position: relative;
-  height: 50rem;
-  min-width: 550px;
-}
-
 /*
 - Font sizes (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
@@ -99,39 +85,6 @@ export default {
 - Spacing system (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 /48 /64 /80 /96 / 128
 */
-.main-event h3 {
-  font-size: 3.6rem;
-  text-align: center;
-}
-
-.main-event p {
-  font-size: 3rem;
-  padding: 1.6rem;
-  font-weight: 400;
-}
-
-.main-event img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 50%;
-  left: 50%;
-  z-index: -1;
-  transform: translateY(-50%);
-  opacity: 0.4;
-}
-
-.main-event button {
-  font-size: 2.4rem;
-  border-radius: 0.8rem;
-  padding: 0.8rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  /* position: absolute;
-  bottom: 4rem;
-  left: 50%; */
-}
 
 h2 {
   margin: 2.5rem 4rem;
@@ -160,20 +113,56 @@ p {
   grid-template-columns: repeat(4, 25%);
 }
 
-@media (max-width: 600px) {
-  .main-event {
-    width: 90%;
-    min-width: 0;
-  }
+.main-events-container {
+  justify-content: space-around;
+  gap: 5%;
+  display: grid;
+  grid-template-rows: 400px;
+  grid-template-columns: 40% 40%;
+}
 
-  .main-event p {
-    margin-bottom: 50px;
+.upcoming-events {
+  margin-top: 5rem;
+}
+
+
+@media (max-width: 1800px) {
+  .events-grid {
+    grid-template-columns: repeat(3, 33%);
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1400px) {
+  .events-grid {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media (max-width: 950px) {
+  .main-events-container {
+    grid-template-rows: 400px 400px;
+    grid-template-columns: 80%;
+  }
+
+  .events-grid {
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 80%;
+    justify-content: center;
+  }
+
+  .upcoming-events {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
   p {
     font-size: 2.4rem;
   }
+
+  .events-grid {
+    grid-template-rows: auto;
+  }
+
 }
 </style>

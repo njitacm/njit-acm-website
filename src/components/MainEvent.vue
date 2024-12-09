@@ -1,13 +1,10 @@
 <template>
-  <section class="main-event">
-    <div class="main-event-content">
-      <h3>{{ title }}</h3>
-      <p class="main-event-desc">
-        {{ desc }}
-      </p>
-      <button>Learn More</button>
-    </div>
-    <img :src="imagePath" alt="{{ title }} Logo" />
+  <section class="main-event-container" :style="cssProps">
+    <h1>{{ title }}</h1>
+    <p class=" main-event-desc">
+      {{ desc }}
+    </p>
+    <button>Learn More</button>
   </section>
 </template>
 
@@ -16,6 +13,12 @@ export default {
   props: ["title", "desc", "imgName"],
   data() {
     return {
+      cssProps: {
+        backgroundImage: `url(${require('../assets/EventsPage/' + this.$props.imgName)})`,
+        backgroundSize: `contain`,
+        backgroundRepeat: `no-repeat`,
+        backgroundPosition: `center`,
+      },
       imagePath: require("../assets/EventsPage/" + this.$props.imgName),
     };
   },
@@ -23,90 +26,28 @@ export default {
 </script>
 
 <style scoped>
-.main-event {
-  margin: 4.8rem 0;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 40%;
-  border: 2px red solid;
-  border-radius: 8px;
-  position: relative;
-  height: 50rem;
-  min-width: 550px;
-}
-/*
-- Font sizes (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
-
-- Spacing system (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 /48 /64 /80 /96 / 128
-*/
-.main-event {
-  margin: 4.8rem 0;
-  padding: 2rem;
-
-  width: 40%;
-  border: 2px red solid;
-  border-radius: 8px;
-  position: relative;
-  height: auto;
-  min-width: 550px;
-}
-.main-event-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-.main-event h3 {
-  font-size: 7.4rem;
+.main-event-container {
+  display: grid;
+  grid-template-rows: 20% 1fr 5%;
   text-align: center;
 }
-.main-event p {
-  font-size: 3rem;
-  padding: 1.6rem;
-  font-weight: 400;
+
+h1 {
+  font-size: 5rem;
 }
-.main-event img {
-  position: absolute;
+
+p {
+  font-size: 2rem;
+  align-self: center;
+  font-weight: 450;
+}
+
+button {
+  width: 50%;
+  justify-self: center;
+}
+
+img {
   width: 100%;
-  height: 100%;
-  top: 50%;
-  left: 50%;
-  z-index: -1;
-  transform: translateX(-50%) translateY(-50%);
-  opacity: 0.4;
-}
-.main-event button {
-  font-size: 2.4rem;
-  border-radius: 0.8rem;
-  padding: 0.8rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-  padding: 0.8rem;
-  font-size: 3rem;
-  font-weight: bold;
-  background-color: lightpink;
-  border: 2px lightgrey solid;
-  border-radius: 8px;
-}
-
-@media (max-width: 700px) {
-  .main {
-    gap: 3.6rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .main-event p {
-    font-size: 2.4rem;
-  }
-  .main-event h3 {
-    font-size: 6.2rem;
-  }
 }
 </style>

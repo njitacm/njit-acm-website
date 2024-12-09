@@ -12,7 +12,10 @@
 
 <script>
 export default {
-  props: ['title', 'time', 'location', 'url', 'imageUrl']
+  props: ['title', 'time', 'location', 'url', 'imageUrl'],
+  mounted() {
+    console.log(this.$props.imageUrl)
+  }
 }
 </script>
 
@@ -20,7 +23,7 @@ export default {
 .event-card {
   border: 2px lightcoral solid;
   border-radius: 8px;
-  height: 300px;
+  height: fit-content;
 }
 
 .event-text {
@@ -29,6 +32,7 @@ export default {
 
 .event-image {
   width: 100%;
+  min-height: 180px;
   height: 60%;
 }
 
