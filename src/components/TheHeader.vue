@@ -11,10 +11,10 @@
           Association for Computing Machinery</RouterLink
         >
         <CollapsableNav>
-          <RouterLink to="/sigs" class="router-link">SIGs</RouterLink>
-          <RouterLink to="/events" class="router-link">Events</RouterLink>
-          <RouterLink to="/tutoring" class="router-link">Tutoring</RouterLink>
-          <RouterLink to="/about" class="router-link">About</RouterLink>
+          <RouterLink to="/sigs" class="router-link nav">SIGs</RouterLink>
+          <RouterLink to="/events" class="router-link nav">Events</RouterLink>
+          <RouterLink to="/tutoring" class="router-link nav">Tutoring</RouterLink>
+          <RouterLink to="/about" class="router-link nav">About</RouterLink>
         </CollapsableNav>
       </header>
     </Transition>
