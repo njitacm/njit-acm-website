@@ -155,7 +155,7 @@ export default {
     return {
       selectedPosition: "President",
       showEboard: {
-        2024: true,
+        2024: true
       },
       eboardPositions: [
         "President",
@@ -238,28 +238,28 @@ header.page-header {
   justify-content: center;
   justify-items: center;
 }
-.positions-spotlight {
+/* .positions-spotlight {
   display: flex;
   gap: 1rem;
 }
 .positions-spotlight img {
   min-width: 25%;
-}
-.positions {
+} */
+/* .positions {
   min-width: 17.5%;
   display: grid;
   grid-template-rows: repeat(8, 12.5%);
-}
-.position-buttons {
+} */
+/* .position-buttons {
   font-size: 2rem;
   padding-left: 2rem;
 }
 .position-buttons label {
   padding-left: 1rem;
-}
-.position-desc p {
+} */
+/* .position-desc p {
   font-size: 2.5rem;
-}
+} */
 .eboardContainer {
   display: grid;
   grid-template-rows: 250px 250px;
@@ -273,10 +273,10 @@ header.page-header {
   justify-self: center;
 }
 
-.eboard-hidden::after {
+/* .eboard-hidden::after {
   margin: 0;
-}
-.eboard-show {
+} */
+/* .eboard-show {
   animation-name: open-margin;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
@@ -284,7 +284,7 @@ header.page-header {
 }
 .eboard-show::after {
   margin: 2.5rem 0;
-}
+} */
 * .spacer1 {
   grid-column: 1;
   grid-row: 1/3;
@@ -323,16 +323,16 @@ h2 {
   opacity: 0;
   transform: translateY(-60px);
 }
-@keyframes close-margin {
+/* @keyframes close-margin {
   100% {
     margin: 0;
   }
-}
-@keyframes open-margin {
+} */
+/* @keyframes open-margin {
   100% {
     margin: 2.5rem 0;
   }
-}
+} */
 @media (max-width: 1800px) {
   .spotlight {
     grid-template-columns: repeat(3, 33%);
