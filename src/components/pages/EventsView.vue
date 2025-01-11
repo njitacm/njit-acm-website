@@ -11,7 +11,7 @@
         </p>
         <p>
           To learn more about what we have to offer, follow ACM on
-          <a href="https://njit.campuslabs.com/engage/organization/acm">Highlander Hub</a>, or stop by one of our weekly
+          <a href="https://njit.campuslabs.com/engage/organization/acm" target="_blank">Highlander Hub</a>, or stop by one of our weekly
           General Body Meetings to learn how you
           can get involved with ACM!
         </p>
@@ -24,7 +24,7 @@
     </div>
     <div class="upcoming-events">
       <h2>Upcoming Events</h2>
-      <div v-if="events" class="events-grid">
+      <div v-if="events.length" class="events-grid">
         <EventCard v-for="event in events" :key="event.Title" :title="event.Title" :location="event.Location"
           :time="event.Time" :imageUrl="event.Url"></EventCard>
       </div>
@@ -71,12 +71,12 @@ export default {
   margin: 0 auto;
 }
 
-.main {
+/* .main {
   display: flex;
   justify-content: center;
   gap: 7.5rem;
   flex-wrap: wrap;
-}
+} */
 
 /*
 - Font sizes (px)
