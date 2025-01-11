@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header @mousedown="pause" @mouseup="play" @mouseleave="play">
     <div id="header-centerpiece">
       <img
         src="../assets/logos/NJIT_ACM_LOGO.svg"
@@ -8,13 +8,27 @@
       />
     </div>
     <div class="background-container">
-      <div ref="bg1" class="bg1"></div>
+      <div ref="bg1" class="bg1" :style="styles"></div>
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return { 
+      styles: { animationPlayState: 'running' } 
+    };
+  },
+  methods: {
+    pause() {
+      this.styles.animationPlayState = 'paused';
+    },
+    play() {
+      this.styles.animationPlayState = 'running';
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -103,12 +117,12 @@ h2 {
     background-position: -100vw 0;
   }
 }
-@media (max-width: 1550px) {
+/* @media (max-width: 1550px) {
   .background-container {
   }
   .bg1 {
   }
-}
+} */
 @media (max-width: 1100px) {
   #main-logo {
     width: 71.25%;
