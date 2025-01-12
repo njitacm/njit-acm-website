@@ -48,9 +48,9 @@ div {
   border-radius: 8px;
   justify-self: center;
 }
-.sig-header {
+/* .sig-header {
   display: grid;
-}
+} */
 
 h3 {
   font-size: 3.6rem;
