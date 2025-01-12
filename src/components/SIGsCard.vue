@@ -69,7 +69,7 @@ h5 {
 p {
   text-align: center;
   height: 14rem;
-  overflow: scroll;
+  overflow: auto;
   font-size: 1.8rem;
   padding: 0 10px;
 }
