@@ -149,12 +149,11 @@ export default {
       return "grid-column: " + col + "; grid-row: " + row + ";";
     },
     getDay(index) {
-      var row = Math.floor((index - 1) / 6) + 1;
-      var col = index - (row - 1) * 6 + 1;
+      var col = this.getCol(index);
       return col - 2;
     },
     getTime(index) {
-      var row = Math.floor((index - 1) / 6) + 1;
+      var row = this.getRow(index);
       return row + 8;
     },
     getTimeString(index) {
@@ -256,18 +255,18 @@ export default {
       var tutors = this.getTutorsByClass(this.selectedCourse);
       var selectedTutors = [];
       tutors.forEach((tutor) => {
-        console.log(tutor);
+        // console.log(tutor);
         selectedTutors.push(tutor.FirstName + " " + tutor.LastName);
       });
       this.selectionInfo.tutors = selectedTutors;
       this.colorDatesByClass(this.selectedCourse);
     },
     getTutorsByClass(selectedCourse) {
-      console.log(
-        this.tutors.filter((tutor) =>
-          tutor.Courses.some((course) => course == selectedCourse)
-        )
-      );
+      // console.log(
+      //   this.tutors.filter((tutor) =>
+      //     tutor.Courses.some((course) => course == selectedCourse)
+      //   )
+      // );
       return this.tutors.filter((tutor) =>
         tutor.Courses.some((course) => course == selectedCourse)
       );
@@ -279,7 +278,7 @@ export default {
           courseSet.add(course);
         });
       });
-      console.log(courseSet);
+      // console.log(courseSet);
       this.courses = Array.from(courseSet);
     },
     reset() {
@@ -339,11 +338,11 @@ export default {
         console.log("Too large", row, col);
         return 0;
       }
-      console.log(
-        this.business[row],
-        this.business[row].Data,
-        this.business[row].Data[col - 2]
-      );
+      // console.log(
+      //   this.business[row],
+      //   this.business[row].Data,
+      //   this.business[row].Data[col - 2]
+      // );
       return this.business[row].Data[col - 2];
     },
     getColor(index) {
@@ -351,7 +350,7 @@ export default {
       var percent = business / this.maxBusiness;
       var gradientFunction = chroma.scale(["green", "yellow", "red"]);
       var gradient = gradientFunction(percent);
-      console.log(business, this.maxBusiness, percent, gradient);
+      // console.log(business, this.maxBusiness, percent, gradient);
       return gradient;
     },
     getBusinessDescription(index) {
