@@ -40,15 +40,31 @@ export default {
   data() {
     return {
       showHeader: false,
-      fixedHeader: false,
+      // fixedHeader: false,
+      lastScrollTop: 0
     };
   },
   methods: {
     handleScroll() {
-      this.fixedHeader =
-        window.scrollY > this.$refs.pageHeader.clientHeight + 400;
-      this.showHeader =
-        window.scrollY > this.$refs.pageHeader.clientHeight + 1000;
+      let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollTop < 2 * this.$refs.pageHeader.clientHeight) {
+        this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        return;
+      }
+
+      if (scrollTop > this.lastScrollTop) // scrolled down
+          this.showHeader = false;
+      else if (scrollTop < this.lastScrollTop) // scrolled up
+        this.showHeader = true;
+    
+      // For mobile or negative scrolling
+      this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+
+      // this.fixedHeader =
+      //   window.scrollY > this.$refs.pageHeader.clientHeight + 400;
+      // this.showHeader =
+      //   window.scrollY > this.$refs.pageHeader.clientHeight + 1000;
     },
     toTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -67,19 +83,19 @@ export default {
 </script>
 
 <style scoped>
-* {
+/* * {
   transition: all linear 0.25s;
-}
+} */
 
 .v-enter-active,
 .v-leave-active {
-  top: -15px;
-  opacity: 0;
-  transition: all 0.25 ease-in-out, top 0.5s ease-in-out;
+  /* top: -15px; */
+  /* opacity: 0; */
+  transition: top 0.25s ease-in-out;
 }
 .v-enter-from,
 .v-leave-to {
-  opacity: 0;
+  /* opacity: 0; */
   top: -60px;
 }
 header {
@@ -113,12 +129,12 @@ header {
   text-decoration: none;
   color: black;
 }
-nav {
+/* nav {
   display: flex;
   align-items: center;
   gap: 1.2rem;
   margin: 0.4rem 0.8rem;
-}
+} */
 .router-link {
   text-decoration: none;
   color: black;
