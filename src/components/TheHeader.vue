@@ -46,6 +46,10 @@ export default {
   },
   methods: {
     handleScroll() {
+      if (window.innerWidth < 550) {
+        this.showHeader = true;
+        return;
+      }
       let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
       if (scrollTop < 2 * this.$refs.pageHeader.clientHeight) {
