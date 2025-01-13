@@ -243,14 +243,14 @@
           </ul>
         </div>
       </div>
-      <footer>
+      <!-- <footer>
         <button class="close-button" @click="closeModal">Close X</button>
-      </footer>
+      </footer> -->
     </div>
   </div>
 </template>
 
-  <script>
+<script>
 export default {
   name: "ConstitutionView",
   emits: ["close-modal"],
@@ -268,7 +268,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
 #constitution {
   background-image: url("../assets/paperbg.jpg");
@@ -283,7 +282,7 @@ export default {
 .constTitle {
   margin-top: 1% !important;
 }
-.sect {
+/* .sect {
   margin: 0 5% 3% 5%;
 }
 .sect p {
@@ -291,7 +290,7 @@ export default {
 }
 .sect ul {
   margin: 1%;
-}
+} */
 h3 {
   font-size: 4.8rem;
   text-align: center;
@@ -312,9 +311,9 @@ li {
 header {
   text-align: center;
 }
-footer {
+/* footer {
   position: relative;
-}
+} */
 button {
   position: relative;
   right: 50rem;
