@@ -2,7 +2,7 @@
   <div>
     <Transition>
       <header class="fixed-header" ref="pageHeader" v-show="showHeader">
-        <RouterLink to="/" class="router-link-left">ACM</RouterLink>
+        <RouterLink to="/" class="router-link-left" @click="toTop()">ACM</RouterLink>
         <RouterLink
           to="/"
           class="router-link-center meme-title"
@@ -19,7 +19,7 @@
       </header>
     </Transition>
     <header>
-      <RouterLink to="/" class="router-link-left">ACM</RouterLink>
+      <RouterLink to="/" class="router-link-left" @click="toTop()">ACM</RouterLink>
       <RouterLink to="/" class="router-link-center meme-title" @click="toTop()">
         Association for Computing Machinery</RouterLink
       >
@@ -73,7 +73,9 @@ export default {
 
 .v-enter-active,
 .v-leave-active {
-  transition: all 1s ease-in-out;
+  top: -15px;
+  opacity: 0;
+  transition: all 0.25 ease-in-out, top 0.5s ease-in-out;
 }
 .v-enter-from,
 .v-leave-to {
