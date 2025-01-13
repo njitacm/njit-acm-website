@@ -35,6 +35,7 @@ export default {
 html {
   background-color: whitesmoke;
   font-size: 62.5%;
+  margin-top: 60px;
 }
 p {
   font-size: 1.6rem;

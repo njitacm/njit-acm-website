@@ -1,7 +1,7 @@
 <template>
   <div>
     <Transition>
-      <header class="fixed-header" ref="pageHeader" v-show="showHeader">
+      <header class="fixed-header" ref="pageHeader">
         <RouterLink to="/" class="router-link-left" @click="toTop()">ACM</RouterLink>
         <RouterLink
           to="/"
@@ -18,7 +18,7 @@
         </CollapsableNav>
       </header>
     </Transition>
-    <header>
+    <!-- <header>
       <RouterLink to="/" class="router-link-left" @click="toTop()">ACM</RouterLink>
       <RouterLink to="/" class="router-link-center meme-title" @click="toTop()">
         Association for Computing Machinery</RouterLink
@@ -29,7 +29,7 @@
         <RouterLink to="/tutoring" class="router-link">Tutoring</RouterLink>
         <RouterLink to="/about" class="router-link">About</RouterLink>
       </CollapsableNav>
-    </header>
+    </header> -->
   </div>
 </template>
 
@@ -75,13 +75,13 @@ export default {
     },
   },
   created() {
-    window.addEventListener("scroll", this.handleScroll);
+    // window.addEventListener("scroll", this.handleScroll);
   },
   unmounted() {
-    window.removeEventListener("scroll", this.handleScroll);
+    // window.removeEventListener("scroll", this.handleScroll);
   },
   mounted() {
-    this.handleScroll();
+    // this.handleScroll();
   },
 };
 </script>
@@ -100,7 +100,7 @@ export default {
 .v-enter-from,
 .v-leave-to {
   /* opacity: 0; */
-  top: -60px;
+  /* top: -60px; */
 }
 header {
   background: white;
@@ -115,6 +115,7 @@ header {
 }
 
 .fixed-header {
+  height: 60px;
   position: fixed;
 }
 
