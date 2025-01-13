@@ -64,9 +64,9 @@ export default {
 .v-leave-active {
   transition: opacity 0.5s;
 }
-.collapsableNav {
+/* .collapsableNav {
   display: block;
-}
+} */
 .v-enter-from, .v-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
 }
