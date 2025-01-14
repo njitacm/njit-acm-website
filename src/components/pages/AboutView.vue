@@ -52,12 +52,12 @@
     </div>
     <div class="pastEboard">
       <div v-for="year in years" :key="year">
-        <header>
+        <header @click="toggleEboard(year)" 
+        :class="{ 'eboard-header': true, 'selected': showEboard[year] }">
           <h2>{{ year }} Eboard</h2>
           <span
             class="svg material-symbols-outlined"
             :class="{ open: showEboard[year] }"
-            @click="toggleEboard(year)"
             >keyboard_arrow_down</span
           >
         </header>
@@ -142,6 +142,7 @@ export default {
       if (!this.showEboard[year]) {
         this.showEboard[year] = false;
       }
+      
       this.showEboard[year] = !this.showEboard[year];
       for (let index = 2000; index <= 2023; index++) {
         if (index != year) {
@@ -300,6 +301,21 @@ header {
   border-bottom: red 4px solid;
   padding-bottom: 1rem;
   padding-top: 2rem;
+}
+.eboard-header {
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  border-radius: 1rem;
+  padding-left: 2rem;
+  cursor: pointer;
+}
+
+.eboard-header.selected {
+  background-color: red;
+  color: white;
+}
+
+.eboard-header:not(.eboard-header.selected):hover {
+  background-color: lightgrey;
 }
 h2 {
   font-size: 48px;
