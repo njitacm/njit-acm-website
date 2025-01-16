@@ -34,9 +34,9 @@ export default {
 <style scoped>
 /* 1920px SCREEN WIDTH; NORMAL RULES */
 header {
+  width: 100vw;
+  max-height: calc(100vh - var(--navHeight));
   position: relative;
-  /* width: 100vw; */
-  height: 100vh;
   margin-bottom: 1rem;
   border-bottom: 4px solid red;
   z-index: 10;

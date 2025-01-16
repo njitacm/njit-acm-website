@@ -42,6 +42,7 @@ html {
   background-color: whitesmoke;
   font-size: 62.5%;
   margin-top: 60px;
+  overflow-x: hidden;
 }
 p {
   font-size: 1.6rem;
