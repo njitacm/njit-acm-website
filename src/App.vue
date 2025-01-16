@@ -19,6 +19,11 @@ export default {
 </script>
 
 <style>
+:root {
+  --red: rgb(204, 0, 0);  /* hsl(0, 100%, 40%) */
+  --light-red: hsl(0, 100%, 80%);
+  --hoverSpeed: 0.15s;
+}
 /*
 - Font sizes (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98

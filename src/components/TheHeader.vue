@@ -11,10 +11,10 @@
           Association for Computing Machinery</RouterLink
         >
         <CollapsableNav>
-          <RouterLink to="/sigs" class="router-link">SIGs</RouterLink>
-          <RouterLink to="/events" class="router-link">Events</RouterLink>
-          <RouterLink to="/tutoring" class="router-link">Tutoring</RouterLink>
-          <RouterLink to="/about" class="router-link">About</RouterLink>
+          <NavButton to="/sigs" class="router-link" text="SIGs"></NavButton>
+          <NavButton to="/events" class="router-link" text="Events"></NavButton>
+          <NavButton to="/tutoring" class="router-link" text="Tutoring"></NavButton>
+          <NavButton to="/about" class="router-link" text="About"></NavButton>
         </CollapsableNav>
       </header>
     </Transition>
@@ -35,8 +35,10 @@
 
 <script>
 import CollapsableNav from "./CollapsableNav.vue";
+import NavButton from "./NavButton.vue";
+
 export default {
-  components: { CollapsableNav },
+  components: { CollapsableNav, NavButton },
   data() {
     return {
       showHeader: false,
@@ -140,17 +142,6 @@ header {
   gap: 1.2rem;
   margin: 0.4rem 0.8rem;
 } */
-.router-link {
-  text-decoration: none;
-  color: black;
-  text-decoration: none;
-  font-size: 2.4rem;
-  flex: 1 1 0px;
-  padding: 0.8rem;
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-}
 
 @media (max-width: 1300px) {
   .meme-title {
