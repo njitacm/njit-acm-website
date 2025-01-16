@@ -35,7 +35,8 @@ export default {
 /* 1920px SCREEN WIDTH; NORMAL RULES */
 header {
   position: relative;
-  width: 100vw;
+  /* width: 100vw; */
+  height: 100vh;
   margin-bottom: 1rem;
   border-bottom: 4px solid red;
   z-index: 10;
