@@ -11,22 +11,22 @@ export default {
             isSelected: false
         };
     },
-    props: [ 'to', 'text' ],
+    props: [ 'to', 'text', 'id', 'selectedId' ],
     methods: {
-        updateTabSelection(newTab) {
-            if (this.$props.to !== newTab) {
-                this.isSelected = false;
-                console.log("left " + newTab);
-            } else {
-                this.isSelected = true;
-                console.log("entered " + newTab);
-            }
+        updateSelection() {
+            this.isSelected = this.$props.id == this.$props.selectedId;
+            console.log('update selection to ' + this.isSelected);
         }
     },
-    watch: {
-        $route (to) {
-            this.updateTabSelection(to.fullPath);
-        }
+    // e.g. when collapsable nav opens
+    mounted() {
+        this.updateSelection()
+        console.log('mounted');
+    },
+    // e.g. when user clicks & changes "tab"
+    updated() {
+        this.updateSelection()
+        console.log('updated');
     }
 }
 </script>
@@ -64,15 +64,15 @@ button:hover:not(.selected) {
 }
 
 .router-link {
-  text-decoration: none;
-  color: var(--red);
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 2.4rem;
-  flex: 1 1 0px;
-  padding: 0.8rem;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+    text-decoration: none;
+    color: var(--red);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 2.4rem;
+    flex: 1 1 0px;
+    padding: 0.8rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 </style>

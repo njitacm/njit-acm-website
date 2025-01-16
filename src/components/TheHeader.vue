@@ -10,11 +10,14 @@
         >
           Association for Computing Machinery</RouterLink
         >
-        <CollapsableNav>
-          <NavButton to="/sigs" class="router-link" text="SIGs"></NavButton>
-          <NavButton to="/events" class="router-link" text="Events"></NavButton>
-          <NavButton to="/tutoring" class="router-link" text="Tutoring"></NavButton>
-          <NavButton to="/about" class="router-link" text="About"></NavButton>
+        <CollapsableNav @collapsableNavOpened="updateTabSelection">
+          <NavButton v-for="(button, to) in navData" 
+            :key="button.id" 
+            :id="button.id"
+            :to="to"
+            :text="button.text"
+            :selectedId="selectedId">
+          </NavButton>
         </CollapsableNav>
       </header>
     </Transition>
@@ -41,12 +44,46 @@ export default {
   components: { CollapsableNav, NavButton },
   data() {
     return {
+      selectedId: -1,
+      currPath: undefined,
+      navData: {
+        '/sigs': { id: 0, text: 'SIGs' },
+        '/events': { id: 1, text: 'Events' },
+        '/tutoring': { id: 2, text: 'Tutoring' },
+        '/about': { id: 3, text: 'About' }
+      },
       showHeader: false,
       // fixedHeader: false,
       lastScrollTop: 0
     };
   },
+  watch: {
+    $route(to) {
+      console.log('changed path');
+      console.log(to.fullPath);
+      this.currPath = to.fullPath;
+      this.updateTabSelection();
+    }
+  },
   methods: {
+    updateTabSelection() {
+      console.log('update tab selection');
+      if (this.currPath === undefined)
+        return;
+
+      if (this.navData[this.currPath])
+        this.selectedId = this.navData[this.currPath].id
+      else    // no tab e.g. "home" etc.
+        this.selectedId = -1;
+    
+      // if (this.$props.to !== this.currPath) {
+      //   this.isSelected = false;
+      //   console.log("left " + this.currPath);
+      // } else {
+      //   this.isSelected = true;
+      //   console.log("entered " + this.currPath);
+      // }
+    },
     handleScroll() {
       if (window.innerWidth < 550) {
         this.showHeader = true;
