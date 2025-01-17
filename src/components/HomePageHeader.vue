@@ -59,7 +59,7 @@ h2 {
   margin-top: 0.8rem;
   text-align: center;
   z-index: 50;
-  animation: throb 3s linear infinite;
+  animation: throb 3s ease-in-out infinite;
 }
 /* text-shadow: 1px 1px 0 #000,
     -1px 1px 0 #000,
@@ -98,7 +98,7 @@ h2 {
 .background-container {
   display: flex;
   flex-wrap: nowrap;
-  width: 200vw;
+  width: 100vw;
   height: 56.25vw;
   overflow: hidden;
 }
@@ -111,20 +111,25 @@ h2 {
   background-size: 100%;
 
   object-fit: fill;
-  animation: scroll-left 30s linear infinite;
-}
+  animation: scroll-left 30s linear infinite, zoom 30s ease-in-out infinite;
+} 
 
 @keyframes throb {
-  0% {opacity: 0.5;}
+  0% {opacity: 0.75;}
   50% {opacity: 1;}
-  100% {opacity: 0.5;}
+  100% {opacity: 0.75;}
+}
+
+@keyframes zoom {
+  0% { transform: scale(100%); }
+  50% { transform: scale(125%); }
+  100% { transform: scale(100%); }
 }
 
 @keyframes scroll-left {
-  to {
-    background-position: -100vw 0;
-  }
+  to { background-position: -100vw -56.25vw; }
 }
+
 /* @media (max-width: 1550px) {
   .background-container {
   }
