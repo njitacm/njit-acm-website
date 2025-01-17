@@ -56,4 +56,12 @@ p {
 .fade-leave-to {
   opacity: 0;
 }
+
+a {
+  color: var(--red);
+}
+
+img {
+  user-select: none;
+}
 </style>

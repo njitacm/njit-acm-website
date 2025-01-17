@@ -59,6 +59,7 @@ h2 {
   margin-top: 0.8rem;
   text-align: center;
   z-index: 50;
+  animation: throb 3s linear infinite;
 }
 /* text-shadow: 1px 1px 0 #000,
     -1px 1px 0 #000,
@@ -110,7 +111,13 @@ h2 {
   background-size: 100%;
 
   object-fit: fill;
-  animation: scroll-left 20s linear infinite;
+  animation: scroll-left 30s linear infinite;
+}
+
+@keyframes throb {
+  0% {opacity: 0.5;}
+  50% {opacity: 1;}
+  100% {opacity: 0.5;}
 }
 
 @keyframes scroll-left {
