@@ -315,8 +315,13 @@ header {
 }
 
 .eboard-header:not(.eboard-header.selected):hover {
-  background-color: lightgrey;
+  background-color: var(--light-red);
 }
+
+.eboard-header.selected > .svg {
+  filter: invert(100%);
+}
+
 h2 {
   font-size: 48px;
 }
