@@ -85,7 +85,7 @@ export default {
         {
           title: "What Do You Offer At Meetings?",
           content:
-            " General body meetings are a place for us to share club news and to help members better get to know each other. Each meeting will largely consist of us sharing events run by us or our partner organizations. Afterwards we sometimes run computer science related discussions or challenges to do before the meeting officially ends. At this point members can talk amongst themselves or with the e-board if they wish to stay. These meetings are also the way we determine active members, who will be eligible to run for e-board or vote ",
+            " General body meetings are a place for us to share club news and to help members better get to know each other. Each meeting will largely consist of us sharing events run by us or our partner organizations. Afterwards we sometimes run computer science related discussions or challenges to do before the meeting officially ends. At this point members can talk amongst themselves or with the e-board if they wish to stay. These meetings are also the way we determine active members, who will be eligible to run for e-board or vote. ",
         },
         {
           title: "What's The Time and Location of Meetings?",

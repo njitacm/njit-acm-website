@@ -48,9 +48,9 @@ div {
   border-radius: 8px;
   justify-self: center;
 }
-.sig-header {
+/* .sig-header {
   display: grid;
-}
+} */
 
 h3 {
   font-size: 3.6rem;
@@ -69,7 +69,7 @@ h5 {
 p {
   text-align: center;
   height: 14rem;
-  overflow: scroll;
+  overflow: auto;
   font-size: 1.8rem;
   padding: 0 10px;
 }

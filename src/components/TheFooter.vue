@@ -30,7 +30,7 @@
         <a href="https://acm.org" target="_blank">Visit ACM National</a>
       </button>
       <button>
-        <RouterLink to="/constitution" class="router-link"
+        <RouterLink to="/constitution" class="router-link" @click="toTop"
           >ACM Constitution</RouterLink
         >
       </button>
@@ -49,12 +49,15 @@ export default {
     };
   },
   methods: {
-    closeModal() {
-      this.constitutionOpen = false;
-    },
-    openModal() {
-      this.constitutionOpen = true;
-    },
+    // closeModal() {
+    //   this.constitutionOpen = false;
+    // },
+    // openModal() {
+    //   this.constitutionOpen = true;
+    // },
+    toTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   },
 };
 </script>

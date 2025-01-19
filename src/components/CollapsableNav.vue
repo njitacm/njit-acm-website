@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  emits: [ 'collapsableNavOpened' ],
   data() {
     return {
       navOpen: false,
@@ -24,6 +25,8 @@ export default {
       if (!this.navOpen) {
         event.target.style.transform = "rotate(-90deg)";
         this.navOpen = true;
+        console.log("nav open!!");
+        this.$emit('collapsableNavOpened');
       } else {
         event.target.style.transform = "";
         this.navOpen = false;
@@ -64,9 +67,9 @@ export default {
 .v-leave-active {
   transition: opacity 0.5s;
 }
-.collapsableNav {
+/* .collapsableNav {
   display: block;
-}
+} */
 .v-enter-from, .v-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
 }

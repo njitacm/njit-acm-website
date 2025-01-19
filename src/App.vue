@@ -19,6 +19,12 @@ export default {
 </script>
 
 <style>
+:root {
+  --navHeight: 60px;
+  --red: rgb(204, 0, 0);  /* hsl(0, 100%, 40%) */
+  --light-red: hsl(0, 100%, 90%);
+  --hoverSpeed: 0.15s;
+}
 /*
 - Font sizes (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
@@ -35,6 +41,8 @@ export default {
 html {
   background-color: whitesmoke;
   font-size: 62.5%;
+  margin-top: 60px;
+  overflow-x: hidden;
 }
 p {
   font-size: 1.6rem;
@@ -47,5 +55,13 @@ p {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+a {
+  color: var(--red);
+}
+
+img {
+  user-select: none;
 }
 </style>

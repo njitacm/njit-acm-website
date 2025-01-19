@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header @mousedown="pause" @mouseup="play" @mouseleave="play">
     <div id="header-centerpiece">
       <img
         src="../assets/logos/NJIT_ACM_LOGO.svg"
@@ -8,20 +8,35 @@
       />
     </div>
     <div class="background-container">
-      <div ref="bg1" class="bg1"></div>
+      <div ref="bg1" class="bg1" :style="styles"></div>
     </div>
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return { 
+      styles: { animationPlayState: 'running' } 
+    };
+  },
+  methods: {
+    pause() {
+      this.styles.animationPlayState = 'paused';
+    },
+    play() {
+      this.styles.animationPlayState = 'running';
+    }
+  }
+};
 </script>
 
 <style scoped>
 /* 1920px SCREEN WIDTH; NORMAL RULES */
 header {
-  position: relative;
   width: 100vw;
+  max-height: calc(100vh - var(--navHeight));
+  position: relative;
   margin-bottom: 1rem;
   border-bottom: 4px solid red;
   z-index: 10;
@@ -44,6 +59,7 @@ h2 {
   margin-top: 0.8rem;
   text-align: center;
   z-index: 50;
+  animation: throb 3s ease-in-out infinite;
 }
 /* text-shadow: 1px 1px 0 #000,
     -1px 1px 0 #000,
@@ -82,7 +98,7 @@ h2 {
 .background-container {
   display: flex;
   flex-wrap: nowrap;
-  width: 200vw;
+  width: 100vw;
   height: 56.25vw;
   overflow: hidden;
 }
@@ -95,20 +111,31 @@ h2 {
   background-size: 100%;
 
   object-fit: fill;
-  animation: scroll-left 20s linear infinite;
+  animation: scroll-left 30s linear infinite, zoom 30s ease-in-out infinite;
+} 
+
+@keyframes throb {
+  0% {opacity: 0.75;}
+  50% {opacity: 1;}
+  100% {opacity: 0.75;}
+}
+
+@keyframes zoom {
+  0% { transform: scale(100%); }
+  50% { transform: scale(125%); }
+  100% { transform: scale(100%); }
 }
 
 @keyframes scroll-left {
-  to {
-    background-position: -100vw 0;
-  }
+  to { background-position: -100vw -56.25vw; }
 }
-@media (max-width: 1550px) {
+
+/* @media (max-width: 1550px) {
   .background-container {
   }
   .bg1 {
   }
-}
+} */
 @media (max-width: 1100px) {
   #main-logo {
     width: 71.25%;

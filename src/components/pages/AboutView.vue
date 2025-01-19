@@ -52,12 +52,12 @@
     </div>
     <div class="pastEboard">
       <div v-for="year in years" :key="year">
-        <header>
+        <header @click="toggleEboard(year)" 
+        :class="{ 'eboard-header': true, 'selected': showEboard[year] }">
           <h2>{{ year }} Eboard</h2>
           <span
             class="svg material-symbols-outlined"
             :class="{ open: showEboard[year] }"
-            @click="toggleEboard(year)"
             >keyboard_arrow_down</span
           >
         </header>
@@ -142,6 +142,7 @@ export default {
       if (!this.showEboard[year]) {
         this.showEboard[year] = false;
       }
+      
       this.showEboard[year] = !this.showEboard[year];
       for (let index = 2000; index <= 2023; index++) {
         if (index != year) {
@@ -155,7 +156,7 @@ export default {
     return {
       selectedPosition: "President",
       showEboard: {
-        2024: true,
+        2024: true
       },
       eboardPositions: [
         "President",
@@ -238,28 +239,28 @@ header.page-header {
   justify-content: center;
   justify-items: center;
 }
-.positions-spotlight {
+/* .positions-spotlight {
   display: flex;
   gap: 1rem;
 }
 .positions-spotlight img {
   min-width: 25%;
-}
-.positions {
+} */
+/* .positions {
   min-width: 17.5%;
   display: grid;
   grid-template-rows: repeat(8, 12.5%);
-}
-.position-buttons {
+} */
+/* .position-buttons {
   font-size: 2rem;
   padding-left: 2rem;
 }
 .position-buttons label {
   padding-left: 1rem;
-}
-.position-desc p {
+} */
+/* .position-desc p {
   font-size: 2.5rem;
-}
+} */
 .eboardContainer {
   display: grid;
   grid-template-rows: 250px 250px;
@@ -273,10 +274,10 @@ header.page-header {
   justify-self: center;
 }
 
-.eboard-hidden::after {
+/* .eboard-hidden::after {
   margin: 0;
-}
-.eboard-show {
+} */
+/* .eboard-show {
   animation-name: open-margin;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
@@ -284,7 +285,7 @@ header.page-header {
 }
 .eboard-show::after {
   margin: 2.5rem 0;
-}
+} */
 * .spacer1 {
   grid-column: 1;
   grid-row: 1/3;
@@ -301,6 +302,26 @@ header {
   padding-bottom: 1rem;
   padding-top: 2rem;
 }
+.eboard-header {
+  transition: background-color var(--hoverSpeed) ease-in-out, color var(--hoverSpeed) ease-in-out;
+  border-radius: 1rem;
+  padding-left: 2rem;
+  cursor: pointer;
+}
+
+.eboard-header.selected {
+  background-color: var(--red);
+  color: white;
+}
+
+.eboard-header:not(.eboard-header.selected):hover {
+  background-color: var(--light-red);
+}
+
+.eboard-header.selected > .svg {
+  filter: invert(100%);
+}
+
 h2 {
   font-size: 48px;
 }
@@ -323,16 +344,16 @@ h2 {
   opacity: 0;
   transform: translateY(-60px);
 }
-@keyframes close-margin {
+/* @keyframes close-margin {
   100% {
     margin: 0;
   }
-}
-@keyframes open-margin {
+} */
+/* @keyframes open-margin {
   100% {
     margin: 2.5rem 0;
   }
-}
+} */
 @media (max-width: 1800px) {
   .spotlight {
     grid-template-columns: repeat(3, 33%);

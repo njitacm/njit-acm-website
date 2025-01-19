@@ -1,8 +1,8 @@
 <template>
   <div>
     <Transition>
-      <header class="fixed-header" ref="pageHeader" v-show="showHeader">
-        <RouterLink to="/" class="router-link-left">ACM</RouterLink>
+      <header class="fixed-header" ref="pageHeader">
+        <RouterLink to="/" class="router-link-left" @click="toTop()">ACM</RouterLink>
         <RouterLink
           to="/"
           class="router-link-center meme-title"
@@ -10,16 +10,19 @@
         >
           Association for Computing Machinery</RouterLink
         >
-        <CollapsableNav>
-          <RouterLink to="/sigs" class="router-link">SIGs</RouterLink>
-          <RouterLink to="/events" class="router-link">Events</RouterLink>
-          <RouterLink to="/tutoring" class="router-link">Tutoring</RouterLink>
-          <RouterLink to="/about" class="router-link">About</RouterLink>
+        <CollapsableNav @collapsableNavOpened="updateTabSelection">
+          <NavButton v-for="(button, to) in navData" 
+            :key="button.id" 
+            :id="button.id"
+            :to="to"
+            :text="button.text"
+            :selectedId="selectedId">
+          </NavButton>
         </CollapsableNav>
       </header>
     </Transition>
-    <header>
-      <RouterLink to="/" class="router-link-left">ACM</RouterLink>
+    <!-- <header>
+      <RouterLink to="/" class="router-link-left" @click="toTop()">ACM</RouterLink>
       <RouterLink to="/" class="router-link-center meme-title" @click="toTop()">
         Association for Computing Machinery</RouterLink
       >
@@ -29,56 +32,114 @@
         <RouterLink to="/tutoring" class="router-link">Tutoring</RouterLink>
         <RouterLink to="/about" class="router-link">About</RouterLink>
       </CollapsableNav>
-    </header>
+    </header> -->
   </div>
 </template>
 
 <script>
 import CollapsableNav from "./CollapsableNav.vue";
+import NavButton from "./NavButton.vue";
+
 export default {
-  components: { CollapsableNav },
+  components: { CollapsableNav, NavButton },
   data() {
     return {
+      selectedId: -1,
+      currPath: undefined,
+      navData: {
+        '/sigs': { id: 0, text: 'SIGs' },
+        '/events': { id: 1, text: 'Events' },
+        '/tutoring': { id: 2, text: 'Tutoring' },
+        '/about': { id: 3, text: 'About' }
+      },
       showHeader: false,
-      fixedHeader: false,
+      // fixedHeader: false,
+      lastScrollTop: 0
     };
   },
+  watch: {
+    $route(to) {
+      console.log('changed path');
+      console.log(to.fullPath);
+      this.currPath = to.fullPath;
+      this.updateTabSelection();
+    }
+  },
   methods: {
+    updateTabSelection() {
+      console.log('update tab selection');
+      if (this.currPath === undefined)
+        return;
+
+      if (this.navData[this.currPath])
+        this.selectedId = this.navData[this.currPath].id
+      else    // no tab e.g. "home" etc.
+        this.selectedId = -1;
+    
+      // if (this.$props.to !== this.currPath) {
+      //   this.isSelected = false;
+      //   console.log("left " + this.currPath);
+      // } else {
+      //   this.isSelected = true;
+      //   console.log("entered " + this.currPath);
+      // }
+    },
     handleScroll() {
-      this.fixedHeader =
-        window.scrollY > this.$refs.pageHeader.clientHeight + 400;
-      this.showHeader =
-        window.scrollY > this.$refs.pageHeader.clientHeight + 1000;
+      if (window.innerWidth < 550) {
+        this.showHeader = true;
+        return;
+      }
+      let scrollTop = window.scrollY || document.documentElement.scrollTop;
+
+      if (scrollTop < 2 * this.$refs.pageHeader.clientHeight) {
+        this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        return;
+      }
+
+      if (scrollTop > this.lastScrollTop) // scrolled down
+          this.showHeader = false;
+      else if (scrollTop < this.lastScrollTop) // scrolled up
+        this.showHeader = true;
+    
+      // For mobile or negative scrolling
+      this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+
+      // this.fixedHeader =
+      //   window.scrollY > this.$refs.pageHeader.clientHeight + 400;
+      // this.showHeader =
+      //   window.scrollY > this.$refs.pageHeader.clientHeight + 1000;
     },
     toTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
   },
   created() {
-    window.addEventListener("scroll", this.handleScroll);
+    // window.addEventListener("scroll", this.handleScroll);
   },
   unmounted() {
-    window.removeEventListener("scroll", this.handleScroll);
+    // window.removeEventListener("scroll", this.handleScroll);
   },
   mounted() {
-    this.handleScroll();
+    // this.handleScroll();
   },
 };
 </script>
 
 <style scoped>
-* {
+/* * {
   transition: all linear 0.25s;
-}
+} */
 
 .v-enter-active,
 .v-leave-active {
-  transition: all 1s ease-in-out;
+  /* top: -15px; */
+  /* opacity: 0; */
+  transition: top 0.25s ease-in-out;
 }
 .v-enter-from,
 .v-leave-to {
-  opacity: 0;
-  top: -60px;
+  /* opacity: 0; */
+  /* top: -60px; */
 }
 header {
   background: white;
@@ -93,6 +154,7 @@ header {
 }
 
 .fixed-header {
+  height: var(--navHeight);
   position: fixed;
 }
 
@@ -111,23 +173,12 @@ header {
   text-decoration: none;
   color: black;
 }
-nav {
+/* nav {
   display: flex;
   align-items: center;
   gap: 1.2rem;
   margin: 0.4rem 0.8rem;
-}
-.router-link {
-  text-decoration: none;
-  color: black;
-  text-decoration: none;
-  font-size: 2.4rem;
-  flex: 1 1 0px;
-  padding: 0.8rem;
-  border: none;
-  background-color: inherit;
-  cursor: pointer;
-}
+} */
 
 @media (max-width: 1300px) {
   .meme-title {

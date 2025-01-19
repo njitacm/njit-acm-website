@@ -1,18 +1,20 @@
 <template>
-  <div
+  <!-- <div
     class="card"
     @click="selectEboard"
     :class="[{ selected: isSelected }, { currEboard: currEboard }]"
-  >
+    > -->
+  <div class="card">
     <img :src="imagePath" />
     <h1>{{ incumbent }}</h1>
     <h2>{{ position }}</h2>
+    <p>{{ incumbentDesc }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  emits: ["selectEboard"],
+  // emits: ["selectEboard"],
   data() {
     return {
       imagePath: require("../assets/eboard/" + this.$props.imageName),
@@ -28,9 +30,9 @@ export default {
     "currEboard",
   ],
   methods: {
-    selectEboard() {
-      this.$emit("selectEboard", this.$props.position);
-    },
+    // selectEboard() {
+    //   this.$emit("selectEboard", this.$props.position);
+    // },
   },
 };
 </script>
@@ -59,29 +61,28 @@ export default {
   transform: translateY(1.6rem);
   height: 100%;
 }
-.currEboard {
+/* .currEboard {
   cursor: pointer;
 }
 .currEboard img {
-  filter: grayscale(85%);
-}
+  filter: grayscale(55%);
+} */
 img {
   width: 20rem;
   height: 20rem;
   object-fit: cover;
   border-radius: 8px;
 }
-.selected {
+/* .selected {
   box-shadow: 0px 0px 7.5px 1px red;
   opacity: 1;
   transform: translateY(0rem);
   height: 100%;
 }
-
 .selected img {
   filter: grayscale(0%);
   border-radius: 8px 8px 0px 0px;
-}
+} */
 
 @media (max-width: 600px) {
   /* .card {

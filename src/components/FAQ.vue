@@ -2,7 +2,7 @@
   <div class="outer">
     <div class="inner" v-for="col in columns" :key="col">
       <section v-for="(item, index) in col.data" :key="item.title">
-        <button @click="selectItem(index + col.offset)">
+        <button @click="selectItem(index + col.offset)" :class="{ selected : selectedItem === index + col.offset}">
           <p class="question">{{ item.title }}</p>
         </button>
         <Transition-expand>
@@ -87,10 +87,17 @@ button {
   border: black 3px solid;
   border-radius: 8px;
   cursor: pointer;
-  background: whitesmoke;
+  transition: all 0.25s ease-in-out;
 }
+
+.selected {
+  background: black;
+  color: white;
+}
+
 p.question {
   font-size: 2.4rem;
+  
 }
 .answer-box {
   overflow: hidden;
