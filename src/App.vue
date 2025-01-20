@@ -67,4 +67,8 @@ a {
 img {
   user-select: none;
 }
+
+button {
+  user-select: none;
+}
 </style>
