@@ -303,7 +303,7 @@ header {
   padding-top: 2rem;
 }
 .eboard-header {
-  transition: background-color var(--hoverSpeed) ease-in-out, color var(--hoverSpeed) ease-in-out;
+  transition: background-color var(--hover-speed) ease-in-out, color var(--hover-speed) ease-in-out;
   border-radius: 1rem;
   padding-left: 2rem;
   cursor: pointer;

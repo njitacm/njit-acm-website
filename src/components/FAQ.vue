@@ -87,11 +87,15 @@ button {
   border: black 3px solid;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
+  transition: all var(--hover-speed) ease-in-out;
 }
 
-.selected {
-  background: black;
+button:not(.selected):hover {
+  background-color: var(--light-gray);
+}
+
+button.selected {
+  background-color: black;
   color: white;
 }
 

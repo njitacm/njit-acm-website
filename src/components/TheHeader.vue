@@ -154,7 +154,7 @@ header {
 }
 
 .fixed-header {
-  height: var(--navHeight);
+  height: var(--nav-height);
   position: fixed;
 }
 

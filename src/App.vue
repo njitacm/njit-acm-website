@@ -20,10 +20,13 @@ export default {
 
 <style>
 :root {
-  --navHeight: 60px;
+  --nav-height: 60px;
+
   --red: rgb(204, 0, 0);  /* hsl(0, 100%, 40%) */
   --light-red: hsl(0, 100%, 90%);
-  --hoverSpeed: 0.15s;
+  --light-gray: hsl(0, 0%, 85%);
+
+  --hover-speed: 0.15s;
 }
 /*
 - Font sizes (px)

@@ -35,7 +35,7 @@ export default {
 /* 1920px SCREEN WIDTH; NORMAL RULES */
 header {
   width: 100vw;
-  max-height: calc(100vh - var(--navHeight));
+  max-height: calc(100vh - var(--nav-height));
   position: relative;
   margin-bottom: 1rem;
   border-bottom: 4px solid red;
