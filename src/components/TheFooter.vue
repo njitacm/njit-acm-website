@@ -26,23 +26,26 @@
       /></a>
     </div>
     <div class="footer-buttons">
-      <button>
+      <PrimaryButton>
         <a href="https://acm.org" target="_blank">Visit ACM National</a>
-      </button>
-      <button>
+      </PrimaryButton>
+      <PrimaryButton>
         <RouterLink to="/constitution" class="router-link" @click="toTop"
           >ACM Constitution</RouterLink
         >
-      </button>
-      <button>
+      </PrimaryButton>
+      <PrimaryButton>
         <a href="mailto:acm@njit.edu" target="_blank">Contact Us!</a>
-      </button>
+      </PrimaryButton>
     </div>
   </footer>
 </template>
   
-  <script>
+<script>
+import PrimaryButton from "./PrimaryButton.vue";
+
 export default {
+  components: { PrimaryButton },
   data() {
     return {
       constitutionOpen: false,
@@ -62,7 +65,7 @@ export default {
 };
 </script>
   
-  <style scoped>
+<style scoped>
 footer {
   margin: 2.4rem auto;
   margin-bottom: 0;
@@ -94,18 +97,19 @@ img {
   justify-content: center;
   gap: 10px;
 }
-.footer-buttons button {
+
+/* .footer-buttons button {
   padding: 5px;
   border-radius: 8px;
   font-size: 2rem;
   background-color: lightpink;
   border: 2px lightgrey solid;
   border-radius: 8px;
-}
-.router-link {
+} */
+/* .router-link {
   text-decoration: none;
   color: black;
-}
+} */
 .socials {
   flex: 2;
   display: flex;
@@ -114,11 +118,11 @@ img {
   gap: 1.2rem;
   margin: 0.4rem 0.8rem;
 }
-a {
+/* a {
   width: 5.2rem;
   text-decoration: none;
   color: black;
-}
+} */
 @media (max-width: 1400px) {
   .socials {
     flex-wrap: wrap;
