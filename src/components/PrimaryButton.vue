@@ -13,6 +13,7 @@ export default {
 <style scoped>
 button {
   background-color: var(--light-red);
+  padding-bottom: 0;
   padding: 5px;
   border-radius: 8px;
   font-size: 2rem;
@@ -21,16 +22,18 @@ button {
   border-width: 2px;
   border-style: solid;
   cursor: pointer;
+  height: 50px;
   transition: all var(--hover-speed) linear;
 }
 
-:slotted(a), :slotted(.router-link) {
+:slotted(a), :slotted(.router-link), :slotted(span) {
   /* box-sizing: border-box; */
-  color: white;
+  vertical-align: bottom;
+  text-align: center;
+  margin: 0;
   text-decoration: none;
   font-weight: bold;
   color: var(--red);
-  display: block;
   width: 100%;
   height: 100%;
 }
