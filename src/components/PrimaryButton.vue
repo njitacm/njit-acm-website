@@ -28,8 +28,8 @@ button {
 
 :slotted(a), :slotted(.router-link), :slotted(span) {
   /* box-sizing: border-box; */
-  vertical-align: bottom;
-  text-align: center;
+  display: block;
+  align-content: center;
   margin: 0;
   text-decoration: none;
   font-weight: bold;
