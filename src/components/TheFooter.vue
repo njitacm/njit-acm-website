@@ -118,6 +118,15 @@ img {
   gap: 1.2rem;
   margin: 0.4rem 0.8rem;
 }
+
+.socials > a {
+  transition: opacity var(--hover-speed) linear;
+}
+
+.socials > a:hover {
+  opacity: 0.625;
+}
+
 /* a {
   width: 5.2rem;
   text-decoration: none;
