@@ -17,6 +17,12 @@
         </p>
       </template>
     </HorizontalSection>
+    <div class="events-calendar">
+      <h2>Events Calendar</h2>
+      <PrimaryButton class="button"><a target="_blank" href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20">Add Events Calendar</a></PrimaryButton>
+      <iframe src="https://calendar.google.com/calendar/embed?src=c_77e9ed4cd776a8c8d252dba6983dfb8bd98498aac2635d96013cb442a030311a%40group.calendar.google.com&ctz=America%2FNew_York" frameborder="0" scrolling="no"></iframe>
+    </div>
+    
     <div class="main-events-container">
       <MainEvent v-for="event in mainEvents" :key="event.title" :title="event.title" :desc="event.desc"
         :imgName="event.imgName">
@@ -40,8 +46,10 @@ import HorizontalSection from "../HorizontalSection.vue";
 import MainEvent from "../MainEvent.vue";
 import eventsJSON from "../../assets/data/events.json";
 import EventCard from "../EventCard.vue";
+import PrimaryButton from "../PrimaryButton.vue";
+
 export default {
-  components: { HorizontalSection, MainEvent, EventCard },
+  components: { HorizontalSection, MainEvent, EventCard, PrimaryButton },
   mounted() {
     console.log(this.events)
   },
@@ -69,6 +77,20 @@ export default {
 .outer {
   width: 80%;
   margin: 0 auto;
+}
+
+.events-calendar iframe {
+  align-self: center;
+  margin-left: 10%;
+  width: 80%;
+  height: 600px;
+}
+
+.events-calendar .button {
+  margin-left: 10%;
+  margin-bottom: 2rem;
+  width: 80%;
+  display: none;
 }
 
 /* .main {
@@ -114,6 +136,7 @@ p {
 }
 
 .main-events-container {
+  margin-top: 5rem;
   justify-content: space-around;
   gap: 5%;
   display: grid;
@@ -162,6 +185,14 @@ p {
 
   .events-grid {
     grid-template-rows: auto;
+  }
+
+  .events-calendar iframe {
+    display: none;
+  }
+
+  .events-calendar .button {
+    display: block;
   }
 
 }
