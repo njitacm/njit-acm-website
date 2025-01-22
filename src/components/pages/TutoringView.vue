@@ -412,7 +412,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 * {
-  transition: all 0.2s linear;
+  transition: all var(--hover-speed) linear;
   font-family: sans-serif;
 }
 .container {
@@ -470,14 +470,21 @@ export default {
   margin: 1rem;
   font-size: 2.4rem;
   padding: 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
 }
+
+.tutoring-sidebar select:hover {
+  background-color: var(--light-gray);
+}
+
 select.usingDefault {
   font-style: italic;
   font-weight: 100;
 }
 option {
+  background-color: white;
   font-style: initial;
-  font-weight: initial;
 }
 .tutoring-calendar {
   background: white;
@@ -490,11 +497,29 @@ option {
   padding: 1.5rem 0;
   margin-bottom: -2rem;
 }
-.tutoring-calendar .times {
+/* .tutoring-calendar .times {
   grid-row: 1 / 12;
   grid-column: 1;
   background: red;
+} */
+
+.tutoring-calendar button {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0.25rem;
+  font-size: 2.4rem;
+  height: 5rem;
+  align-self: center;
+  justify-self: center;
+  border-radius: var(--border-radius);
+  border: solid 2px white;
+  cursor: pointer;
 }
+
+.tutoring-calendar button:hover {
+  opacity: 0.75;
+}
+
 .calendar-time:nth-child(even),
 .even-row {
   background-color: #f2f2f2;
@@ -514,15 +539,7 @@ option {
   align-content: center;
   border: none;
 }
-button {
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0.25rem;
-  font-size: 2.4rem;
-  height: 5rem;
-  align-self: center;
-  justify-self: center;
-}
+
 .day-time {
   font-size: 3.6rem;
   text-align: center;
@@ -581,6 +598,11 @@ button {
   width: 4.25rem;
   cursor: pointer;
 }
+
+.reset-button:hover {
+  opacity: var(--hover-opacity);
+}
+
 .v-enter-active,
 .v-leave-active {
   transition: all 0.25s ease-in-out;

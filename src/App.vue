@@ -21,6 +21,7 @@ export default {
 <style>
 :root {
   --nav-height: 60px;
+  --border-radius: 10px;
 
   --red: rgb(204, 0, 0);  /* hsl(0, 100%, 40%) */
   --light-red: hsl(0, 100%, 90%);
@@ -30,6 +31,7 @@ export default {
   --shadow-gray: rgb(100, 100, 100);
 
   --hover-speed: 0.15s;
+  --hover-opacity: 0.625;
 }
 /*
 - Font sizes (px)
