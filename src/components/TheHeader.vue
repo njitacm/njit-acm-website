@@ -158,6 +158,16 @@ header {
   position: fixed;
 }
 
+.router-link-left:hover,
+.router-link-center:hover {
+  color: var(--red);
+}
+
+.router-link-left,
+.router-link-center {
+  transition: color var(--hover-speed) linear;
+}
+
 .router-link-left {
   padding: 0 2px;
   font-size: 4.8rem;
