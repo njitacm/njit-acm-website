@@ -27,6 +27,7 @@ export default {
   --mid-red: hsl(0, 100%, 85%);
   --light-gray: rgb(225, 225, 225);
   --gray: rgb(200, 200, 200);
+  --shadow-gray: rgb(100, 100, 100);
 
   --hover-speed: 0.15s;
 }
