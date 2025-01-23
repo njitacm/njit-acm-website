@@ -44,7 +44,7 @@ button {
     /* flex: 1 1 0px; */
     /* background-color: inherit; */
     cursor: pointer;
-    transition: background-color var(--hoverSpeed) ease-in-out;
+    transition: background-color var(--hover-speed) ease-in-out;
 }
 
 button:not(.selected) {

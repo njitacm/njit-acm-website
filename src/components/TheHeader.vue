@@ -154,8 +154,18 @@ header {
 }
 
 .fixed-header {
-  height: var(--navHeight);
+  height: var(--nav-height);
   position: fixed;
+}
+
+.router-link-left:hover,
+.router-link-center:hover {
+  color: var(--red);
+}
+
+.router-link-left,
+.router-link-center {
+  transition: color var(--hover-speed) linear;
 }
 
 .router-link-left {

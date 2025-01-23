@@ -1,15 +1,18 @@
 <template>
   <section class="main-event-container" :style="cssProps">
     <h1>{{ title }}</h1>
-    <p class=" main-event-desc">
+    <p class="main-event-desc">
       {{ desc }}
     </p>
-    <button>Learn More</button>
+    <!-- <PrimaryButton><span>Learn More</span></PrimaryButton> -->
   </section>
 </template>
 
 <script>
+// import PrimaryButton from './PrimaryButton.vue';
+
 export default {
+  // components: { PrimaryButton },
   props: ["title", "desc", "imgName"],
   data() {
     return {
@@ -36,7 +39,7 @@ h1 {
   font-size: 5rem;
 }
 
-p {
+.main-event-desc {
   font-size: 2rem;
   align-self: center;
   font-weight: 450;

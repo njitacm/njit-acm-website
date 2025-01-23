@@ -56,6 +56,7 @@ img {
   min-width: 60rem;
   border-radius: 8px;
   object-fit: cover;
+  box-shadow: var(--shadow-gray) 0px 0px 25px;
 }
 
 @media (max-width: 1400px) {

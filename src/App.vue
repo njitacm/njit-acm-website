@@ -20,10 +20,18 @@ export default {
 
 <style>
 :root {
-  --navHeight: 60px;
+  --nav-height: 60px;
+  --border-radius: 10px;
+
   --red: rgb(204, 0, 0);  /* hsl(0, 100%, 40%) */
   --light-red: hsl(0, 100%, 90%);
-  --hoverSpeed: 0.15s;
+  --mid-red: hsl(0, 100%, 85%);
+  --light-gray: rgb(225, 225, 225);
+  --gray: rgb(200, 200, 200);
+  --shadow-gray: rgb(100, 100, 100);
+
+  --hover-speed: 0.15s;
+  --hover-opacity: 0.625;
 }
 /*
 - Font sizes (px)
@@ -62,6 +70,10 @@ a {
 }
 
 img {
+  user-select: none;
+}
+
+button {
   user-select: none;
 }
 </style>
