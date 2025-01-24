@@ -29,6 +29,7 @@ export default {
   --light-gray: rgb(225, 225, 225);
   --gray: rgb(200, 200, 200);
   --shadow-gray: rgb(100, 100, 100);
+  --light-shadow-gray: rgb(150, 150, 150);
 
   --hover-speed: 0.15s;
   --hover-opacity: 0.625;

@@ -1,20 +1,16 @@
 <template>
-  <!-- <div
-    class="card"
-    @click="selectEboard"
-    :class="[{ selected: isSelected }, { currEboard: currEboard }]"
-    > -->
-  <div class="card">
+  <div class="list-item">
     <img :src="imagePath" />
-    <h1>{{ incumbent }}</h1>
-    <h2>{{ position }}</h2>
+    <div>
+      <h1>{{ incumbent }}</h1>
+      <h2>{{ position }}</h2>
+      <p class="desc">{{ incumbentDesc }}</p>
+    </div>
   </div>
-  <p class="desc" v-show="descExists">{{ incumbentDesc }}</p>
 </template>
 
 <script>
 export default {
-  // emits: ["selectEboard"],
   data() {
     return {
       imagePath: require("../assets/eboard/" + this.$props.imageName),
@@ -36,11 +32,6 @@ export default {
     "isSelected",
     "currEboard",
   ],
-  methods: {
-    // selectEboard() {
-    //   this.$emit("selectEboard", this.$props.position);
-    // },
-  },
 };
 </script>
 
@@ -55,48 +46,56 @@ export default {
 * {
   transition: all 500ms ease-in-out;
 }
-.card {
+
+p {
+  font-size: 2rem;
+}
+
+h2 {
+  color: var(--red);
+}
+
+.list-item {
   /* background-color: coral; */
+  display: flex;
   margin-top: 0.8rem;
   border-radius: 8px;
-  text-align: center;
-  box-shadow: none;
-  transform: translateY(0);
+  text-align: left;
   box-shadow: none;
   opacity: 0.9;
   width: fit-content;
   transform: translateY(1.6rem);
-  height: 100%;
+  height: auto;
+  align-items: middle;
 }
-/* .currEboard {
-  cursor: pointer;
+
+.list-item > div, .list-item > img {
+  margin: auto 2rem;
 }
-.currEboard img {
-  filter: grayscale(55%);
-} */
+
 img {
   width: 20rem;
   height: 20rem;
   object-fit: cover;
   border-radius: 8px;
+  box-shadow: var(--light-shadow-gray) 0px 0px 25px;
 }
 
-/* .selected {
-  box-shadow: 0px 0px 7.5px 1px red;
-  opacity: 1;
-  transform: translateY(0rem);
-  height: 100%;
-}
-.selected img {
-  filter: grayscale(0%);
-  border-radius: 8px 8px 0px 0px;
-} */
+@media (max-width: 1750px) {
+  .list-item {
+    display: inline;
+  }
+  .list-item > div, .list-item > img {
+    margin: 0 0;
+    margin: 2rem auto;
+  }
 
-@media (max-width: 600px) {
-  /* .card {
-    width: 12rem;
-  } */
+  .list-item > img {
+    width: 25rem;
+    height: 25rem;
+  }
 }
+
 @media (max-width: 600px) {
   img {
     width: 18rem;
