@@ -74,7 +74,7 @@ a {
   color: var(--red);
 }
 
-a:hover {
+a:hover:not(.button-link, .router-link) {
   opacity: 0.625;
 }
 
