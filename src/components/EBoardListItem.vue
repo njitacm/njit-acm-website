@@ -58,7 +58,6 @@ h2 {
 .list-item {
   /* background-color: coral; */
   display: flex;
-  margin-top: 0.8rem;
   border-radius: 8px;
   text-align: left;
   box-shadow: none;
@@ -66,14 +65,15 @@ h2 {
   width: fit-content;
   transform: translateY(1.6rem);
   height: auto;
-  align-items: middle;
+  justify-content: center;
 }
 
 .list-item > div, .list-item > img {
   margin: auto 2rem;
 }
 
-img {
+.list-item > img {
+  display: block;
   width: 20rem;
   height: 20rem;
   object-fit: cover;
@@ -85,9 +85,14 @@ img {
   .list-item {
     display: inline;
   }
-  .list-item > div, .list-item > img {
-    margin: 0 0;
+  .list-item > div {
+    /* margin: 0 0; */
     margin: 2rem auto;
+  }
+
+  /* center the img in .list-item horizontally */
+  .list-item > img {
+    margin: auto;
   }
 
   .list-item > img {
@@ -97,13 +102,13 @@ img {
 }
 
 @media (max-width: 600px) {
-  img {
+  .list-item > img {
     width: 18rem;
     height: 18rem;
   }
 }
 @media (max-width: 400px) {
-  img {
+  .list-item > img {
     width: 15rem;
     height: 15rem;
   }

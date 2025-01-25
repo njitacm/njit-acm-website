@@ -63,7 +63,7 @@
         </header>
         <TransitionExpand>
           <div
-            class="eboardContainer"
+            class="eboard-container"
             :ref="year.toString()"
             v-show="showEboard[year]"
             v-if="year < 2024"
@@ -89,7 +89,7 @@
             <div>
               <EBoardListItem
                 v-for="member in getEboard(year)"
-                class=".eboard-list-item"
+                class="eboard-list-item"
                 :key="member.Role"
                 :position="member.Role"
                 :positionDesc="member.desc"
@@ -266,29 +266,8 @@ header.page-header {
   justify-content: center;
   justify-items: center;
 }
-/* .positions-spotlight {
-  display: flex;
-  gap: 1rem;
-}
-.positions-spotlight img {
-  min-width: 25%;
-} */
-/* .positions {
-  min-width: 17.5%;
-  display: grid;
-  grid-template-rows: repeat(8, 12.5%);
-} */
-/* .position-buttons {
-  font-size: 2rem;
-  padding-left: 2rem;
-}
-.position-buttons label {
-  padding-left: 1rem;
-} */
-/* .position-desc p {
-  font-size: 2.5rem;
-} */
-.eboardContainer > div {
+
+.eboard-container > div {
   display: grid;
   /* grid-template-rows: 250px 250px; */
   grid-template-columns: repeat(4, auto);
@@ -296,12 +275,8 @@ header.page-header {
   width: 90%;
   margin: 0 auto;
   justify-content: space-evenly;
-  /* flex-wrap: wrap; */
-  /* margin: 0 0; */
-  /* height: max-content; */
-  /* padding: 2rem 0; */
 }
-.eboardContainer > div * {
+.eboard-container > div * {
   justify-self: center;
 }
 
@@ -312,25 +287,9 @@ header.page-header {
   grid-template-columns: repeat(2, auto);
   gap: 2rem;
   justify-content: space-evenly;
-  /* grid-template-rows: repeat(4, 50%); */
-  /* grid-template-columns: repeat(5, 50%); */
-  /* row-gap: 2rem; */
-  /* margin: 0 auto; */
-  /* flex-wrap: wrap; */
 }
 
-/* .eboard-hidden::after {
-  margin: 0;
-} */
-/* .eboard-show {
-  animation-name: open-margin;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-.eboard-show::after {
-  margin: 2.5rem 0;
-} */
+
 .spacer1 {
   height: 2rem;
 }
@@ -387,40 +346,16 @@ h2 {
   opacity: 0;
   transform: translateY(-60px);
 }
-/* @keyframes close-margin {
-  100% {
-    margin: 0;
-  }
-} */
-/* @keyframes open-margin {
-  100% {
-    margin: 2.5rem 0;
-  }
-} */
+
 @media (max-width: 1800px) {
   .spotlight {
     grid-template-columns: repeat(3, 33%);
   }
 }
 @media (max-width: 1700px) {
-  .eboardContainer > div {
+  .eboard-container > div {
     grid-template-columns: repeat(3, auto);
   }
-}
-
-@media (max-width: 1700px) {
-  /* .eboardContainer {
-    grid-template-columns: repeat(5, 20%);
-  } */
-
-  /* .spacer1 {
-    grid-column: 1;
-    grid-row: 1/4;
-  }
-  .spacer2 {
-    grid-column: 5;
-    grid-row: 1/4;
-  } */
 }
 
 @media (max-width: 1400px) {
@@ -432,7 +367,7 @@ h2 {
   .card {
     min-width: 30%;
   }
-  .eboardContainer > div {
+  .eboard-container > div {
     grid-template-columns: repeat(2, auto);
   }
   .spacer1 {
@@ -442,36 +377,14 @@ h2 {
     display: none;
   }
 }
-@media (max-width: 1050px) {
-  /* .eboardContainer {
-    justify-content: space-between;
-    grid-template-columns: repeat(3, 30%);
-    gap: 1rem;
-  } */
-}
+
 @media (max-width: 1000px) {
   .spotlight {
     grid-template-columns: repeat(1, 100%);
   }
-  .eboard-list-container {
-    grid-template-columns: repeat(1, auto);
-  }
 }
-@media (max-width: 800px) {
-  /* .eboardContainer {
-    justify-content: space-between;
-    grid-template-columns: repeat(2, 40%);
-    gap: 1rem;
-  } */
-}
-@media (max-width: 550px) {
-  /* .eboardContainer {
-    justify-content: space-between;
-    grid-template-columns: repeat(2, 40%);
-    gap: 1rem;
-  } */
-}
-@media (max-width: 550px) {
+
+@media (max-width: 750px) {
   header {
     margin: 0 1rem;
   }
@@ -479,7 +392,7 @@ h2 {
     font-size: 3.5rem;
   }
 
-  .eboardContainer > div {
+  .eboard-container > div {
     grid-template-columns: repeat(1, auto);
   }
 
@@ -487,21 +400,4 @@ h2 {
     grid-template-columns: repeat(1, auto);
   }
 }
-/* @media (max-width: 1250px) {
-  .eboardContainer {
-    width: 82.5%;
-  }
-}
-
-@media (max-width: 1100px) {
-  .eboardContainer {
-    width: 82.5%;
-  }
-}
-
-@media (max-width: 600px) {
-  .eboardContainer {
-    width: 100%;
-  }
-} */
 </style>
