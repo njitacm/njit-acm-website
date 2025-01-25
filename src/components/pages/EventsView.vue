@@ -18,18 +18,21 @@
       </template>
     </HorizontalSection>
     <div class="events-calendar">
-      <h2>Events Calendar</h2>
+      <h2 class="section-header">Events Calendar</h2>
       <PrimaryButton class="button"><a target="_blank" href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20">Add Events Calendar</a></PrimaryButton>
       <iframe src="https://calendar.google.com/calendar/embed?src=c_77e9ed4cd776a8c8d252dba6983dfb8bd98498aac2635d96013cb442a030311a%40group.calendar.google.com&ctz=America%2FNew_York" frameborder="0" scrolling="no"></iframe>
     </div>
     
-    <div class="main-events-container">
-      <MainEvent v-for="event in mainEvents" :key="event.title" :title="event.title" :desc="event.desc"
+    <div>
+      <h2 class="section-header">Annual Events</h2>
+      <div class="main-events-container">
+        <MainEvent v-for="event in mainEvents" :key="event.title" :title="event.title" :desc="event.desc"
         :imgName="event.imgName">
-      </MainEvent>
+        </MainEvent>
+      </div>
     </div>
-    <div class="upcoming-events">
-      <h2>Upcoming Events</h2>
+    <div v-if="events.length" class="upcoming-events">
+      <h2 class="section-header">Upcoming Events</h2>
       <div v-if="events.length" class="events-grid">
         <EventCard v-for="event in events" :key="event.Title" :title="event.Title" :location="event.Location"
           :time="event.Time" :imageUrl="event.Url"></EventCard>
@@ -107,12 +110,6 @@ export default {
 - Spacing system (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 /48 /64 /80 /96 / 128
 */
-
-h2 {
-  margin: 2.5rem 4rem;
-  font-size: 48px;
-  border-bottom: red 4px solid;
-}
 
 p {
   font-size: 3.6rem;

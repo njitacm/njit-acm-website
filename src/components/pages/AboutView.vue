@@ -35,9 +35,10 @@
         <p>{{ eboardDescs[selectedPosition] }}</p>
       </div>
     </div> -->
-    <header style="margin: 1.5rem 4rem">
-      <h2>Current Eboard</h2>
-    </header>
+    <h2 class="section-header">Current Eboard</h2>
+    <!-- <header style="margin: 1.5rem 4rem">
+      
+    </header> -->
     <div class="spotlight">
       <MainEboardCard
         v-for="(member, i) in currentEboard"

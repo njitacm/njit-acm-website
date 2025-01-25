@@ -133,7 +133,7 @@ header {
   padding-left: 15px;
   display: flex;
   justify-content: space-between;
-  border-bottom: var(--red) 3px solid;
+  border-bottom: red 3px solid;
   align-items: center;
   top: 0;
   width: 100%;

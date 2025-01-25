@@ -70,7 +70,12 @@ p {
 }
 
 a {
+  transition: opacity var(--hover-speed) linear;
   color: var(--red);
+}
+
+a:hover {
+  opacity: 0.625;
 }
 
 img {
@@ -79,6 +84,12 @@ img {
 
 button {
   user-select: none;
+}
+
+.section-header {
+  margin: 2.5rem 4rem;
+  font-size: 48px;
+  border-bottom: red 4px solid;
 }
 
 </style>

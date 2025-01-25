@@ -28,7 +28,7 @@
       </template>
     </HorizontalSection>
     <div class="current-sigs">
-      <h3>Current SIGs</h3>
+      <h3 class="section-header">Current SIGs</h3>
       <div class="sig-container">
         <SIGsCard
           v-for="sig in sigs"
@@ -42,27 +42,6 @@
         ></SIGsCard>
       </div>
     </div>
-    <!-- <div class="past-sigs">
-      <h3>Past SIGs</h3>
-      <HorizontalSection imagePath="HomePage/Fall_2024_GBM.jpg">
-        <template v-slot:title>SIG-GameDev &rArr; IGDA</template>
-        <template v-slot:content>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis
-          similique labore, tenetur incidunt eligendi possimus itaque impedit
-          placeat ullam, culpa quaerat, saepe explicabo qui unde totam? Laborum
-          similique minima quibusdam!
-        </template>
-      </HorizontalSection>
-      <HorizontalSection imagePath="HomePage/Fall_2024_GBM.jpg">
-        <template v-slot:title>SIG-CHI &rArr; SIGCHI</template>
-        <template v-slot:content>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perferendis
-          similique labore, tenetur incidunt eligendi possimus itaque impedit
-          placeat ullam, culpa quaerat, saepe explicabo qui unde totam? Laborum
-          similique minima quibusdam!
-        </template>
-      </HorizontalSection>
-    </div> -->
   </div>
 </template>
 
@@ -163,12 +142,11 @@ export default {
   margin-right: auto;
   justify-content: center;
 }
-h3 {
+/* h3 {
   font-size: 6.2rem;
   text-align: center;
   margin: 2.4rem;
-  text-decoration: underline;
-}
+} */
 p {
   font-size: 3rem;
 }
