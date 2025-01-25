@@ -1,10 +1,11 @@
 <template>
   <div>
-    <span @click="toggleNav" id="mmmBorger" class="material-symbols-sharp"
-      >format_align_justify</span
-    >
+    <button @click="toggleNav" id="mmmBorger">
+      <span class="menu-text">Menu</span>
+      <span class="material-symbols-sharp menu-icon" ref="menuIcon">format_align_justify</span>
+      </button>
     <Transition>
-      <nav class="openNav" v-if="showNav">
+      <nav :class="{'open-nav': true, 'open': navOpen}" v-show="showNav" ref="nav">
         <slot></slot>
       </nav>
     </Transition>
@@ -23,12 +24,17 @@ export default {
   methods: {
     toggleNav(event) {
       if (!this.navOpen) {
-        event.target.style.transform = "rotate(-90deg)";
+        this.$refs.menuIcon.style.transform = "rotate(-90deg)";
+        // this.$refs.nav.style.transform = "translateY(10px)";
+        event.currentTarget.style.backgroundColor = "var(--red)";
+        event.currentTarget.style.color = "white";
         this.navOpen = true;
-        console.log("nav open!!");
         this.$emit('collapsableNavOpened');
       } else {
-        event.target.style.transform = "";
+        this.$refs.menuIcon.style.transform = "";
+        // this.$refs.nav.style.transform = "translateY(-10px)";
+        event.currentTarget.style.background = "none";
+        event.currentTarget.style.color = "var(--red)";
         this.navOpen = false;
       }
     },
@@ -38,7 +44,7 @@ export default {
   },
   computed: {
     showNav() {
-      return this.navOpen || this.windowWidth > 550;
+      return this.navOpen || this.windowWidth > 650;
     },
   },
   mounted() {
@@ -55,34 +61,56 @@ export default {
 
 <style scoped>
 * {
-  transition: all 0.2s linear;
+  transition: transform var(--hover-speed) linear, 
+  background-color var(--hover-speed) linear,
 }
+
 #mmmBorger {
   display: none;
+  box-sizing: margin-box;
+  background: none;
+  border: none;
+  border-left: var(--red) 2px solid;
+  /* border-radius: var(--border-radius); */
+  color: var(--red);
+  height: var(--nav-height);
+  width: auto;
+  right: 0;
+  /* font-size: 4rem   */
 }
+#mmmBorger .menu-icon {
+  font-size: 4rem;
+  padding: 10px;
+}
+
+#mmmBorger .menu-text {
+  display: block;
+  height: inherit;
+  font-size: 3rem;
+  padding: 0px 0px 0px 10px;
+  line-height: var(--nav-height);
+}
+
 .v-enter-to {
   opacity: 1;
 }
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s;
+.v-enter-active {
+  transition: transform var(--hover-speed) linear;
 }
-/* .collapsableNav {
-  display: block;
-} */
-.v-enter-from, .v-leave-to /* .fade-leave-active in <2.1.8 */ {
-  opacity: 0;
+.v-leave-active {
+  transition: all var(--hover-speed) linear;
 }
 
-@media (max-width: 550px) {
+.v-enter-from, .v-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+@media (max-width: 650px) {
   #mmmBorger {
-    font-size: 4.8rem;
-    display: block;
+    display: flex;
   }
-  .nav {
-    display: none;
-  }
-  .openNav {
+  .open-nav {
     position: absolute;
     right: 0px;
     display: flex;
@@ -94,6 +122,7 @@ export default {
     border: 2px red solid;
     margin-top: 0.8rem;
     z-index: 100;
+    box-shadow: var(--medium-shadow-black) 0px 0px 25px;
   }
 
   div {

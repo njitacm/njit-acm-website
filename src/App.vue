@@ -30,6 +30,8 @@ export default {
   --gray: rgb(200, 200, 200);
   --shadow-gray: rgb(100, 100, 100);
   --light-shadow-gray: rgb(150, 150, 150);
+  --medium-shadow-black: rgba(0,0,0,0.75);
+  --light-shadow-black: rgba(0,0,0,0.5);
 
   --hover-speed: 0.15s;
   --hover-opacity: 0.625;
@@ -47,6 +49,7 @@ export default {
   box-sizing: border-box;
   font-family: sans-serif;
 }
+
 html {
   background-color: whitesmoke;
   font-size: 62.5%;
@@ -77,4 +80,5 @@ img {
 button {
   user-select: none;
 }
+
 </style>

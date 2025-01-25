@@ -5,7 +5,7 @@
         <RouterLink to="/" class="router-link-left" @click="toTop()">ACM</RouterLink>
         <RouterLink
           to="/"
-          class="router-link-center meme-title"
+          class="router-link-center"
           @click="toTop()"
         >
           Association for Computing Machinery</RouterLink
@@ -21,18 +21,6 @@
         </CollapsableNav>
       </header>
     </Transition>
-    <!-- <header>
-      <RouterLink to="/" class="router-link-left" @click="toTop()">ACM</RouterLink>
-      <RouterLink to="/" class="router-link-center meme-title" @click="toTop()">
-        Association for Computing Machinery</RouterLink
-      >
-      <CollapsableNav>
-        <RouterLink to="/sigs" class="router-link">SIGs</RouterLink>
-        <RouterLink to="/events" class="router-link">Events</RouterLink>
-        <RouterLink to="/tutoring" class="router-link">Tutoring</RouterLink>
-        <RouterLink to="/about" class="router-link">About</RouterLink>
-      </CollapsableNav>
-    </header> -->
   </div>
 </template>
 
@@ -66,6 +54,13 @@ export default {
     }
   },
   methods: {
+    updateDropShadow() {
+      if (document.documentElement.scrollTop > 0) {
+        this.$refs.pageHeader.style.boxShadow = "var(--light-shadow-black) 0px 0px 25px";
+      } else {
+        this.$refs.pageHeader.style.boxShadow = "none";
+      }
+    },
     updateTabSelection() {
       console.log('update tab selection');
       if (this.currPath === undefined)
@@ -114,43 +109,35 @@ export default {
     },
   },
   created() {
-    // window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener("scroll", this.updateDropShadow);
   },
   unmounted() {
-    // window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener("scroll", this.updateDropShadow);
   },
   mounted() {
-    // this.handleScroll();
+    this.updateDropShadow();
   },
 };
 </script>
 
 <style scoped>
-/* * {
-  transition: all linear 0.25s;
-} */
 
 .v-enter-active,
 .v-leave-active {
-  /* top: -15px; */
-  /* opacity: 0; */
   transition: top 0.25s ease-in-out;
 }
-.v-enter-from,
-.v-leave-to {
-  /* opacity: 0; */
-  /* top: -60px; */
-}
+
 header {
   background: white;
   z-index: 100;
-  padding: 0px 15px;
+  padding-left: 15px;
   display: flex;
   justify-content: space-between;
-  border-bottom: red 4px solid;
+  border-bottom: var(--red) 3px solid;
   align-items: center;
   top: 0;
   width: 100%;
+  transition: box-shadow var(--hover-speed) linear;
 }
 
 .fixed-header {
@@ -190,8 +177,8 @@ header {
   margin: 0.4rem 0.8rem;
 } */
 
-@media (max-width: 1300px) {
-  .meme-title {
+@media (max-width: 1750px) {
+  .router-link-center {
     display: none;
   }
 }
