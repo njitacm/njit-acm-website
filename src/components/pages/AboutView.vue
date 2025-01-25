@@ -35,9 +35,10 @@
         <p>{{ eboardDescs[selectedPosition] }}</p>
       </div>
     </div> -->
-    <header style="margin: 1.5rem 4rem">
-      <h2>Current Eboard</h2>
-    </header>
+    <h2 class="section-header">Current Eboard</h2>
+    <!-- <header style="margin: 1.5rem 4rem">
+      
+    </header> -->
     <div class="spotlight">
       <MainEboardCard
         v-for="(member, i) in currentEboard"
@@ -63,20 +64,41 @@
         </header>
         <TransitionExpand>
           <div
-            class="eboardContainer"
+            class="eboard-container"
             :ref="year.toString()"
             v-show="showEboard[year]"
+            v-if="year < 2024"
           >
             <div class="spacer1"></div>
-            <EBoardCard
-              v-for="member in getEboard(year)"
-              :key="member.Role"
-              :position="member.Role"
-              :positionDesc="member.desc"
-              :incumbent="member.Name"
-              :incumbentDesc="member.desc"
-              :imageName="getImagePath(member.Role, member.Term)"
-            />
+            <div>
+              <EBoardCard
+                v-for="member in getEboard(year)"
+                :key="member.Role"
+                :position="member.Role"
+                :positionDesc="member.desc"
+                :incumbent="member.Name"
+                :incumbentDesc="member.desc"
+                :imageName="getImagePath(member.Role, member.Term)"
+              />
+            </div>
+            <div class="spacer2"></div>
+          </div>
+          <!-- 2024 and beyond uses list items instead of cards -->
+          <div v-else class="eboard-list-container" :ref="year.toString()"
+            v-show="showEboard[year]">
+            <div class="spacer1"></div>
+            <div>
+              <EBoardListItem
+                v-for="member in getEboard(year)"
+                class="eboard-list-item"
+                :key="member.Role"
+                :position="member.Role"
+                :positionDesc="member.desc"
+                :incumbent="member.Name"
+                :incumbentDesc="member.desc"
+                :imageName="getImagePath(member.Role, member.Term)">
+              </EBoardListItem>
+            </div>
             <div class="spacer2"></div>
           </div>
         </TransitionExpand>
@@ -92,12 +114,15 @@ import jsonEboard from "../../assets/data/eboard.js";
 import TransitionExpand from "../TransitionExpand.vue";
 import MainEboardCard from "../MainEboardCard.vue";
 import HorizontalSection from "../HorizontalSection.vue";
+import EBoardListItem from "../EBoardListItem.vue";
+
 export default {
   components: {
     EBoardCard,
     TransitionExpand,
     MainEboardCard,
     HorizontalSection,
+    EBoardListItem,
   },
   methods: {
     getImagePath(role, year) {
@@ -144,7 +169,7 @@ export default {
       }
       
       this.showEboard[year] = !this.showEboard[year];
-      for (let index = 2000; index <= 2023; index++) {
+      for (let index = 2000; index < this.currEboardYear; index++) {
         if (index != year) {
           this.showEboard[index] = false;
         }
@@ -155,6 +180,20 @@ export default {
   data() {
     return {
       selectedPosition: "President",
+      currEboardYear: 2025,
+      currentEboard: jsonEboard.filter((member) => member.Term == "2024"),
+      years: [
+        // "2025",
+        "2024",
+        "2023",
+        "2022",
+        "2021",
+        "2020",
+        "2019",
+        "2018",
+        "2017",
+        "2016",
+      ],
       showEboard: {
         2024: true
       },
@@ -195,18 +234,7 @@ export default {
           "ACM's Head of Public Relations is responsible for all advertisting, including running our various social media accounts, putting up posters, and spreading ACM news by word of mouth. ",
       },
       eboard: jsonEboard,
-      currentEboard: jsonEboard.filter((member) => member.Term == "2024"),
-      years: [
-        //"2024",
-        "2023",
-        "2022",
-        "2021",
-        "2020",
-        "2019",
-        "2018",
-        "2017",
-        "2016",
-      ],
+      
     };
   },
 };
@@ -239,60 +267,35 @@ header.page-header {
   justify-content: center;
   justify-items: center;
 }
-/* .positions-spotlight {
-  display: flex;
-  gap: 1rem;
-}
-.positions-spotlight img {
-  min-width: 25%;
-} */
-/* .positions {
-  min-width: 17.5%;
+
+.eboard-container > div {
   display: grid;
-  grid-template-rows: repeat(8, 12.5%);
-} */
-/* .position-buttons {
-  font-size: 2rem;
-  padding-left: 2rem;
-}
-.position-buttons label {
-  padding-left: 1rem;
-} */
-/* .position-desc p {
-  font-size: 2.5rem;
-} */
-.eboardContainer {
-  display: grid;
-  grid-template-rows: 250px 250px;
-  grid-template-columns: repeat(6, 17.5%);
-  row-gap: 2rem;
+  /* grid-template-rows: 250px 250px; */
+  grid-template-columns: repeat(4, auto);
+  gap: 2rem;
+  width: 90%;
   margin: 0 auto;
-  flex-wrap: wrap;
-  margin: 0 0;
+  justify-content: space-evenly;
 }
-.eboardContainer * {
+.eboard-container > div * {
   justify-self: center;
 }
 
-/* .eboard-hidden::after {
-  margin: 0;
-} */
-/* .eboard-show {
-  animation-name: open-margin;
-  animation-duration: 1s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+.eboard-list-container > div {
+  display: grid;
+  width: 90%;
+  margin: 0 auto;
+  grid-template-columns: repeat(2, auto);
+  gap: 2rem;
+  justify-content: space-evenly;
 }
-.eboard-show::after {
-  margin: 2.5rem 0;
-} */
-* .spacer1 {
-  grid-column: 1;
-  grid-row: 1/3;
+
+
+.spacer1 {
+  height: 2rem;
 }
 .spacer2 {
-  grid-column: 6;
-  grid-row: 1/3;
+  height: 4rem;
 }
 header {
   display: flex;
@@ -344,39 +347,15 @@ h2 {
   opacity: 0;
   transform: translateY(-60px);
 }
-/* @keyframes close-margin {
-  100% {
-    margin: 0;
-  }
-} */
-/* @keyframes open-margin {
-  100% {
-    margin: 2.5rem 0;
-  }
-} */
+
 @media (max-width: 1800px) {
   .spotlight {
     grid-template-columns: repeat(3, 33%);
   }
 }
 @media (max-width: 1700px) {
-  .eboardContainer {
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 1700px) {
-  .eboardContainer {
-    grid-template-columns: repeat(5, 20%);
-  }
-
-  .spacer1 {
-    grid-column: 1;
-    grid-row: 1/4;
-  }
-  .spacer2 {
-    grid-column: 5;
-    grid-row: 1/4;
+  .eboard-container > div {
+    grid-template-columns: repeat(3, auto);
   }
 }
 
@@ -389,10 +368,8 @@ h2 {
   .card {
     min-width: 30%;
   }
-  .eboardContainer {
-    justify-content: space-between;
-    grid-template-columns: repeat(4, 20%);
-    gap: 1rem;
+  .eboard-container > div {
+    grid-template-columns: repeat(2, auto);
   }
   .spacer1 {
     display: none;
@@ -401,55 +378,27 @@ h2 {
     display: none;
   }
 }
-@media (max-width: 1050px) {
-  .eboardContainer {
-    justify-content: space-between;
-    grid-template-columns: repeat(3, 30%);
-    gap: 1rem;
-  }
-}
+
 @media (max-width: 1000px) {
   .spotlight {
     grid-template-columns: repeat(1, 100%);
   }
 }
-@media (max-width: 800px) {
-  .eboardContainer {
-    justify-content: space-between;
-    grid-template-columns: repeat(2, 40%);
-    gap: 1rem;
-  }
-}
-@media (max-width: 550px) {
-  .eboardContainer {
-    justify-content: space-between;
-    grid-template-columns: repeat(2, 40%);
-    gap: 1rem;
-  }
-}
-@media (max-width: 550px) {
+
+@media (max-width: 750px) {
   header {
     margin: 0 1rem;
   }
   h2 {
     font-size: 3.5rem;
   }
-}
-/* @media (max-width: 1250px) {
-  .eboardContainer {
-    width: 82.5%;
-  }
-}
 
-@media (max-width: 1100px) {
-  .eboardContainer {
-    width: 82.5%;
+  .eboard-container > div {
+    grid-template-columns: repeat(1, auto);
+  }
+
+  .eboard-list-container > div {
+    grid-template-columns: repeat(1, auto);
   }
 }
-
-@media (max-width: 600px) {
-  .eboardContainer {
-    width: 100%;
-  }
-} */
 </style>

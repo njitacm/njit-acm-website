@@ -29,6 +29,9 @@ export default {
   --light-gray: rgb(225, 225, 225);
   --gray: rgb(200, 200, 200);
   --shadow-gray: rgb(100, 100, 100);
+  --light-shadow-gray: rgb(150, 150, 150);
+  --medium-shadow-black: rgba(0,0,0,0.75);
+  --light-shadow-black: rgba(0,0,0,0.5);
 
   --hover-speed: 0.15s;
   --hover-opacity: 0.625;
@@ -46,6 +49,7 @@ export default {
   box-sizing: border-box;
   font-family: sans-serif;
 }
+
 html {
   background-color: whitesmoke;
   font-size: 62.5%;
@@ -66,7 +70,12 @@ p {
 }
 
 a {
+  transition: opacity var(--hover-speed) linear;
   color: var(--red);
+}
+
+a:hover:not(.button-link, .router-link) {
+  opacity: 0.625;
 }
 
 img {
@@ -76,4 +85,11 @@ img {
 button {
   user-select: none;
 }
+
+.section-header {
+  margin: 2.5rem 4rem;
+  font-size: 48px;
+  border-bottom: red 4px solid;
+}
+
 </style>

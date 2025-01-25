@@ -27,7 +27,7 @@
     </div>
     <div class="footer-buttons">
       <PrimaryButton>
-        <a href="https://acm.org" target="_blank">Visit ACM National</a>
+        <a href="https://acm.org" target="_blank" class="button-link">Visit ACM National</a>
       </PrimaryButton>
       <PrimaryButton>
         <RouterLink to="/constitution" class="router-link" @click="toTop"
@@ -35,7 +35,7 @@
         >
       </PrimaryButton>
       <PrimaryButton>
-        <a href="mailto:acm@njit.edu" target="_blank">Contact Us!</a>
+        <a href="mailto:acm@njit.edu" target="_blank" class="button-link">Contact Us!</a>
       </PrimaryButton>
     </div>
   </footer>
