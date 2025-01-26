@@ -12,40 +12,14 @@
         </p>
       </template>
     </HorizontalSection>
-    <!-- <div class="positions-spotlight">
-      <img style="width: 25%" src="../../assets/logos/NJIT_ACM_LOGO.svg" />
-      <div class="positions">
-        <div
-          v-for="position in eboardPositions"
-          :key="position"
-          class="position-buttons"
-        >
-          <button
-            class="position-button"
-            :class="{
-              selected_position: selectedPosition == position,
-            }"
-            @click="setPosition(position)"
-          >
-            {{ position }}
-          </button>
-        </div>
-      </div>
-      <div class="position-desc">
-        <p>{{ eboardDescs[selectedPosition] }}</p>
-      </div>
-    </div> -->
     <h2 class="section-header">Current Eboard</h2>
-    <!-- <header style="margin: 1.5rem 4rem">
-      
-    </header> -->
     <div class="spotlight">
       <MainEboardCard
         v-for="(member, i) in currentEboard"
         :key="member"
         :position="member.Role"
         :name="member.Name"
-        :personalDesc="member.desc"
+        :personalDesc="member.Desc"
         :imageName="getImagePath(member.Role, member.Term)"
         :id="i"
       >
@@ -75,9 +49,9 @@
                 v-for="member in getEboard(year)"
                 :key="member.Role"
                 :position="member.Role"
-                :positionDesc="member.desc"
+                :positionDesc="member.Desc"
                 :incumbent="member.Name"
-                :incumbentDesc="member.desc"
+                :incumbentDesc="member.Desc"
                 :imageName="getImagePath(member.Role, member.Term)"
               />
             </div>
@@ -93,9 +67,9 @@
                 class="eboard-list-item"
                 :key="member.Role"
                 :position="member.Role"
-                :positionDesc="member.desc"
+                :positionDesc="member.Desc"
                 :incumbent="member.Name"
-                :incumbentDesc="member.desc"
+                :incumbentDesc="member.Desc"
                 :imageName="getImagePath(member.Role, member.Term)">
               </EBoardListItem>
             </div>
@@ -155,6 +129,7 @@ export default {
         default:
           break;
       }
+
       return year + "/" + path;
     },
     getEboard(year) {
@@ -181,7 +156,7 @@ export default {
     return {
       selectedPosition: "President",
       currEboardYear: 2025,
-      currentEboard: jsonEboard.filter((member) => member.Term == "2024"),
+      currentEboard: jsonEboard.filter((member) => member.Term === 2025),
       years: [
         // "2025",
         "2024",
