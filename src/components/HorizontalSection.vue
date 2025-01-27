@@ -7,21 +7,39 @@
       </p>
       <slot name="button"></slot>
     </div>
-    <img :src="imageSrc" :class="{ small: small }" alt="NJIT ACM Logo" />
+    <SlideshowImage :src="imagePath" :class="{ small: small }"
+    :dur="slideDuration"
+    alt="NJIT ACM photo slideshow">
+    </SlideshowImage>
   </section>
 </template>
 
 <script>
+import SlideshowImage from './SlideshowImage.vue';
 export default {
-  data() {
-    return {
-      imageSrc: require("../assets/" + this.$props.imagePath),
-    };
-  },
+  components: { SlideshowImage },
   props: {
     imagePath: String,
     small: Boolean,
+    slideDuration: Number
   },
+  data() {
+    return {
+      // imageSrc: require("../assets/" + this.$props.imagePath),
+      imageSrc: [],
+    };
+  },
+  // mounted() {
+  //   if (Array.isArray(this.$props.imagePath)) {
+  //     for (let i = 0; i < this.$props.imagePath.length; i++) {
+  //       this.imageSrc.push(require("../assets/" + this.$props.imagePath[0]))
+  //     }
+  //     console.log(this.imageSrc);
+  //   } else {
+  //     console.log('requiring: ' + require("../assets/" + this.$props.imagePath));
+  //     this.imageSrc.push(require("../assets/" + this.$props.imagePath));
+  //   }
+  // },
 };
 </script>
 
@@ -50,23 +68,23 @@ p {
   flex: 2;
 }
 
-img {
+/* img {
   flex: 2;
   width: 100%;
   min-width: 60rem;
   border-radius: 8px;
   object-fit: cover;
   box-shadow: var(--shadow-gray) 0px 0px 25px;
-}
+} */
 
 @media (max-width: 1400px) {
   section {
     flex-wrap: wrap-reverse;
     gap: 10px;
   }
-  img {
+  /* img {
     min-width: 80%;
-  }
+  } */
   .section-content {
     min-width: 80%;
   }
