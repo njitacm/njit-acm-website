@@ -67,14 +67,8 @@ export default [{ "Name": "Eduardo Preciado", "Role": "President", "UCID": "ejp9
 //{ "Name": "Darren Bonifacio", "Role": "Public Relations", "UCID": "dab97", "Year": "Sophmore", "Major": "CS", "Term": 2024, "Desc": "What's up! I'm Darren and I'm a second-year computer science major. I love my cat Lettuce and games like Super Smash Bros, Fire Emblem, and Pokémon! I'm also into anime/manga (CSM and Frieren are fire) and PC gaming too. Hope you enjoy my posts for the ACM socials! See ya!!!", "Id": 67 },
 { "Name": "Kapila Mane", "Role": "Graphic Designer", "UCID": "km776", "Year": "Junior", "Major": "HCI", "Term": 2024, "Desc": "Hi! I'm Kapila (call me Cup if you'd like) and I'm a junior human-computer interaction (HCI) major. This is my second term as a graphic designer at ACM, and sure, you can say it's my passion. I also love tinkering: from cosplay props such as Yoru's mask from Valorant + Mistsplitter from Genshin Impact. Hope to see you around!", "Id": 68 },
 {
-    "Name": "Matthew Padilla",
-    "Id": 69,
-    "Term": 2025,
-    "Role": "Treasurer",
-    "UCID": "map289",
-    "Year": "Freshman",
-    "Major": "CE",
-    "Desc": "Hey, I'm Matthew a current Freshman Computer Engineering Major and ACM Treasurer if you like nerd stuff we'll probably be good friends",
+    // Abdullah
+    "Id": 69
 },
 {
     "Name": "Priya Patel",
@@ -87,11 +81,31 @@ export default [{ "Name": "Eduardo Preciado", "Role": "President", "UCID": "ejp9
     "Desc": "Hey, I'm Priya! I am a second-year Data Science (Computing Option) major with an interest in bioinformatics! I like to watch anime, dance, and learn piano! I am always looking forward to meeting new people, so feel free to swing by our office hours and say hi :)",
 },
 {
-    // Garret
+    "Name": "Matthew Padilla",
+    "Id": 71,
+    "Term": 2025,
+    "Role": "Treasurer",
+    "UCID": "map289",
+    "Year": "Freshman",
+    "Major": "CE",
+    "Desc": "Hey, I'm Matthew a current Freshman Computer Engineering Major and ACM Treasurer if you like nerd stuff we'll probably be good friends",
 },
 {
-    // Abdullah
+    // Garret
+    "Id": 72
 },
 {
     // Xhaiden
+    "Id": 73
+},
+{
+    // Krish
+    "Name": "Krish A. Patel",
+    "Id": 74,
+    "Term": 2025,
+    "Role": "Webmaster",
+    "UCID": "kap225",
+    "Year": "Freshman",
+    "Major": "CS + AAPH",
+    "Desc": "Hey y'all, I'm Krish! I'm pursuing a CS and Physics double major (mostly because I couldn't pick just one!). I love learning new things, meeting new people, and marvelling at the wonderful world around us!",
 }]
