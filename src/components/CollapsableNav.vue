@@ -1,11 +1,11 @@
 <template>
   <div>
-    <button @click="toggleNav" id="mmmBorger">
+    <button @click="toggleNav" id="mmmBorger" :class="{'nav-open': navOpen}">
       <span class="menu-text">Menu</span>
       <span class="material-symbols-sharp menu-icon" ref="menuIcon">format_align_justify</span>
       </button>
     <Transition>
-      <nav :class="{'open-nav': true, 'open': navOpen}" v-show="showNav" ref="nav">
+      <nav class="open-nav" v-show="showNav" ref="nav">
         <slot></slot>
       </nav>
     </Transition>
@@ -33,7 +33,7 @@ export default {
       } else {
         this.$refs.menuIcon.style.transform = "";
         // this.$refs.nav.style.transform = "translateY(-10px)";
-        event.currentTarget.style.background = "none";
+        event.currentTarget.style.backgroundColor = "white";
         event.currentTarget.style.color = "var(--red)";
         this.navOpen = false;
       }
@@ -68,16 +68,17 @@ export default {
 #mmmBorger {
   display: none;
   box-sizing: margin-box;
-  background: none;
+  background-color: white;
   border: none;
   border-left: var(--red) 2px solid;
   /* border-radius: var(--border-radius); */
   color: var(--red);
-  height: var(--nav-height);
+  height: calc(var(--nav-height) - var(--nav-border-width));
   width: auto;
   right: 0;
   /* font-size: 4rem   */
 }
+
 #mmmBorger .menu-icon {
   font-size: 4rem;
   padding: 10px;
@@ -89,6 +90,20 @@ export default {
   font-size: 3rem;
   padding: 0px 0px 0px 10px;
   line-height: var(--nav-height);
+}
+
+@media (hover: hover) {
+  #mmmBorger:hover:not(.nav-open) {
+    /* mark as important bc JavaScript overriding it disables hover */
+    background-color: var(--light-red) !important;
+  }
+}
+
+@media (hover: none) {
+  #mmmBorger:active:not(.nav-open) {
+    /* mark as important bc JavaScript overriding it disables hover */
+    background-color: var(--light-red) !important;
+  }
 }
 
 .v-enter-to {

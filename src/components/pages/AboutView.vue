@@ -28,7 +28,9 @@
     <div class="pastEboard">
       <div v-for="year in years" :key="year">
         <header @click="toggleEboard(year)" 
-        :class="{ 'eboard-header': true, 'selected': showEboard[year] }">
+        :class="{ 
+          'eboard-header': true,
+          'selected': showEboard[year] }">
           <h2>{{ year }} Eboard</h2>
           <span
             class="svg material-symbols-outlined"
@@ -285,6 +287,8 @@ header {
   border-radius: 1rem;
   padding-left: 2rem;
   cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .eboard-header.selected {
@@ -292,8 +296,16 @@ header {
   color: white;
 }
 
-.eboard-header:not(.eboard-header.selected):hover {
-  background-color: var(--light-red);
+@media (hover: hover) {
+  .eboard-header:hover:not(.eboard-header.selected) {
+    background-color: var(--light-red);
+  }
+}
+
+@media (hover: none) {
+  .eboard-header:active:not(.eboard-header.selected) {
+    background-color: var(--light-red);
+  }
 }
 
 .eboard-header.selected > .svg {

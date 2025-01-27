@@ -21,6 +21,7 @@ export default {
 <style>
 :root {
   --nav-height: 60px;
+  --nav-border-width: 3px;
   --border-radius: 10px;
 
   --red: rgb(204, 0, 0);  /* hsl(0, 100%, 40%) */
@@ -74,22 +75,31 @@ a {
   color: var(--red);
 }
 
-a:hover:not(.button-link, .router-link) {
-  opacity: 0.625;
-}
-
 img {
   user-select: none;
 }
 
 button {
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .section-header {
   margin: 2.5rem 4rem;
   font-size: 48px;
   border-bottom: red 4px solid;
+}
+
+@media (hover: hover) {
+  a:hover:not(.button-link, .router-link) {
+    opacity: 0.625;
+  }
+}
+
+@media (hover: none) {
+  a:active:not(.button-link, .router-link) {
+    opacity: 0.625;
+  }
 }
 
 </style>

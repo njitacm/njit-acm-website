@@ -133,7 +133,7 @@ header {
   padding-left: 15px;
   display: flex;
   justify-content: space-between;
-  border-bottom: red 3px solid;
+  border-bottom: red var(--nav-border-width) solid;
   align-items: center;
   top: 0;
   width: 100%;
@@ -145,13 +145,23 @@ header {
   position: fixed;
 }
 
-.router-link-left:hover,
-.router-link-center:hover {
-  color: var(--red);
+@media (hover: hover) {
+  .router-link-left:hover,
+  .router-link-center:hover {
+    color: var(--red);
+  }
 }
+@media (hover: none) {
+  .router-link-left:active,
+  .router-link-center:active {
+    color: var(--red);
+  }
+}
+
 
 .router-link-left,
 .router-link-center {
+  -webkit-tap-highlight-color: transparent;
   transition: color var(--hover-speed) linear;
 }
 
