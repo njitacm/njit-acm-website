@@ -1,18 +1,13 @@
 <template>
   <main>
-    <div class="container">
-      <div
-        class="front"
-        :class="{ frontFlipped: id == store.currEboardFlipped }"
-        @mouseenter="hideFront()"
-      >
-        <img :src="imagePath" />
+    <div class="container" 
+    @mouseenter="toggleFrontHover" 
+    @mouseleave="toggleFrontHover"
+    @click="toggleFrontClick">
+      <div class="front">
+        <img :src="imagePath" :class="{ frontFlipped: id === store.currEboardFlipped }"/>
       </div>
-      <div
-        class="back"
-        :class="{ backFlipped: id == store.currEboardFlipped }"
-        @mouseleave="showFront()"
-      >
+      <div class="back" :class="{ backFlipped: id === store.currEboardFlipped }">
         <p class="text">{{ personalDesc }}</p>
       </div>
     </div>
@@ -30,7 +25,6 @@ export default {
   props: ["position", "name", "personalDesc", "imageName", "id"],
   data() {
     return {
-      flipped: false,
       store,
     };
   },
@@ -40,11 +34,30 @@ export default {
     },
   },
   methods: {
-    hideFront() {
-      this.store.currEboardFlipped = this.id;
+    isMobile() {
+      return (navigator.userAgent.match(/Android/i)
+              || navigator.userAgent.match(/webOS/i)
+              || navigator.userAgent.match(/iPhone/i)
+              || navigator.userAgent.match(/iPad/i)
+              || navigator.userAgent.match(/iPod/i)
+              || navigator.userAgent.match(/BlackBerry/i)
+              || navigator.userAgent.match(/Windows Phone/i));
     },
-    showFront() {
-      this.store.currEboardFlipped = -1;
+    toggleFrontHover() {
+      if (this.isMobile())
+        return;
+      this.toggleFront();
+    },
+    toggleFrontClick() {
+      if (!this.isMobile())
+        return;
+      this.toggleFront();
+    },
+    toggleFront() {
+      if (this.store.currEboardFlipped == this.id)
+        this.store.currEboardFlipped = -1;
+      else
+      this.store.currEboardFlipped = this.id;
     },
   },
 };
@@ -60,12 +73,14 @@ export default {
   width: 350px;
   height: 350px;
 }
+
 .front {
   position: absolute;
   z-index: 1;
   width: 100%;
   height: 100%;
 }
+
 .back {
   position: absolute;
   height: 100%;
@@ -80,10 +95,12 @@ export default {
   grid-template-columns: 100%;
   grid-template-rows: 100%;
 }
+
 .frontFlipped {
   transform: rotateY(180deg);
   z-index: 0;
 }
+
 .backFlipped {
   transform: rotateY(0deg);
   z-index: 1;
@@ -94,21 +111,25 @@ export default {
   height: 100%;
   border-radius: 16px;
 }
+
 .back .text {
   align-self: center;
   justify-self: center;
   font-size: 2rem;
   text-align: center;
 }
+
 .subtitle {
   margin: 1rem;
   width: 100%;
 }
+
 .name {
   padding-bottom: 0.5rem;
   font-size: 2rem;
   font-weight: 550;
 }
+
 .position {
   font-size: 1.75rem;
   font-weight: 350;
