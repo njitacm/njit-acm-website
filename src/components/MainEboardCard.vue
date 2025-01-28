@@ -30,7 +30,13 @@ export default {
   },
   computed: {
     imagePath() {
-      return require("../assets/eboard/" + this.$props.imageName);
+      try {
+        return require("../assets/eboard/" + this.$props.imageName);
+      } catch (err) {
+        console.log(err);
+        console.log('resorting to the blank-pfp instead')
+        return require("../assets/blank-pfp.png");
+      }
     },
   },
   methods: {
@@ -54,10 +60,12 @@ export default {
       this.toggleFront();
     },
     toggleFront() {
+      if (this.$props.personalDesc === undefined || this.$props.personalDesc === '')
+        return;
       if (this.store.currEboardFlipped == this.id)
         this.store.currEboardFlipped = -1;
       else
-      this.store.currEboardFlipped = this.id;
+        this.store.currEboardFlipped = this.id;
     },
   },
 };
@@ -98,6 +106,7 @@ export default {
 
 .frontFlipped {
   transform: rotateY(180deg);
+  box-shadow: var(--shadow-gray) 0px 0px 25px;
   z-index: 0;
 }
 

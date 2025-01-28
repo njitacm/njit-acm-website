@@ -3,6 +3,7 @@
 </template>
 
 <script>
+// TODO: add photos
 export default {
   // dur in ms
   props: [ 'src', 'alt', 'dur' ],
@@ -52,7 +53,6 @@ export default {
 img {
   flex: 2;
   width: 100%;
-  height: 20%;
   min-width: 60rem;
   border-radius: 8px;
   object-fit: cover;

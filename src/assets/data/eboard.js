@@ -66,9 +66,15 @@ export default [{ "Name": "Eduardo Preciado", "Role": "President", "UCID": "ejp9
 { "Name": "Abdullah Imran", "Role": "Webmaster", "UCID": "ami8", "Year": "Sophmore", "Major": "CS/Math", "Term": 2024, "Desc": "Oh, hey. I'm Abdullah and I am a second-year  CS/Math dual major. In my free time I play DnD and read sci-fi novels. If you want to learn more about web development, or just want to talk (perferably about Jojo's Bizzare Adventure Part 7: Steel Ball Run), stop by the office for a yap-session!", "Id": 66 },
 //{ "Name": "Darren Bonifacio", "Role": "Public Relations", "UCID": "dab97", "Year": "Sophmore", "Major": "CS", "Term": 2024, "Desc": "What's up! I'm Darren and I'm a second-year computer science major. I love my cat Lettuce and games like Super Smash Bros, Fire Emblem, and Pokémon! I'm also into anime/manga (CSM and Frieren are fire) and PC gaming too. Hope you enjoy my posts for the ACM socials! See ya!!!", "Id": 67 },
 { "Name": "Kapila Mane", "Role": "Graphic Designer", "UCID": "km776", "Year": "Junior", "Major": "HCI", "Term": 2024, "Desc": "Hi! I'm Kapila (call me Cup if you'd like) and I'm a junior human-computer interaction (HCI) major. This is my second term as a graphic designer at ACM, and sure, you can say it's my passion. I also love tinkering: from cosplay props such as Yoru's mask from Valorant + Mistsplitter from Genshin Impact. Hope to see you around!", "Id": 68 },
-{
-    // Abdullah
-    "Id": 69
+{ 
+    "Name": "Abdullah Imran", 
+    "Id": 69,
+    "Term": 2025, 
+    "Role": "President", 
+    "UCID": "ami8", 
+    "Year": "Sophmore", 
+    "Major": "CS/Math", 
+    "Desc": "Oh, hey. I'm Abdullah and I am a second-year  CS/Math dual major. In my free time I play DnD and read sci-fi novels. If you want to learn more about web development, or just want to talk (perferably about Jojo's Bizzare Adventure Part 7: Steel Ball Run), stop by the office for a yap-session!", 
 },
 {
     "Name": "Priya Patel",
@@ -92,11 +98,17 @@ export default [{ "Name": "Eduardo Preciado", "Role": "President", "UCID": "ejp9
 },
 {
     // Garret
-    "Id": 72
+    "Name": "Garret",
+    "Id": 72,
+    "Term": 2025,
+    "Role": "Secretary"
 },
 {
     // Xhaiden
-    "Id": 73
+    "Name": "Xhaiden",
+    "Id": 73,
+    "Term": 2025,
+    "Role": "SIG Master"
 },
 {
     // Krish

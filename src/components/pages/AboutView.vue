@@ -1,6 +1,7 @@
 <template>
   <div class="outer-container">
-    <HorizontalSection :imagePath="['eboard/2024/WholeBoard.png', 'eboard/2025/treasurer.png']"
+    <!-- <HorizontalSection :imagePath="['eboard/2024/WholeBoard.png', 'eboard/2025/treasurer.png']" -->
+    <HorizontalSection imagePath="eboard/2024/WholeBoard.png"
     slideDuration="5000">
       <template v-slot:title>About Us</template>
       <template v-slot:content>
@@ -23,8 +24,13 @@
         :personalDesc="member.Desc"
         :imageName="getImagePath(member.Role, member.Term)"
         :id="i"
-      >
+        >
       </MainEboardCard>
+    </div>
+    <h2 class="section-header">Office Hours</h2>
+    <div class="office-hours">
+      <p>Every e-board member has office hours at the ACM Office (located GITC 3700). 
+        Check out the calendar below for the schedule and feel free to stop by and have a chat!</p>
     </div>
     <div class="pastEboard">
       <div v-for="year in years" :key="year">
@@ -244,6 +250,10 @@ header.page-header {
   grid-template-columns: repeat(auto-fit, 25%);
   justify-content: center;
   justify-items: center;
+}
+
+p {
+  font-size: 2.5rem;
 }
 
 .eboard-container > div {
