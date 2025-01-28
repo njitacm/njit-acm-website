@@ -64,4 +64,8 @@ img {
     min-width: 80%;
   }
 }
+
+@media (max-width: 600px) {
+  
+}
 </style>

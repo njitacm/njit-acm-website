@@ -1,5 +1,5 @@
 <template>
-  <section id="who-we-are" :class="{ small: small }">
+  <section id="who-we-are" :class="{ small: small, 'keep-floating': keepFloating }">
     <div class="section-content">
       <h3><slot name="title"></slot></h3>
       <p>
@@ -7,9 +7,9 @@
       </p>
       <slot name="button"></slot>
     </div>
-    <SlideshowImage :src="imagePath" :class="{ small: small }"
-    :dur="slideDuration"
-    alt="NJIT ACM photo slideshow">
+    <SlideshowImage :src="imagePath" :class="{ small: small, 'keep-floating': keepFloating, 'img': 'true' }"
+      :dur="slideDuration"
+      alt="NJIT ACM photo slideshow">
     </SlideshowImage>
   </section>
 </template>
@@ -21,7 +21,8 @@ export default {
   props: {
     imagePath: String,
     small: Boolean,
-    slideDuration: Number
+    slideDuration: Number,
+    keepFloating: Boolean
   },
   data() {
     return {
@@ -97,6 +98,22 @@ p {
   h3 {
     font-size: 4rem;
     text-align: center;
+  }
+
+  h3 {
+    margin-top: 1rem;
+  }
+
+  section:not(.keep-floating) {
+    margin: 0;
+    padding: 0;
+  }
+
+  .img:not(.keep-floating) {
+    width: 100%;
+    border-radius: 0;
+    border-bottom: var(--hor-sec-img-border-width) red solid;
+    box-shadow: none;
   }
 }
 

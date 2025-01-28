@@ -22,6 +22,7 @@ export default {
 :root {
   --nav-height: 60px;
   --nav-border-width: 3px;
+  --hor-sec-img-border-width: 4px;
   --border-width: 1px;
   --border-radius: 10px;
   --large-border-radius: 20px;
