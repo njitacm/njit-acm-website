@@ -22,7 +22,9 @@ export default {
 :root {
   --nav-height: 60px;
   --nav-border-width: 3px;
+  --border-width: 1px;
   --border-radius: 10px;
+  --large-border-radius: 20px;
 
   --red: rgb(204, 0, 0);  /* hsl(0, 100%, 40%) */
   --light-red: hsl(0, 100%, 90%);

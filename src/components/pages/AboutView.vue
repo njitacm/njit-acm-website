@@ -29,8 +29,12 @@
     </div>
     <h2 class="section-header">Office Hours</h2>
     <div class="office-hours">
-      <p>Every e-board member has office hours at the ACM Office (located GITC 3700). 
+      <p>Every e-board member has office hours at the ACM Office (located in GITC 3700). 
         Check out the calendar below for the schedule and feel free to stop by and have a chat!</p>
+      <EmbeddedCalendar
+        src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20E-Board%20Office%20Hours&src=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233F51B5"
+        href="https://calendar.google.com/calendar/u/0?cid=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+      ></EmbeddedCalendar>
     </div>
     <div class="pastEboard">
       <div v-for="year in years" :key="year">
@@ -98,6 +102,7 @@ import TransitionExpand from "../TransitionExpand.vue";
 import MainEboardCard from "../MainEboardCard.vue";
 import HorizontalSection from "../HorizontalSection.vue";
 import EBoardListItem from "../EBoardListItem.vue";
+import EmbeddedCalendar from "../EmbeddedCalendar.vue";
 
 export default {
   components: {
@@ -106,6 +111,7 @@ export default {
     MainEboardCard,
     HorizontalSection,
     EBoardListItem,
+    EmbeddedCalendar
   },
   methods: {
     getImagePath(role, year) {
@@ -252,7 +258,10 @@ header.page-header {
   justify-items: center;
 }
 
-p {
+.office-hours p {
+  width: calc(100% - 4rem);
+  margin-left: inherit;
+  padding-left: 4rem;
   font-size: 2.5rem;
 }
 

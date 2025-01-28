@@ -17,12 +17,11 @@
         </p>
       </template>
     </HorizontalSection>
-    <div class="events-calendar">
-      <h2 class="section-header">Events Calendar</h2>
-      <PrimaryButton class="button"><a target="_blank" href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20">Add Events Calendar</a></PrimaryButton>
-      <iframe src="https://calendar.google.com/calendar/embed?src=c_77e9ed4cd776a8c8d252dba6983dfb8bd98498aac2635d96013cb442a030311a%40group.calendar.google.com&ctz=America%2FNew_York" frameborder="0" scrolling="no"></iframe>
-    </div>
-    
+    <h2 class="section-header">Events Calendar</h2>
+    <EmbeddedCalendar 
+      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=MONTH&src=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23795548"
+      href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+      ></EmbeddedCalendar>
     <div>
       <h2 class="section-header">Annual Events</h2>
       <div class="main-events-container">
@@ -49,10 +48,10 @@ import HorizontalSection from "../HorizontalSection.vue";
 import MainEvent from "../MainEvent.vue";
 import eventsJSON from "../../assets/data/events.json";
 import EventCard from "../EventCard.vue";
-import PrimaryButton from "../PrimaryButton.vue";
+import EmbeddedCalendar from "../EmbeddedCalendar.vue";
 
 export default {
-  components: { HorizontalSection, MainEvent, EventCard, PrimaryButton },
+  components: { HorizontalSection, MainEvent, EventCard, EmbeddedCalendar },
   mounted() {
     console.log(this.events)
   },
@@ -80,20 +79,6 @@ export default {
 .outer {
   width: 80%;
   margin: 0 auto;
-}
-
-.events-calendar iframe {
-  align-self: center;
-  margin-left: 10%;
-  width: 80%;
-  height: 600px;
-}
-
-.events-calendar .button {
-  margin-left: 10%;
-  margin-bottom: 2rem;
-  width: 80%;
-  display: none;
 }
 
 /* .main {
@@ -183,14 +168,5 @@ p {
   .events-grid {
     grid-template-rows: auto;
   }
-
-  .events-calendar iframe {
-    display: none;
-  }
-
-  .events-calendar .button {
-    display: block;
-  }
-
 }
 </style>
