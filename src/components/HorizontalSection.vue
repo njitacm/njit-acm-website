@@ -66,6 +66,7 @@ p {
   line-height: 32px;
 }
 .section-content {
+  margin: 10px 15px;
   flex: 2;
 }
 

@@ -93,7 +93,8 @@ button {
 }
 
 .section-header {
-  margin: 2.5rem 4rem;
+  width: 100%;
+  margin: 2.5rem auto;
   font-size: 48px;
   border-bottom: red 4px solid;
 }
@@ -101,6 +102,10 @@ button {
 @media (max-width: 500px) {
   .outer-container {
     width: 100%;
+  }
+
+  .section-header {
+    width: 90%;
   }
 }
 
