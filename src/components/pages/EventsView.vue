@@ -1,5 +1,5 @@
 <template>
-  <div class="outer">
+  <div class="outer-container">
     <HorizontalSection imagePath="EventsPage/HackNJIT2023.jpg">
       <template v-slot:title>Events</template>
       <template v-slot:content>
@@ -76,8 +76,7 @@ export default {
 </script>
 
 <style scoped>
-.outer {
-  width: 80%;
+.outer-container {
   margin: 0 auto;
 }
 

@@ -59,6 +59,7 @@ html {
   margin-top: 60px;
   overflow-x: hidden;
 }
+
 p {
   font-size: 1.6rem;
 }
@@ -70,6 +71,10 @@ p {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+.outer-container {
+  width: 80%;
 }
 
 a {
@@ -90,6 +95,12 @@ button {
   margin: 2.5rem 4rem;
   font-size: 48px;
   border-bottom: red 4px solid;
+}
+
+@media (max-width: 500px) {
+  .outer-container {
+    width: 100%;
+  }
 }
 
 @media (hover: hover) {
