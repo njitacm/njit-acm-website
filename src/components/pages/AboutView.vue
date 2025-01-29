@@ -1,6 +1,8 @@
 <template>
   <div class="outer-container">
-    <HorizontalSection imagePath="eboard/2024/WholeBoard.png">
+    <!-- <HorizontalSection :imagePath="['eboard/2024/WholeBoard.png', 'eboard/2025/treasurer.png']" -->
+    <HorizontalSection imagePath="eboard/2024/WholeBoard.png"
+    slideDuration="5000">
       <template v-slot:title>About Us</template>
       <template v-slot:content>
         <p style="font-size: 2.5rem">
@@ -12,49 +14,34 @@
         </p>
       </template>
     </HorizontalSection>
-    <!-- <div class="positions-spotlight">
-      <img style="width: 25%" src="../../assets/logos/NJIT_ACM_LOGO.svg" />
-      <div class="positions">
-        <div
-          v-for="position in eboardPositions"
-          :key="position"
-          class="position-buttons"
-        >
-          <button
-            class="position-button"
-            :class="{
-              selected_position: selectedPosition == position,
-            }"
-            @click="setPosition(position)"
-          >
-            {{ position }}
-          </button>
-        </div>
-      </div>
-      <div class="position-desc">
-        <p>{{ eboardDescs[selectedPosition] }}</p>
-      </div>
-    </div> -->
     <h2 class="section-header">Current Eboard</h2>
-    <!-- <header style="margin: 1.5rem 4rem">
-      
-    </header> -->
     <div class="spotlight">
       <MainEboardCard
         v-for="(member, i) in currentEboard"
         :key="member"
         :position="member.Role"
         :name="member.Name"
-        :personalDesc="member.desc"
+        :personalDesc="member.Desc"
         :imageName="getImagePath(member.Role, member.Term)"
         :id="i"
-      >
+        >
       </MainEboardCard>
+    </div>
+    <h2 class="section-header">Office Hours</h2>
+    <div class="office-hours">
+      <p>Every e-board member has office hours at the ACM Office (located in GITC 3700). 
+        Check out the calendar below for the schedule and feel free to stop by and have a chat!</p>
+      <EmbeddedCalendar
+        src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20E-Board%20Office%20Hours&src=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233F51B5"
+        href="https://calendar.google.com/calendar/u/0?cid=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+      ></EmbeddedCalendar>
     </div>
     <div class="pastEboard">
       <div v-for="year in years" :key="year">
         <header @click="toggleEboard(year)" 
-        :class="{ 'eboard-header': true, 'selected': showEboard[year] }">
+        :class="{ 
+          'eboard-header': true,
+          'selected': showEboard[year] }">
           <h2>{{ year }} Eboard</h2>
           <span
             class="svg material-symbols-outlined"
@@ -75,9 +62,9 @@
                 v-for="member in getEboard(year)"
                 :key="member.Role"
                 :position="member.Role"
-                :positionDesc="member.desc"
+                :positionDesc="member.Desc"
                 :incumbent="member.Name"
-                :incumbentDesc="member.desc"
+                :incumbentDesc="member.Desc"
                 :imageName="getImagePath(member.Role, member.Term)"
               />
             </div>
@@ -93,9 +80,9 @@
                 class="eboard-list-item"
                 :key="member.Role"
                 :position="member.Role"
-                :positionDesc="member.desc"
+                :positionDesc="member.Desc"
                 :incumbent="member.Name"
-                :incumbentDesc="member.desc"
+                :incumbentDesc="member.Desc"
                 :imageName="getImagePath(member.Role, member.Term)">
               </EBoardListItem>
             </div>
@@ -115,6 +102,7 @@ import TransitionExpand from "../TransitionExpand.vue";
 import MainEboardCard from "../MainEboardCard.vue";
 import HorizontalSection from "../HorizontalSection.vue";
 import EBoardListItem from "../EBoardListItem.vue";
+import EmbeddedCalendar from "../EmbeddedCalendar.vue";
 
 export default {
   components: {
@@ -123,6 +111,7 @@ export default {
     MainEboardCard,
     HorizontalSection,
     EBoardListItem,
+    EmbeddedCalendar
   },
   methods: {
     getImagePath(role, year) {
@@ -155,6 +144,7 @@ export default {
         default:
           break;
       }
+
       return year + "/" + path;
     },
     getEboard(year) {
@@ -181,7 +171,7 @@ export default {
     return {
       selectedPosition: "President",
       currEboardYear: 2025,
-      currentEboard: jsonEboard.filter((member) => member.Term == "2024"),
+      currentEboard: jsonEboard.filter((member) => member.Term === 2025),
       years: [
         // "2025",
         "2024",
@@ -242,7 +232,6 @@ export default {
 
 <style scoped>
 .outer-container {
-  width: 80%;
   margin: 0 auto;
 }
 header.page-header {
@@ -266,6 +255,13 @@ header.page-header {
   grid-template-columns: repeat(auto-fit, 25%);
   justify-content: center;
   justify-items: center;
+}
+
+.office-hours p {
+  width: calc(100% - 4rem);
+  margin-left: inherit;
+  padding-left: 4rem;
+  font-size: 2.5rem;
 }
 
 .eboard-container > div {
@@ -310,6 +306,8 @@ header {
   border-radius: 1rem;
   padding-left: 2rem;
   cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .eboard-header.selected {
@@ -317,8 +315,16 @@ header {
   color: white;
 }
 
-.eboard-header:not(.eboard-header.selected):hover {
-  background-color: var(--light-red);
+@media (hover: hover) {
+  .eboard-header:hover:not(.eboard-header.selected) {
+    background-color: var(--light-red);
+  }
+}
+
+@media (hover: none) {
+  .eboard-header:active:not(.eboard-header.selected) {
+    background-color: var(--light-red);
+  }
 }
 
 .eboard-header.selected > .svg {

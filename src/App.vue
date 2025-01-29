@@ -21,7 +21,11 @@ export default {
 <style>
 :root {
   --nav-height: 60px;
+  --nav-border-width: 3px;
+  --hor-sec-img-border-width: 4px;
+  --border-width: 1px;
   --border-radius: 10px;
+  --large-border-radius: 20px;
 
   --red: rgb(204, 0, 0);  /* hsl(0, 100%, 40%) */
   --light-red: hsl(0, 100%, 90%);
@@ -56,6 +60,7 @@ html {
   margin-top: 60px;
   overflow-x: hidden;
 }
+
 p {
   font-size: 1.6rem;
 }
@@ -69,13 +74,13 @@ p {
   opacity: 0;
 }
 
+.outer-container {
+  width: 80%;
+}
+
 a {
   transition: opacity var(--hover-speed) linear;
   color: var(--red);
-}
-
-a:hover:not(.button-link, .router-link) {
-  opacity: 0.625;
 }
 
 img {
@@ -84,12 +89,36 @@ img {
 
 button {
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .section-header {
-  margin: 2.5rem 4rem;
+  width: 100%;
+  margin: 2.5rem auto;
   font-size: 48px;
   border-bottom: red 4px solid;
+}
+
+@media (max-width: 500px) {
+  .outer-container {
+    width: 100%;
+  }
+
+  .section-header {
+    width: 90%;
+  }
+}
+
+@media (hover: hover) {
+  a:hover:not(.button-link, .router-link) {
+    opacity: 0.625;
+  }
+}
+
+@media (hover: none) {
+  a:active:not(.button-link, .router-link) {
+    opacity: 0.625;
+  }
 }
 
 </style>

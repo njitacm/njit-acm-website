@@ -38,7 +38,7 @@ header {
   max-height: calc(100vh - var(--nav-height));
   position: relative;
   margin-bottom: 1rem;
-  border-bottom: 4px solid red;
+  border-bottom: var(--hor-sec-img-border-width) solid red;
   z-index: 10;
   overflow: hidden;
 }

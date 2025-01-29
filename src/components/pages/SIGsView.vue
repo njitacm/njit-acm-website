@@ -126,7 +126,6 @@ export default {
 
 <style scoped>
 .outer-container {
-  width: 80%;
   margin: 0 auto;
   margin-bottom: 10rem;
 }

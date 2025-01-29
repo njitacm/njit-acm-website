@@ -117,14 +117,24 @@ img {
   align-items: center;
   gap: 1.2rem;
   margin: 0.4rem 0.8rem;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .socials > a {
   transition: opacity var(--hover-speed) linear;
 }
 
-.socials > a:hover {
-  opacity: 0.625;
+@media (hover: hover) {
+  .socials > a:hover {
+    opacity: 0.625;
+  }
+}
+
+@media (hover: none) {
+  .socials > a:active {
+    opacity: 0.625;
+  }
 }
 
 /* a {
