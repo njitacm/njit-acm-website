@@ -48,77 +48,13 @@
 <script>
 import HorizontalSection from "../HorizontalSection.vue";
 import SIGsCard from "../SIGsCard.vue";
+import sigData from '../../assets/data/sigs.js';
 
 export default {
   components: { SIGsCard, HorizontalSection },
   data() {
     return {
-      sigs: [
-        {
-          name: "sig-print",
-          desc: "A place to discuss and learn about 3D-Printers and 3D-Printing. From maintenance to modeling, if you have any interest in the hobby, feel free to stop by!",
-          leaders: "Max Hammond",
-          time: "Mondays 3:00-4:00 P.M.",
-          loc: "GITC 3700",
-          filename: "sig-print.png",
-        },
-        {
-          name: "sig-ai",
-          desc: "Join us for this semester's project, where we will be coding a transformer model and utilizing its different capabilities, like text summarization!",
-          leaders: "Ashwin Selvendran",
-          time: "Thursdays 11:30-1:00 P.M.",
-          loc: "GITC 3700",
-          filename: "sig-ai.png",
-        },
-        {
-          name: "sig-embedded",
-          desc: "We'll cover serial communications protocols, the basics of microcontrollers, and the importance of C/C++ within this and more!",
-          leaders: "Mathew Padilla",
-          time: "Fridays 2:15-3:15 P.M.",
-          loc: "GITC 3700",
-          filename: "sig-embedded.png",
-        },
-        {
-          name: "sig-emulation-development",
-          desc: "Interested in learning about developing emulators to play games like Zelda, Kirby, Mario, etc? Build one with us this semester and leave with a great resume project.",
-          leaders: "Yonden Sawyers",
-          time: "Tuesdays 5:00-6:00 P.M.",
-          loc: "GITC 3700",
-          filename: "sig-emu.png",
-        },
-        {
-          name: "sig-data-engineering",
-          desc: "Join our SIG and jump into the essentials of data engineering, including data pipelines, ETL processes, and how to design data to be utilized by ML models.",
-          leaders: "Kamil Arif",
-          time: "Tuesdays 3:00-4:00 P.M.",
-          loc: "Online",
-          filename: "sig-data.png",
-        },
-        {
-          name: "sig-quantum",
-          desc: "Learn all about quantum computing! We're open to all experience levels, so come join to learn and play around with some really cool stuff!",
-          leaders: "Sameer Butt",
-          time: "Thursdays 5:30-6:00 P.M.",
-          loc: "GITC 3700",
-          filename: "sig-quantum.png",
-        },
-        {
-          name: "sig-supercomputer",
-          desc: "SIG-Supercomputer is a group dedicating to learning about advanced computing, and competing in the national Student Cluster Competition.",
-          leaders: "Garrett Gonzalez-Rivas",
-          time: "Time TBA",
-          loc: "TBA",
-          filename: "sig-supercomputer.png",
-        },
-        {
-          name: "sig-vue",
-          desc: "Sig-Vue is an ACM Special Interest Group that focuses on teaching the Vue web development framework through a series of workshops.",
-          leaders: "Abdullah Imran",
-          time: "Fridays 4:00-5:00 P.M.",
-          loc: "GITC 3700",
-          filename: "sig-vue.svg",
-        },
-      ],
+      sigs: sigData['sp2025']
     };
   },
 };
@@ -132,10 +68,11 @@ export default {
 .sig-container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 33%);
-  grid-template-rows: 700px 700px 700px;
-  row-gap: 8rem;
-  column-gap: 5rem;
+  grid-template-columns: repeat(4, 25%);
+  /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
+  /* grid-template-rows: repeat(3, minmax(0, 1fr)); */
+  /* grid-template-rows: repeat(2, 50%); */
+  gap: 2rem;
   flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
@@ -151,12 +88,12 @@ p {
 }
 @media (max-width: 1400px) {
   .sig-container {
-    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: repeat(3, 33.33%);
   }
 }
 @media (max-width: 900px) {
   .sig-container {
-    grid-template-columns: repeat(1, 100%);
+    grid-template-columns: repeat(2, 50%);
     margin: 0 auto;
   }
 }
