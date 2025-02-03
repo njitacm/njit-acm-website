@@ -23,9 +23,10 @@ export default {
   --nav-height: 60px;
   --nav-border-width: 3px;
   --hor-sec-img-border-width: 4px;
-  --border-width: 2px;
+  --border-width: 3px;
   --border-radius: 10px;
   --large-border-radius: 20px;
+  --shadow-radius: 20px;
 
   --bkg-color: whitesmoke;
   --bkg-color-a625: rgba(245, 245, 245, 0.625);

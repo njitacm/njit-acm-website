@@ -1,11 +1,15 @@
 <template>
-  <div class="card" @mouseenter="showDesc" @mouseleave="hideDesc">
+  <div 
+    class="card" ref="card" 
+    @mouseenter="toggleDescHover" 
+    @mouseleave="toggleDescHover"
+    @click="toggleDescClick">
     <h3>{{ name }}</h3>
     <h4>Led by {{ leaders }}</h4>
     <h5>{{ time }} | {{ loc }}</h5>
     <section>
       <!-- wrapper with its own styles needed to prevent blur from leaking out -->
-      <div class="wrapper"><img :src="imagePath" ref="img" /></div>
+      <img :src="imagePath" ref="img" />
       <div class="desc" ref="desc">{{ desc }}</div>
     </section>
   </div>
@@ -24,17 +28,41 @@ export default {
   data() {
     return {
       imagePath: require("../assets/sigs/" + this.$props.filename),
+      descVisible: false
     };
   },
   methods: {
-    showDesc() {
-      this.$refs.desc.style.opacity = 1;
-      this.$refs.img.style.filter = "blur(15px)";
+    isMobile() {
+      return (navigator.userAgent.match(/Android/i)
+              || navigator.userAgent.match(/webOS/i)
+              || navigator.userAgent.match(/iPhone/i)
+              || navigator.userAgent.match(/iPad/i)
+              || navigator.userAgent.match(/iPod/i)
+              || navigator.userAgent.match(/BlackBerry/i)
+              || navigator.userAgent.match(/Windows Phone/i));
     },
-    hideDesc() {
-      this.$refs.desc.style.opacity = 0;
-      this.$refs.img.style.filter = "blur(0px)";
-    }
+    toggleDescHover() {
+      if (this.isMobile())
+        return;
+      this.toggleDesc();
+    },
+    toggleDescClick() {
+      if (!this.isMobile())
+        return;
+      this.toggleDesc();
+    },
+    toggleDesc() {
+      if (this.descVisible) {
+        this.descVisible = false;
+        this.$refs.desc.style.opacity = 0;
+        this.$refs.card.style.boxShadow = "var(--shadow-gray) 0px 0px 0px";
+      } else {
+        this.descVisible = true;
+        this.$refs.desc.style.opacity = 1;
+        this.$refs.card.style.boxShadow = "var(--shadow-gray) 0px 0px var(--shadow-radius)";
+      }
+    },
+    
   }
 };
 </script>
@@ -56,6 +84,7 @@ div.card {
   border-radius: var(--large-border-radius);
   justify-self: center;
   width: 100%;
+  transition: box-shadow var(--hover-speed) linear;
 }
 /* .sig-header {
   display: grid;
@@ -65,6 +94,7 @@ div.card {
     font-size: 3.6rem;
     text-align: center;
     align-self: center;
+    color: var(--red);
   }
   h4 {
     text-align: center;
@@ -97,20 +127,13 @@ div.desc {
   text-align: center;
   overflow: auto;
   opacity: 0;
-  background-color: var(--bkg-color-a625);
+  background-color: var(--bkg-color);
   border-radius: var(--large-border-radius);
   transition: opacity var(--hover-speed) linear;
 }
 
-.wrapper {
-  width: 100%;
-  overflow: hidden;
-  border-radius: var(--large-border-radius);
-}
-
-.wrapper img {
+img {
   width: 100%;
   border-radius: var(--large-border-radius);
-  margin: -1px;
 }
 </style>

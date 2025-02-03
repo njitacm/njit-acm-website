@@ -106,7 +106,7 @@ export default {
 
 .frontFlipped {
   transform: rotateY(180deg);
-  box-shadow: var(--shadow-gray) 0px 0px 25px;
+  box-shadow: var(--shadow-gray) 0px 0px var(--shadow-radius);
   z-index: 0;
 }
 
