@@ -107,8 +107,12 @@ export default [{ "Name": "Eduardo Preciado", "Role": "President", "UCID": "ejp9
     // Xhaiden
     "Name": "Xhaiden",
     "Id": 73,
+    "Role": "SIG Master",
     "Term": 2025,
-    "Role": "SIG Master"
+    "UCID": "xyd",
+    "Year": "Freshman",
+    "Major": "CS + AAPH",
+    "Desc": "Hey, I'm Xhaiden, a Computer Science and Physics double major. I am interesting in quantum computing and running sig-quantum this semester! I also like making music, and I enjoy creating cool coding projects, especially in python and the desmos graphing calculator!"
 },
 {
     // Krish
