@@ -2,7 +2,7 @@
   <div>
     <HomePageHeader />
     <!-- Horizontal Sections -->
-    <section class="outer-div">
+    <section class="outer-container">
       <HorizontalSection
         imagePath="HomePage/Fall_2024_GBM.jpg"
         class="border-bottom"
@@ -113,8 +113,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.outer-div {
-  width: 80%;
+.outer-container {
   margin-left: auto;
   margin-right: auto;
 }
