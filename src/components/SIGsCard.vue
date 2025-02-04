@@ -1,9 +1,5 @@
 <template>
-  <div 
-    class="card" ref="card" 
-    @mouseenter="toggleDescHover" 
-    @mouseleave="toggleDescHover"
-    @click="toggleDescClick">
+  <div class="card" ref="card" @mouseenter="toggleDescHover" @mouseleave="toggleDescHover" @click="toggleDescClick">
     <h3>{{ name }}</h3>
     <h4>Led by {{ leaders }}</h4>
     <h5>{{ time }} | {{ loc }}</h5>
@@ -34,12 +30,12 @@ export default {
   methods: {
     isMobile() {
       return (navigator.userAgent.match(/Android/i)
-              || navigator.userAgent.match(/webOS/i)
-              || navigator.userAgent.match(/iPhone/i)
-              || navigator.userAgent.match(/iPad/i)
-              || navigator.userAgent.match(/iPod/i)
-              || navigator.userAgent.match(/BlackBerry/i)
-              || navigator.userAgent.match(/Windows Phone/i));
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i));
     },
     toggleDescHover() {
       if (this.isMobile())
@@ -62,7 +58,7 @@ export default {
         this.$refs.card.style.boxShadow = "var(--shadow-gray) 0px 0px var(--shadow-radius)";
       }
     },
-    
+
   }
 };
 </script>
@@ -86,23 +82,26 @@ div.card {
   width: 100%;
   transition: box-shadow var(--hover-speed) linear;
 }
+
 /* .sig-header {
   display: grid;
   } */
-  
-  h3 {
-    font-size: 3.6rem;
-    text-align: center;
-    align-self: center;
-    color: var(--red);
-  }
-  h4 {
-    text-align: center;
-    font-size: 2.4rem;
-  }
-  h5 {
-    /* margin-top: 0.8rem; */
-    text-align: center;
+
+h3 {
+  font-size: 3.6rem;
+  text-align: center;
+  align-self: center;
+  color: var(--red);
+}
+
+h4 {
+  text-align: center;
+  font-size: 2.4rem;
+}
+
+h5 {
+  /* margin-top: 0.8rem; */
+  text-align: center;
   font-size: 1.8rem;
 }
 
@@ -135,5 +134,14 @@ div.desc {
 img {
   width: 100%;
   border-radius: var(--large-border-radius);
+}
+
+@media (max-width: 750px) {
+  h3 {
+    font-size: 2.3rem;
+  }
+  div.desc {
+    font-size: 1.7rem;
+  }
 }
 </style>

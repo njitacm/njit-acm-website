@@ -1,6 +1,6 @@
 <template>
   <div class="events-calendar">
-    <PrimaryButton class="button"><a target="_blank" :href="href">Add Events Calendar</a></PrimaryButton>
+    <PrimaryButton class="button"><a target="_blank" :href="href">{{ buttonText }}</a></PrimaryButton>
     <iframe :src="src" frameborder="0" scrolling="auto"></iframe>
   </div>
 </template>
@@ -10,7 +10,7 @@ import PrimaryButton from './PrimaryButton.vue';
 
 export default {
   components: { PrimaryButton },
-  props: [ 'src', 'href' ],
+  props: [ 'src', 'href', 'buttonText' ],
 }
 </script>
 

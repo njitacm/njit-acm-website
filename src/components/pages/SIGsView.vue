@@ -42,6 +42,13 @@
         ></SIGsCard>
       </div>
     </div>
+    <h2 class="section-header">SIG Calendar</h2>
+    <EmbeddedCalendar 
+      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20SIG%20Schedule%20Spring%202025&src=Y19hNTM1ZWI4ZmY0NTA3NTg2NDk0MjY3MjE0ODdiMjc3NjE0MjA3OTc1MWY2YjRhODFhZTVhNDA0MmI2NzlmMmFiQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%234285F4"
+      href="https://calendar.google.com/calendar/embed?src=c_a535eb8ff450758649426721487b2776142079751f6b4a81ae5a4042b679f2ab%40group.calendar.google.com&ctz=America%2FNew_York"
+      buttonText="View Calendar"
+    >
+    </EmbeddedCalendar>
   </div>
 </template>
 
@@ -49,9 +56,10 @@
 import HorizontalSection from "../HorizontalSection.vue";
 import SIGsCard from "../SIGsCard.vue";
 import sigData from '../../assets/data/sigs.js';
+import EmbeddedCalendar from "../EmbeddedCalendar.vue";
 
 export default {
-  components: { SIGsCard, HorizontalSection },
+  components: { SIGsCard, HorizontalSection, EmbeddedCalendar },
   data() {
     return {
       sigs: sigData['sp2025']
@@ -91,9 +99,15 @@ p {
     grid-template-columns: repeat(3, 33.33%);
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 1250px) {
   .sig-container {
     grid-template-columns: repeat(2, 50%);
+    margin: 0 auto;
+  }
+}
+@media (max-width: 500px) {
+  .sig-container {
+    grid-template-columns: repeat(1, 50%);
     margin: 0 auto;
   }
 }

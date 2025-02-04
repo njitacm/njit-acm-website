@@ -34,6 +34,7 @@
       <EmbeddedCalendar
         src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20E-Board%20Office%20Hours&src=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233F51B5"
         href="https://calendar.google.com/calendar/u/0?cid=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+        buttonText="Add Calendar"
       ></EmbeddedCalendar>
     </div>
     <div class="pastEboard">
@@ -331,7 +332,7 @@ header {
   filter: invert(100%);
 }
 
-h2 {
+h2:not(.section-header) {
   font-size: 48px;
 }
 .svg {
@@ -395,7 +396,7 @@ h2 {
   header {
     margin: 0 1rem;
   }
-  h2 {
+  h2:not(.section-header) {
     font-size: 3.5rem;
   }
 
