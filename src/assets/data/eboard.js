@@ -98,26 +98,64 @@ export default [{ "Name": "Eduardo Preciado", "Role": "President", "UCID": "ejp9
 },
 {
     // Garret
-    "Name": "Garret",
+    "Name": "Garret Gonzalez-Rivas",
     "Id": 72,
     "Term": 2025,
-    "Role": "Secretary"
+    "Role": "Secretary",
+    "UCID": "grg",
+    "Year": "Junior?",
+    // "Major": "Biology + ? + ?",
+    // "Desc": "",
 },
 {
     // Xhaiden
-    "Name": "Xhaiden",
+    "Name": "Xhaiden D'Souza",
     "Id": 73,
+    "Role": "SIG Master",
     "Term": 2025,
-    "Role": "SIG Master"
+    "UCID": "xyd",
+    "Year": "Freshman",
+    "Major": "CS + AAPH",
+    "Desc": "Hey, I'm Xhaiden, a Computer Science and Physics double major. I am interesting in quantum computing and running sig-quantum this semester! I also like making music, and I enjoy creating cool coding projects, especially in python and the desmos graphing calculator!"
+},
+{
+    "Name": "Shivansh Dutta",
+    "Id": 74,
+    "Term": 2025,
+    "Role": "Event Master",
+    "UCID": "sd2386",
+    "Year": "Freshman",
+    // "Major": "?",
+    // "Desc": "",
 },
 {
     // Krish
     "Name": "Krish A. Patel",
-    "Id": 74,
+    "Id": 75,
     "Term": 2025,
     "Role": "Webmaster",
     "UCID": "kap225",
     "Year": "Freshman",
     "Major": "CS + AAPH",
-    "Desc": "Hey y'all, I'm Krish! I'm pursuing a CS and Physics double major (mostly because I couldn't pick just one!). I love learning new things, meeting new people, and marvelling at the wonderful world around us!",
+    "Desc": "Hey y'all, I'm Krish! I'm pursuing a CS and Physics double major (both are such cool fields, so I couldn't just pick one!). Some of my smaller passions include tech, music, running, ancient history, linguistics, and ... (I've run out of space.) Basically, I'm a hodge-podge of things. If you want to come and chat with me, feel free to come during my office hours!",
+},
+{
+    "Name": "Simon Leong",
+    "Id": 76,
+    "Term": 2025,
+    "Role": "Public Relations",
+    "UCID": "sl884",
+    // "Year": "?",
+    // "Major": "?",
+    // "Desc": "",
+},
+{
+    "Name": "Clarissa Furtado",
+    "Id": 77,
+    "Term": 2025,
+    "Role": "Graphic Designer",
+    "UCID": "caf25",
+    // "Year": "?",
+    // "Major": "?",
+    // "Desc": "",
 }]

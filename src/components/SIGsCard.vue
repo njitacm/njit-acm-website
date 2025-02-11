@@ -2,7 +2,8 @@
   <div class="card" ref="card" @mouseenter="toggleDescHover" @mouseleave="toggleDescHover" @click="toggleDescClick">
     <h3>{{ name }}</h3>
     <h4>Led by {{ leaders }}</h4>
-    <h5>{{ time }} | {{ loc }}</h5>
+    <h5>{{ loc }}</h5>
+    <h5>{{ time }}</h5>
     <section>
       <!-- wrapper with its own styles needed to prevent blur from leaking out -->
       <img :src="imagePath" ref="img" />
