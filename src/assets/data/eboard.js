@@ -116,7 +116,7 @@ export default [{ "Name": "Eduardo Preciado", "Role": "President", "UCID": "ejp9
     "UCID": "xyd",
     "Year": "Freshman",
     "Major": "CS + AAPH",
-    "Desc": "Hey, I'm Xhaiden, a Computer Science and Physics double major. I am interesting in quantum computing and running sig-quantum this semester! I also like making music, and I enjoy creating cool coding projects, especially in python and the desmos graphing calculator!"
+    "Desc": "Hey, I'm Xhaiden, a Computer Science and Physics double major. I am interested in quantum computing and running sig-quantum this semester! I also like making music, and I enjoy creating cool coding projects, especially in python and the desmos graphing calculator!"
 },
 {
     "Name": "Shivansh Dutta",
