@@ -98,14 +98,18 @@ export default [{ "Name": "Eduardo Preciado", "Role": "President", "UCID": "ejp9
 },
 {
     // Garret
-    "Name": "Garret",
+    "Name": "Garret Gonzalez-Rivas",
     "Id": 72,
     "Term": 2025,
-    "Role": "Secretary"
+    "Role": "Secretary",
+    "UCID": "grg",
+    "Year": "Junior?",
+    // "Major": "Biology + ? + ?",
+    // "Desc": "",
 },
 {
     // Xhaiden
-    "Name": "Xhaiden",
+    "Name": "Xhaiden D'Souza",
     "Id": 73,
     "Role": "SIG Master",
     "Term": 2025,
@@ -124,4 +128,14 @@ export default [{ "Name": "Eduardo Preciado", "Role": "President", "UCID": "ejp9
     "Year": "Freshman",
     "Major": "CS + AAPH",
     "Desc": "Hey y'all, I'm Krish! I'm pursuing a CS and Physics double major (mostly because I couldn't pick just one!). I love learning new things, meeting new people, and marvelling at the wonderful world around us!",
+},
+{
+    "Name": "Clarissa Furtado",
+    "Id": 75,
+    "Term": 2025,
+    "Role": "Graphic Designer",
+    "UCID": "caf25",
+    // "Year": "?",
+    // "Major": "?",
+    // "Desc": "",
 }]
