@@ -101,15 +101,15 @@ export default {
         {
             name: "sig-print",
             desc: "A place to discuss and learn about 3D-Printers and 3D-Printing. (Now with 3D Pen!) From maintenance to modeling, if you have any interest in the hobby, feel free to stop by!",
-            leaders: "Max Hammond",
-            // time: "TBA",
+            leaders: "max hammond",
+            time: "Tuesdays 5-6 PM",
             loc: "GITC 3704",
             filename: "Spring2025/sig-print.png",
         },
         {
             name: "sig-puzzle",
             desc: "Cryptography/Steganography puzzles! Find the hidden messages! Join the ACM Discord server to find out more!. First person to DM me with the correct solution and solve path wins the puzzle.",
-            leaders: "Max Hammond",
+            leaders: "max hammond",
             // time: "TBA",
             loc: "GITC 3700",
             filename: "Spring2025/sig-puzzle.png",
