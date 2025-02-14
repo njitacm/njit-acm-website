@@ -76,10 +76,7 @@ export default {
 .sig-container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 25%);
-  /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
-  /* grid-template-rows: repeat(3, minmax(0, 1fr)); */
-  /* grid-template-rows: repeat(2, 50%); */
+  grid-template-columns: repeat(2, 50%);
   gap: 2rem;
   flex-wrap: wrap;
   margin-left: auto;
@@ -96,7 +93,7 @@ p {
 }
 @media (max-width: 1400px) {
   .sig-container {
-    grid-template-columns: repeat(3, 33.33%);
+    grid-template-columns: repeat(1, 100%);
   }
 }
 @media (max-width: 1250px) {
