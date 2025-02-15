@@ -81,6 +81,11 @@ p {
   width: 80%;
 }
 
+.section-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
 a {
   transition: opacity var(--hover-speed) linear;
   color: var(--red);
