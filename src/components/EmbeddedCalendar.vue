@@ -16,25 +16,27 @@ export default {
 
 <style scoped>
 .events-calendar {
-  margin: 5rem 0;
+  margin: 5rem auto;
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: space-around;
+  max-width: 1250px;
 }
 .events-calendar iframe {
-  align-self: center;
-  margin-left: 10%;
-  width: 80%;
+  width: 100%;
   height: 600px;
   border-radius: var(--large-border-radius);
   box-shadow: var(--light-shadow-gray) 0px 0px 10px;
 }
 
 .events-calendar .button {
-  margin-left: 10%;
+  margin: 0 auto;
   margin-bottom: 2rem;
   width: 80%;
   display: none;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .events-calendar iframe {
     display: none;
   }
