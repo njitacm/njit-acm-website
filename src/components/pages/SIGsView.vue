@@ -119,19 +119,7 @@ p, li {
 }
 @media (max-width: 1400px) {
   .sig-container {
-    grid-template-columns: repeat(1, 100%);
-  }
-}
-@media (max-width: 1250px) {
-  .sig-container {
-    grid-template-columns: repeat(2, 50%);
-    margin: 0 auto;
-  }
-}
-@media (max-width: 500px) {
-  .sig-container {
-    grid-template-columns: repeat(1, 50%);
-    margin: 0 auto;
+    grid-template-columns: repeat(1, 90%);
   }
 }
 </style>

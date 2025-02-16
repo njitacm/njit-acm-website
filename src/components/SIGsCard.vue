@@ -4,12 +4,12 @@
     <div class="content">
       <div class="title">
         <div class="name-leader">
-          <h3>{{ name }}</h3>
-          <h4>Led by {{ leaders }}</h4>
+          <h3 class="name">{{ name }}</h3>
+          <h4 class="leader">Led by {{ leaders }}</h4>
         </div>
         <div class="loc-time">
-          <h5>{{ loc }}</h5>
-          <h5>{{ time }}</h5>
+          <h5 class="loc">{{ loc }}</h5>
+          <h5 class="time">{{ time }}</h5>
         </div>
       </div>
       <div class="desc" ref="desc">{{ desc }}</div>
@@ -56,10 +56,11 @@ export default {
   transition: box-shadow var(--hover-speed) linear;
 }
 
-.name {
+.title {
   display: grid;
-  grid-template-columns: max-content auto;
+  grid-template-columns: auto max-content;
   margin-bottom: 1rem;
+  column-gap: 1rem;
 }
 
 .loc-time {
@@ -78,13 +79,10 @@ h4 {
   font-size: 2.4rem;
 }
 
-h5 {
+.loc, .time {
   text-align: right;
   font-size: 1.8rem;
-}
-
-.content {
-  
+  font-style: italic;
 }
 
 .desc {
@@ -96,17 +94,37 @@ h5 {
   background-color: var(--bkg-color);
 }
 
+.content {
+  display: grid;
+  row-gap: 0.5rem;
+}
+
 img {
   width: 20%;
   border-radius: var(--large-border-radius);
 }
 
-@media (max-width: 750px) {
-  h3 {
+@media (max-width: 775px) {
+  .name {
     font-size: 2.3rem;
+  }
+  .leader {
+    font-size: 2rem;
   }
   div.desc {
     font-size: 1.7rem;
+  }
+  .title {
+    display: unset;
+  }
+  .loc-time {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 2rem;
+  }
+  .loc, .time {
+    text-align: unset;
+    font-weight: normal;
   }
 }
 </style>
