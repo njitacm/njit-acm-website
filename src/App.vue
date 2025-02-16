@@ -65,8 +65,9 @@ html {
 }
 
 p {
-  font-size: 1.6rem;
+  font-size: 2.5rem;
 }
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 500ms ease-in-out;
@@ -79,6 +80,7 @@ p {
 
 .outer-container {
   width: 80%;
+  max-width: 1500px;
 }
 
 .section-container {
