@@ -109,17 +109,24 @@ export default {
   margin-right: auto;
   justify-content: center;
 }
-/* h3 {
-  font-size: 6.2rem;
-  text-align: center;
-  margin: 2.4rem;
-} */
+
 p, li {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
+
+.section-container {
+  margin: 3rem auto;
+}
+
 @media (max-width: 1400px) {
   .sig-container {
     grid-template-columns: repeat(1, 90%);
+  }
+}
+
+@media (max-width: 750px) {
+  ol {
+    list-style: inside decimal;
   }
 }
 </style>
