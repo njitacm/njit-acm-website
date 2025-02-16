@@ -114,6 +114,7 @@ button {
 
   .section-header {
     width: 90%;
+    font-size: 36px;
   }
 }
 

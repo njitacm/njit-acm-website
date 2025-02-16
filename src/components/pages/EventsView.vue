@@ -130,9 +130,10 @@ p {
 }
 
 .upcoming-events {
-  margin-top: 5rem;
+  margin-top: 4rem;
   display: grid;
   grid-template-columns: repeat(2, 50%);
+  justify-content: space-around;
 }
 
 @media (max-width: 1800px) {
@@ -158,15 +159,15 @@ p {
     grid-template-columns: 80%;
     justify-content: center;
   }
-
-  .upcoming-events {
-    text-align: center;
-  }
 }
 
 @media (max-width: 600px) {
   p {
     font-size: 2.4rem;
+  }
+
+  .upcoming-events {
+    grid-template-columns: 90%;
   }
 
   .events-grid {

@@ -24,7 +24,6 @@ export default {
   border: var(--border-width) lightcoral solid;
   border-radius: var(--border-radius);
   height: fit-content;
-  display: relative;
 }
 
 .event-text {
