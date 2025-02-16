@@ -97,7 +97,7 @@ export default {
   z-index: 0;
   transform: rotateY(-180deg);
   background: white;
-  border: 4px red solid;
+  border: var(--border-width) lightcoral solid;
   border-radius: 16px;
   display: grid;
   grid-template-columns: 100%;

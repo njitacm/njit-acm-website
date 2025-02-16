@@ -1,14 +1,19 @@
 <template>
-  <div class="card" ref="card" @mouseenter="toggleDescHover" @mouseleave="toggleDescHover" @click="toggleDescClick">
-    <h3>{{ name }}</h3>
-    <h4>Led by {{ leaders }}</h4>
-    <h5>{{ loc }}</h5>
-    <h5>{{ time }}</h5>
-    <section>
-      <!-- wrapper with its own styles needed to prevent blur from leaking out -->
-      <img :src="imagePath" ref="img" />
+  <div class="card" ref="card">
+    <img :src="imagePath" ref="img" />
+    <div class="content">
+      <div class="title">
+        <div class="name-leader">
+          <h3 class="name">{{ name }}</h3>
+          <h4 class="leader">Led by {{ leaders }}</h4>
+        </div>
+        <div class="loc-time">
+          <h5 class="loc">{{ loc }}</h5>
+          <h5 class="time">{{ time }}</h5>
+        </div>
+      </div>
       <div class="desc" ref="desc">{{ desc }}</div>
-    </section>
+    </div>
   </div>
 </template>
 
@@ -25,41 +30,7 @@ export default {
   data() {
     return {
       imagePath: require("../assets/sigs/" + this.$props.filename),
-      descVisible: false
     };
-  },
-  methods: {
-    isMobile() {
-      return (navigator.userAgent.match(/Android/i)
-        || navigator.userAgent.match(/webOS/i)
-        || navigator.userAgent.match(/iPhone/i)
-        || navigator.userAgent.match(/iPad/i)
-        || navigator.userAgent.match(/iPod/i)
-        || navigator.userAgent.match(/BlackBerry/i)
-        || navigator.userAgent.match(/Windows Phone/i));
-    },
-    toggleDescHover() {
-      if (this.isMobile())
-        return;
-      this.toggleDesc();
-    },
-    toggleDescClick() {
-      if (!this.isMobile())
-        return;
-      this.toggleDesc();
-    },
-    toggleDesc() {
-      if (this.descVisible) {
-        this.descVisible = false;
-        this.$refs.desc.style.opacity = 0;
-        this.$refs.card.style.boxShadow = "var(--shadow-gray) 0px 0px 0px";
-      } else {
-        this.descVisible = true;
-        this.$refs.desc.style.opacity = 1;
-        this.$refs.card.style.boxShadow = "var(--shadow-gray) 0px 0px var(--shadow-radius)";
-      }
-    },
-
   }
 };
 </script>
@@ -72,10 +43,11 @@ export default {
 - Spacing system (px)
 2 / 4 / 8 / 12 / 16 / 24 / 32 /48 /64 /80 /96 / 128
 */
-div.card {
-  border: red var(--border-width) solid;
-  display: grid;
-  /* grid-template-rows: 100px 50px 380px 1fr; */
+.card {
+  border: lightcoral var(--border-width) solid;
+  display: flex;
+  align-items: center;
+  vertical-align: center;
   gap: 1rem;
   padding: 1.5rem;
   border-radius: var(--large-border-radius);
@@ -84,65 +56,75 @@ div.card {
   transition: box-shadow var(--hover-speed) linear;
 }
 
-/* .sig-header {
+.title {
   display: grid;
-  } */
+  grid-template-columns: auto max-content;
+  margin-bottom: 1rem;
+  column-gap: 1rem;
+}
+
+.loc-time {
+  margin: auto 0;
+}
 
 h3 {
   font-size: 3.6rem;
-  text-align: center;
+  text-align: left;
   align-self: center;
   color: var(--red);
 }
 
 h4 {
-  text-align: center;
+  text-align: left;
   font-size: 2.4rem;
 }
 
-h5 {
-  /* margin-top: 0.8rem; */
-  text-align: center;
+.loc, .time {
+  text-align: right;
   font-size: 1.8rem;
+  font-style: italic;
 }
 
-section {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  position: relative;
-  width: 100%;
-}
-
-div.desc {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  font-size: 2.5rem;
-  padding: 1rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.desc {
+  font-size: 2rem;
   align-content: center;
-  text-align: center;
+  text-align: left;
   overflow: auto;
-  opacity: 0;
+  max-height: 20rem;
   background-color: var(--bkg-color);
-  border-radius: var(--large-border-radius);
-  transition: opacity var(--hover-speed) linear;
+}
+
+.content {
+  display: grid;
+  row-gap: 0.5rem;
 }
 
 img {
-  width: 100%;
+  width: 20%;
   border-radius: var(--large-border-radius);
 }
 
-@media (max-width: 750px) {
-  h3 {
+@media (max-width: 775px) {
+  .name {
     font-size: 2.3rem;
+  }
+  .leader {
+    font-size: 2rem;
   }
   div.desc {
     font-size: 1.7rem;
+  }
+  .title {
+    display: unset;
+  }
+  .loc-time {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 2rem;
+  }
+  .loc, .time {
+    text-align: unset;
+    font-weight: normal;
   }
 }
 </style>

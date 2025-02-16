@@ -17,6 +17,17 @@
         </p>
       </template>
     </HorizontalSection>
+    <h2 class="section-header">Upcoming Events</h2>
+    <div class="upcoming-events">
+      <EventCard v-for="event in upcomingEvents" :key="event.id"
+        :name="event.name"
+        :date="event.date"
+        :time="event.time"
+        :location="event.location"
+        :imageUrl="event.image"
+        :desc="event.desc">
+      </EventCard>
+    </div>
     <h2 class="section-header">Events Calendar</h2>
     <EmbeddedCalendar 
       src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=MONTH&src=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23795548"
@@ -31,16 +42,6 @@
         </MainEvent>
       </div>
     </div>
-    <div v-if="events.length" class="upcoming-events">
-      <h2 class="section-header">Upcoming Events</h2>
-      <div v-if="events.length" class="events-grid">
-        <EventCard v-for="event in events" :key="event.Title" :title="event.Title" :location="event.Location"
-          :time="event.Time" :imageUrl="event.Url"></EventCard>
-      </div>
-      <div v-else class="no-events">
-        <h1>There are no events currently scheduled</h1>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -50,6 +51,7 @@ import MainEvent from "../MainEvent.vue";
 import eventsJSON from "../../assets/data/events.json";
 import EventCard from "../EventCard.vue";
 import EmbeddedCalendar from "../EmbeddedCalendar.vue";
+import upcomingEventsData from "../../assets/data/upcomingEvents.js";
 
 export default {
   components: { HorizontalSection, MainEvent, EventCard, EmbeddedCalendar },
@@ -70,6 +72,7 @@ export default {
           imgName: "jerseyctf.png",
         },
       ],
+      upcomingEvents: upcomingEventsData['sp2025'],
       events: eventsJSON,
     };
   },
@@ -97,7 +100,7 @@ export default {
 */
 
 p {
-  font-size: 3.6rem;
+  font-size: 2.5rem;
   line-height: 4rem;
 }
 
@@ -127,9 +130,11 @@ p {
 }
 
 .upcoming-events {
-  margin-top: 5rem;
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  justify-content: space-around;
 }
-
 
 @media (max-width: 1800px) {
   .events-grid {
@@ -154,15 +159,12 @@ p {
     grid-template-columns: 80%;
     justify-content: center;
   }
-
-  .upcoming-events {
-    text-align: center;
-  }
 }
 
-@media (max-width: 600px) {
-  p {
-    font-size: 2.4rem;
+@media (max-width: 650px) {
+
+  .upcoming-events {
+    grid-template-columns: 90%;
   }
 
   .events-grid {

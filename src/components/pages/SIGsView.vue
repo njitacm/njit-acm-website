@@ -49,6 +49,31 @@
       buttonText="View Calendar"
     >
     </EmbeddedCalendar>
+    <div class="how-to-join">
+      <h3 class="section-header">How to Join SIGs</h3>
+      <div class="section-container">
+        <ol>
+          <li>Join the <a :href="discord" target="_blank">ACM Discord</a>.</li>
+          <li>Go to "Channels & Roles."</li>
+          <li>Assign yourself the role for the SIG you want to join.</li>
+          <li>Now you should have access to that SIG channel! 
+            Make sure to introduce yourself and communicate with the SIG leader(s)
+            that you joined!</li>
+        </ol>
+      </div>
+    </div>
+    <div class="how-to-create">
+      <h3 class="section-header">How to Make Your Own SIG</h3>
+      <div class="section-container">
+        <p>At the start of every semester, a form is sent out on the 
+          <a :href="discord" target="_blank">ACM Discord</a> to request a SIG of your own.
+          After filling it out, you'll be lightly interviewed about how you plan to run the SIG.
+          If your interview goes well, you now have your own SIG! Note: SIGs <i>cannot</i> 
+          be created mid-semester. Please adhere to the form's deadline.
+        </p>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -62,7 +87,8 @@ export default {
   components: { SIGsCard, HorizontalSection, EmbeddedCalendar },
   data() {
     return {
-      sigs: sigData['sp2025']
+      sigs: sigData['sp2025'],
+      discord: 'https://discord.gg/vNHE3nq2'
     };
   },
 };
@@ -74,41 +100,33 @@ export default {
   margin-bottom: 10rem;
 }
 .sig-container {
-  width: 100%;
+  /* width: %; */
   display: grid;
-  grid-template-columns: repeat(4, 25%);
-  /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
-  /* grid-template-rows: repeat(3, minmax(0, 1fr)); */
-  /* grid-template-rows: repeat(2, 50%); */
+  grid-template-columns: repeat(2, 50%);
   gap: 2rem;
   flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
 }
-/* h3 {
-  font-size: 6.2rem;
-  text-align: center;
-  margin: 2.4rem;
-} */
-p {
-  font-size: 3rem;
+
+p, li {
+  font-size: 2.5rem;
 }
+
+.section-container {
+  margin: 3rem auto;
+}
+
 @media (max-width: 1400px) {
   .sig-container {
-    grid-template-columns: repeat(3, 33.33%);
+    grid-template-columns: repeat(1, 90%);
   }
 }
-@media (max-width: 1250px) {
-  .sig-container {
-    grid-template-columns: repeat(2, 50%);
-    margin: 0 auto;
-  }
-}
-@media (max-width: 500px) {
-  .sig-container {
-    grid-template-columns: repeat(1, 50%);
-    margin: 0 auto;
+
+@media (max-width: 750px) {
+  ol {
+    list-style: inside decimal;
   }
 }
 </style>
