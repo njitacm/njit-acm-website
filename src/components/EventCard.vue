@@ -22,12 +22,12 @@ export default {
 <style>
 .event-card {
   border: var(--border-width) lightcoral solid;
-  border-radius: var(--border-radius);
+  border-radius: var(--large-border-radius);
   height: fit-content;
 }
 
 .event-text {
-  padding: 1rem;
+  padding: 1rem 2rem;
   display: grid;
   row-gap: 1rem;
   grid-template-columns: 100%;
@@ -35,7 +35,8 @@ export default {
 
 .event-img {
   width: 100%;
-  border-radius: var(--border-radius);
+  border-bottom: lightcoral var(--border-width) solid;
+  border-radius: var(--large-border-radius) var(--large-border-radius) 0 0;
 }
 
 .event-card h1 {

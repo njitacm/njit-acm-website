@@ -100,7 +100,7 @@ export default {
 */
 
 p {
-  font-size: 3.6rem;
+  font-size: 2.5rem;
   line-height: 4rem;
 }
 
@@ -161,10 +161,7 @@ p {
   }
 }
 
-@media (max-width: 600px) {
-  p {
-    font-size: 2.4rem;
-  }
+@media (max-width: 650px) {
 
   .upcoming-events {
     grid-template-columns: 90%;
