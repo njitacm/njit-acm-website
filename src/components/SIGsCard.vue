@@ -56,7 +56,7 @@ export default {
   transition: box-shadow var(--hover-speed) linear;
 }
 
-.title {
+.name {
   display: grid;
   grid-template-columns: max-content auto;
   margin-bottom: 1rem;

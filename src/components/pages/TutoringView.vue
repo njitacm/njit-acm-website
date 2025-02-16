@@ -450,7 +450,7 @@ export default {
 .no-tutors {
   margin-top: 10rem;
 }
-.tutoring-sidebar h1.title {
+.tutoring-sidebar h1.name {
   font-size: 4rem;
 }
 .tutoring-sidebar h1 {

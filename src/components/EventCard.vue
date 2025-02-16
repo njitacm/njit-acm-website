@@ -1,10 +1,10 @@
 <template>
   <div class="event-card">
-    <div :style="'background-image: url(' + imageUrl + ')'" class="event-image"></div>
+    <img :src="require('../assets/EventsPage/' + imageUrl)" class="event-img">
     <div class="event-text">
-      <h1>{{ title }}</h1>
-      <p>{{ time }}</p>
-      <p>Location: {{ location }}</p>
+      <h1>{{ name }}</h1>
+      <h2>Location: {{ location }} | Date: {{ date }} @ {{ time }}</h2>
+      <p class="desc">{{ desc }}</p>
       <a :href="url"></a>
     </div>
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props: ['title', 'time', 'location', 'url', 'imageUrl'],
+  props: ['name', 'date', 'time', 'location', 'url', 'imageUrl', 'desc'],
   mounted() {
     console.log(this.$props.imageUrl)
   }
@@ -21,27 +21,34 @@ export default {
 
 <style>
 .event-card {
-  border: 2px lightcoral solid;
-  border-radius: 8px;
+  border: var(--border-width) lightcoral solid;
+  border-radius: var(--border-radius);
   height: fit-content;
+  display: relative;
 }
 
 .event-text {
-  padding: 8px;
+  padding: 1rem;
+  display: grid;
+  row-gap: 1rem;
+  grid-template-columns: 100%;
 }
 
-.event-image {
+.event-img {
   width: 100%;
-  min-height: 180px;
-  height: 60%;
+  border-radius: var(--border-radius);
 }
 
 .event-card h1 {
-
+  color: var(--red);
   font-size: 3rem;
 }
 
-.event-card p {
+.event-card h2 {
   font-size: 1.8rem;
+}
+
+.desc {
+  font-size: 2rem;
 }
 </style>

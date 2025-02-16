@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  props: ['title', 'time', 'location', 'url', 'imageUrl'],
+  props: ['name', 'time', 'location', 'url', 'imageUrl'],
   mounted() {
     console.log(this.$props.imageUrl)
   }
