@@ -76,6 +76,7 @@ div {
   background-size: cover;
   border-radius: var(--border-radius);
   width: 50%;
+  height: fit-content;
   padding: 0;
   margin: 0;
   box-shadow: var(--shadow-gray) 0px 0px 25px;
