@@ -57,6 +57,7 @@ export default {
 }
 
 .title {
+  width: 100%;
   display: grid;
   grid-template-columns: auto max-content;
   margin-bottom: 1rem;
@@ -95,6 +96,7 @@ h4 {
 }
 
 .content {
+  width: 100%;
   display: grid;
   row-gap: 0.5rem;
 }
