@@ -2,7 +2,10 @@
   <div>
     <Transition>
       <header class="fixed-header" ref="pageHeader">
-        <RouterLink to="/" class="router-link-left" @click="toTop()">ACM</RouterLink>
+        <RouterLink to="/" class="router-link-left" @click="toTop()">
+          <img src="../assets/logos/NJIT_ACM_LOGO.svg" />
+          <div>ACM</div>
+        </RouterLink>
         <RouterLink
           to="/"
           class="router-link-center"
@@ -130,7 +133,7 @@ export default {
 header {
   background: white;
   z-index: 100;
-  padding-left: 15px;
+  padding-left: 5px;
   display: flex;
   justify-content: space-between;
   border-bottom: red var(--nav-border-width) solid;
@@ -171,7 +174,17 @@ header {
   text-decoration: none;
   color: black;
   font-weight: 500;
+  display: flex;
+  /* grid-template-columns: auto 50%; */
+  align-items: center;
+  column-gap: 1rem;
+  height: 100%;
 }
+
+.router-link-left > img {
+  height: 50px;
+}
+
 .router-link-center {
   position: absolute;
   left: 50%;
@@ -189,6 +202,9 @@ header {
 
 @media (max-width: 1750px) {
   .router-link-center {
+    display: none;
+  }
+  .router-link-left > div {
     display: none;
   }
 }

@@ -1,8 +1,7 @@
 <template>
   <footer>
     <div class="logos">
-      <img src="../assets/logos/NJIT.png" />
-      <!-- <img src="../assets/logos/NJIT_ACM_LOGO.svg" /> -->
+      <img class="njit-logo" src="../assets/logos/NJIT.png" />
     </div>
 
     <div class="socials">
@@ -52,12 +51,6 @@ export default {
     };
   },
   methods: {
-    // closeModal() {
-    //   this.constitutionOpen = false;
-    // },
-    // openModal() {
-    //   this.constitutionOpen = true;
-    // },
     toTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -84,12 +77,7 @@ footer {
 img {
   width: 100%;
 }
-/* .logos img:first-child {
-  flex: 2;
-}
-.logos img:last-child {
-  flex: 1;
-} */
+
 .footer-buttons {
   flex: 1;
   display: flex;
@@ -98,18 +86,10 @@ img {
   gap: 10px;
 }
 
-/* .footer-buttons button {
-  padding: 5px;
-  border-radius: 8px;
-  font-size: 2rem;
-  background-color: lightpink;
-  border: 2px lightgrey solid;
-  border-radius: 8px;
-} */
-/* .router-link {
-  text-decoration: none;
-  color: black;
-} */
+.njit-logo {
+  max-width: 500px;
+}
+
 .socials {
   flex: 2;
   display: flex;
