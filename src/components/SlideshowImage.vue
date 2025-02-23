@@ -78,7 +78,7 @@ div {
   width: 50%;
   height: fit-content;
   padding: 0;
-  margin: 0;
+  margin: auto 0;
   box-shadow: var(--shadow-gray) 0px 0px 25px;
 }
 
