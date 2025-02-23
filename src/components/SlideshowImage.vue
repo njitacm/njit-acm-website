@@ -74,7 +74,7 @@ export default {
 
 div {
   background-size: cover;
-  border-radius: var(--border-radius);
+  border-radius: var(--large-border-radius);
   width: 50%;
   height: fit-content;
   padding: 0;
