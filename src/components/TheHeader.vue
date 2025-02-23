@@ -204,6 +204,9 @@ header {
   .router-link-center {
     display: none;
   }
+}
+
+@media (max-width: 750px) {
   .router-link-left > div {
     display: none;
   }

@@ -78,7 +78,7 @@ div {
   width: 50%;
   height: fit-content;
   padding: 0;
-  margin: auto 0;
+  margin: auto;
   box-shadow: var(--shadow-gray) 0px 0px 25px;
 }
 
@@ -87,8 +87,6 @@ img {
   margin: 0;
   padding: 0;
   width: 100%;
-  /* min-width: 60rem; */
-  /* height: 400px; */
   border-radius: inherit;
   object-fit: cover;
 }
@@ -97,9 +95,5 @@ img {
   img {
     min-width: 80%
   }
-}
-
-@media (max-width: 600px) {
-  
 }
 </style>
