@@ -17,8 +17,8 @@
         </p>
       </template>
     </HorizontalSection>
-    <h2 class="section-header">Upcoming Events</h2>
-    <div class="upcoming-events">
+    <h2 v-show="upcomingEvents.length" class="section-header">Upcoming Events</h2>
+    <div v-show="upcomingEvents.length" class="upcoming-events">
       <EventCard v-for="event in upcomingEvents" :key="event.id"
         :name="event.name"
         :date="event.date"
@@ -56,7 +56,16 @@ import upcomingEventsData from "../../assets/data/upcomingEvents.js";
 export default {
   components: { HorizontalSection, MainEvent, EventCard, EmbeddedCalendar },
   mounted() {
-    console.log(this.events)
+    // filter out old events automatically (don't display them)
+    for (let i = 0; i < this.upcomingEventsRaw.length; i++) {
+      let evDate = new Date(this.upcomingEventsRaw[i].date + ", " + this.currYear);
+      let now = new Date();
+      let diffDays = (now - evDate) / (1000 * 3600 * 24);
+      
+      // if the event hasn't already passed by more than 1 day
+      if (diffDays <= 1)
+        this.upcomingEvents.push(this.upcomingEventsRaw[i]);
+    }
   },
   data() {
     return {
@@ -72,7 +81,9 @@ export default {
           imgName: "jerseyctf.png",
         },
       ],
-      upcomingEvents: upcomingEventsData['sp2025'],
+      currYear: '2025',
+      upcomingEventsRaw: upcomingEventsData['sp2025'],
+      upcomingEvents: [],
       events: eventsJSON,
     };
   },

@@ -28,7 +28,7 @@ type TimeSlot struct {
 }
 
 func convertTutors() {
-	csvFile, err := os.Open("./tutors.csv")
+	csvFile, err := os.Open("./tutors_sp2025.csv")
 	if err != nil {
 		fmt.Println(err)
 	}

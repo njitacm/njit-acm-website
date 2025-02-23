@@ -44,7 +44,7 @@ export default {
   },
   computed: {
     showNav() {
-      return this.navOpen || this.windowWidth > 650;
+      return this.navOpen || this.windowWidth > 550;
     },
   },
   mounted() {
@@ -121,7 +121,7 @@ export default {
   transform: translateY(-10px);
 }
 
-@media (max-width: 650px) {
+@media (max-width: 550px) {
   #mmmBorger {
     display: flex;
   }
