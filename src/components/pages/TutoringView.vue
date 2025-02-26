@@ -325,7 +325,7 @@ export default {
       var percent = business / this.maxBusiness;
       var gradientFunction = chroma.scale(["green", "yellow", "red"]);
       var gradient = gradientFunction(percent);
-      // console.log(business, this.maxBusiness, percent, gradient);
+      console.log(business, this.maxBusiness, percent, gradient);
       return "#00bf5f";
       // return gradient;
     },
@@ -343,15 +343,15 @@ export default {
     getBusinessColor(index) {
       if (true)
         return "#00bf5f";
-      var business = this.getBusinessFromIndex(index);
-      var percent = business / this.maxBusiness;
-      if (percent < 0.33) {
-        return "green";
-      } else if (percent < 0.67) {
-        return "yellow";
-      } else {
-        return "red";
-      }
+      // var business = this.getBusinessFromIndex(index);
+      // var percent = business / this.maxBusiness;
+      // if (percent < 0.33) {
+      //   return "green";
+      // } else if (percent < 0.67) {
+      //   return "yellow";
+      // } else {
+      //   return "red";
+      // }
     },
   },
   data() {
