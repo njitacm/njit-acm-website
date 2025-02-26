@@ -7,7 +7,7 @@
         <button>WED</button>
         <button>THU</button>
         <button>FRI</button>
-        <button>SAT</button>
+        <!--<button>SAT</button>-->
       </header>
       <nav class="tutoring-sidebar">
         <h1 class="title">YWCC Undergraduate Tutoring Schedule</h1>
@@ -39,8 +39,11 @@
             <h1 class="day-time">
               {{ selectionInfo.day }} {{ selectionInfo.time }}
             </h1>
-            <h1 class="no-tutors">
+            <h1 v-if="selectedCourse==-1" class="no-tutors">
               There is no tutoring available during this time slot
+            </h1>
+            <h1 v-else class="no-tutors">
+              There is no tutoring available during this time slot for the course selected
             </h1>
           </div>
           <div v-else-if="dateSelected && classSelected" class="selectionInfo">
@@ -87,29 +90,18 @@
       </nav>
       <main class="tutoring-calendar">
         <div
-          v-for="index in 72"
+          v-for="index in (numDays * hoursPerDay)"
           :key="index"
+          :id="index"
           class="date"
           :style="getPosition(index)"
-          :class="{ 'even-row': (Math.floor((index - 1) / 6) + 1) % 2 == 0 }"
+          :class="{ 'even-row': (Math.floor((index - 1) / numDays) + 1) % 2 == 0 }"
         >
           <button :ref="index" @click="selectDate(index)">
             {{ timeIntToString(this.getTime(index))}}
           </button>
         </div>
 
-        <!-- <div class="calendar-time">9AM</div>
-        <div class="calendar-time">10AM</div>
-        <div class="calendar-time">11AM</div>
-        <div class="calendar-time">12PM</div>
-        <div class="calendar-time">1PM</div>
-        <div class="calendar-time">2PM</div>
-        <div class="calendar-time">3PM</div>
-        <div class="calendar-time">4PM</div>
-        <div class="calendar-time">5PM</div>
-        <div class="calendar-time">6PM</div>
-        <div class="calendar-time">7PM</div>
-        <div class="calendar-time">8PM</div> -->
       </main>
     </div>
   </div>
@@ -123,38 +115,27 @@ export default {
   methods: {
     async getTutors() {
       this.tutors = tutors;
-      console.log("Test");
       this.getCourses();
     },
-    // async getAttendance() {
-    //   const response = await fetch("/api/attendance");
-    //   var data = await response.json();
-    // },
-    // async getVisits() {
-    //   const response = await fetch("/api/visits");
-    //   var data = await response.json();
-    // },
     async getBusiness() {
       this.business = business;
     },
+    // starts at 1
     getRow(index) {
-      return Math.floor((index - 1) / 6) + 1;
+      return Math.floor((index - 1) / this.numDays) + 1;
     },
+    // starts at 1
     getCol(index) {
-      return index - (this.getRow(index) - 1) * 6 + 1;
+      return index - (this.getRow(index) - 1) * this.numDays;
     },
     getPosition(index) {
-      var row = this.getRow(index);
-      var col = this.getCol(index);
-      return "grid-column: " + col + "; grid-row: " + row + ";";
+      return "grid-column: " + this.getCol(index) + "; grid-row: " + this.getRow(index) + ";";
     },
     getDay(index) {
-      var col = this.getCol(index);
-      return col - 2;
+      return this.getCol(index) - this.mondayCol;
     },
     getTime(index) {
-      var row = this.getRow(index);
-      return row + 8;
+      return this.getRow(index) + (this.startHour - 1);
     },
     getTimeString(index) {
       let currTime = this.getTime(index) % 12;
@@ -190,9 +171,11 @@ export default {
       var coursesSet = new Set();
       var tutors = this.getTutorsBySlot(day, time);
       tutors.forEach((tutor) => {
-        selectedTutors.push(
-          tutor.FirstName + " " + tutor.LastName + " (" + tutor.Email + ")"
-        );
+        if (this.selectedCourse == - 1 || tutor.Courses.find((c) => c == this.selectedCourse)) {
+          selectedTutors.push(
+            tutor.FirstName + " " + tutor.LastName + " (" + tutor.Email + ")"
+          );
+        }
         tutor.Courses.forEach((course) => {
           coursesSet.add(course);
         });
@@ -211,7 +194,7 @@ export default {
       }
     },
     undoStyle() {
-      for (var i = 1; i <= 72; i++) {
+      for (var i = 1; i <= this.numDays * this.hoursPerDay; i++) {
         this.$refs[i][0].style.border = "";
         this.$refs[i][0].style.transform = "";
       }
@@ -243,10 +226,7 @@ export default {
       return timeStart + timeOfDayStart + "-" + timeEnd + timeOfDayEnd;
     },
     getTimeOfDay(time) {
-      if (time >= 12) {
-        return "PM";
-      }
-      return "AM";
+      return time >= 12 ? "PM" : "AM";
     },
     selectClass() {
       this.dateSelected = false;
@@ -255,18 +235,13 @@ export default {
       var tutors = this.getTutorsByClass(this.selectedCourse);
       var selectedTutors = [];
       tutors.forEach((tutor) => {
-        // console.log(tutor);
+        console.log(this.selectedCourse, tutor.FirstName);
         selectedTutors.push(tutor.FirstName + " " + tutor.LastName);
       });
       this.selectionInfo.tutors = selectedTutors;
       this.colorDatesByClass(this.selectedCourse);
     },
     getTutorsByClass(selectedCourse) {
-      // console.log(
-      //   this.tutors.filter((tutor) =>
-      //     tutor.Courses.some((course) => course == selectedCourse)
-      //   )
-      // );
       return this.tutors.filter((tutor) =>
         tutor.Courses.some((course) => course == selectedCourse)
       );
@@ -289,12 +264,12 @@ export default {
       this.selectionInfo.empty = false;
     },
     uncolorAllDates() {
-      for (var i = 1; i <= 72; i++) {
+      for (var i = 1; i <= this.numDays * this.hoursPerDay; i++) {
         this.$refs[i][0].style.background = "";
       }
     },
     colorAllDates() {
-      for (var i = 1; i <= 72; i++) {
+      for (var i = 1; i <= this.numDays * this.hoursPerDay; i++) {
         var coursesSet = new Set();
         var tutors = this.getTutorsBySlot(this.getDay(i), this.getTime(i));
         tutors.forEach((tutor) => {
@@ -310,7 +285,7 @@ export default {
       }
     },
     colorDatesByClass(selectedClass) {
-      for (var i = 1; i <= 72; i++) {
+      for (var i = 1; i <= this.numDays * this.hoursPerDay; i++) {
         var coursesSet = new Set();
         var tutors = this.getTutorsBySlot(this.getDay(i), this.getTime(i));
         tutors.forEach((tutor) => {
@@ -329,7 +304,7 @@ export default {
       this.$refs[date][0].style.background = this.getColor(date);
     },
     uncolorDate(date) {
-      this.$refs[date][0].style.background = "black";
+      this.$refs[date][0].style.background = "white";
     },
     getBusinessFromIndex(index) {
       var row = this.getRow(index);
@@ -351,7 +326,8 @@ export default {
       var gradientFunction = chroma.scale(["green", "yellow", "red"]);
       var gradient = gradientFunction(percent);
       // console.log(business, this.maxBusiness, percent, gradient);
-      return gradient;
+      return "#00bf5f";
+      // return gradient;
     },
     getBusinessDescription(index) {
       var business = this.getBusinessFromIndex(index);
@@ -365,6 +341,8 @@ export default {
       }
     },
     getBusinessColor(index) {
+      if (true)
+        return "#00bf5f";
       var business = this.getBusinessFromIndex(index);
       var percent = business / this.maxBusiness;
       if (percent < 0.33) {
@@ -380,6 +358,13 @@ export default {
     return {
       dateSelected: false,
       selectionInfo: {},
+      // adjust this according to each new year's tutoring
+      numDays: 5,             // how many days of the week tutoring offered? e.g. Mon-Fri
+      hoursPerDay: 8,         // how long is tutoring offered (in hours)? e.g. 11 AM-7 PM
+      startHour: 11,          // when does tutoring start the earliest? e.g. 11 AM
+      mondayIndex: 0,         // Mon = 0, Fri = 4
+      mondayCol: 1,           // Mon = column 1, Fri = column 5
+      // ---------------------------------------------------
       headers: [
         "Email",
         "Last Name",
@@ -492,8 +477,8 @@ option {
   grid-row: 2;
   grid-column: 2;
   display: grid;
-  grid-template-columns: 1fr repeat(6, 16%) 1fr;
-  grid-template-rows: repeat(12, 1fr);
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(8, 1fr);
   padding: 1.5rem 0;
   margin-bottom: -2rem;
 }
@@ -612,31 +597,6 @@ option {
   opacity: 0;
   transform: translateY(-60px);
 }
-/* h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-table {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 12px;
-}
-th {
-  border: 2px gray solid;
-  padding: 8px;
-  margin: 0px;
-  border-collapse: collapse;
-} */
 
 @media (max-width: 1350px) {
   .tutoring-sidebar h1.title {
