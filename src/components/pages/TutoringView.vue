@@ -341,8 +341,8 @@ export default {
       }
     },
     getBusinessColor(index) {
-      if (true)
-        return "#00bf5f";
+      console.log(index);
+      return "#00bf5f";
       // var business = this.getBusinessFromIndex(index);
       // var percent = business / this.maxBusiness;
       // if (percent < 0.33) {
