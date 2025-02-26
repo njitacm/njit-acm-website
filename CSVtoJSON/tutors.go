@@ -28,7 +28,7 @@ type TimeSlot struct {
 }
 
 func convertTutors() {
-	csvFile, err := os.Open("./tutors_sp2025.csv")
+	csvFile, err := os.Open("./Tutoring/sp_2025_tutors.csv")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -80,7 +80,7 @@ func convertTutors() {
 		os.Exit(1)
 	}
 
-	fmt.Println(string(jsonData))
+	// fmt.Println(string(jsonData))
 
 	jsonFile, err := os.Create("../src/assets/data/tutors.json")
 	if err != nil {
@@ -110,7 +110,6 @@ func getTutorTimes(timeSlots []string) []TimeSlot {
 			}
 			temp = append(temp, hour)
 		}
-		fmt.Println("Hi", temp)
 		parsedTimeSlot.Day = day
 		parsedTimeSlot.StartTime = temp[0]
 		parsedTimeSlot.EndTime = temp[1]
@@ -135,8 +134,8 @@ func parseTimes(s string) (int, []string) {
 		dayInt = 3
 	case "Fr":
 		dayInt = 4
-	case "Sa":
-		dayInt = 5
+		// case "Sa":
+		// 	dayInt = 5
 	}
 	re := regexp.MustCompile("(0?[0-9]|1[0-9]|2[0-3])([AaPp][Mm])")
 	return dayInt, re.FindAllString(s, -1)
