@@ -70,7 +70,7 @@ export default {
             name: "sig-quantum",
             desc: "SIG Quantum explores the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. This SIG is perfect for anyone curious about quantum computing, with no background in physics or computing science required!",
             leaders: "Xhaiden D'Souza",
-            time: "Wed 4-5 PM",
+            time: "Thu 5:30 PM",
             loc: "GITC 3700",
             filename: "Spring2025/sig-quantum.png",
         },
