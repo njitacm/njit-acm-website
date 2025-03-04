@@ -21,11 +21,11 @@
     <div v-show="upcomingEvents.length" class="upcoming-events">
       <EventCard v-for="event in upcomingEvents" :key="event.id"
         :name="event.name"
-        :date="event.date"
-        :time="event.time"
+        :datetime="event.datetime"
         :location="event.location"
         :imageUrl="event.image"
-        :desc="event.desc">
+        :desc="event.desc"
+        :links="event.links">
       </EventCard>
     </div>
     <h2 class="section-header">Events Calendar</h2>
@@ -58,13 +58,37 @@ export default {
   mounted() {
     // filter out old events automatically (don't display them)
     for (let i = 0; i < this.upcomingEventsRaw.length; i++) {
-      let evDate = new Date(this.upcomingEventsRaw[i].date + ", " + this.currYear);
+      console.log("hello");
+      let dates = this.upcomingEventsRaw[i].dates;
+      let times = this.upcomingEventsRaw[i].times;
+
+      if (dates === undefined)
+        dates = [this.upcomingEventsRaw[i].date]
+      
+      if (times === undefined)
+        times = [this.upcomingEventsRaw[i].time]
+
+      let evDate = new Date(dates[dates.length - 1] + ", " + this.currYear);
       let now = new Date();
       let diffDays = (now - evDate) / (1000 * 3600 * 24);
+      let eventDict = this.upcomingEventsRaw[i];
+      let dt = "";
+
+      console.log(eventDict);
+
+      for (let d = 0; d < dates.length; d++) {
+        dt += dates[d] + " (" + times[d] + ")"
+
+        if (d < dates.length - 1)
+          dt += "; "
+      }
+
+      eventDict['datetime'] = dt;
+      console.log(eventDict);
       
       // if the event hasn't already passed by more than 1 day
       if (diffDays <= 1)
-        this.upcomingEvents.push(this.upcomingEventsRaw[i]);
+        this.upcomingEvents.push(eventDict);
     }
   },
   data() {

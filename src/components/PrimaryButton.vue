@@ -15,7 +15,7 @@ button {
   background-color: var(--light-red);
   padding-bottom: 0;
   padding: 5px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   font-size: 2rem;
   /* border: 2px var(--light-gray) solid; */
   border-color: var(--gray);

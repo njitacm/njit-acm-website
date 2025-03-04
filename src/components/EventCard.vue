@@ -3,16 +3,25 @@
     <img :src="require('../assets/EventsPage/' + imageUrl)" class="event-img">
     <div class="event-text">
       <h1>{{ name }}</h1>
-      <h2>Location: {{ location }} | Date: {{ date }} @ {{ time }}</h2>
+      <h2><span class="red">When?</span> {{ datetime }}</h2>
+      <h2><span class="red">Where?</span> {{ location }}</h2>
       <p class="desc">{{ desc }}</p>
       <a :href="url"></a>
+    </div>
+    <div v-for="[text, link] in Object.entries(links)" :key="link.id" class="links">
+      <PrimaryButton class="primary-button">
+        <a :href="link" target="_blank" class="button-link">{{ text }}</a>
+      </PrimaryButton>
     </div>
   </div>
 </template>
 
 <script>
+import PrimaryButton from '../components/PrimaryButton.vue';
+
 export default {
-  props: ['name', 'date', 'time', 'location', 'url', 'imageUrl', 'desc'],
+  components: { PrimaryButton },
+  props: ['name', 'date', 'time', 'datetime', 'location', 'url', 'imageUrl', 'desc', "links"],
   mounted() {
     console.log(this.$props.imageUrl)
   }
@@ -20,6 +29,10 @@ export default {
 </script>
 
 <style>
+.red {
+  color: var(--red);
+}
+
 .event-card {
   border: var(--border-width) lightcoral solid;
   border-radius: var(--large-border-radius);
@@ -37,6 +50,16 @@ export default {
   width: 100%;
   border-bottom: lightcoral var(--border-width) solid;
   border-radius: var(--large-border-radius) var(--large-border-radius) 0 0;
+}
+
+.links {
+  display: grid;
+  gap: 2rem;
+  width: calc(100% - 2rem);
+  margin: 0 auto 1rem auto;
+}
+
+.primary-button {
 }
 
 .event-card h1 {
