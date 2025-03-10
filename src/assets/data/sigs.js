@@ -92,7 +92,7 @@ export default {
         },
         {
             name: "sig-full-stack",
-            desc: "",
+            desc: "Make full fledged projects using different technologies. If you're interested in developing full-stack applications, come learn alongside us. No experience is needed.",
             leaders: "Shivansh Dutta, Shikhar Verma",
             time: "Wed 1 PM",
             loc: "TBA",
@@ -100,7 +100,7 @@ export default {
         },
         {
             name: "sig-ai",
-            desc: "",
+            desc: "Keeping up to date with the world of AI through current news, exploring different technologies and AI models, and building personal projects with AI.",
             leaders: "Nidhi Sakpal",
             time: "TBA",
             loc: "TBA",
@@ -108,7 +108,7 @@ export default {
         },
         {
             name: "sig-cloud-computing",
-            desc: "",
+            desc: "Sig-Cloud-Computing introduces and explores the overall concepts of Cloud computing while following the base curriculum of IT 342 Cloud admin by working on the same supplemental learning such as labs, videos and etc, to further reinforce our collected knowledge and understanding of Cloud Computing as an overall concept.",
             leaders: "Adrian",
             time: "Thu 7 PM",
             loc: "Virtual",
