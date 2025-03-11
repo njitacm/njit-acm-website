@@ -87,7 +87,7 @@ export default {
             desc: "SIG SuperComputer is dedicated to exploring the future of computing and the topics of high performance computing in general — it is a group of like-minded students from NJIT, Rutgers, and Princeton who work together to learn about and build a cluster of machines functionally identical to the supercomputers used all over the world — ultimately a subset of these students will have the opportunity to compete as part of an small, elite cohort against ten other student teams from all over the world at the SuperComputing conference. It is open to all skill levels, teaching and learning these topics is a major focus of the SIG.",
             leaders: "Garrett Gonzalez-Rivas",
             time: "Wed, Sat 2 PM",
-            loc: "TBA",
+            loc: "GITC 3700",
             filename: "Spring2025/sig-supercomputer.png",
         },
         {
