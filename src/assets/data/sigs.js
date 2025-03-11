@@ -132,7 +132,7 @@ export default {
         },
         {
             name: "sig-puzzle",
-            desc: "Cryptography/Steganography puzzles! Find the hidden messages! Join the ACM Discord server to find out more!. First person to DM me with the correct solution and solve path wins the puzzle.",
+            desc: "Cryptography/Steganography puzzles! Find the hidden messages! Join the ACM Discord server to find out more! First person to DM me with the correct solution and solve path wins the puzzle.",
             leaders: "max hammond",
             // time: "TBA",
             loc: "GITC 3700",
