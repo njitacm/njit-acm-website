@@ -102,7 +102,7 @@ export default {
             name: "sig-ai",
             desc: "Keeping up to date with the world of AI through current news, exploring different technologies and AI models, and building personal projects with AI.",
             leaders: "Nidhi Sakpal",
-            time: "TBA",
+            time: "Biweekly Thu 12-1 PM",
             loc: "TBA",
             filename: "Spring2025/sig-ai.png",
         },
