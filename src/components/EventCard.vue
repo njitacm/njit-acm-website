@@ -49,7 +49,7 @@ export default {
 .event-img {
   width: 100%;
   border-bottom: lightcoral var(--border-width) solid;
-  border-radius: var(--large-border-radius) var(--large-border-radius) 0 0;
+  border-radius: calc(var(--large-border-radius) - var(--border-width)) calc(var(--large-border-radius) - var(--border-width)) 0 0;
 }
 
 .links {
@@ -57,9 +57,6 @@ export default {
   gap: 2rem;
   width: calc(100% - 2rem);
   margin: 0 auto 1rem auto;
-}
-
-.primary-button {
 }
 
 .event-card h1 {

@@ -11,7 +11,8 @@
         </p>
         <p>
           To learn more about what we have to offer, follow ACM on
-          <a href="https://njit.campuslabs.com/engage/organization/acm" target="_blank">Highlander Hub</a>, or stop by one of our weekly
+          <a href="https://njit.campuslabs.com/engage/organization/acm" target="_blank">Highlander Hub</a>, or stop by
+          one of our weekly
           General Body Meetings to learn how you
           can get involved with ACM!
         </p>
@@ -19,26 +20,20 @@
     </HorizontalSection>
     <h2 v-show="upcomingEvents.length" class="section-header">Upcoming Events</h2>
     <div v-show="upcomingEvents.length" class="upcoming-events">
-      <EventCard v-for="event in upcomingEvents" :key="event.id"
-        :name="event.name"
-        :datetime="event.datetime"
-        :location="event.location"
-        :imageUrl="event.image"
-        :desc="event.desc"
-        :links="event.links">
+      <EventCard v-for="event in upcomingEvents" :key="event.id" :name="event.name" :datetime="event.datetime"
+        :location="event.location" :imageUrl="event.image" :desc="event.desc" :links="event.links">
       </EventCard>
     </div>
     <h2 class="section-header">Events Calendar</h2>
-    <EmbeddedCalendar 
+    <EmbeddedCalendar
       src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=MONTH&src=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23795548"
       href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
-      buttonText="Add Calendar"  
-    ></EmbeddedCalendar>
+      buttonText="Add Calendar"></EmbeddedCalendar>
     <div>
       <h2 class="section-header">Annual Events</h2>
       <div class="main-events-container">
         <MainEvent v-for="event in mainEvents" :key="event.title" :title="event.title" :desc="event.desc"
-        :imgName="event.imgName">
+          :imgName="event.imgName">
         </MainEvent>
       </div>
     </div>
@@ -58,37 +53,50 @@ export default {
   mounted() {
     // filter out old events automatically (don't display them)
     for (let i = 0; i < this.upcomingEventsRaw.length; i++) {
-      console.log("hello");
-      let dates = this.upcomingEventsRaw[i].dates;
-      let times = this.upcomingEventsRaw[i].times;
+      let event = this.upcomingEventsRaw[i];
+      let dates = event.dates;
+      let times = event.times;
+      let delim = event.delimiter;
 
       if (dates === undefined)
-        dates = [this.upcomingEventsRaw[i].date]
-      
+        dates = [event.date];
+
       if (times === undefined)
-        times = [this.upcomingEventsRaw[i].time]
+        times = [event.time];
+
+      if (delim === undefined)
+        delim = "; ";
 
       let evDate = new Date(dates[dates.length - 1] + ", " + this.currYear);
       let now = new Date();
       let diffDays = (now - evDate) / (1000 * 3600 * 24);
-      let eventDict = this.upcomingEventsRaw[i];
       let dt = "";
 
-      console.log(eventDict);
-
       for (let d = 0; d < dates.length; d++) {
-        dt += dates[d] + " (" + times[d] + ")"
+        let time = times[d];
+        dt += dates[d] + " (";
+        if (this.isObject(time)) {
+          if (time.start !== undefined && time.end !== undefined) {
+            dt += time.start + " - " + time.end + ")";
+          } else if (time.start !== undefined) {
+            dt += "Starts at " + time.start + ")";
+          } else if (time.end !== undefined) {
+            dt += "Ends at " + time.end + ")"
+          }
+        }
 
         if (d < dates.length - 1)
-          dt += "; "
+          dt += delim;
       }
 
-      eventDict['datetime'] = dt;
-      console.log(eventDict);
-      
+      event['datetime'] = dt;
+      console.log(event);
+
+      console.log("diffdays: " + diffDays)
+
       // if the event hasn't already passed by more than 1 day
       if (diffDays <= 1)
-        this.upcomingEvents.push(eventDict);
+        this.upcomingEvents.push(event);
     }
   },
   data() {
@@ -111,6 +119,11 @@ export default {
       events: eventsJSON,
     };
   },
+  methods: {
+    isObject(o) {
+      return typeof(o) === 'object' && o !== null && !Array.isArray(o)
+    }
+  }
 };
 </script>
 

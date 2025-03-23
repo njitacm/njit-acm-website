@@ -18,8 +18,8 @@ button {
   border-radius: var(--border-radius);
   font-size: 2rem;
   /* border: 2px var(--light-gray) solid; */
-  border-color: var(--gray);
-  border-width: 2px;
+  border-color: lightcoral;
+  border-width: var(--border-width);
   border-style: solid;
   cursor: pointer;
   height: 50px;

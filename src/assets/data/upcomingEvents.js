@@ -24,6 +24,19 @@ export default {
             "links": {
                 "Register Here": "https://forms.gle/tnQbDrR1fyFdvxCb9",
             }
+        },
+        {
+            "id": 2,
+            "name": "Jersey CTF V",
+            "location": "Naimoli Tennis Center, NJIT",
+            "dates": ["Sat, Mar 29", "Sun, Mar 30"],
+            "times": [{"start": "10 AM"}, {"end": "3:30 PM"}],
+            "delimiter": " - ",
+            "image": "sp2025/JCTFV.png",
+            "desc": "",
+            "links": {
+                "More Information": "https://www.jerseyctf.com/",
+            }
         }
     ]
 };
