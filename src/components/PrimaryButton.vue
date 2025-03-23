@@ -18,8 +18,8 @@ button {
   border-radius: var(--border-radius);
   font-size: 2rem;
   /* border: 2px var(--light-gray) solid; */
-  border-color: var(--red);
-  border-width: 2px;
+  border-color: lightcoral;
+  border-width: var(--border-width);
   border-style: solid;
   cursor: pointer;
   height: 50px;
@@ -42,11 +42,13 @@ button {
 
 @media (hover: hover) {
   button:hover {
+    border-color: var(--red);
     background-color: var(--mid-red);
   }
 }
 @media (hover: none) {
   button:active {
+    border-color: var(--red);
     background-color: var(--mid-red);
   }
 }
