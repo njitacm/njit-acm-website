@@ -32,7 +32,7 @@ export default {
             "dates": ["Sat, Mar 29", "Sun, Mar 30"],
             "times": [{"start": "10 AM"}, {"end": "3:30 PM"}],
             "delimiter": " - ",
-            "image": "sp2025/JCTFV.png",
+            "image": "sp2025/JCTFV_FullFlyer.png",
             "desc": "",
             "links": {
                 "More Information": "https://www.jerseyctf.com/",
