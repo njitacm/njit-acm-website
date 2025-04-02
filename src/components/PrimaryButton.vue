@@ -13,10 +13,9 @@ export default {
 <style scoped>
 button {
   background-color: var(--light-red);
-  padding-bottom: 0;
-  padding: 5px;
   border-radius: var(--border-radius);
   font-size: 2rem;
+  padding: 0 1rem;
   /* border: 2px var(--light-gray) solid; */
   border-color: lightcoral;
   border-width: var(--border-width);
@@ -28,7 +27,7 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-:slotted(a), :slotted(.router-link), :slotted(span) {
+:slotted(a), :slotted(.router-link), :slotted(span), :slotted(.red-button-text) {
   /* box-sizing: border-box; */
   display: block;
   align-content: center;
