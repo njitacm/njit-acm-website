@@ -46,20 +46,20 @@
             </td>
           </tr>
         </table>
-        <div class="slot-info">
+        <div class="details-panel">
           <Transition mode="out-in">
-            <div v-if="selectionInfo.empty">
+            <div v-if="dateSelected && classSelected && selectionInfo.empty" class="selection-info">
               <h1 class="day-time">
                 {{ selectionInfo.day }} {{ selectionInfo.time }}
               </h1>
-              <h1 v-if="selectedCourse == -1" class="no-tutors">
+              <p v-if="selectedCourse == -1" class="no-tutors">
                 There is no tutoring available during this time slot
-              </h1>
-              <h1 v-else class="no-tutors">
+              </p>
+              <p v-else class="no-tutors">
                 There is no tutoring available during this time slot for the course selected
-              </h1>
+              </p>
             </div>
-            <div v-else-if="dateSelected && classSelected" class="selectionInfo">
+            <div v-else-if="dateSelected && classSelected" class="selection-info">
               <h1 class="day-time">
                 {{ selectionInfo.day }} {{ selectionInfo.time }}
               </h1>
@@ -79,7 +79,7 @@
                 </p>
               </div>
             </div>
-            <div v-else-if="dateSelected" class="selectionInfo">
+            <div v-else-if="dateSelected" class="selection-info">
               <h1 class="day-time">
                 {{ selectionInfo.day }} {{ selectionInfo.time }}
               </h1>
@@ -98,6 +98,9 @@
                   {{ tutor }}
                 </p>
               </div>
+            </div>
+            <div v-else class="selection-info no-selection">
+              <p>Select a time slot and/or course to view details.</p>
             </div>
           </Transition>
         </div>
@@ -420,9 +423,6 @@ export default {
   padding: 1rem 0;
 }
 
-.no-tutors {
-}
-
 .tutoring-sidebar .title-and-subtitle {
   flex-basis: 70%;
 }
@@ -477,14 +477,12 @@ option {
   justify-content: center;
 }
 
-.meet-link-button {}
-
 .meet-link-button>div {
   display: flex;
   height: 100%;
 }
 
-/* main */
+/* details panel */
 main {
   display: flex;
   gap: 2rem;
@@ -492,11 +490,73 @@ main {
   margin: 1rem auto 0 auto;
 }
 
-main .slot-info {
+main .details-panel {
   width: 40%;
   overflow: hidden;
   border: var(--border-width) var(--light-gray) solid;
   border-radius: var(--border-radius);
+  padding: 2rem;
+  display: flex;
+}
+
+.day-time {
+  font-size: 3.6rem;
+  text-align: center;
+}
+
+.selection-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.no-selection {
+  align-self: center;
+  margin: 0 auto;
+}
+
+.no-selection p {
+  text-align: center;
+}
+
+.selection-info h3 {
+  font-size: 1.8rem;
+  text-align: left;
+  font-weight: initial;
+  font-style: italic;
+}
+
+.selection-info h2 {
+  font-size: 2rem;
+  text-align: left;
+}
+
+.courses-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: start;
+}
+
+.courses-container p {
+  width: min-content;
+  font-size: 2rem;
+  text-align: left;
+}
+
+.tutors-container {
+  font-size: 2rem;
+  text-align: left;
+}
+
+.tutors-container p {
+  font-size: 2rem;
+}
+
+.select-for-details {
+  text-align: center;
+  margin: auto;
 }
 
 /* tutoring calendar */
@@ -532,50 +592,6 @@ main .slot-info {
 
 .tutoring-calendar button:hover {
   opacity: 0.75;
-}
-
-.day-time {
-  font-size: 3.6rem;
-  text-align: center;
-}
-
-.selectionInfo h3 {
-  font-size: 1.8rem;
-  text-align: left;
-  text-decoration: none;
-  font-weight: initial;
-  font-style: italic;
-}
-
-.selectionInfo h2 {
-  font-size: 2rem;
-  text-align: left;
-  text-decoration:  none;
-}
-
-.courses-title {
-}
-
-.courses-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: start;
-}
-
-.courses-container p {
-  width: min-content;
-  font-size: 2rem;
-  text-align: left;
-}
-
-.tutors-container {
-  font-size: 2rem;
-  text-align: left;
-}
-
-.tutors-container p {
-  font-size: 2rem;
 }
 
 .dropdown {
@@ -662,7 +678,7 @@ main .slot-info {
 }
 
 @media (max-width: 1000px) {
-  .selectionInfo h3 {
+  .selection-info h3 {
     margin: 0 10px;
   }
 
