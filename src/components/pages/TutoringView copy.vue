@@ -1,108 +1,99 @@
 <template>
   <div>
     <div class="container">
-      <div class="tutoring-sidebar">
-        <div class="title-and-subtitle">
-          <h1 class="title">YWCC Undergraduate Tutoring Schedule</h1>
-          <h2 class="subtitle">
-            YWCC tutoring is walk-in only (no reservations). If you can't make it in-person, you can join virtually.
-          </h2>
-        </div>
-        <div class="meet-link-button-and-dropdown">
-          <PrimaryButton class="meet-link-button">
-            <div>
-              <!-- <img src="../../assets/img/GoogleMeet.png"> -->
-              <a href="https://meet.google.com/tng-yefx-fqd" target="_blank">Google Meet Link</a>
-            </div>
-          </PrimaryButton>
-          <div class="dropdown">
-            <select @change="selectClass" v-model="selectedCourse" :class="{ usingDefault: selectedCourse == -1 }">
-              <option selected disabled value="-1" style="display: none">
-                Select a course...
-              </option>
-              <option v-for="course in courses" :key="course">
-                {{ course }}
-              </option>
-            </select>
-            <img class="reset-button" @click="reset" src="../../assets/reset.svg" alt="reset-button" />
+      <header class="tutoring-header">
+        <button>MON</button>
+        <button>TUE</button>
+        <button>WED</button>
+        <button>THU</button>
+        <button>FRI</button>
+        <!--<button>SAT</button>-->
+      </header>
+      <nav class="tutoring-sidebar">
+
+        <h1 class="title">YWCC Undergraduate Tutoring Schedule</h1>
+        <h2 class="subtitle">
+          YWCC tutoring is walk-in only. We do not have reservations. If you can't make it in-person, you can join
+          virtually:
+        </h2>
+        <PrimaryButton class="meet-link-button">
+          <div>
+            <!-- <img src="../../assets/img/GoogleMeet.png"> -->
+            <a href="https://meet.google.com/tng-yefx-fqd" target="_blank">Google Meet Link</a>
           </div>
+        </PrimaryButton>
+        <div class="dropdown">
+          <select @change="selectClass" v-model="selectedCourse" :class="{ usingDefault: selectedCourse == -1 }">
+            <option selected disabled value="-1" style="display: none">
+              Select A Course...
+            </option>
+            <option v-for="course in courses" :key="course">
+              {{ course }}
+            </option>
+          </select>
+          <img class="reset-button" @click="reset" src="../../assets/reset.svg" alt="reset-button" />
         </div>
-      </div>
-      <main>
-        <table class="tutoring-calendar" cellspacing="2.5rem" cellpadding="0">
-          <tr>
-            <th>MON</th>
-            <th>TUE</th>
-            <th>WED</th>
-            <th>THU</th>
-            <th>FRI</th>
-          </tr>
-          <tr v-for="hour in hoursPerDay" :key="hour">
-            <td v-for="day in numDays" :key="day">
-              <button :ref="getIndexFromRowColumn(hour, day, numDays)"
-                @click="selectDate(getIndexFromRowColumn(hour, day, numDays))">
-                {{ timeIntToString(this.getTime(getIndexFromRowColumn(hour, day, numDays))) }}
-              </button>
-            </td>
-          </tr>
-        </table>
-        <div class="details-panel">
-          <Transition mode="out-in">
-            <div v-if="dateSelected && classSelected && selectionInfo.empty" class="selection-info">
-              <h1 class="day-time">
-                {{ selectionInfo.day }} {{ selectionInfo.time }}
-              </h1>
-              <p v-if="selectedCourse == -1" class="no-tutors">
-                There is no tutoring available during this time slot
+        <Transition mode="out-in">
+          <div v-if="selectionInfo.empty">
+            <h1 class="day-time">
+              {{ selectionInfo.day }} {{ selectionInfo.time }}
+            </h1>
+            <h1 v-if="selectedCourse == -1" class="no-tutors">
+              There is no tutoring available during this time slot
+            </h1>
+            <h1 v-else class="no-tutors">
+              There is no tutoring available during this time slot for the course selected
+            </h1>
+          </div>
+          <div v-else-if="dateSelected && classSelected" class="selectionInfo">
+            <h1 class="day-time">
+              {{ selectionInfo.day }} {{ selectionInfo.time }}
+            </h1>
+            <h3>In-Person AND Virtual</h3>
+            <br />
+            <h2>
+              Typically
+              <b :style="'color: ' + selectionInfo.businessColor">{{
+                selectionInfo.business
+              }}</b>
+            </h2>
+            <br />
+            <h2>Tutors</h2>
+            <div class="tutors-container">
+              <p v-for="tutor in selectionInfo.tutors" :key="tutor">
+                {{ tutor }}
               </p>
-              <p v-else class="no-tutors">
-                There is no tutoring available during this time slot for the course selected
+            </div>
+          </div>
+          <div v-else-if="dateSelected" class="selectionInfo">
+            <h1 class="day-time">
+              {{ selectionInfo.day }} {{ selectionInfo.time }}
+            </h1>
+            <h3>In-Person AND Virtual</h3>
+            <br />
+            <h2 class="courses-title">Tutoring Offered</h2>
+            <div class="courses-container">
+              <p v-for="course in selectionInfo.courses" :key="course">
+                {{ course }}
               </p>
             </div>
-            <div v-else-if="dateSelected && classSelected" class="selection-info">
-              <h1 class="day-time">
-                {{ selectionInfo.day }} {{ selectionInfo.time }}
-              </h1>
-              <h3>In-Person AND Virtual</h3>
-              <br />
-              <h2>
-                Typically
-                <b :style="'color: ' + selectionInfo.businessColor">{{
-                  selectionInfo.business
-                  }}</b>
-              </h2>
-              <br />
-              <h2>Tutors</h2>
-              <div class="tutors-container">
-                <p v-for="tutor in selectionInfo.tutors" :key="tutor">
-                  {{ tutor }}
-                </p>
-              </div>
+            <br />
+            <h2>Tutors</h2>
+            <div class="tutors-container">
+              <p v-for="tutor in selectionInfo.tutors" :key="tutor">
+                {{ tutor }}
+              </p>
             </div>
-            <div v-else-if="dateSelected" class="selection-info">
-              <h1 class="day-time">
-                {{ selectionInfo.day }} {{ selectionInfo.time }}
-              </h1>
-              <h3>In-Person AND Virtual</h3>
-              <br />
-              <h2 class="courses-title">Tutoring Offered</h2>
-              <div class="courses-container">
-                <p v-for="course in selectionInfo.courses" :key="course">
-                  {{ course }}
-                </p>
-              </div>
-              <br />
-              <h2>Tutors</h2>
-              <div class="tutors-container">
-                <p v-for="tutor in selectionInfo.tutors" :key="tutor">
-                  {{ tutor }}
-                </p>
-              </div>
-            </div>
-            <div v-else class="selection-info no-selection">
-              <p>Select a time slot and/or course to view details.</p>
-            </div>
-          </Transition>
+          </div>
+        </Transition>
+      </nav>
+      <main class="tutoring-calendar">
+        <div v-for="index in (numDays * hoursPerDay)" :key="index" :id="index" class="date" :style="getPosition(index)">
+        <!-- <div v-for="index in (numDays * hoursPerDay)" :key="index" :id="index" class="date" :style="getPosition(index)"
+          :class="{ 'even-row': (Math.floor((index - 1) / numDays) + 1) % 2 == 0 }"> -->
+          <button :ref="index" @click="selectDate(index)">
+            {{ timeIntToString(this.getTime(index)) }}
+          </button>
         </div>
 
       </main>
@@ -125,9 +116,6 @@ export default {
     async getBusiness() {
       this.business = business;
     },
-    getIndexFromRowColumn(row, col, ncol) {
-      return (row - 1) * ncol + col;
-    },
     // starts at 1
     getRow(index) {
       return Math.floor((index - 1) / this.numDays) + 1;
@@ -135,6 +123,9 @@ export default {
     // starts at 1
     getCol(index) {
       return index - (this.getRow(index) - 1) * this.numDays;
+    },
+    getPosition(index) {
+      return "grid-column: " + this.getCol(index) + "; grid-row: " + this.getRow(index) + ";";
     },
     getDay(index) {
       return this.getCol(index) - this.mondayCol;
@@ -198,11 +189,9 @@ export default {
       }
     },
     undoStyle() {
-      console.log(this.$refs);
       for (var i = 1; i <= this.numDays * this.hoursPerDay; i++) {
         this.$refs[i][0].style.border = "2px solid white";
       }
-      console.log("bye");
     },
     dayIntToString(day) {
       switch (day) {
@@ -406,24 +395,54 @@ export default {
   font-family: sans-serif;
 }
 
-/* container */
+/* Meet link */
+.meet-link-button {
+  width: auto;
+  margin: 0 auto;
+}
+
+.meet-link-button>div {
+  display: flex;
+  height: 100%;
+}
+
 .container {
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  display: grid;
+  grid-template-rows: 75px 1fr;
+  grid-template-columns: 25% 1fr;
 }
 
-/* tutoring sidebar */
+.tutoring-header {
+  background: #b73232;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+} 
+
+.tutoring-header button {
+  border: none;
+  background: none;
+  font-size: 4rem;
+  color: white;
+}
+
 .tutoring-sidebar {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #780c0c;
+  flex-direction: column;
+  align-content: start;
+  gap: 2rem;
+  background: #780c0c;
   width: 100%;
+  grid-row: 1 / 3;
+  grid-column: 1;
   color: white;
-  padding: 1rem 2rem;
+  text-align: center;
+  padding: 2rem;
 }
 
-.tutoring-sidebar .title-and-subtitle {
-  width: fit-content;
+.no-tutors {
+  margin-top: 10rem;
 }
 
 .tutoring-sidebar h1.name {
@@ -437,60 +456,29 @@ export default {
 .tutoring-sidebar h2 {
   font-size: 2rem;
   width: 65%;
+  margin: 0 auto;
 }
 
 .tutoring-sidebar h2.subtitle {
   width: 100%;
   font-weight: initial;
+  margin-bottom: 1rem;
 }
 
-@media (max-width: 1450px) {
-  .tutoring-sidebar {
-    flex-direction: column;
-    justify-items: center;
-    text-align: center;
-    gap: 2rem;
-  }
-}
-
-@media (max-width: 800px) {
-  h1.title {
-    font-size: 19pt;
-  }
-}
-
-/* meet link and dropdown */
-.meet-link-button-and-dropdown {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.meet-link-button>div {
-  display: flex;
-  height: 100%;
-}
-
-div.dropdown {
-  margin: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.dropdown select {
+.tutoring-sidebar select {
+  width: 80%;
+  margin: 1rem;
+  font-size: 2.4rem;
   padding: 1rem;
   border-radius: var(--border-radius);
   cursor: pointer;
 }
 
-.dropdown select:hover {
+.tutoring-sidebar select:hover {
   background-color: var(--light-gray);
 }
 
-.dropdown select.usingDefault {
+select.usingDefault {
   font-style: italic;
   font-weight: 100;
 }
@@ -500,134 +488,23 @@ option {
   font-style: initial;
 }
 
-.reset-button {
-  height: 4.25rem;
-  cursor: pointer;
-}
-
-.reset-button:hover {
-  opacity: var(--hover-opacity);
-}
-
-@media (max-width: 575px) {
-  .meet-link-button {
-    width: 100%;
-  }
-  .dropdown {
-    width: 100%;
-  }
-  .meet-link-button-and-dropdown {
-    flex-direction: column;
-  }
-}
-
-/* details panel */
-main {
-  display: flex;
-  gap: 2rem;
-  width: calc(100% - 20px);
-  margin: 1rem auto;
-}
-
-main .details-panel {
-  flex-basis: 30%;
-  overflow: hidden;
-  border: var(--border-width) var(--light-gray) solid;
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  display: flex;
-}
-
-.no-selection {
-  align-self: center;
-  margin: 0 auto;
-}
-
-.no-selection p {
-  font-size: 25pt;
-  text-align: center;
-}
-
-.selection-info {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.day-time {
-  font-size: 3.2rem;
-  text-align: center;
-}
-
-.selection-info h3 {
-  font-size: 1.8rem;
-  text-align: left;
-  font-weight: initial;
-  font-style: italic;
-}
-
-.selection-info h2 {
-  font-size: 2rem;
-  text-align: left;
-}
-
-.courses-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: start;
-}
-
-.courses-container p {
-  width: min-content;
-  font-size: 2rem;
-  text-align: left;
-}
-
-.tutors-container {
-  font-size: 2rem;
-  text-align: left;
-}
-
-.tutors-container p {
-  font-size: 2rem;
-}
-
-.select-for-details {
-  text-align: center;
-  margin: auto;
-}
-
-@media (max-width: 1150px) {
-  main {
-    flex-direction: column;
-  }
-}
-
-/* tutoring calendar */
 .tutoring-calendar {
+  background: white;
   width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-.tutoring-calendar tr {
-  height: 2rem;
-  font-size: 20pt;
-  margin: 0;
-}
-
-.tutoring-calendar th {
-  color: var(--red);
-  border-bottom: var(--border-width) var(--red) solid;
-  padding: 1rem 0rem;
-  margin-bottom: 1rem;  
+  height: 75vh;
+  grid-row: 2;
+  grid-column: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(8, 1fr);
+  padding: 1.5rem 0;
+  margin-bottom: -2rem;
 }
 
 .tutoring-calendar button {
   box-sizing: border-box;
   width: 100%;
+  margin: 0.25rem;
   font-size: 2.4rem;
   height: 5rem;
   align-self: center;
@@ -641,14 +518,98 @@ main .details-panel {
   opacity: 0.75;
 }
 
-@media (max-width: 850px) {
-  .tutoring-calendar button {
-    font-size: 12.5pt;
-  }
+.calendar-time:nth-child(even),
+.even-row {
+  background-color: #f2f2f2;
+}
 
-  .no-selection p {
-    font-size: 15pt;
-  }
+.calendar-time {
+  padding-top: 4px;
+  padding-left: 8px;
+  grid-column: 1;
+  font-size: 1.25rem;
+}
+
+.date {
+  font-size: 3.2rem;
+  margin: 0.125rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border: none;
+}
+
+.day-time {
+  font-size: 3.6rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.selectionInfo h3 {
+  font-size: 1.8rem;
+  text-align: left;
+  margin-left: 4rem;
+  margin-top: 2rem;
+  text-decoration: none;
+  font-weight: initial;
+  font-style: italic;
+}
+
+.selectionInfo h2 {
+  font-size: 2rem;
+  text-align: left;
+  margin-left: 4rem;
+  margin-top: 2rem;
+  text-decoration: none;
+}
+
+.courses-title {
+  margin-left: 2rem;
+}
+
+.courses-container {
+  margin-left: 4rem;
+  margin-top: 0.5rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 20% 20% 20% 20%;
+  justify-content: space-around;
+  row-gap: 0.25rem;
+}
+
+.courses-container p {
+  font-size: 2rem;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.tutors-container {
+  font-size: 2rem;
+  text-align: left;
+  margin-left: 4rem;
+  margin-top: 0.5rem;
+}
+
+.tutors-container p {
+  font-size: 2rem;
+  padding: 0.25rem 0;
+}
+
+.dropdown {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.reset-button {
+  width: 4.25rem;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  opacity: var(--hover-opacity);
 }
 
 .v-enter-active,
@@ -662,4 +623,74 @@ main .details-panel {
   transform: translateY(-60px);
 }
 
+@media (max-width: 1350px) {
+  .tutoring-sidebar h1.title {
+    font-size: 2.75rem;
+  }
+
+  .tutoring-sidebar h2.subtitle {
+    font-size: 1.75rem;
+  }
+
+  .tutoring-sidebar select {
+    font-size: 2rem;
+  }
+
+  button {
+    font-size: 2rem;
+  }
+
+  .courses-container {
+    gap: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  .courses-container p {
+    font-size: 1.75rem;
+  }
+
+  .tutors-container p {
+    font-size: 1.5rem;
+  }
+
+  .tutoring-sidebar h1 {
+    font-size: 2.75rem;
+  }
+
+  .tutoring-sidebar h2 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .tutoring-sidebar h1.title {
+    font-size: 1.75rem;
+  }
+
+  .tutoring-sidebar h2.subtitle {
+    font-size: 1.25rem;
+  }
+
+  .tutoring-sidebar select {
+    font-size: 1.5rem;
+  }
+
+  button {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .selectionInfo h3 {
+    margin: 0 10px;
+  }
+
+  .courses-container {
+    grid-template-columns: 33% 33% 33%;
+  }
+
+  .tutoring-sidebar h2 {
+    margin-left: 0;
+  }
+}
 </style>

@@ -13,12 +13,12 @@ const routes = [
     { path: '/events', component: EventsView },
     {
         path: '/tutoring',
-        beforeEnter: () => {
-            if (window.innerWidth < 1100) {
-                window.open('https://computing.njit.edu/tutoring');
-                return { path: '/' }
-            }
-        },
+        // beforeEnter: () => {
+        //     if (window.innerWidth < 1100) {
+        //         window.open('https://computing.njit.edu/tutoring');
+        //         return { path: '/' }
+        //     }
+        // },
         component: TutoringView
     },
     { path: '/constitution', component: ConstitutionView },
