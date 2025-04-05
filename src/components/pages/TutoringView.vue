@@ -29,7 +29,7 @@
         </div>
       </div>
       <main>
-        <table class="tutoring-calendar" cellspacing="0" cellpadding="0">
+        <table class="tutoring-calendar" cellspacing="2.5rem" cellpadding="0">
           <tr>
             <th>MON</th>
             <th>TUE</th>
@@ -415,16 +415,16 @@ export default {
 .tutoring-sidebar {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: #780c0c;
   width: 100%;
   color: white;
-  text-align: center;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
 }
 
 .tutoring-sidebar .title-and-subtitle {
-  flex-basis: 70%;
+  /* flex-basis: 70%; */
+  width: fit-content;
 }
 
 .tutoring-sidebar h1.name {
@@ -438,7 +438,6 @@ export default {
 .tutoring-sidebar h2 {
   font-size: 2rem;
   width: 65%;
-  margin: 0 auto;
 }
 
 .tutoring-sidebar h2.subtitle {
@@ -468,13 +467,42 @@ option {
   font-style: initial;
 }
 
+.dropdown {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.reset-button {
+  width: 4.25rem;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  opacity: var(--hover-opacity);
+}
+
+@media (max-width: 1450px) {
+  .tutoring-sidebar {
+    flex-direction: column;
+    justify-items: center;
+    text-align: center;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 800px) {
+  h1.title {
+    font-size: 19pt;
+  }
+}
+
 /* meet link */
 .meet-link-button-and-dropdown {
   display: flex;
-  margin: 0 auto;
-  width: 50%;
+  /* width: 10%; */
   align-items: center;
-  justify-content: center;
+  justify-content: right;
 }
 
 .meet-link-button>div {
@@ -491,7 +519,7 @@ main {
 }
 
 main .details-panel {
-  width: 40%;
+  flex-basis: 30%;
   overflow: hidden;
   border: var(--border-width) var(--light-gray) solid;
   border-radius: var(--border-radius);
@@ -500,7 +528,7 @@ main .details-panel {
 }
 
 .day-time {
-  font-size: 3.6rem;
+  font-size: 3.2rem;
   text-align: center;
 }
 
@@ -517,6 +545,7 @@ main .details-panel {
 }
 
 .no-selection p {
+  font-size: 25pt;
   text-align: center;
 }
 
@@ -559,6 +588,12 @@ main .details-panel {
   margin: auto;
 }
 
+@media (max-width: 1150px) {
+  main {
+    flex-direction: column;
+  }
+}
+
 /* tutoring calendar */
 .tutoring-calendar {
   width: 100%;
@@ -575,7 +610,8 @@ main .details-panel {
 .tutoring-calendar th {
   color: var(--red);
   border-bottom: var(--border-width) var(--red) solid;
-  padding: 1rem 0;
+  padding: 1rem 0rem;
+  margin-bottom: 1rem;  
 }
 
 .tutoring-calendar button {
@@ -594,19 +630,14 @@ main .details-panel {
   opacity: 0.75;
 }
 
-.dropdown {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}
+@media (max-width: 850px) {
+  .tutoring-calendar button {
+    font-size: 12.5pt;
+  }
 
-.reset-button {
-  width: 4.25rem;
-  cursor: pointer;
-}
-
-.reset-button:hover {
-  opacity: var(--hover-opacity);
+  .no-selection p {
+    font-size: 15pt;
+  }
 }
 
 .v-enter-active,
@@ -620,74 +651,4 @@ main .details-panel {
   transform: translateY(-60px);
 }
 
-@media (max-width: 1350px) {
-  .tutoring-sidebar h1.title {
-    font-size: 2.75rem;
-  }
-
-  .tutoring-sidebar h2.subtitle {
-    font-size: 1.75rem;
-  }
-
-  .tutoring-sidebar select {
-    font-size: 2rem;
-  }
-
-  button {
-    font-size: 2rem;
-  }
-
-  .courses-container {
-    gap: 0.5rem;
-    margin-left: 1rem;
-  }
-
-  .courses-container p {
-    font-size: 1.75rem;
-  }
-
-  .tutors-container p {
-    font-size: 1.5rem;
-  }
-
-  .tutoring-sidebar h1 {
-    font-size: 2.75rem;
-  }
-
-  .tutoring-sidebar h2 {
-    width: 100%;
-  }
-}
-
-@media (max-width: 1200px) {
-  .tutoring-sidebar h1.title {
-    font-size: 1.75rem;
-  }
-
-  .tutoring-sidebar h2.subtitle {
-    font-size: 1.25rem;
-  }
-
-  .tutoring-sidebar select {
-    font-size: 1.5rem;
-  }
-
-  button {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 1000px) {
-  .selection-info h3 {
-    margin: 0 10px;
-  }
-
-  .courses-container {
-    grid-template-columns: 33% 33% 33%;
-  }
-
-  .tutoring-sidebar h2 {
-    margin-left: 0;
-  }
-}
 </style>
