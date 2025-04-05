@@ -1,6 +1,6 @@
 <template>
   <TheHeader />
-  <router-view v-slot="{ Component }">
+  <router-view v-slot="{ Component }" class="router-view">
     <transition name="fade" mode="out-in">
       <component :is="Component" />
     </transition>
@@ -30,19 +30,21 @@ export default {
 
   --bkg-color: whitesmoke;
   --bkg-color-a625: rgba(245, 245, 245, 0.625);
-  --red: rgb(204, 0, 0);  /* hsl(0, 100%, 40%) */
+  --red: rgb(204, 0, 0);
+  /* hsl(0, 100%, 40%) */
   --light-red: hsl(0, 100%, 90%);
   --mid-red: hsl(0, 100%, 85%);
   --light-gray: rgb(225, 225, 225);
   --gray: rgb(200, 200, 200);
   --shadow-gray: rgb(100, 100, 100);
   --light-shadow-gray: rgb(150, 150, 150);
-  --medium-shadow-black: rgba(0,0,0,0.75);
-  --light-shadow-black: rgba(0,0,0,0.5);
+  --medium-shadow-black: rgba(0, 0, 0, 0.75);
+  --light-shadow-black: rgba(0, 0, 0, 0.5);
 
   --hover-speed: 0.15s;
   --hover-opacity: 0.625;
 }
+
 /*
 - Font sizes (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
@@ -57,10 +59,14 @@ export default {
   font-family: sans-serif;
 }
 
+body {
+  height: 100%;
+}
+
 html {
   background-color: whitesmoke;
   font-size: 62.5%;
-  margin-top: 60px;
+  margin-top: var(--nav-height);
   overflow-x: hidden;
 }
 
@@ -131,5 +137,4 @@ button {
     opacity: 0.625;
   }
 }
-
 </style>

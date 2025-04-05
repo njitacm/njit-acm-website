@@ -527,8 +527,13 @@ main .details-panel {
   display: flex;
 }
 
-.day-time {
-  font-size: 3.2rem;
+.no-selection {
+  align-self: center;
+  margin: 0 auto;
+}
+
+.no-selection p {
+  font-size: 25pt;
   text-align: center;
 }
 
@@ -539,13 +544,8 @@ main .details-panel {
   gap: 1rem;
 }
 
-.no-selection {
-  align-self: center;
-  margin: 0 auto;
-}
-
-.no-selection p {
-  font-size: 25pt;
+.day-time {
+  font-size: 3.2rem;
   text-align: center;
 }
 
