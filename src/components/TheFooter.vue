@@ -128,4 +128,10 @@ img {
     width: 50%
   }
 }
+
+@media (max-width: 500px) {
+  .footer-buttons {
+    width: 100%
+  }
+}
 </style>

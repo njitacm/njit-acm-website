@@ -18,7 +18,7 @@
           <div class="dropdown">
             <select @change="selectClass" v-model="selectedCourse" :class="{ usingDefault: selectedCourse == -1 }">
               <option selected disabled value="-1" style="display: none">
-                Select A Course...
+                Select a course...
               </option>
               <option v-for="course in courses" :key="course">
                 {{ course }}
@@ -423,7 +423,6 @@ export default {
 }
 
 .tutoring-sidebar .title-and-subtitle {
-  /* flex-basis: 70%; */
   width: fit-content;
 }
 
@@ -445,43 +444,6 @@ export default {
   font-weight: initial;
 }
 
-.tutoring-sidebar select {
-  width: 80%;
-  font-size: 2.4rem;
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-}
-
-.tutoring-sidebar select:hover {
-  background-color: var(--light-gray);
-}
-
-select.usingDefault {
-  font-style: italic;
-  font-weight: 100;
-}
-
-option {
-  background-color: white;
-  font-style: initial;
-}
-
-.dropdown {
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}
-
-.reset-button {
-  width: 4.25rem;
-  cursor: pointer;
-}
-
-.reset-button:hover {
-  opacity: var(--hover-opacity);
-}
-
 @media (max-width: 1450px) {
   .tutoring-sidebar {
     flex-direction: column;
@@ -497,12 +459,12 @@ option {
   }
 }
 
-/* meet link */
+/* meet link and dropdown */
 .meet-link-button-and-dropdown {
   display: flex;
-  /* width: 10%; */
+  gap: 1rem;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
 }
 
 .meet-link-button>div {
@@ -510,12 +472,61 @@ option {
   height: 100%;
 }
 
+div.dropdown {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown select {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.dropdown select:hover {
+  background-color: var(--light-gray);
+}
+
+.dropdown select.usingDefault {
+  font-style: italic;
+  font-weight: 100;
+}
+
+option {
+  background-color: white;
+  font-style: initial;
+}
+
+.reset-button {
+  height: 4.25rem;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  opacity: var(--hover-opacity);
+}
+
+@media (max-width: 575px) {
+  .meet-link-button {
+    width: 100%;
+  }
+  .dropdown {
+    width: 100%;
+  }
+  .meet-link-button-and-dropdown {
+    flex-direction: column;
+  }
+}
+
 /* details panel */
 main {
   display: flex;
   gap: 2rem;
   width: calc(100% - 20px);
-  margin: 1rem auto 0 auto;
+  margin: 1rem auto;
 }
 
 main .details-panel {
