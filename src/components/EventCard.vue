@@ -11,7 +11,7 @@
     <div v-if="links">
       <div v-for="[text, link] in Object.entries(links)" :key="link.id" class="links">
         <PrimaryButton class="primary-button">
-          <a :href="link" target="_blank" class="button-link">{{ text }}</a>
+          <a :href="link.link" target="_blank" class="button-link">{{ text }}</a>
         </PrimaryButton>
       </div>
     </div>

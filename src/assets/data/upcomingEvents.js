@@ -46,6 +46,10 @@ export default {
             "time": "5 PM - 7 PM",
             "image": "sp2025/SpeedNetworking.png",
             "desc": "Drop by and meet people! Here, you will get to program your own NFC tag to make exchanging contacts as quick as a flash. Expand your network and mingle at this speed networking event! There will be free food and a photobooth to take pictures with your new pals.",
+            "links": {
+                "RSVP Now": {"id": 0, "link": "https://njit.campuslabs.com/engage/event/11264412"},
+                "Add to Calendar": {"id": 1, "link": "https://njit.campuslabs.com/engage/event/11264412/googlepublish"}
+            }
         }
     ]
 };
