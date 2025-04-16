@@ -8,11 +8,14 @@
       <p class="desc">{{ desc }}</p>
       <a :href="url"></a>
     </div>
-    <div v-for="[text, link] in Object.entries(links)" :key="link.id" class="links">
-      <PrimaryButton class="primary-button">
-        <a :href="link" target="_blank" class="button-link">{{ text }}</a>
-      </PrimaryButton>
+    <div v-if="links">
+      <div v-for="[text, link] in Object.entries(links)" :key="link.id" class="links">
+        <PrimaryButton class="primary-button">
+          <a :href="link" target="_blank" class="button-link">{{ text }}</a>
+        </PrimaryButton>
+      </div>
     </div>
+    
   </div>
 </template>
 
@@ -21,7 +24,7 @@ import PrimaryButton from '../components/PrimaryButton.vue';
 
 export default {
   components: { PrimaryButton },
-  props: ['name', 'date', 'time', 'datetime', 'location', 'url', 'imageUrl', 'desc', "links"],
+  props: ['name', 'date', 'time', 'datetime', 'location', 'url', 'imageUrl', 'desc', 'links'],
   mounted() {
     console.log(this.$props.imageUrl)
   }
