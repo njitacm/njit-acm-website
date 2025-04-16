@@ -81,8 +81,10 @@ export default {
           } else if (time.start !== undefined) {
             dt += "Starts at " + time.start + ")";
           } else if (time.end !== undefined) {
-            dt += "Ends at " + time.end + ")"
+            dt += "Ends at " + time.end + ")";
           }
+        } else {
+          dt += time + ")";
         }
 
         if (d < dates.length - 1)
@@ -95,8 +97,10 @@ export default {
       console.log("diffdays: " + diffDays)
 
       // if the event hasn't already passed by more than 1 day
-      if (diffDays <= 1)
+      if (diffDays <= 1) {
         this.upcomingEvents.push(event);
+        console.log("added");
+      }
     }
   },
   data() {
