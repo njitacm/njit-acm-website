@@ -111,7 +111,6 @@
 </template>
 
 <script>
-import chroma from "chroma-js";
 import tutors from "../../assets/data/tutors.json";
 import business from "../../assets/data/business.json";
 import PrimaryButton from "../PrimaryButton.vue";
@@ -318,21 +317,10 @@ export default {
         console.log("Too large", row, col);
         return 0;
       }
-      // console.log(
-      //   this.business[row],
-      //   this.business[row].Data,
-      //   this.business[row].Data[col - 2]
-      // );
       return this.business[row].Data[col - 2];
     },
     getColor(index) {
-      var business = this.getBusinessFromIndex(index);
-      var percent = business / this.maxBusiness;
-      var gradientFunction = chroma.scale(["green", "yellow", "red"]);
-      var gradient = gradientFunction(percent);
-      console.log(business, this.maxBusiness, percent, gradient);
-      return "#00bf5f";
-      // return gradient;
+      return this.getBusinessColor(index);
     },
     getBusinessDescription(index) {
       var business = this.getBusinessFromIndex(index);
@@ -346,17 +334,15 @@ export default {
       }
     },
     getBusinessColor(index) {
-      console.log(index);
-      return "#00bf5f";
-      // var business = this.getBusinessFromIndex(index);
-      // var percent = business / this.maxBusiness;
-      // if (percent < 0.33) {
-      //   return "green";
-      // } else if (percent < 0.67) {
-      //   return "yellow";
-      // } else {
-      //   return "red";
-      // }
+      var business = this.getBusinessFromIndex(index);
+      var percent = business / this.maxBusiness;
+      if (percent < 0.33) {
+        return "#00bf5f";
+      } else if (percent < 0.67) {
+        return "#faf25f";
+      } else {
+        return "#e69407";
+      }
     },
   },
   data() {
