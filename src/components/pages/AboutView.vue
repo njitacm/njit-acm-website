@@ -1,8 +1,7 @@
 <template>
   <div class="outer-container">
     <!-- <HorizontalSection :imagePath="['eboard/2024/WholeBoard.png', 'eboard/2025/treasurer.png']" -->
-    <HorizontalSection :imagePath="['eboard/2025/WholeBoard.jpg', 'eboard/2024/WholeBoard.jpg']"
-    slideDuration="5000">
+    <HorizontalSection :imagePath="['eboard/2025/WholeBoard.jpg', 'eboard/2024/WholeBoard.jpg']" slideDuration="5000">
       <template v-slot:title>About Us</template>
       <template v-slot:content>
         <p style="font-size: 2.5rem">
@@ -16,75 +15,45 @@
     </HorizontalSection>
     <h2 class="section-header">Current Eboard</h2>
     <div class="spotlight">
-      <MainEboardCard
-        v-for="(member, i) in currentEboard"
-        :key="member"
-        :position="member.Role"
-        :name="member.Name"
-        :personalDesc="member.Desc"
-        :imageName="getImagePath(member.Role, member.Term)"
-        :id="i"
-        >
+      <MainEboardCard v-for="(member, i) in getEboard(currEboardYear)" :key="member" :position="member.Role"
+        :name="member.Name" :personalDesc="member.Desc" :imageName="getImagePath(member.Role, member.Term)" :id="i">
       </MainEboardCard>
     </div>
     <h2 class="section-header">Office Hours</h2>
     <div class="office-hours">
-      <p>Every e-board member has office hours at the ACM Office (located in GITC 3700). 
+      <p>Every e-board member has office hours at the ACM Office (located in GITC 3700).
         Check out the calendar below for the schedule and feel free to stop by and have a chat!</p>
       <EmbeddedCalendar
         src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20E-Board%20Office%20Hours&src=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233F51B5"
         href="https://calendar.google.com/calendar/u/0?cid=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
-        buttonText="Add Calendar"
-      ></EmbeddedCalendar>
+        buttonText="Add Calendar"></EmbeddedCalendar>
     </div>
     <div class="pastEboard">
       <div v-for="year in years" :key="year">
-        <header @click="toggleEboard(year)" 
-        :class="{ 
+        <header @click="toggleEboard(year)" :class="{
           'eboard-header': true,
-          'selected': showEboard[year] }">
+          'selected': showEboard[year]
+        }">
           <h2>{{ year }} Eboard</h2>
-          <span
-            class="svg material-symbols-outlined"
-            :class="{ open: showEboard[year] }"
-            >keyboard_arrow_down</span
-          >
+          <span class="svg material-symbols-outlined" :class="{ open: showEboard[year] }">keyboard_arrow_down</span>
         </header>
         <TransitionExpand>
-          <div
-            class="eboard-container"
-            :ref="year.toString()"
-            v-show="showEboard[year]"
-            v-if="year < 2024"
-          >
+          <div class="eboard-container" :ref="year.toString()" v-show="showEboard[year]" v-if="year < 2024">
             <div class="spacer1"></div>
             <div>
-              <EBoardCard
-                v-for="member in getEboard(year)"
-                :key="member.Role"
-                :position="member.Role"
-                :positionDesc="member.Desc"
-                :incumbent="member.Name"
-                :incumbentDesc="member.Desc"
-                :imageName="getImagePath(member.Role, member.Term)"
-              />
+              <EBoardCard v-for="member in getEboard(year)" :key="member.Role" :position="member.Role"
+                :positionDesc="member.Desc" :incumbent="member.Name" :incumbentDesc="member.Desc"
+                :imageName="getImagePath(member.Role, member.Term)" />
             </div>
             <div class="spacer2"></div>
           </div>
           <!-- 2024 and beyond uses list items instead of cards -->
-          <div v-else class="eboard-list-container" :ref="year.toString()"
-            v-show="showEboard[year]">
+          <div v-else class="eboard-list-container" :ref="year.toString()" v-show="showEboard[year]">
             <div class="spacer1"></div>
             <div>
-              <EBoardListItem
-                v-for="member in getEboard(year)"
-                class="eboard-list-item"
-                :key="member.Role"
-                :position="member.Role"
-                :positionDesc="member.Desc"
-                :incumbent="member.Name"
-                :incumbentDesc="member.Desc"
-                :imageName="getImagePath(member.Role, member.Term)">
+              <EBoardListItem v-for="member in getEboard(year)" class="eboard-list-item" :key="member.Role"
+                :position="member.Role" :positionDesc="member.Desc" :incumbent="member.Name"
+                :incumbentDesc="member.Desc" :imageName="getImagePath(member.Role, member.Term)">
               </EBoardListItem>
             </div>
             <div class="spacer2"></div>
@@ -149,7 +118,7 @@ export default {
       return year + "/" + path;
     },
     getEboard(year) {
-      return this.eboard.filter((member) => member.Term == year);
+      return this.sortEboard(this.eboard.filter((member) => member.Term == year));
     },
     setPosition(position) {
       this.selectedPosition = position;
@@ -158,7 +127,7 @@ export default {
       if (!this.showEboard[year]) {
         this.showEboard[year] = false;
       }
-      
+
       this.showEboard[year] = !this.showEboard[year];
       for (let index = 2000; index < this.currEboardYear; index++) {
         if (index != year) {
@@ -166,13 +135,33 @@ export default {
         }
       }
     },
+    sortEboard(eboard) {
+      // constitution order
+      const constOrd = ["President", "Vice President", "Treasurer",
+        "Secretary", "Public Relations", "Webmaster",
+        "Graphic Designer", "SIG Master", "Event Master"];
+      const sorted = [];
+
+      for (const role of constOrd) {
+        const officer = eboard.find(officer => officer.Role.toLowerCase() === role.toLowerCase());
+
+        if (officer) {
+          sorted.push(officer);
+        }
+      }
+
+      if (sorted.length !== eboard.length) {
+        console.log(`Lost memebers for year ${eboard[0]?.Term}`);
+      }
+
+      return sorted;
+    }
   },
 
   data() {
     return {
       selectedPosition: "President",
       currEboardYear: 2025,
-      currentEboard: jsonEboard.filter((member) => member.Term === 2025),
       years: [
         // "2025",
         "2024",
@@ -225,7 +214,7 @@ export default {
           "ACM's Head of Public Relations is responsible for all advertisting, including running our various social media accounts, putting up posters, and spreading ACM news by word of mouth. ",
       },
       eboard: jsonEboard,
-      
+
     };
   },
 };
@@ -235,20 +224,24 @@ export default {
 .outer-container {
   margin: 0 auto;
 }
+
 header.page-header {
   margin: 1rem auto;
   display: flex;
   justify-content: center;
 }
+
 .position-button {
   background: none;
   border: none;
   font-size: 2rem;
 }
+
 .selected_position {
   transform: scale(1.05);
   color: red;
 }
+
 .spotlight {
   margin: 0 auto;
   display: grid;
@@ -265,7 +258,7 @@ header.page-header {
   font-size: 2.5rem;
 }
 
-.eboard-container > div {
+.eboard-container>div {
   display: grid;
   /* grid-template-rows: 250px 250px; */
   grid-template-columns: repeat(4, auto);
@@ -274,11 +267,12 @@ header.page-header {
   margin: 0 auto;
   justify-content: space-evenly;
 }
-.eboard-container > div * {
+
+.eboard-container>div * {
   justify-self: center;
 }
 
-.eboard-list-container > div {
+.eboard-list-container>div {
   display: grid;
   width: 90%;
   margin: 0 auto;
@@ -291,9 +285,11 @@ header.page-header {
 .spacer1 {
   height: 2rem;
 }
+
 .spacer2 {
   height: 4rem;
 }
+
 header {
   display: flex;
   justify-content: space-between;
@@ -302,6 +298,7 @@ header {
   padding-bottom: 1rem;
   padding-top: 2rem;
 }
+
 .eboard-header {
   transition: background-color var(--hover-speed) ease-in-out, color var(--hover-speed) ease-in-out;
   border-radius: 1rem;
@@ -328,13 +325,14 @@ header {
   }
 }
 
-.eboard-header.selected > .svg {
+.eboard-header.selected>.svg {
   filter: invert(100%);
 }
 
 h2:not(.section-header) {
   font-size: 48px;
 }
+
 .svg {
   font-size: 5rem;
   transition: all 0.25s ease-in-out;
@@ -342,13 +340,16 @@ h2:not(.section-header) {
   color: black;
   align-self: center;
 }
+
 .open {
   transform: rotate(180deg);
 }
+
 .v-enter-active,
 .v-leave-active {
   transition: all 1s ease-in-out;
 }
+
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
@@ -360,8 +361,9 @@ h2:not(.section-header) {
     grid-template-columns: repeat(3, 33%);
   }
 }
+
 @media (max-width: 1700px) {
-  .eboard-container > div {
+  .eboard-container>div {
     grid-template-columns: repeat(3, auto);
   }
 }
@@ -371,16 +373,20 @@ h2:not(.section-header) {
     grid-template-columns: repeat(2, 50%);
   }
 }
+
 @media (max-width: 1350px) {
   .card {
     min-width: 30%;
   }
-  .eboard-container > div {
+
+  .eboard-container>div {
     grid-template-columns: repeat(2, auto);
   }
+
   .spacer1 {
     display: none;
   }
+
   .spacer2 {
     display: none;
   }
@@ -396,15 +402,16 @@ h2:not(.section-header) {
   header {
     margin: 0 1rem;
   }
+
   h2:not(.section-header) {
     font-size: 3.5rem;
   }
 
-  .eboard-container > div {
+  .eboard-container>div {
     grid-template-columns: repeat(1, auto);
   }
 
-  .eboard-list-container > div {
+  .eboard-list-container>div {
     grid-template-columns: repeat(1, auto);
   }
 }
