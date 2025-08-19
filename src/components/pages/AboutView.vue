@@ -5,15 +5,15 @@
       <template v-slot:title>About Us</template>
       <template v-slot:content>
         <p style="font-size: 2.5rem">
-          If you're new to clubs at NJIT, the Eboard is the group of students,
+          If you're new to clubs at NJIT, the e-board is the group of students,
           elected at the end of every Fall, that run ACM! We handle all event
-          planning and daily operations of the club. The current Eboard is
+          planning and daily operations of the club. The current e-board is
           comprised on eight position listed below. Scroll down further to find
-          out more about out current Eboard!
+          out more about out current e-board!
         </p>
       </template>
     </HorizontalSection>
-    <h2 class="section-header">Current Eboard</h2>
+    <h2 class="section-header">Current E-Board</h2>
     <div class="spotlight">
       <MainEboardCard v-for="(member, i) in getEboard(currEboardYear)" :key="member" :position="member.Role"
         :name="member.Name" :personalDesc="member.Desc" :imageName="getImagePath(member.Role, member.Term)" :id="i">
@@ -189,7 +189,7 @@ export default {
       ],
       eboardDescs: {
         President:
-          "The President of ACM is responsible for leading the club. You'll see them take center stage during our general body meetings with a gavel passed down through generations of Presidents. The President presides over all functions of the club, with all other eboard officers reporting directly to and being managed by them.",
+          "The President of ACM is responsible for leading the club. You'll see them take center stage during our general body meetings with a gavel passed down through generations of Presidents. The President presides over all functions of the club, with all other e-board officers reporting directly to and being managed by them.",
 
         "Vice President":
           "The Vice-President of ACM the second in command in the organization. They work directly alongside the President and take over for them if need be. They are also responsible for handling all tutoring done by ACM.",
