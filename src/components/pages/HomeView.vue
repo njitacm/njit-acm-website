@@ -54,7 +54,7 @@
           providing a fun, safe, and friendly work environment. The ACM office,
           located at GITC 3704, is a place we maintain for people to go do work,
           relax after a hard day of work, or even play games. The office is an
-          excellent place to get to know the eboard and other members of the
+          excellent place to get to know the e-board and other members of the
           club or to just hang out there. We urge all students to take advantage
           of our professional services, and to join our passionate and friendly
           community. We hope to see you around.
