@@ -397,10 +397,11 @@ export default {
 }
 
 .no-tutoring {
-  font-size: 2rem;
+  font-size: 3rem;
   text-align: center;
   align-content: center;
   height: 100%;
+  text-wrap: balance;
 }
 
 /* container */
