@@ -400,6 +400,7 @@ export default {
   font-size: 2rem;
   text-align: center;
   align-content: center;
+  height: 100%;
 }
 
 /* container */
