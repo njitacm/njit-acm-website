@@ -6,19 +6,10 @@
           <img src="../assets/logos/NJIT_ACM_LOGO.svg" />
           <div>ACM</div>
         </RouterLink>
-        <RouterLink
-          to="/"
-          class="router-link-center"
-          @click="toTop()"
-        >
-          Association for Computing Machinery</RouterLink
-        >
+        <RouterLink to="/" class="router-link-center" @click="toTop()">
+          Association for Computing Machinery</RouterLink>
         <CollapsableNav @collapsableNavOpened="updateTabSelection">
-          <NavButton v-for="(button, to) in navData" 
-            :key="button.id" 
-            :id="button.id"
-            :to="to"
-            :text="button.text"
+          <NavButton v-for="(button, to) in navData" :key="button.id" :id="button.id" :to="to" :text="button.text"
             :selectedId="selectedId">
           </NavButton>
         </CollapsableNav>
@@ -73,7 +64,7 @@ export default {
         this.selectedId = this.navData[this.currPath].id
       else    // no tab e.g. "home" etc.
         this.selectedId = -1;
-    
+
       // if (this.$props.to !== this.currPath) {
       //   this.isSelected = false;
       //   console.log("left " + this.currPath);
@@ -90,17 +81,17 @@ export default {
       let scrollTop = window.scrollY || document.documentElement.scrollTop;
 
       if (scrollTop < 2 * this.$refs.pageHeader.clientHeight) {
-        this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         return;
       }
 
       if (scrollTop > this.lastScrollTop) // scrolled down
-          this.showHeader = false;
+        this.showHeader = false;
       else if (scrollTop < this.lastScrollTop) // scrolled up
         this.showHeader = true;
-    
+
       // For mobile or negative scrolling
-      this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+      this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 
       // this.fixedHeader =
       //   window.scrollY > this.$refs.pageHeader.clientHeight + 400;
@@ -124,7 +115,6 @@ export default {
 </script>
 
 <style scoped>
-
 .v-enter-active,
 .v-leave-active {
   transition: top 0.25s ease-in-out;
@@ -141,6 +131,7 @@ header {
   top: 0;
   width: 100%;
   transition: box-shadow var(--hover-speed) linear;
+  box-sizing: border-box;
 }
 
 .fixed-header {
@@ -149,12 +140,15 @@ header {
 }
 
 @media (hover: hover) {
+
   .router-link-left:hover,
   .router-link-center:hover {
     color: var(--red);
   }
 }
+
 @media (hover: none) {
+
   .router-link-left:active,
   .router-link-center:active {
     color: var(--red);
@@ -181,7 +175,7 @@ header {
   height: 100%;
 }
 
-.router-link-left > img {
+.router-link-left>img {
   height: 50px;
 }
 
@@ -193,6 +187,7 @@ header {
   text-decoration: none;
   color: black;
 }
+
 /* nav {
   display: flex;
   align-items: center;
@@ -207,7 +202,7 @@ header {
 }
 
 @media (max-width: 750px) {
-  .router-link-left > div {
+  .router-link-left>div {
     display: none;
   }
 }

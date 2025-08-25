@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div v-show="tutoringCurrAvailable" class="container">
       <div class="tutoring-sidebar">
         <div class="title-and-subtitle">
           <h1 class="title">YWCC Undergraduate Tutoring Schedule</h1>
@@ -106,6 +106,9 @@
         </div>
 
       </main>
+    </div>
+    <div v-show="!tutoringCurrAvailable" class="no-tutoring">
+      Tutoring is only offered during the Fall and Spring semeseters. Please check back later.
     </div>
   </div>
 </template>
@@ -347,6 +350,7 @@ export default {
   },
   data() {
     return {
+      tutoringCurrAvailable: false,   // true only during fall and spring semesters!
       dateSelected: false,
       selectionInfo: {},
       // adjust this according to each new year's tutoring
@@ -390,6 +394,14 @@ export default {
 * {
   transition: all var(--hover-speed) linear;
   font-family: sans-serif;
+}
+
+.no-tutoring {
+  font-size: 3rem;
+  text-align: center;
+  align-content: center;
+  height: 100%;
+  text-wrap: balance;
 }
 
 /* container */

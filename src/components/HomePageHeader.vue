@@ -1,11 +1,7 @@
 <template>
   <header @mousedown="pause" @mouseup="play" @mouseleave="play">
     <div id="header-centerpiece">
-      <img
-        src="../assets/logos/NJIT_ACM_LOGO.svg"
-        alt="NJIT ACM Logo"
-        id="main-logo"
-      />
+      <img src="../assets/logos/NJIT_ACM_LOGO.svg" alt="NJIT ACM Logo" id="main-logo" />
     </div>
     <div class="background-container">
       <div ref="bg1" class="bg1" :style="styles"></div>
@@ -16,8 +12,8 @@
 <script>
 export default {
   data() {
-    return { 
-      styles: { animationPlayState: 'running' } 
+    return {
+      styles: { animationPlayState: 'running' }
     };
   },
   methods: {
@@ -42,13 +38,16 @@ header {
   z-index: 10;
   overflow: hidden;
 }
-header > img {
+
+header>img {
   position: absolute;
   z-index: -5;
 }
+
 h2 {
   font-size: 9.8rem;
 }
+
 #header-centerpiece {
   position: absolute;
   left: 50%;
@@ -61,6 +60,7 @@ h2 {
   z-index: 50;
   animation: throb 3s ease-in-out infinite;
 }
+
 /* text-shadow: 1px 1px 0 #000,
     -1px 1px 0 #000,
     1px -1px 0 #000,
@@ -85,16 +85,18 @@ h2 {
     -2px 1px 0 #000,
     2px -1px 0 #000,
     -2px -1px 0 #000; */
-#header-centerpiece > h2 {
+#header-centerpiece>h2 {
   text-shadow: 0px 0px 20px black;
   text-align: center;
   color: white;
 }
+
 #main-logo {
   width: 81.25%;
   opacity: 0.8;
   max-width: 62.4rem;
 }
+
 .background-container {
   display: flex;
   flex-wrap: nowrap;
@@ -102,6 +104,7 @@ h2 {
   height: 56.25vw;
   overflow: hidden;
 }
+
 .bg1 {
   background-image: url("../assets/HomePage/photo-collage.png");
   position: relative;
@@ -111,23 +114,46 @@ h2 {
   background-size: 100%;
 
   object-fit: fill;
-  animation: scroll-left 30s linear infinite, zoom 30s ease-in-out infinite;
-} 
+}
+
+@media(prefers-reduced-motion: no-preference) {
+  .bg1 {
+    animation: scroll-left 30s linear infinite, zoom 30s ease-in-out infinite;
+  }
+}
 
 @keyframes throb {
-  0% {opacity: 0.75;}
-  50% {opacity: 1;}
-  100% {opacity: 0.75;}
+  0% {
+    opacity: 0.75;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.75;
+  }
 }
 
 @keyframes zoom {
-  0% { transform: scale(100%); }
-  50% { transform: scale(125%); }
-  100% { transform: scale(100%); }
+  0% {
+    transform: scale(100%);
+  }
+
+  50% {
+    transform: scale(125%);
+  }
+
+  100% {
+    transform: scale(100%);
+  }
 }
 
 @keyframes scroll-left {
-  to { background-position: -100vw -56.25vw; }
+  to {
+    background-position: -100vw -56.25vw;
+  }
 }
 
 /* @media (max-width: 1550px) {
@@ -141,6 +167,7 @@ h2 {
     width: 71.25%;
   }
 }
+
 @media (max-width: 850px) {
   #main-logo {
     width: 60.25%;

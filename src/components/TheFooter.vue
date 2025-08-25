@@ -67,6 +67,7 @@ footer {
   justify-content: space-between;
   width: 100%;
   margin: auto;
+  box-sizing: border-box;
 }
 
 .logos {

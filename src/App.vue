@@ -1,11 +1,15 @@
 <template>
+  <!-- <div id="grand-container"> -->
   <TheHeader />
-  <router-view v-slot="{ Component }" class="router-view">
-    <transition name="fade" mode="out-in">
-      <component :is="Component" />
-    </transition>
-  </router-view>
-  <TheFooter />
+  <div class="main-body">
+    <router-view v-slot="{ Component }" class="router-view">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" class="page" />
+      </transition>
+    </router-view>
+    <TheFooter />
+  </div>
+  <!-- </div> -->
 </template>
 <script>
 import { RouterView } from "vue-router";
@@ -59,15 +63,34 @@ export default {
   font-family: sans-serif;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  height: calc(100% - var(--nav-height));
+}
+
+#app {
   height: 100%;
 }
 
 html {
   background-color: whitesmoke;
   font-size: 62.5%;
-  margin-top: var(--nav-height);
   overflow-x: hidden;
+}
+
+.main-body {
+  margin-top: var(--nav-height);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.page {
+  box-sizing: border-box;
 }
 
 p {
