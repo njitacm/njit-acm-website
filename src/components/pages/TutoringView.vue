@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="tutoringCurrAvailable" class="container">
+    <div v-show="tutoringCurrAvailable" class="container">
       <div class="tutoring-sidebar">
         <div class="title-and-subtitle">
           <h1 class="title">YWCC Undergraduate Tutoring Schedule</h1>
@@ -107,7 +107,7 @@
 
       </main>
     </div>
-    <div v-else class="no-tutoring">
+    <div v-show="!tutoringCurrAvailable" class="no-tutoring">
       Tutoring is only offered during the Fall and Spring semeseters. Please check back later.
     </div>
   </div>
