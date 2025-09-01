@@ -12,6 +12,7 @@
           <NavButton v-for="(button, to) in navData" :key="button.id" :id="button.id" :to="to" :text="button.text"
             :selectedId="selectedId">
           </NavButton>
+          <DarkModeToggle />
         </CollapsableNav>
       </header>
     </Transition>
@@ -20,10 +21,11 @@
 
 <script>
 import CollapsableNav from "./CollapsableNav.vue";
+import DarkModeToggle from "./DarkModeToggle.vue";
 import NavButton from "./NavButton.vue";
 
 export default {
-  components: { CollapsableNav, NavButton },
+  components: { CollapsableNav, NavButton, DarkModeToggle },
   data() {
     return {
       selectedId: -1,

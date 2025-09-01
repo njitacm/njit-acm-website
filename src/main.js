@@ -4,6 +4,7 @@ import App from './App.vue'
 import TheHeader from './components/TheHeader.vue';
 import TheFooter from './components/TheFooter.vue';
 import 'material-symbols';
+import "./assets/styles/themes.css";
 
 const app = createApp(App);
 

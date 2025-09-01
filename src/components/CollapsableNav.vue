@@ -3,7 +3,7 @@
     <button @click="toggleNav" id="mmmBorger" :class="{'nav-open': navOpen}">
       <span class="menu-text">Menu</span>
       <span class="material-symbols-sharp menu-icon" ref="menuIcon">format_align_justify</span>
-      </button>
+    </button>
     <Transition>
       <nav class="open-nav" v-show="showNav" ref="nav">
         <slot></slot>
@@ -61,7 +61,7 @@ export default {
 
 <style scoped>
 * {
-  transition: transform var(--hover-speed) linear, 
+  transition: transform var(--hover-speed) linear,
   background-color var(--hover-speed) linear,
 }
 
@@ -119,6 +119,16 @@ export default {
 .v-enter-from, .v-leave-to /* .fade-leave-active in <2.1.8 */ {
   opacity: 0;
   transform: translateY(-10px);
+}
+
+/* Desktop styles for nav */
+@media (min-width: 551px) {
+  .open-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
 }
 
 @media (max-width: 550px) {
