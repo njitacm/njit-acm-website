@@ -16,15 +16,13 @@ module.exports = {
           ) || []
         );
       },
-      safelist: {
-        pattern: [
-          // /-(leave|enter|appear)(|-(to|from|active))$/,
-          // /^(?!(|.*?:)cursor-move).+-move$/,
-          // /^router-link(|-exact)-active$/,
-          // /data-v-.*/,
-          /data-theme/,     // to ensure light / dark theme functionality works
-        ]
-      },
+      safelist: [
+        /-(leave|enter|appear)(|-(to|from|active))$/,
+        /^(?!(|.*?:)cursor-move).+-move$/,
+        /^router-link(|-exact)-active$/,
+        /data-v-.*/,
+        /data-theme/,     // to ensure light / dark theme functionality works
+      ],
     }),
   ],
 };

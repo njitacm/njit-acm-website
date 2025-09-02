@@ -32,10 +32,15 @@ export default {
   --large-border-radius: 20px;
   --shadow-radius: 20px;
 
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --primary-color: #007bff;
+  --card-bg-color: #f8f9fa;
+
+  /* Override default variables for light theme */
   --bkg-color: whitesmoke;
   --bkg-color-a625: rgba(245, 245, 245, 0.625);
   --red: rgb(204, 0, 0);
-  /* hsl(0, 100%, 40%) */
   --light-red: hsl(0, 100%, 90%);
   --mid-red: hsl(0, 100%, 85%);
   --light-gray: rgb(225, 225, 225);
@@ -47,6 +52,41 @@ export default {
 
   --hover-speed: 0.15s;
   --hover-opacity: 0.625;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --primary-color: #0d6efd;
+  --card-bg-color: #2d2d2d;
+
+  --bkg-color: #1a1a1a;
+  --bkg-color-a625: rgba(26, 26, 26, 0.625);
+  --red: rgb(255, 133, 133);
+  --light-red: hsl(0, 60%, 25%);
+  --mid-red: hsl(0, 60%, 30%);
+  --light-gray: rgb(60, 60, 60);
+  --gray: rgb(80, 80, 80);
+  --shadow-gray: rgb(200, 200, 200);
+  --light-shadow-gray: rgb(150, 150, 150);
+  --medium-shadow-black: rgba(255, 255, 255, 0.15);
+  --light-shadow-black: rgba(255, 255, 255, 0.1);
+}
+
+/* Apply theme colors to common elements */
+html[data-theme="dark"] {
+  background-color: var(--bkg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] body {
+  background-color: var(--bkg-color);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] .section-header {
+  color: var(--text-color);
+  border-bottom-color: var(--red);
 }
 
 /*
