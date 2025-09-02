@@ -51,12 +51,8 @@ button.selected {
   background-color: var(--red);
 }
 
-[data-theme="dark"] button.selected a {
-  color: var(--card-bg-color);
-}
-
 button.selected>.router-link {
-  color: white;
+  color: var(--card-bg-color);
 }
 
 @media (hover: hover) {
