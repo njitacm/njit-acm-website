@@ -33,7 +33,7 @@ export default {
 
 <style scoped>
 button {
-  background-color: white;
+  background-color: transparent;
   border-radius: 10px;
   margin: 0.25rem;
   padding: 0.8rem;
@@ -45,10 +45,6 @@ button {
   /* background-color: inherit; */
   cursor: pointer;
   transition: background-color var(--hover-speed) ease-in-out;
-}
-
-button:not(.selected) {
-  background-color: white;
 }
 
 button.selected {
