@@ -29,23 +29,23 @@ export default {
 .toggle-btn {
   background: transparent;
   border: 2px solid var(--red);
-  padding: 8px 12px;
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: all var(--hover-speed) ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
+  aspect-ratio: 1;
+  font-size: 2.4rem;
+  height: 1.8em;
 }
 
 .toggle-btn:hover {
   background: var(--red);
-  transform: scale(1.05);
 }
 
 .icon {
-  font-size: 1.8rem;
+  font-size: inherit;
   display: block;
   line-height: 1;
 }

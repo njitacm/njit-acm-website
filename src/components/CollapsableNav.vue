@@ -127,7 +127,8 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
+    margin-right: 1rem;
   }
 }
 
