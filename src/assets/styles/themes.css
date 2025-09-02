@@ -49,11 +49,6 @@ html[data-theme="dark"] {
   color: var(--text-color);
 }
 
-[data-theme="dark"] header {
-  background-color: var(--card-bg-color) !important;
-  color: var(--text-color);
-}
-
 [data-theme="dark"] .section-header {
   color: var(--text-color);
   border-bottom-color: var(--red);

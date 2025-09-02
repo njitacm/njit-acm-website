@@ -123,7 +123,8 @@ export default {
 }
 
 header {
-  background: white;
+  background-color: var(--bkg-color) !important;
+  color: var(--text-color);
   z-index: 100;
   padding-left: 5px;
   display: flex;
