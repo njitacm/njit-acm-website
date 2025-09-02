@@ -49,15 +49,4 @@ export default {
   display: block;
   line-height: 1;
 }
-
-@media (max-width: 750px) {
-  .toggle-btn {
-    padding: 6px 10px;
-    margin-right: 5px;
-  }
-
-  .icon {
-    font-size: 1.6rem;
-  }
-}
 </style>
