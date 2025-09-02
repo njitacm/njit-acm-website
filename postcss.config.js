@@ -21,6 +21,7 @@ module.exports = {
           /^(?!(|.*?:)cursor-move).+-move$/,
           /^router-link(|-exact)-active$/,
           /data-v-.*/,
+          /data-theme/,     // to ensure light / dark theme functionality works
         ],
       }),
   ],
