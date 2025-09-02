@@ -54,11 +54,6 @@ html[data-theme="dark"] {
   color: var(--text-color);
 }
 
-[data-theme="dark"] .router-link-left,
-[data-theme="dark"] .router-link-center {
-  color: var(--text-color) !important;
-}
-
 [data-theme="dark"] .section-header {
   color: var(--text-color);
   border-bottom-color: var(--red);

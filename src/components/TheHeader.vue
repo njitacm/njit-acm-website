@@ -157,9 +157,9 @@ header {
   }
 }
 
-
 .router-link-left,
 .router-link-center {
+  color: var(--text-color);
   -webkit-tap-highlight-color: transparent;
   transition: color var(--hover-speed) linear;
 }
@@ -168,7 +168,6 @@ header {
   padding: 0 2px;
   font-size: 4rem;
   text-decoration: none;
-  color: black;
   font-weight: 500;
   display: flex;
   /* grid-template-columns: auto 50%; */
@@ -187,7 +186,6 @@ header {
   transform: translateX(-50%);
   font-size: 3.2rem;
   text-decoration: none;
-  color: black;
 }
 
 /* nav {
