@@ -6,7 +6,6 @@ import TheFooter from './components/TheFooter.vue';
 import 'material-symbols';
 import "./assets/styles/themes.css";
 
-console.log(`The app is running in ${process.env.NODE_ENV} mode.`);
 const app = createApp(App);
 
 app.component("TheHeader", TheHeader)
