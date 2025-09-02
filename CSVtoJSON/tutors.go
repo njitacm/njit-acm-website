@@ -28,7 +28,7 @@ type TimeSlot struct {
 }
 
 func convertTutors() {
-	csvFile, err := os.Open("./Tutoring/sp_2025_tutors.csv")
+	csvFile, err := os.Open("./tutors.csv")
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -80,8 +80,6 @@ func convertTutors() {
 		os.Exit(1)
 	}
 
-	// fmt.Println(string(jsonData))
-
 	jsonFile, err := os.Create("../src/assets/data/tutors.json")
 	if err != nil {
 		fmt.Println(err)
@@ -95,20 +93,42 @@ func convertTutors() {
 func getTutorTimes(timeSlots []string) []TimeSlot {
 	parsedTimeSlots := []TimeSlot{}
 	for _, time := range timeSlots {
+		if time == "TBD" {
+			fmt.Println("Skipped a time because it was TBD")
+			continue
+		}
 		day, parsedTimes := parseTimes(time)
 		temp := []int{}
 		parsedTimeSlot := TimeSlot{}
 		for _, timeString := range parsedTimes {
 			re := regexp.MustCompile("([Aa][Mm])")
+			// get AM / PM
 			timeOfDay := timeString[len(timeString)-2:]
-			hour, err := strconv.Atoi(timeString[0 : len(timeString)-2])
-			if err != nil {
-				log.Panic(err)
+
+			if strings.Contains(timeString, ":") {
+				parts := strings.Split(timeString[0:len(timeString)-2], ":")
+				hour, err1 := strconv.Atoi(parts[0])
+				min, err2 := strconv.Atoi(parts[1])
+				if err1 != nil {
+					log.Panic(err1)
+				}
+				if err2 != nil {
+					log.Panic(err2)
+				}
+				if !re.MatchString(timeOfDay) {
+					hour = (hour % 12) + 12
+				}
+				temp = append(temp, hour*60+min)
+			} else {
+				hour, err := strconv.Atoi(timeString[0 : len(timeString)-2])
+				if err != nil {
+					log.Panic(err)
+				}
+				if !re.MatchString(timeOfDay) {
+					hour = (hour % 12) + 12
+				}
+				temp = append(temp, hour*60)
 			}
-			if !re.MatchString(timeOfDay) {
-				hour = (hour % 12) + 12
-			}
-			temp = append(temp, hour)
 		}
 		parsedTimeSlot.Day = day
 		parsedTimeSlot.StartTime = temp[0]
@@ -137,6 +157,7 @@ func parseTimes(s string) (int, []string) {
 		// case "Sa":
 		// 	dayInt = 5
 	}
-	re := regexp.MustCompile("(0?[0-9]|1[0-9]|2[0-3])([AaPp][Mm])")
+	re := regexp.MustCompile("(0?[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])?([AaPp][Mm])")
+	fmt.Println(re.FindAllString(s, -1))
 	return dayInt, re.FindAllString(s, -1)
 }

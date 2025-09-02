@@ -350,7 +350,7 @@ export default {
   },
   data() {
     return {
-      tutoringCurrAvailable: false,   // true only during fall and spring semesters!
+      tutoringCurrAvailable: true,   // true only during fall and spring semesters!
       dateSelected: false,
       selectionInfo: {},
       // adjust this according to each new year's tutoring
