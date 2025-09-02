@@ -110,6 +110,7 @@ p {
 .outer-container {
   width: 80%;
   max-width: 1500px;
+  margin-bottom: 10rem !important;
 }
 
 .section-container {

@@ -96,7 +96,7 @@ export default {
   padding: 0 1rem;
   z-index: 0;
   transform: rotateY(-180deg);
-  background: white;
+  background-color: var(--bkg-color);
   border: var(--border-width) lightcoral solid;
   border-radius: 16px;
   display: grid;
