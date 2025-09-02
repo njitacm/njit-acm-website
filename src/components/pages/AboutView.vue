@@ -303,6 +303,7 @@ header {
   transition: background-color var(--hover-speed) ease-in-out, color var(--hover-speed) ease-in-out;
   border-radius: 1rem;
   padding-left: 2rem;
+  padding-right: 2rem;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -310,7 +311,7 @@ header {
 
 .eboard-header.selected {
   background-color: var(--red);
-  color: white;
+  color: var(--bkg-color);
 }
 
 @media (hover: hover) {
@@ -326,7 +327,7 @@ header {
 }
 
 .eboard-header.selected>.svg {
-  filter: invert(100%);
+  color: var(--bkg-color);
 }
 
 h2:not(.section-header) {
@@ -337,7 +338,7 @@ h2:not(.section-header) {
   font-size: 5rem;
   transition: all 0.25s ease-in-out;
   cursor: pointer;
-  color: black;
+  /* color: black; */
   align-self: center;
 }
 

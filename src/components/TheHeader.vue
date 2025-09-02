@@ -12,6 +12,7 @@
           <NavButton v-for="(button, to) in navData" :key="button.id" :id="button.id" :to="to" :text="button.text"
             :selectedId="selectedId">
           </NavButton>
+          <DarkModeToggle />
         </CollapsableNav>
       </header>
     </Transition>
@@ -20,10 +21,11 @@
 
 <script>
 import CollapsableNav from "./CollapsableNav.vue";
+import DarkModeToggle from "./DarkModeToggle.vue";
 import NavButton from "./NavButton.vue";
 
 export default {
-  components: { CollapsableNav, NavButton },
+  components: { CollapsableNav, NavButton, DarkModeToggle },
   data() {
     return {
       selectedId: -1,
@@ -121,7 +123,8 @@ export default {
 }
 
 header {
-  background: white;
+  background-color: var(--bkg-color) !important;
+  color: var(--text-color);
   z-index: 100;
   padding-left: 5px;
   display: flex;
@@ -155,9 +158,9 @@ header {
   }
 }
 
-
 .router-link-left,
 .router-link-center {
+  color: var(--text-color);
   -webkit-tap-highlight-color: transparent;
   transition: color var(--hover-speed) linear;
 }
@@ -166,7 +169,6 @@ header {
   padding: 0 2px;
   font-size: 4rem;
   text-decoration: none;
-  color: black;
   font-weight: 500;
   display: flex;
   /* grid-template-columns: auto 50%; */
@@ -185,7 +187,6 @@ header {
   transform: translateX(-50%);
   font-size: 3.2rem;
   text-decoration: none;
-  color: black;
 }
 
 /* nav {

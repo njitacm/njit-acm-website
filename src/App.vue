@@ -110,6 +110,7 @@ p {
 .outer-container {
   width: 80%;
   max-width: 1500px;
+  margin-bottom: 10rem !important;
 }
 
 .section-container {
@@ -149,13 +150,17 @@ button {
   }
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   a:hover:not(.button-link, .router-link) {
     opacity: 0.625;
   }
+
+  [data-theme="dark"] a:hover:not(.button-link, .router-link) {
+    opacity: 0.75;
+  }
 }
 
-@media (hover: none) {
+@media (pointer: coarse) {
   a:active:not(.button-link, .router-link) {
     opacity: 0.625;
   }

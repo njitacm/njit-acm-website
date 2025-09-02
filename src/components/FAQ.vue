@@ -80,14 +80,16 @@ export default {
 }
 
 button {
+  background-color: var(--bkg-color);
   width: 100%;
   font-size: 2.4rem;
   padding: 0.8rem;
   text-align: center;
-  border: black 3px solid;
+  border: var(--text-color) 3px solid;
   border-radius: 8px;
   cursor: pointer;
   transition: all var(--hover-speed) ease-in-out;
+  color: var(--text-color);
 }
 
 button:not(.selected):hover {
@@ -97,6 +99,11 @@ button:not(.selected):hover {
 button.selected {
   background-color: black;
   color: white;
+}
+
+[data-theme="dark"] button.selected {
+  background-color: white;
+  color: black;
 }
 
 p.question {

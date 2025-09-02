@@ -3,7 +3,7 @@
     <button @click="toggleNav" id="mmmBorger" :class="{'nav-open': navOpen}">
       <span class="menu-text">Menu</span>
       <span class="material-symbols-sharp menu-icon" ref="menuIcon">format_align_justify</span>
-      </button>
+    </button>
     <Transition>
       <nav class="open-nav" v-show="showNav" ref="nav">
         <slot></slot>
@@ -27,13 +27,13 @@ export default {
         this.$refs.menuIcon.style.transform = "rotate(-90deg)";
         // this.$refs.nav.style.transform = "translateY(10px)";
         event.currentTarget.style.backgroundColor = "var(--red)";
-        event.currentTarget.style.color = "white";
+        event.currentTarget.style.color = "var(--bkg-color)";
         this.navOpen = true;
         this.$emit('collapsableNavOpened');
       } else {
         this.$refs.menuIcon.style.transform = "";
         // this.$refs.nav.style.transform = "translateY(-10px)";
-        event.currentTarget.style.backgroundColor = "white";
+        event.currentTarget.style.backgroundColor = "var(--bkg-color)";
         event.currentTarget.style.color = "var(--red)";
         this.navOpen = false;
       }
@@ -61,14 +61,14 @@ export default {
 
 <style scoped>
 * {
-  transition: transform var(--hover-speed) linear, 
+  transition: transform var(--hover-speed) linear,
   background-color var(--hover-speed) linear,
 }
 
 #mmmBorger {
   display: none;
   box-sizing: margin-box;
-  background-color: white;
+  background-color: var(--bkg-color);
   border: none;
   border-left: var(--red) 2px solid;
   /* border-radius: var(--border-radius); */
@@ -121,6 +121,17 @@ export default {
   transform: translateY(-10px);
 }
 
+/* Desktop styles for nav */
+@media (min-width: 551px) {
+  .open-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: 1rem;
+  }
+}
+
 @media (max-width: 550px) {
   #mmmBorger {
     display: flex;
@@ -129,9 +140,10 @@ export default {
     position: absolute;
     right: 0px;
     display: flex;
+    gap: 0.5rem;
     flex-direction: column;
     top: 61px;
-    background-color: white;
+    background-color: var(--bkg-color);
     border-radius: 12px;
     padding: 5px;
     border: 2px red solid;

@@ -33,12 +33,12 @@ export default {
 
 <style scoped>
 button {
-  background-color: white;
+  background-color: transparent;
   border-radius: 10px;
-  margin: 0.25rem;
-  padding: 0.8rem;
+  /* margin: 0.25rem; */
+  padding: 0 0.25rem;
   border: none;
-  height: 150%;
+  height: 1.8em;
 
   font-size: 2.4rem;
   /* flex: 1 1 0px; */
@@ -47,12 +47,12 @@ button {
   transition: background-color var(--hover-speed) ease-in-out;
 }
 
-button:not(.selected) {
-  background-color: white;
-}
-
 button.selected {
   background-color: var(--red);
+}
+
+[data-theme="dark"] button.selected a {
+  color: var(--card-bg-color);
 }
 
 button.selected>.router-link {
