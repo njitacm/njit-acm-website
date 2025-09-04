@@ -40,7 +40,11 @@
           </tr>
           <tr v-for="(hour, index) in hoursPerDay" :key="index">
             <!-- times, e.g. 12-13 -->
-            <td>{{ from24HrsToAmPm(startHour + index) }} - {{ from24HrsToAmPm(startHour + index + 1) }}</td>
+            <td>
+              {{ from24HrsToAmPm(startHour + index) }}
+              - 
+              {{ from24HrsToAmPm(startHour + index + 1) }}
+            </td>
             <td v-for="day in numDays" :key="day">
               <button :ref="getIndexFromRowColumn(hour, day, numDays)"
                 @click="selectDate(getIndexFromRowColumn(hour, day, numDays))">
@@ -124,21 +128,22 @@ export default {
   components: { PrimaryButton },
   methods: {
     async getTutors() {
-      this.tutors = tutors;
+      this.tutors = tutors.Tutors;
       this.getCourses();
     },
     async getBusiness() {
       this.business = business;
     },
     from24HrsToAmPm(time) {
+      const offsetStr = (this.offset !== 0) ? `:${this.offset}` : "";
       if (time >= 12) {
         if (time === 12) {
-          return "12PM";
+          return `12${offsetStr}PM`;
         } else {
-          return `${time % 12}PM`;
+          return `${time % 12}${offsetStr}PM`;
         }
       } else {
-        return `${time}AM`;
+        return `${time}${offsetStr}AM`;
       }
     },
     getIndexFromRowColumn(row, col, ncol) {
@@ -362,7 +367,7 @@ export default {
       numDays: 5,             // how many days of the week tutoring offered? e.g. Mon-Fri
       hoursPerDay: 7,         // how long is tutoring offered (in hours)? e.g. 11 AM-7 PM
       startHour: 11,          // when does tutoring start the earliest? e.g. 11 AM
-      offset: 30,             // minute offset from the hour: xx:30, e.g. 11:30, 12:30, 1:30...
+      offset: tutors.Meta.Offset,  // minute offset from the hour: xx:30, e.g. 11:30, 12:30, 1:30...
       mondayIndex: 0,         // Mon = 0, Fri = 4
       mondayCol: 1,           // Mon = column 1, Fri = column 5
       // ---------------------------------------------------
@@ -616,6 +621,7 @@ main .details-panel {
   width: 100%;
   padding: 0;
   margin: 0;
+  border-spacing: 0;
 }
 
 .tutoring-calendar tr {
@@ -626,9 +632,20 @@ main .details-panel {
 
 .tutoring-calendar th {
   color: var(--red);
-  border-bottom: var(--border-width) var(--red) solid;
   padding: 1rem 0rem;
   margin-bottom: 1rem;
+}
+
+.tutoring-calendar td {
+  padding: 1rem;
+}
+
+.tutoring-calendar th:not(:first-child) {
+  border-bottom: var(--border-width) var(--red) solid;
+}
+
+.tutoring-calendar td:nth-child(2) {
+  border-left: var(--border-width) var(--red) solid;
 }
 
 .tutoring-calendar button {
