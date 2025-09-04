@@ -31,13 +31,16 @@
       <main>
         <table class="tutoring-calendar" cellspacing="2.5rem" cellpadding="0">
           <tr>
+            <th></th>
             <th>MON</th>
             <th>TUE</th>
             <th>WED</th>
             <th>THU</th>
             <th>FRI</th>
           </tr>
-          <tr v-for="hour in hoursPerDay" :key="hour">
+          <tr v-for="(hour, index) in hoursPerDay" :key="index">
+            <!-- times, e.g. 12-13 -->
+            <td>{{ from24HrsToAmPm(startHour + index) }} - {{ from24HrsToAmPm(startHour + index + 1) }}</td>
             <td v-for="day in numDays" :key="day">
               <button :ref="getIndexFromRowColumn(hour, day, numDays)"
                 @click="selectDate(getIndexFromRowColumn(hour, day, numDays))">
@@ -69,7 +72,7 @@
                 Typically
                 <b :style="'color: ' + selectionInfo.businessColor">{{
                   selectionInfo.business
-                  }}</b>
+                }}</b>
               </h2>
               <br />
               <h2>Tutors</h2>
@@ -127,6 +130,17 @@ export default {
     async getBusiness() {
       this.business = business;
     },
+    from24HrsToAmPm(time) {
+      if (time >= 12) {
+        if (time === 12) {
+          return "12PM";
+        } else {
+          return `${time % 12}PM`;
+        }
+      } else {
+        return `${time}AM`;
+      }
+    },
     getIndexFromRowColumn(row, col, ncol) {
       return (row - 1) * ncol + col;
     },
@@ -143,19 +157,6 @@ export default {
     },
     getTime(index) {
       return this.getRow(index) + (this.startHour - 1);
-    },
-    getTimeString(index) {
-      let currTime = this.getTime(index) % 12;
-      if (currTime == 0) {
-        currTime = 12;
-      }
-      return (
-        currTime +
-        this.getTimeOfDay(index) +
-        "-" +
-        (currTime + 1) +
-        this.getTimeOfDay(index)
-      );
     },
     inTime(slot, time) {
       return slot.StartTime <= time && slot.EndTime > time;
@@ -225,12 +226,16 @@ export default {
     },
     timeIntToString(timeStart) {
       var timeEnd = timeStart + 1;
-      var timeOfDayStart = this.getTimeOfDay(timeStart);
-      var timeOfDayEnd = this.getTimeOfDay(timeEnd);
+      var startAmPm = this.getTimeOfDay(timeStart);
+      var endAmPm = this.getTimeOfDay(timeEnd);
       if (timeStart > 12) timeStart -= 12;
       if (timeEnd > 12) timeEnd -= 12;
 
-      return timeStart + timeOfDayStart + "-" + timeEnd + timeOfDayEnd;
+      if (this.offset === 0) {
+        return timeStart + startAmPm + "-" + timeEnd + endAmPm;
+      } else {
+        return `${timeStart}:${this.offset}` + startAmPm + "-" + `${timeEnd}:${this.offset}` + endAmPm;
+      }
     },
     getTimeOfDay(time) {
       return time >= 12 ? "PM" : "AM";
@@ -355,8 +360,9 @@ export default {
       selectionInfo: {},
       // adjust this according to each new year's tutoring
       numDays: 5,             // how many days of the week tutoring offered? e.g. Mon-Fri
-      hoursPerDay: 8,         // how long is tutoring offered (in hours)? e.g. 11 AM-7 PM
+      hoursPerDay: 7,         // how long is tutoring offered (in hours)? e.g. 11 AM-7 PM
       startHour: 11,          // when does tutoring start the earliest? e.g. 11 AM
+      offset: 30,             // minute offset from the hour: xx:30, e.g. 11:30, 12:30, 1:30...
       mondayIndex: 0,         // Mon = 0, Fri = 4
       mondayCol: 1,           // Mon = column 1, Fri = column 5
       // ---------------------------------------------------
@@ -511,9 +517,11 @@ option {
   .meet-link-button {
     width: 100%;
   }
+
   .dropdown {
     width: 100%;
   }
+
   .meet-link-button-and-dropdown {
     flex-direction: column;
   }
@@ -620,7 +628,7 @@ main .details-panel {
   color: var(--red);
   border-bottom: var(--border-width) var(--red) solid;
   padding: 1rem 0rem;
-  margin-bottom: 1rem;  
+  margin-bottom: 1rem;
 }
 
 .tutoring-calendar button {
@@ -659,5 +667,4 @@ main .details-panel {
   opacity: 0;
   transform: translateY(-60px);
 }
-
 </style>
