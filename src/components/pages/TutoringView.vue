@@ -335,27 +335,29 @@ export default {
     getColor(index) {
       return this.getBusinessColor(index);
     },
-    getBusinessDescription(index) {
-      var business = this.getBusinessFromIndex(index);
-      var percent = business / this.maxBusiness;
-      if (percent < 0.33) {
-        return "Not Busy";
-      } else if (percent < 0.67) {
-        return "Moderately Busy";
-      } else {
-        return "Busy";
-      }
+    getBusinessDescription() {
+      // var business = this.getBusinessFromIndex(index);
+      // var percent = business / this.maxBusiness;
+      return "Not Busy";
+      // if (percent < 0.33) {
+      //   return "Not Busy";
+      // } else if (percent < 0.67) {
+      //   return "Moderately Busy";
+      // } else {
+      //   return "Busy";
+      // }
     },
-    getBusinessColor(index) {
-      var business = this.getBusinessFromIndex(index);
-      var percent = business / this.maxBusiness;
-      if (percent < 0.33) {
-        return "#00bf5f";
-      } else if (percent < 0.67) {
-        return "#faf25f";
-      } else {
-        return "#e69407";
-      }
+    getBusinessColor() {
+      return "#00bf5f";
+      // var business = this.getBusinessFromIndex(index);
+      // var percent = business / this.maxBusiness;
+      // if (percent < 0.33) {
+      //   return "#00bf5f";
+      // } else if (percent < 0.67) {
+      //   return "#faf25f";
+      // } else {
+      //   return "#e69407";
+      // }
     },
   },
   data() {
