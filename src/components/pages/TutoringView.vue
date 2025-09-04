@@ -506,8 +506,16 @@ div.dropdown {
   cursor: pointer;
 }
 
-.dropdown select:hover {
-  background-color: var(--light-gray);
+@media(hover: hover) and (pointer: fine) {
+  .dropdown select:hover {
+    opacity: 0.75;
+  }
+}
+
+@media(pointer: coarse) {
+  .dropdown select:active {
+    opacity: 0.75;
+  }
 }
 
 .dropdown select.usingDefault {
