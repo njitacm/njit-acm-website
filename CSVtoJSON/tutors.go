@@ -104,31 +104,24 @@ func getTutorTimes(timeSlots []string) []TimeSlot {
 			re := regexp.MustCompile("([Aa][Mm])")
 			// get AM / PM
 			timeOfDay := timeString[len(timeString)-2:]
+			var hour int
+			var err error
 
 			if strings.Contains(timeString, ":") {
 				parts := strings.Split(timeString[0:len(timeString)-2], ":")
-				hour, err1 := strconv.Atoi(parts[0])
-				min, err2 := strconv.Atoi(parts[1])
-				if err1 != nil {
-					log.Panic(err1)
-				}
-				if err2 != nil {
-					log.Panic(err2)
-				}
-				if !re.MatchString(timeOfDay) {
-					hour = (hour % 12) + 12
-				}
-				temp = append(temp, hour*60+min)
+				hour, err = strconv.Atoi(parts[0])
 			} else {
-				hour, err := strconv.Atoi(timeString[0 : len(timeString)-2])
-				if err != nil {
-					log.Panic(err)
-				}
-				if !re.MatchString(timeOfDay) {
-					hour = (hour % 12) + 12
-				}
-				temp = append(temp, hour*60)
+				hour, err = strconv.Atoi(timeString[0 : len(timeString)-2])
 			}
+
+			if err != nil {
+				log.Panic(err)
+			}
+			if !re.MatchString(timeOfDay) {
+				hour = (hour % 12) + 12
+			}
+
+			temp = append(temp, hour)
 		}
 		parsedTimeSlot.Day = day
 		parsedTimeSlot.StartTime = temp[0]
