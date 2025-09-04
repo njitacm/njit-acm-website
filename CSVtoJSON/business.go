@@ -34,10 +34,8 @@ func convertBusiness() {
 	for _, row := range csvData {
 		rowData := make([]string, len(row))
 		for i, col := range row {
-			fmt.Println(col)
 			rowData[i] = fmt.Sprint(col)
 		}
-		fmt.Println(rowData)
 
 		business = append(business, Business{
 			StartTime: rowData[0],
@@ -52,8 +50,6 @@ func convertBusiness() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-
-	fmt.Println(string(jsonData))
 
 	jsonFile, err := os.Create("../src/assets/data/business.json")
 	if err != nil {

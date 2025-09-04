@@ -30,21 +30,31 @@
       </div>
       <main>
         <table class="tutoring-calendar" cellspacing="2.5rem" cellpadding="0">
-          <tr>
-            <th>MON</th>
-            <th>TUE</th>
-            <th>WED</th>
-            <th>THU</th>
-            <th>FRI</th>
-          </tr>
-          <tr v-for="hour in hoursPerDay" :key="hour">
-            <td v-for="day in numDays" :key="day">
-              <button :ref="getIndexFromRowColumn(hour, day, numDays)"
-                @click="selectDate(getIndexFromRowColumn(hour, day, numDays))">
-                {{ timeIntToString(this.getTime(getIndexFromRowColumn(hour, day, numDays))) }}
-              </button>
-            </td>
-          </tr>
+          <thead>
+
+            <tr>
+              <th></th>
+              <th>MON</th>
+              <th>TUE</th>
+              <th>WED</th>
+              <th>THU</th>
+              <th>FRI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(hour, index) in hoursPerDay" :key="index">
+              <!-- times, e.g. 12-13 -->
+              <th>
+                {{ from24HrsToAmPm(startHour + index) }}
+              </th>
+              <td v-for="day in numDays" :key="day">
+                <button :ref="getIndexFromRowColumn(hour, day, numDays)"
+                  @click="selectDate(getIndexFromRowColumn(hour, day, numDays))">
+                  <!-- {{ timeIntToString(this.getTime(getIndexFromRowColumn(hour, day, numDays))) }} -->
+                </button>
+              </td>
+            </tr>
+          </tbody>
         </table>
         <div class="details-panel">
           <Transition mode="out-in">
@@ -69,7 +79,7 @@
                 Typically
                 <b :style="'color: ' + selectionInfo.businessColor">{{
                   selectionInfo.business
-                  }}</b>
+                }}</b>
               </h2>
               <br />
               <h2>Tutors</h2>
@@ -121,11 +131,23 @@ export default {
   components: { PrimaryButton },
   methods: {
     async getTutors() {
-      this.tutors = tutors;
+      this.tutors = tutors.Tutors;
       this.getCourses();
     },
     async getBusiness() {
       this.business = business;
+    },
+    from24HrsToAmPm(time) {
+      const offsetStr = (this.offset !== 0) ? `:${this.offset}` : "";
+      if (time >= 12) {
+        if (time === 12) {
+          return `12${offsetStr}PM`;
+        } else {
+          return `${time % 12}${offsetStr}PM`;
+        }
+      } else {
+        return `${time}${offsetStr}AM`;
+      }
     },
     getIndexFromRowColumn(row, col, ncol) {
       return (row - 1) * ncol + col;
@@ -144,19 +166,6 @@ export default {
     getTime(index) {
       return this.getRow(index) + (this.startHour - 1);
     },
-    getTimeString(index) {
-      let currTime = this.getTime(index) % 12;
-      if (currTime == 0) {
-        currTime = 12;
-      }
-      return (
-        currTime +
-        this.getTimeOfDay(index) +
-        "-" +
-        (currTime + 1) +
-        this.getTimeOfDay(index)
-      );
-    },
     inTime(slot, time) {
       return slot.StartTime <= time && slot.EndTime > time;
     },
@@ -171,7 +180,7 @@ export default {
       this.undoStyle();
       const day = this.getDay(index);
       const time = this.getTime(index);
-      this.$refs[index][0].style.border = "2px solid black";
+      this.$refs[index][0].classList.add("selected");
 
       var selectedTutors = [];
       var coursesSet = new Set();
@@ -202,7 +211,7 @@ export default {
     undoStyle() {
       console.log(this.$refs);
       for (var i = 1; i <= this.numDays * this.hoursPerDay; i++) {
-        this.$refs[i][0].style.border = "2px solid white";
+        this.$refs[i][0].classList.remove("selected");
       }
       console.log("bye");
     },
@@ -225,12 +234,16 @@ export default {
     },
     timeIntToString(timeStart) {
       var timeEnd = timeStart + 1;
-      var timeOfDayStart = this.getTimeOfDay(timeStart);
-      var timeOfDayEnd = this.getTimeOfDay(timeEnd);
+      var startAmPm = this.getTimeOfDay(timeStart);
+      var endAmPm = this.getTimeOfDay(timeEnd);
       if (timeStart > 12) timeStart -= 12;
       if (timeEnd > 12) timeEnd -= 12;
 
-      return timeStart + timeOfDayStart + "-" + timeEnd + timeOfDayEnd;
+      if (this.offset === 0) {
+        return timeStart + startAmPm + "-" + timeEnd + endAmPm;
+      } else {
+        return `${timeStart}:${this.offset}` + startAmPm + "-" + `${timeEnd}:${this.offset}` + endAmPm;
+      }
     },
     getTimeOfDay(time) {
       return time >= 12 ? "PM" : "AM";
@@ -325,38 +338,41 @@ export default {
     getColor(index) {
       return this.getBusinessColor(index);
     },
-    getBusinessDescription(index) {
-      var business = this.getBusinessFromIndex(index);
-      var percent = business / this.maxBusiness;
-      if (percent < 0.33) {
-        return "Not Busy";
-      } else if (percent < 0.67) {
-        return "Moderately Busy";
-      } else {
-        return "Busy";
-      }
+    getBusinessDescription() {
+      // var business = this.getBusinessFromIndex(index);
+      // var percent = business / this.maxBusiness;
+      return "Not Busy";
+      // if (percent < 0.33) {
+      //   return "Not Busy";
+      // } else if (percent < 0.67) {
+      //   return "Moderately Busy";
+      // } else {
+      //   return "Busy";
+      // }
     },
-    getBusinessColor(index) {
-      var business = this.getBusinessFromIndex(index);
-      var percent = business / this.maxBusiness;
-      if (percent < 0.33) {
-        return "#00bf5f";
-      } else if (percent < 0.67) {
-        return "#faf25f";
-      } else {
-        return "#e69407";
-      }
+    getBusinessColor() {
+      return "#00bf5f";
+      // var business = this.getBusinessFromIndex(index);
+      // var percent = business / this.maxBusiness;
+      // if (percent < 0.33) {
+      //   return "#00bf5f";
+      // } else if (percent < 0.67) {
+      //   return "#faf25f";
+      // } else {
+      //   return "#e69407";
+      // }
     },
   },
   data() {
     return {
-      tutoringCurrAvailable: false,   // true only during fall and spring semesters!
+      tutoringCurrAvailable: true,   // true only during fall and spring semesters!
       dateSelected: false,
       selectionInfo: {},
       // adjust this according to each new year's tutoring
       numDays: 5,             // how many days of the week tutoring offered? e.g. Mon-Fri
-      hoursPerDay: 8,         // how long is tutoring offered (in hours)? e.g. 11 AM-7 PM
+      hoursPerDay: 7,         // how long is tutoring offered (in hours)? e.g. 11 AM-7 PM
       startHour: 11,          // when does tutoring start the earliest? e.g. 11 AM
+      offset: tutors.Meta.Offset,  // minute offset from the hour: xx:30, e.g. 11:30, 12:30, 1:30...
       mondayIndex: 0,         // Mon = 0, Fri = 4
       mondayCol: 1,           // Mon = column 1, Fri = column 5
       // ---------------------------------------------------
@@ -455,6 +471,12 @@ export default {
   h1.title {
     font-size: 19pt;
   }
+
+  .tutoring-calendar tbody th {
+    font-size: 0.75em;
+    padding-right: 1rem;
+    font-weight: lighter;
+  }
 }
 
 /* meet link and dropdown */
@@ -484,8 +506,16 @@ div.dropdown {
   cursor: pointer;
 }
 
-.dropdown select:hover {
-  background-color: var(--light-gray);
+@media(hover: hover) and (pointer: fine) {
+  .dropdown select:hover {
+    opacity: 0.75;
+  }
+}
+
+@media(pointer: coarse) {
+  .dropdown select:active {
+    opacity: 0.75;
+  }
 }
 
 .dropdown select.usingDefault {
@@ -511,9 +541,11 @@ option {
   .meet-link-button {
     width: 100%;
   }
+
   .dropdown {
     width: 100%;
   }
+
   .meet-link-button-and-dropdown {
     flex-direction: column;
   }
@@ -608,6 +640,7 @@ main .details-panel {
   width: 100%;
   padding: 0;
   margin: 0;
+  border-spacing: 0;
 }
 
 .tutoring-calendar tr {
@@ -618,9 +651,35 @@ main .details-panel {
 
 .tutoring-calendar th {
   color: var(--red);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tutoring-calendar thead th:first-child {
+  min-width: 100px;
+}
+
+.tutoring-calendar tbody th {
+  width: fit-content;
+  text-align: right;
+  padding-right: 2rem;
+}
+
+.tutoring-calendar tbody th td {
+  width: fit-content;
+}
+
+.tutoring-calendar td {
+  padding: 1rem;
+}
+
+.tutoring-calendar thead th:not(:first-child) {
   border-bottom: var(--border-width) var(--red) solid;
-  padding: 1rem 0rem;
-  margin-bottom: 1rem;  
+  width: 20%;
+}
+
+.tutoring-calendar td:nth-child(2) {
+  border-left: var(--border-width) var(--red) solid;
 }
 
 .tutoring-calendar button {
@@ -631,12 +690,34 @@ main .details-panel {
   align-self: center;
   justify-self: center;
   border-radius: var(--border-radius);
-  border: solid 2px white;
   cursor: pointer;
+  border: none;
 }
 
-.tutoring-calendar button:hover {
-  opacity: 0.75;
+.tutoring-calendar button.selected {
+  animation: bob infinite ease-in 750ms alternate;
+}
+
+@keyframes bob {
+  from {
+    transform: translateY(-10px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@media(hover: hover) and (pointer: fine) {
+  .tutoring-calendar button:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media(pointer: coarse) {
+  .tutoring-calendar button:active {
+    opacity: 0.75;
+  }
 }
 
 @media (max-width: 850px) {
@@ -659,5 +740,4 @@ main .details-panel {
   opacity: 0;
   transform: translateY(-60px);
 }
-
 </style>
