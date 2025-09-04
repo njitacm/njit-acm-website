@@ -30,28 +30,31 @@
       </div>
       <main>
         <table class="tutoring-calendar" cellspacing="2.5rem" cellpadding="0">
-          <tr>
-            <th></th>
-            <th>MON</th>
-            <th>TUE</th>
-            <th>WED</th>
-            <th>THU</th>
-            <th>FRI</th>
-          </tr>
-          <tr v-for="(hour, index) in hoursPerDay" :key="index">
-            <!-- times, e.g. 12-13 -->
-            <td>
-              {{ from24HrsToAmPm(startHour + index) }}
-              - 
-              {{ from24HrsToAmPm(startHour + index + 1) }}
-            </td>
-            <td v-for="day in numDays" :key="day">
-              <button :ref="getIndexFromRowColumn(hour, day, numDays)"
-                @click="selectDate(getIndexFromRowColumn(hour, day, numDays))">
-                {{ timeIntToString(this.getTime(getIndexFromRowColumn(hour, day, numDays))) }}
-              </button>
-            </td>
-          </tr>
+          <thead>
+
+            <tr>
+              <th></th>
+              <th>MON</th>
+              <th>TUE</th>
+              <th>WED</th>
+              <th>THU</th>
+              <th>FRI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(hour, index) in hoursPerDay" :key="index">
+              <!-- times, e.g. 12-13 -->
+              <th>
+                {{ from24HrsToAmPm(startHour + index) }}
+              </th>
+              <td v-for="day in numDays" :key="day">
+                <button :ref="getIndexFromRowColumn(hour, day, numDays)"
+                  @click="selectDate(getIndexFromRowColumn(hour, day, numDays))">
+                  <!-- {{ timeIntToString(this.getTime(getIndexFromRowColumn(hour, day, numDays))) }} -->
+                </button>
+              </td>
+            </tr>
+          </tbody>
         </table>
         <div class="details-panel">
           <Transition mode="out-in">
@@ -468,6 +471,12 @@ export default {
   h1.title {
     font-size: 19pt;
   }
+
+  .tutoring-calendar tbody th {
+    font-size: 0.75em;
+    padding-right: 1rem;
+    font-weight: lighter;
+  }
 }
 
 /* meet link and dropdown */
@@ -634,16 +643,31 @@ main .details-panel {
 
 .tutoring-calendar th {
   color: var(--red);
-  padding: 1rem 0rem;
+  padding: 1rem;
   margin-bottom: 1rem;
+}
+
+.tutoring-calendar thead th:first-child {
+  min-width: 100px;
+}
+
+.tutoring-calendar tbody th {
+  width: fit-content;
+  text-align: right;
+  padding-right: 2rem;
+}
+
+.tutoring-calendar tbody th td {
+  width: fit-content;
 }
 
 .tutoring-calendar td {
   padding: 1rem;
 }
 
-.tutoring-calendar th:not(:first-child) {
+.tutoring-calendar thead th:not(:first-child) {
   border-bottom: var(--border-width) var(--red) solid;
+  width: 20%;
 }
 
 .tutoring-calendar td:nth-child(2) {
@@ -670,6 +694,7 @@ main .details-panel {
   from {
     transform: translateY(-10px);
   }
+
   to {
     transform: translateY(0px);
   }
