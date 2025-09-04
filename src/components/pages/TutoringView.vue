@@ -177,7 +177,7 @@ export default {
       this.undoStyle();
       const day = this.getDay(index);
       const time = this.getTime(index);
-      this.$refs[index][0].style.border = "2px solid black";
+      this.$refs[index][0].classList.add("selected");
 
       var selectedTutors = [];
       var coursesSet = new Set();
@@ -208,7 +208,7 @@ export default {
     undoStyle() {
       console.log(this.$refs);
       for (var i = 1; i <= this.numDays * this.hoursPerDay; i++) {
-        this.$refs[i][0].style.border = "2px solid white";
+        this.$refs[i][0].classList.remove("selected");
       }
       console.log("bye");
     },
@@ -658,12 +658,33 @@ main .details-panel {
   align-self: center;
   justify-self: center;
   border-radius: var(--border-radius);
-  border: solid 2px white;
   cursor: pointer;
+  border: none;
 }
 
-.tutoring-calendar button:hover {
-  opacity: 0.75;
+.tutoring-calendar button.selected {
+  animation: bob infinite ease-in 750ms alternate;
+}
+
+@keyframes bob {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@media(hover: hover) and (pointer: fine) {
+  .tutoring-calendar button:hover {
+    transform: scale(1.05);
+  }
+}
+
+@media(pointer: coarse) {
+  .tutoring-calendar button:active {
+    opacity: 0.75;
+  }
 }
 
 @media (max-width: 850px) {
