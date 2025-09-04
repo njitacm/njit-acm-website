@@ -74,7 +74,12 @@ func convertTutors() {
 	}
 
 	// Convert to JSON
-	jsonData, err := json.Marshal(tutors)
+	jsonData, err := json.Marshal(map[string]any{
+		"Meta": map[string]any{
+			"Offset": 30, // # of min from the hour, e.g. xx:30
+		},
+		"Tutors": tutors,
+	})
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
