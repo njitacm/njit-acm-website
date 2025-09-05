@@ -321,7 +321,7 @@ export default {
       this.$refs[date][0].style.background = this.getColor(date);
     },
     uncolorDate(date) {
-      this.$refs[date][0].style.background = "white";
+      this.$refs[date][0].style.background = "var(--gray)";
     },
     getBusinessFromIndex(index) {
       var row = this.getRow(index);
@@ -494,6 +494,7 @@ div.dropdown {
   height: 100%;
   display: flex;
   align-items: center;
+  gap: 1rem;
   justify-content: space-between;
 }
 
@@ -501,6 +502,7 @@ div.dropdown {
   padding: 1rem;
   border-radius: var(--border-radius);
   cursor: pointer;
+  height: 50px;
 }
 
 @media(hover: hover) and (pointer: fine) {
