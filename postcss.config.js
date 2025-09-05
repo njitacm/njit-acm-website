@@ -22,6 +22,7 @@ module.exports = {
         /^router-link(|-exact)-active$/,
         /data-v-.*/,
         /data-theme/,     // to ensure light / dark theme functionality works
+        /slotted/
       ],
     }),
   ],
