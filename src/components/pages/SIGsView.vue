@@ -29,7 +29,7 @@
     </HorizontalSection>
     <div class="current-sigs">
       <h3 class="section-header">Current SIGs</h3>
-      <div class="sig-container">
+      <div v-if="sigs.length > 0" class="sig-container">
         <SIGsCard
           v-for="sig in sigs"
           :key="sig.name"
@@ -40,6 +40,9 @@
           :loc="sig.loc"
           :filename="sig.filename"
         ></SIGsCard>
+      </div>
+      <div v-else class="no-sig-container">
+        <p>There are currently no SIGs in session. Please check back later!</p>
       </div>
     </div>
     <h2 class="section-header">SIG Calendar</h2>
@@ -87,7 +90,7 @@ export default {
   components: { SIGsCard, HorizontalSection, EmbeddedCalendar },
   data() {
     return {
-      sigs: sigData['sp2025'],
+      sigs: sigData['fa2025'] ?? [],
       discord: 'https://discord.gg/vNHE3nq2'
     };
   },
