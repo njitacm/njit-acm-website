@@ -1,5 +1,5 @@
 <template>
-  <button>
+  <button class="PrimaryButton">
     <slot></slot>
   </button>
 </template>
@@ -12,14 +12,12 @@ export default {
 
 <style scoped>
 button {
-  background-color: var(--light-red);
+  --btn-hov-col: color-mix(in srgb, var(--btn-red), var(--text-color) 10%);
+  background-color: var(--btn-red);
   border-radius: var(--border-radius);
   font-size: 2rem;
   padding: 0 1rem;
-  /* border: 2px var(--light-gray) solid; */
-  border-color: lightcoral;
-  border-width: var(--border-width);
-  border-style: solid;
+  border: none;
   cursor: pointer;
   height: 50px;
   transition: all var(--hover-speed) linear;
@@ -34,21 +32,19 @@ button {
   margin: 0;
   text-decoration: none;
   font-weight: bold;
-  color: var(--red);
+  color: var(--text-color);
   width: 100%;
   height: 100%;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   button:hover {
-    border-color: var(--red);
-    background-color: var(--mid-red);
+    background-color: var(--btn-hov-col);
   }
 }
-@media (hover: none) {
+@media (pointer: coarse) {
   button:active {
-    border-color: var(--red);
-    background-color: var(--mid-red);
+    background-color: var(--btn-hov-col);
   }
 }
 

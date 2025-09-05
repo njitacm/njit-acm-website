@@ -42,6 +42,7 @@ export default {
   --bkg-color-a625: rgba(245, 245, 245, 0.625);
   --red: rgb(204, 0, 0);
   --light-red: hsl(0, 100%, 90%);
+  --btn-red: rgb(255, 151, 151);
   --mid-red: hsl(0, 100%, 85%);
   --light-gray: rgb(225, 225, 225);
   --gray: rgb(200, 200, 200);
@@ -63,6 +64,7 @@ export default {
   --bkg-color: #1a1a1a;
   --bkg-color-a625: rgba(26, 26, 26, 0.625);
   --red: rgb(255, 133, 133);
+  --btn-red: rgb(190, 52, 52);
   --light-red: hsl(0, 60%, 25%);
   --mid-red: hsl(0, 60%, 30%);
   --light-gray: rgb(60, 60, 60);
@@ -191,11 +193,11 @@ button {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  a:hover:not(.button-link, .router-link) {
+  :not(.PrimaryButton) > a:not(.router-link):hover {
     opacity: 0.625;
   }
 
-  [data-theme="dark"] a:hover:not(.button-link, .router-link) {
+  [data-theme="dark"] :not(.PrimaryButton) > a:hover:not(.router-link) {
     opacity: 0.75;
   }
 }

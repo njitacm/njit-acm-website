@@ -10,10 +10,7 @@
         </div>
         <div class="meet-link-button-and-dropdown">
           <PrimaryButton class="meet-link-button">
-            <div>
-              <!-- <img src="../../assets/img/GoogleMeet.png"> -->
-              <a href="https://meet.google.com/tng-yefx-fqd" target="_blank">Google Meet Link</a>
-            </div>
+            <a href="https://meet.google.com/tng-yefx-fqd" target="_blank">Google Meet Link</a>
           </PrimaryButton>
           <div class="dropdown">
             <select @change="selectClass" v-model="selectedCourse" :class="{ usingDefault: selectedCourse == -1 }">
