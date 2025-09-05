@@ -5,12 +5,15 @@
         <div class="title-and-subtitle">
           <h1 class="title">YWCC Undergraduate Tutoring Schedule</h1>
           <h2 class="subtitle">
-            YWCC tutoring is walk-in only (no reservations). If you can't make it in-person, you can join virtually.
+            Tutoring from 11:30 AM - 6:30 PM. Walk-in only, no reservations. Available in both in-person and virtual.
           </h2>
         </div>
         <div class="meet-link-button-and-dropdown">
           <PrimaryButton class="meet-link-button">
             <a href="https://meet.google.com/tng-yefx-fqd" target="_blank">Google Meet Link</a>
+          </PrimaryButton>
+          <PrimaryButton class="meet-link-button">
+            <a href="https://computing.njit.edu/undergraduate-tutoring" target="_blank">YWCC Page</a>
           </PrimaryButton>
           <div class="dropdown">
             <select @change="selectClass" v-model="selectedCourse" :class="{ usingDefault: selectedCourse == -1 }">
@@ -28,21 +31,20 @@
       <main>
         <table class="tutoring-calendar" cellspacing="2.5rem" cellpadding="0">
           <thead>
-
             <tr>
               <th></th>
-              <th>MON</th>
-              <th>TUE</th>
-              <th>WED</th>
-              <th>THU</th>
-              <th>FRI</th>
+              <th>M</th>
+              <th>T</th>
+              <th>W</th>
+              <th>T</th>
+              <th>F</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(hour, index) in hoursPerDay" :key="index">
               <!-- times, e.g. 12-13 -->
               <th>
-                {{ from24HrsToAmPm(startHour + index) }}
+                {{ from24HrsTo12Hrs(startHour + index) }}
               </th>
               <td v-for="day in numDays" :key="day">
                 <button :ref="getIndexFromRowColumn(hour, day, numDays)"
@@ -134,16 +136,24 @@ export default {
     async getBusiness() {
       this.business = business;
     },
-    from24HrsToAmPm(time) {
+    displayDay(day) {
+      // day = Mon, Tue, Wed, Thu, Fri
+      if (window.screen.width <= 850) {
+        return day[0];
+      }
+
+      return day;
+    },
+    from24HrsTo12Hrs(time) {
       const offsetStr = (this.offset !== 0) ? `:${this.offset}` : "";
       if (time >= 12) {
         if (time === 12) {
-          return `12${offsetStr}PM`;
+          return `12${offsetStr} PM`;
         } else {
-          return `${time % 12}${offsetStr}PM`;
+          return `${time % 12}${offsetStr} PM`;
         }
       } else {
-        return `${time}${offsetStr}AM`;
+        return `${time}${offsetStr} AM`;
       }
     },
     getIndexFromRowColumn(row, col, ncol) {
@@ -469,10 +479,8 @@ export default {
     font-size: 19pt;
   }
 
-  .tutoring-calendar tbody th {
+  .tutoring-calendar th {
     font-size: 0.75em;
-    padding-right: 1rem;
-    font-weight: lighter;
   }
 }
 
@@ -482,11 +490,6 @@ export default {
   gap: 1rem;
   align-items: center;
   justify-content: space-between;
-}
-
-.meet-link-button>div {
-  display: flex;
-  height: 100%;
 }
 
 div.dropdown {
@@ -536,8 +539,8 @@ option {
   opacity: var(--hover-opacity);
 }
 
-@media (max-width: 575px) {
-  .meet-link-button {
+@media (max-width: 600px) {
+  .PrimaryButton {
     width: 100%;
   }
 
@@ -547,6 +550,10 @@ option {
 
   .meet-link-button-and-dropdown {
     flex-direction: column;
+  }
+
+  .tutoring-calendar th {
+    font-size: 0.5em;
   }
 }
 
@@ -636,6 +643,8 @@ main .details-panel {
 
 /* tutoring calendar */
 .tutoring-calendar {
+  table-layout: fixed;
+  height: fit-content;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -643,42 +652,34 @@ main .details-panel {
 }
 
 .tutoring-calendar tr {
-  height: 2rem;
-  font-size: 20pt;
+  font-size: 2.5em;
   margin: 0;
 }
 
 .tutoring-calendar th {
   color: var(--red);
-  padding: 1rem;
+  /* padding: 1rem; */
   margin-bottom: 1rem;
 }
 
-.tutoring-calendar thead th:first-child {
-  min-width: 100px;
+.tutoring-calendar thead th {
+  font-weight: normal;
 }
 
 .tutoring-calendar tbody th {
+  font-weight: normal;
   width: fit-content;
   text-align: right;
-  padding-right: 2rem;
-}
-
-.tutoring-calendar tbody th td {
-  width: fit-content;
+  padding-right: 1rem;
 }
 
 .tutoring-calendar td {
-  padding: 1rem;
+  /* padding: 1rem; */
+  border: 1px solid var(--bkg-color);
 }
 
 .tutoring-calendar thead th:not(:first-child) {
-  border-bottom: var(--border-width) var(--red) solid;
-  width: 20%;
-}
-
-.tutoring-calendar td:nth-child(2) {
-  border-left: var(--border-width) var(--red) solid;
+  /* width: 20%; */
 }
 
 .tutoring-calendar button {
@@ -688,28 +689,18 @@ main .details-panel {
   height: 5rem;
   align-self: center;
   justify-self: center;
-  border-radius: var(--border-radius);
+  /* border-radius: var(--border-radius); */
   cursor: pointer;
   border: none;
 }
 
 .tutoring-calendar button.selected {
-  animation: bob infinite ease-in 750ms alternate;
-}
-
-@keyframes bob {
-  from {
-    transform: translateY(-10px);
-  }
-
-  to {
-    transform: translateY(0px);
-  }
+  border: 3px solid var(--text-color);
 }
 
 @media(hover: hover) and (pointer: fine) {
   .tutoring-calendar button:hover {
-    transform: scale(1.05);
+    opacity: 0.75;
   }
 }
 
