@@ -37,14 +37,12 @@ export default {
     setNavOpen(open) {
       if (open) {
         this.$refs.menuIcon.style.transform = "rotate(-90deg)";
-        // this.$refs.nav.style.transform = "translateY(10px)";
         this.$refs.menuButton.style.backgroundColor = "var(--red)";
         this.$refs.menuButton.style.color = "var(--bkg-color)";
         this.navOpen = true;
         this.$emit('collapsableNavOpened');
       } else {
-        this.$refs.menuIcon.style.transform = "";
-        // this.$refs.nav.style.transform = "translateY(-10px)";
+        this.$refs.menuIcon.style.transform = "rotate(0deg)";
         this.$refs.menuButton.style.backgroundColor = "var(--bkg-color)";
         this.$refs.menuButton.style.color = "var(--red)";
         this.navOpen = false;
@@ -72,10 +70,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  transition: transform var(--hover-speed) linear,
-    background-color var(--hover-speed) linear,
-}
 
 #mmmBorger {
   display: none;
@@ -94,6 +88,7 @@ export default {
 #mmmBorger .menu-icon {
   font-size: 4rem;
   padding: 10px;
+  transition: transform var(--hover-speed) ease;
 }
 
 #mmmBorger .menu-text {
