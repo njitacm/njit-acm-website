@@ -341,9 +341,6 @@
         </p>
       </div>
     </div>
-    <!-- <footer>
-        <button class="close-button" @click="closeModal">Close X</button>
-      </footer> -->
   </div>
 </template>
 
@@ -356,40 +353,26 @@ export default {
       this.$emit("close-modal");
     },
   },
-  // mounted() {
-  //   document.body.style.backgroundImage = "url('paperbg.jpg')";
-  // },
-  // unmounted() {
-  //   document.body.style.backgroundImage = "";
-  // },
 };
 </script>
 
 <style scoped>
 #constitution {
-  background-image: url("../assets/paperbg.jpg");
-
   width: 97.5vw;
   padding: 2rem;
   margin: 1rem auto;
   border-radius: 16px;
   z-index: 1;
-  /* background-image: url("../assets/paperbg.jpg"); */
 }
 
 .constTitle {
   margin-top: 1% !important;
 }
 
-/* .sect {
-  margin: 0 5% 3% 5%;
+.section-num {
+  font-weight: bold;
 }
-.sect p {
-  margin: 1% 1% 1% 3%;
-}
-.sect ul {
-  margin: 1%;
-} */
+
 h3 {
   font-size: 4.8rem;
   text-align: center;
@@ -415,9 +398,6 @@ header {
   text-align: center;
 }
 
-/* footer {
-  position: relative;
-} */
 button {
   position: relative;
   right: 50rem;
