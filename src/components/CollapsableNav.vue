@@ -92,14 +92,14 @@ export default {
   line-height: var(--nav-height);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   #mmmBorger:hover:not(.nav-open) {
     /* mark as important bc JavaScript overriding it disables hover */
     background-color: var(--light-red) !important;
   }
 }
 
-@media (hover: none) {
+@media (pointer: coarse) {
   #mmmBorger:active:not(.nav-open) {
     /* mark as important bc JavaScript overriding it disables hover */
     background-color: var(--light-red) !important;

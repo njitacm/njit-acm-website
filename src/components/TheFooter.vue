@@ -100,13 +100,13 @@ img {
   transition: opacity var(--hover-speed) linear;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .socials > a:hover {
     opacity: 0.625;
   }
 }
 
-@media (hover: none) {
+@media (pointer: coarse) {
   .socials > a:active {
     opacity: 0.625;
   }

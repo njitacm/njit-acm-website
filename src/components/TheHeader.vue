@@ -142,7 +142,7 @@ header {
   position: fixed;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
 
   .router-link-left:hover,
   .router-link-center:hover {
@@ -150,7 +150,7 @@ header {
   }
 }
 
-@media (hover: none) {
+@media (pointer: coarse) {
 
   .router-link-left:active,
   .router-link-center:active {
