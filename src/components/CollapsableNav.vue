@@ -1,20 +1,25 @@
 <template>
   <div>
-    <button @click="toggleNav" id="mmmBorger" :class="{'nav-open': navOpen}">
+    <button @click="toggleNav" id="mmmBorger" :class="{ 'nav-open': navOpen }">
       <span class="menu-text">Menu</span>
       <span class="material-symbols-sharp menu-icon" ref="menuIcon">format_align_justify</span>
     </button>
     <Transition>
-      <nav class="open-nav" v-show="showNav" ref="nav">
-        <slot></slot>
-      </nav>
+      <OnClickOutside @trigger="navOpen = false">
+        <nav class="open-nav" v-show="showNav" ref="nav">
+          <slot></slot>
+        </nav>
+      </OnClickOutside>
     </Transition>
   </div>
 </template>
 
 <script>
+import OnClickOutside from "@vueuse/components";
+
 export default {
-  emits: [ 'collapsableNavOpened' ],
+  emits: ['collapsableNavOpened'],
+  components: { OnClickOutside },
   data() {
     return {
       navOpen: false,
@@ -62,7 +67,7 @@ export default {
 <style scoped>
 * {
   transition: transform var(--hover-speed) linear,
-  background-color var(--hover-speed) linear,
+    background-color var(--hover-speed) linear,
 }
 
 #mmmBorger {
@@ -109,14 +114,20 @@ export default {
 .v-enter-to {
   opacity: 1;
 }
+
 .v-enter-active {
   transition: transform var(--hover-speed) linear;
 }
+
 .v-leave-active {
   transition: all var(--hover-speed) linear;
 }
 
-.v-enter-from, .v-leave-to /* .fade-leave-active in <2.1.8 */ {
+.v-enter-from,
+.v-leave-to
+
+/* .fade-leave-active in <2.1.8 */
+  {
   opacity: 0;
   transform: translateY(-10px);
 }
@@ -136,6 +147,7 @@ export default {
   #mmmBorger {
     display: flex;
   }
+
   .open-nav {
     position: absolute;
     right: 0px;
