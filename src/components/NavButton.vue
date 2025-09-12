@@ -55,13 +55,13 @@ button.selected>.router-link {
   color: var(--card-bg-color);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   button:hover:not(.selected) {
     background-color: var(--light-red);
   }
 }
 
-@media (hover: none) {
+@media (pointer: coarse) {
   button:active:not(.selected) {
     background-color: var(--light-red);
   }

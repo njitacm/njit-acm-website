@@ -314,13 +314,13 @@ header {
   color: var(--bkg-color);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .eboard-header:hover:not(.eboard-header.selected) {
     background-color: var(--light-red);
   }
 }
 
-@media (hover: none) {
+@media (pointer: coarse) {
   .eboard-header:active:not(.eboard-header.selected) {
     background-color: var(--light-red);
   }
