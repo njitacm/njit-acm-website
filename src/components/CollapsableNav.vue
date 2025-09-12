@@ -1,20 +1,25 @@
 <template>
-  <div>
-    <button @click="toggleNav" id="mmmBorger" :class="{'nav-open': navOpen}">
-      <span class="menu-text">Menu</span>
-      <span class="material-symbols-sharp menu-icon" ref="menuIcon">format_align_justify</span>
-    </button>
-    <Transition>
-      <nav class="open-nav" v-show="showNav" ref="nav">
-        <slot></slot>
-      </nav>
-    </Transition>
-  </div>
+  <OnClickOutside @trigger="setNavOpen(false)">
+    <div>
+      <button @click="toggleNav" ref="menuButton" id="mmmBorger" :class="{ 'nav-open': navOpen }">
+        <span class="menu-text">Menu</span>
+        <span class="material-symbols-sharp menu-icon" ref="menuIcon">format_align_justify</span>
+      </button>
+      <Transition>
+        <nav class="open-nav" v-show="showNav" ref="nav">
+          <slot></slot>
+        </nav>
+      </Transition>
+    </div>
+  </OnClickOutside>
 </template>
 
 <script>
+import { OnClickOutside } from "@vueuse/components";
+
 export default {
-  emits: [ 'collapsableNavOpened' ],
+  emits: ['collapsableNavOpened'],
+  components: { OnClickOutside },
   data() {
     return {
       navOpen: false,
@@ -22,19 +27,24 @@ export default {
     };
   },
   methods: {
-    toggleNav(event) {
+    toggleNav() {
       if (!this.navOpen) {
+        this.setNavOpen(true);
+      } else {
+        this.setNavOpen(false);
+      }
+    },
+    setNavOpen(open) {
+      if (open) {
         this.$refs.menuIcon.style.transform = "rotate(-90deg)";
-        // this.$refs.nav.style.transform = "translateY(10px)";
-        event.currentTarget.style.backgroundColor = "var(--red)";
-        event.currentTarget.style.color = "var(--bkg-color)";
+        this.$refs.menuButton.style.backgroundColor = "var(--red)";
+        this.$refs.menuButton.style.color = "var(--bkg-color)";
         this.navOpen = true;
         this.$emit('collapsableNavOpened');
       } else {
-        this.$refs.menuIcon.style.transform = "";
-        // this.$refs.nav.style.transform = "translateY(-10px)";
-        event.currentTarget.style.backgroundColor = "var(--bkg-color)";
-        event.currentTarget.style.color = "var(--red)";
+        this.$refs.menuIcon.style.transform = "rotate(0deg)";
+        this.$refs.menuButton.style.backgroundColor = "var(--bkg-color)";
+        this.$refs.menuButton.style.color = "var(--red)";
         this.navOpen = false;
       }
     },
@@ -60,10 +70,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  transition: transform var(--hover-speed) linear,
-  background-color var(--hover-speed) linear,
-}
 
 #mmmBorger {
   display: none;
@@ -82,6 +88,7 @@ export default {
 #mmmBorger .menu-icon {
   font-size: 4rem;
   padding: 10px;
+  transition: transform var(--hover-speed) ease;
 }
 
 #mmmBorger .menu-text {
@@ -109,14 +116,20 @@ export default {
 .v-enter-to {
   opacity: 1;
 }
+
 .v-enter-active {
   transition: transform var(--hover-speed) linear;
 }
+
 .v-leave-active {
   transition: all var(--hover-speed) linear;
 }
 
-.v-enter-from, .v-leave-to /* .fade-leave-active in <2.1.8 */ {
+.v-enter-from,
+.v-leave-to
+
+/* .fade-leave-active in <2.1.8 */
+  {
   opacity: 0;
   transform: translateY(-10px);
 }
@@ -136,6 +149,7 @@ export default {
   #mmmBorger {
     display: flex;
   }
+
   .open-nav {
     position: absolute;
     right: 0px;
