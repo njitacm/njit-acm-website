@@ -359,6 +359,7 @@ export default {
 <style scoped>
 #constitution {
   width: 97.5vw;
+  max-width: 1000px;
   padding: 2rem;
   margin: 1rem auto;
   border-radius: 16px;
@@ -390,8 +391,8 @@ ul {
 
 p,
 li {
-  font-size: 3rem;
-  margin: 1.5rem 4rem;
+  font-size: 2.5rem;
+  margin: 1.5rem 0rem;
 }
 
 header {
@@ -401,5 +402,12 @@ header {
 button {
   position: relative;
   right: 50rem;
+}
+
+@media(max-width: 600px) {
+  p,
+  li {
+    font-size: 2rem;
+  }
 }
 </style>
