@@ -7,7 +7,7 @@
       </button>
       <Transition>
         <nav class="open-nav" v-show="showNav" ref="nav">
-          <slot></slot>
+          <slot @nav-button-clicked="setNavOpen(false)"></slot>
         </nav>
       </Transition>
     </div>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+// TODO: CLICKING ON NAV BUTTONS SHOULD CLOSE IT
 import { OnClickOutside } from "@vueuse/components";
 
 export default {

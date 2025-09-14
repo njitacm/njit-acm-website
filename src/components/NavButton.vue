@@ -1,6 +1,6 @@
 <template>
   <button :class="{ selected: isSelected }">
-    <RouterLink :to="to" class="router-link">{{ text }}</RouterLink>
+    <RouterLink :to="to" class="router-link" @click="$emit('nav-button-clicked')">{{ text }}</RouterLink>
   </button>
 </template>
 
@@ -11,22 +11,20 @@ export default {
       isSelected: false
     };
   },
+  emits: ["nav-button-clicked"],
   props: ['to', 'text', 'id', 'selectedId'],
   methods: {
     updateSelection() {
       this.isSelected = this.$props.id == this.$props.selectedId;
-      console.log('update selection to ' + this.isSelected);
     }
   },
   // e.g. when collapsable nav opens
   mounted() {
     this.updateSelection()
-    console.log('mounted');
   },
   // e.g. when user clicks & changes "tab"
   updated() {
     this.updateSelection()
-    console.log('updated');
   }
 }
 </script>

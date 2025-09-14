@@ -43,8 +43,6 @@ export default {
   },
   watch: {
     $route(to) {
-      console.log('changed path');
-      console.log(to.fullPath);
       this.currPath = to.fullPath;
       this.updateTabSelection();
     }
@@ -58,7 +56,6 @@ export default {
       }
     },
     updateTabSelection() {
-      console.log('update tab selection');
       if (this.currPath === undefined)
         return;
 
