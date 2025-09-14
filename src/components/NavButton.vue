@@ -1,6 +1,6 @@
 <template>
   <button :class="{ selected: isSelected }">
-    <RouterLink :to="to" class="router-link" @click="$emit('nav-button-clicked')">{{ text }}</RouterLink>
+    <RouterLink :to="to" class="router-link">{{ text }}</RouterLink>
   </button>
 </template>
 
@@ -11,7 +11,6 @@ export default {
       isSelected: false
     };
   },
-  emits: ["nav-button-clicked"],
   props: ['to', 'text', 'id', 'selectedId'],
   methods: {
     updateSelection() {

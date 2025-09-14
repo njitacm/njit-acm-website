@@ -7,7 +7,7 @@
       </button>
       <Transition>
         <nav class="open-nav" v-show="showNav" ref="nav">
-          <slot @nav-button-clicked="setNavOpen(false)"></slot>
+          <slot></slot>
         </nav>
       </Transition>
     </div>
@@ -27,6 +27,11 @@ export default {
       windowWidth: window.innerWidth,
     };
   },
+  watch: {
+    $route() {
+      this.setNavOpen(false);
+    }
+  },
   methods: {
     toggleNav() {
       if (!this.navOpen) {
@@ -36,6 +41,10 @@ export default {
       }
     },
     setNavOpen(open) {
+      if (this.$refs.menuIcon == undefined) {
+        return;
+      }
+
       if (open) {
         this.$refs.menuIcon.style.transform = "rotate(-90deg)";
         this.$refs.menuButton.style.backgroundColor = "var(--red)";
