@@ -69,7 +69,6 @@ export default {
 }
 
 h3 {
-  font-size: 3.6rem;
   text-align: left;
   align-self: center;
   color: var(--red);
@@ -77,17 +76,14 @@ h3 {
 
 h4 {
   text-align: left;
-  font-size: 2.4rem;
 }
 
 .loc, .time {
   text-align: right;
-  font-size: 1.8rem;
   font-style: italic;
 }
 
 .desc {
-  font-size: 2rem;
   align-content: center;
   text-align: left;
   overflow: auto;
@@ -108,13 +104,10 @@ img {
 
 @media (max-width: 775px) {
   .name {
-    font-size: 2.3rem;
   }
   .leader {
-    font-size: 2rem;
   }
   div.desc {
-    font-size: 1.7rem;
   }
   .title {
     display: unset;

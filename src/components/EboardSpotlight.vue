@@ -64,13 +64,11 @@ section {
   padding: 0.8rem;
 }
 h1 {
-  font-size: 3rem;
 }
 .text {
   margin-left: 1.2rem;
 }
 p {
-  font-size: 2rem;
 }
 img {
   width: 36rem;

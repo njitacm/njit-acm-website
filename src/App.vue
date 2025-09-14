@@ -105,10 +105,6 @@ html[data-theme="dark"] {
   font-family: sans-serif;
 }
 
-html {
-  height: 100%;
-}
-
 body {
   height: calc(100% - var(--nav-height));
 }
@@ -118,9 +114,13 @@ body {
 }
 
 html {
+  height: 100%;
   background-color: whitesmoke;
-  font-size: 62.5%;
   overflow-x: hidden;
+}
+
+p, li {
+  font-size: 1.25em;
 }
 
 .main-body {
@@ -133,10 +133,6 @@ html {
 
 .page {
   box-sizing: border-box;
-}
-
-p {
-  font-size: 2.5rem;
 }
 
 .fade-enter-active,
@@ -175,10 +171,11 @@ button {
 }
 
 .section-header {
+  font-size: 2em;
   width: 100%;
   margin: 2.5rem auto;
-  font-size: 48px;
-  border-bottom: red 4px solid;
+  padding-bottom: 0.5em;
+  border-bottom: red 2px solid;
 }
 
 @media (max-width: 500px) {
@@ -188,7 +185,6 @@ button {
 
   .section-header {
     width: 90%;
-    font-size: 36px;
   }
 }
 

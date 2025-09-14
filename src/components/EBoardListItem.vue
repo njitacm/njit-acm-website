@@ -48,7 +48,6 @@ export default {
 }
 
 p {
-  font-size: 2rem;
 }
 
 h2 {
@@ -58,7 +57,7 @@ h2 {
 .list-item {
   /* background-color: coral; */
   display: flex;
-  border-radius: 8px;
+  border-radius: 20px;
   text-align: left;
   box-shadow: none;
   opacity: 0.9;

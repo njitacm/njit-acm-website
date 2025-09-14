@@ -85,7 +85,6 @@ export default {
   z-index: 10;
 }
 h2 {
-  font-size: 4.8rem;
   color: lightcoral;
 }
 .modal .close-button {
@@ -99,7 +98,6 @@ h2 {
   grid-column-end: 3;
   justify-self: flex-end; */
   margin-bottom: 0.8rem;
-  font-size: 4rem;
   text-align: center;
   font-weight: 100;
   text-shadow: 1px 1px 20px white, 0 0 20px white, -1px -1px 20px white,
@@ -111,15 +109,12 @@ h2 {
 }
 .modal h1 {
   margin-top: 0.8rem;
-  font-size: 5.6rem;
 }
 .modal p {
-  font-size: 4.4rem;
 }
 .modal h3 {
   grid-row-start: 3;
   grid-row-end: 4;
-  font-size: 4rem;
   align-content: center;
   align-self: center;
 }
@@ -137,7 +132,6 @@ h2 {
 .modal button {
   align-content: center;
   height: 100%;
-  font-size: 4rem;
   padding: 0rem 1.2rem;
   margin-bottom: 240rem;
   font-weight: bold;

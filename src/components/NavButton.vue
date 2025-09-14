@@ -31,17 +31,26 @@ export default {
 <style scoped>
 button {
   background-color: transparent;
-  border-radius: 10px;
-  /* margin: 0.25rem; */
-  padding: 0 0.25rem;
+  border-radius: var(--border-radius);
   border: none;
-  height: 1.8em;
-
-  font-size: 2.4rem;
-  /* flex: 1 1 0px; */
-  /* background-color: inherit; */
+  padding: 0 0.75em;
+  height: 1.75em;
+  font-size: 1.25em;
   cursor: pointer;
   transition: background-color var(--hover-speed) ease-in-out;
+  align-content: center;
+  line-height: 1.5em;
+}
+
+.router-link {
+  text-decoration: none;
+  color: var(--red);
+  font-weight: bold;
+  text-decoration: none;
+  flex: 1 1 0px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 button.selected {
@@ -62,18 +71,5 @@ button.selected>.router-link {
   button:active:not(.selected) {
     background-color: var(--light-red);
   }
-}
-
-.router-link {
-  text-decoration: none;
-  color: var(--red);
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 2.4rem;
-  flex: 1 1 0px;
-  padding: 0.8rem;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
 }
 </style>

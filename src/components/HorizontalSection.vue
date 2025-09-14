@@ -1,5 +1,5 @@
 <template>
-  <section :class="{ small: small, 'keep-floating': keepFloating }">
+  <section :class="{ small: small, 'keep-floating': keepFloating}">
     <div class="section-content">
       <h3><slot name="title"></slot></h3>
       <p>
@@ -41,11 +41,10 @@ section:nth-child(even) {
   flex-direction: row-reverse;
 }
 h3 {
-  font-size: 7.4rem;
+  font-size: 3rem;
   margin-bottom: 0.8rem;
 }
 p {
-  font-size: 2.4rem;
   line-height: 32px;
 }
 .section-content {
@@ -64,7 +63,6 @@ p {
   }
 
   h3 {
-    font-size: 4rem;
     text-align: center;
   }
 

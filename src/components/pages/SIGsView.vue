@@ -41,7 +41,7 @@
           :filename="sig.filename"
         ></SIGsCard>
       </div>
-      <div v-else class="no-sig-container">
+      <div v-else class="no-sig-container section-container">
         <!-- <p>There are currently no SIGs in session. Please check back later!</p> -->
         <p>Fall 2025 SIGs are coming soon, hang tight!</p>
       </div>
@@ -115,7 +115,6 @@ export default {
 }
 
 p, li {
-  font-size: 2.5rem;
 }
 
 .section-container {

@@ -82,7 +82,6 @@ export default {
 button {
   background-color: var(--bkg-color);
   width: 100%;
-  font-size: 2.4rem;
   padding: 0.8rem;
   text-align: center;
   border: var(--text-color) 3px solid;
@@ -107,7 +106,6 @@ button.selected {
 }
 
 p.question {
-  font-size: 2.4rem;
   
 }
 .answer-box {
@@ -115,7 +113,6 @@ p.question {
   text-overflow: clip;
 }
 p.answer {
-  font-size: 2rem;
   padding: 0.8rem;
   overflow: hidden;
   text-overflow: clip;
