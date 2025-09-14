@@ -22,10 +22,8 @@ export default {
   },
   methods: {
     startSlideshow() {
-      console.log(this.$props.src);
       if (!Array.isArray(this.$props.src)) {
         this.currSrc = require('../assets/' + this.$props.src);
-        console.log('same: ' + this.currSrc);
         return;
       }
       if (this.firstTime) {
@@ -60,7 +58,6 @@ export default {
   },
   mounted() {
     this.firsTime = true;
-    console.log('dur', this.$props.dur)
     this.$refs.img.style.transition = 'opacity ' + (this.transitionDur/1000) + 's linear';
     this.startSlideshow();
   },

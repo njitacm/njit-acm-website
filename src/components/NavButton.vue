@@ -15,18 +15,15 @@ export default {
   methods: {
     updateSelection() {
       this.isSelected = this.$props.id == this.$props.selectedId;
-      console.log('update selection to ' + this.isSelected);
     }
   },
   // e.g. when collapsable nav opens
   mounted() {
     this.updateSelection()
-    console.log('mounted');
   },
   // e.g. when user clicks & changes "tab"
   updated() {
     this.updateSelection()
-    console.log('updated');
   }
 }
 </script>
