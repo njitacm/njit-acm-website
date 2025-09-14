@@ -42,7 +42,8 @@
         ></SIGsCard>
       </div>
       <div v-else class="no-sig-container">
-        <p>There are currently no SIGs in session. Please check back later!</p>
+        <!-- <p>There are currently no SIGs in session. Please check back later!</p> -->
+        <p>Fall 2025 SIGs are coming soon, hang tight!</p>
       </div>
     </div>
     <h2 class="section-header">SIG Calendar</h2>
