@@ -145,7 +145,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.5em;
     margin-right: 1rem;
   }
 }

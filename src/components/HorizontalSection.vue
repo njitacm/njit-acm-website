@@ -41,6 +41,7 @@ section:nth-child(even) {
   flex-direction: row-reverse;
 }
 h3 {
+  font-size: 3rem;
   margin-bottom: 0.8rem;
 }
 p {

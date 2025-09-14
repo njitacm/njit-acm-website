@@ -2,11 +2,10 @@
   <div>
     <Transition>
       <header class="fixed-header" ref="pageHeader">
-        <RouterLink to="/" class="router-link-left" @click="toTop()">
-          <img src="../assets/logos/NJIT_ACM_LOGO.svg" />
-          <div>ACM</div>
+        <RouterLink to="/" class="router-link-left" @click="toTop">
+          <img src="../assets/logos/NJIT_ACM_LOGO.svg" class="logo" />
         </RouterLink>
-        <RouterLink to="/" class="router-link-center" @click="toTop()">
+        <RouterLink to="/" class="router-link-center" @click="toTop">
           Association for Computing Machinery</RouterLink>
         <CollapsableNav @collapsableNavOpened="updateTabSelection">
           <NavButton v-for="(button, to) in navData" :key="button.id" :id="button.id" :to="to" :text="button.text"
@@ -37,7 +36,6 @@ export default {
         '/about': { id: 3, text: 'About' }
       },
       showHeader: false,
-      // fixedHeader: false,
       lastScrollTop: 0
     };
   },
@@ -139,6 +137,36 @@ header {
   position: fixed;
 }
 
+.logo {
+  height: calc(var(--nav-height) * 2);
+}
+
+a {
+  font-size: 1.5em;
+}
+
+.router-link-left,
+.router-link-center {
+  color: var(--text-color);
+  -webkit-tap-highlight-color: transparent;
+  transition: color var(--hover-speed) linear;
+}
+
+.router-link-left {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+.router-link-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+}
+
 @media (hover: hover) and (pointer: fine) {
 
   .router-link-left:hover,
@@ -155,51 +183,10 @@ header {
   }
 }
 
-.router-link-left,
-.router-link-center {
-  color: var(--text-color);
-  -webkit-tap-highlight-color: transparent;
-  transition: color var(--hover-speed) linear;
-}
-
-.router-link-left {
-  padding: 0 2px;
-  text-decoration: none;
-  font-weight: 500;
-  display: flex;
-  /* grid-template-columns: auto 50%; */
-  align-items: center;
-  column-gap: 1rem;
-  height: 100%;
-}
-
-.router-link-left>img {
-  height: 50px;
-}
-
-.router-link-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  text-decoration: none;
-}
-
-/* nav {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  margin: 0.4rem 0.8rem;
-} */
-
 @media (max-width: 1750px) {
   .router-link-center {
     display: none;
   }
 }
 
-@media (max-width: 750px) {
-  .router-link-left>div {
-    display: none;
-  }
-}
 </style>

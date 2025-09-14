@@ -22,6 +22,7 @@ button {
   transition: all var(--hover-speed) linear;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  font-size: 1.25em;
 }
 
 :slotted(a), :slotted(.router-link), :slotted(span), :slotted(.red-button-text) {

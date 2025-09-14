@@ -30,13 +30,14 @@ export default {
   background: transparent;
   border: 2px solid var(--red);
   border-radius: var(--border-radius);
+  height: 1.5em;
+  font-size: 1.5em;
   cursor: pointer;
   transition: all var(--hover-speed) ease;
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
-  height: 1.8em;
 }
 
 .toggle-btn:hover {

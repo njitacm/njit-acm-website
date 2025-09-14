@@ -91,9 +91,9 @@ h2 {
 }
 
 #main-logo {
-  width: 81.25%;
+  width: 90%;
+  max-width: 500px;
   opacity: 0.8;
-  max-width: 62.4rem;
 }
 
 .background-container {

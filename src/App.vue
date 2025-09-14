@@ -105,10 +105,6 @@ html[data-theme="dark"] {
   font-family: sans-serif;
 }
 
-html {
-  height: 100%;
-}
-
 body {
   height: calc(100% - var(--nav-height));
 }
@@ -118,8 +114,13 @@ body {
 }
 
 html {
+  height: 100%;
   background-color: whitesmoke;
   overflow-x: hidden;
+}
+
+p, li {
+  font-size: 1.25em;
 }
 
 .main-body {
@@ -170,9 +171,11 @@ button {
 }
 
 .section-header {
+  font-size: 2em;
   width: 100%;
   margin: 2.5rem auto;
-  border-bottom: red 4px solid;
+  padding-bottom: 0.5em;
+  border-bottom: red 2px solid;
 }
 
 @media (max-width: 500px) {
