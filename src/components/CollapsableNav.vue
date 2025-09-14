@@ -86,16 +86,13 @@ export default {
   background-color: var(--bkg-color);
   border: none;
   border-left: var(--red) 2px solid;
-  /* border-radius: var(--border-radius); */
   color: var(--red);
   height: calc(var(--nav-height) - var(--nav-border-width));
   width: auto;
   right: 0;
-  /* font-size: 4rem   */
 }
 
 #mmmBorger .menu-icon {
-  font-size: 4rem;
   padding: 10px;
   transition: transform var(--hover-speed) ease;
 }
@@ -103,7 +100,6 @@ export default {
 #mmmBorger .menu-text {
   display: block;
   height: inherit;
-  font-size: 3rem;
   padding: 0px 0px 0px 10px;
   line-height: var(--nav-height);
 }

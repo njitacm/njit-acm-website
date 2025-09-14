@@ -375,13 +375,11 @@ export default {
 }
 
 h3 {
-  font-size: 4.8rem;
   text-align: center;
 }
 
 h5 {
   text-align: center;
-  font-size: 3.6rem;
 }
 
 ul {
@@ -391,7 +389,6 @@ ul {
 
 p,
 li {
-  font-size: 2.5rem;
   margin: 1.5rem 0rem;
 }
 
@@ -407,7 +404,6 @@ button {
 @media(max-width: 600px) {
   p,
   li {
-    font-size: 2rem;
   }
 }
 </style>

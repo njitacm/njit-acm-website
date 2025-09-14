@@ -36,7 +36,6 @@ export default {
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
-  font-size: 2.4rem;
   height: 1.8em;
 }
 
@@ -45,7 +44,6 @@ export default {
 }
 
 .icon {
-  font-size: inherit;
   display: block;
   line-height: 1;
 }

@@ -124,7 +124,6 @@ export default {
 .back .text {
   align-self: center;
   justify-self: center;
-  font-size: 2rem;
   text-align: center;
 }
 
@@ -135,12 +134,10 @@ export default {
 
 .name {
   padding-bottom: 0.5rem;
-  font-size: 2rem;
   font-weight: 550;
 }
 
 .position {
-  font-size: 1.75rem;
   font-weight: 350;
 }
 </style>

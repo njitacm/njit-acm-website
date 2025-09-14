@@ -115,7 +115,6 @@ export default {
 }
 
 p, li {
-  font-size: 2.5rem;
 }
 
 .section-container {

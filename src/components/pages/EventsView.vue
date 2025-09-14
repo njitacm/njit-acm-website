@@ -148,7 +148,6 @@ export default {
 */
 
 p {
-  font-size: 2.5rem;
   line-height: 4rem;
 }
 
@@ -159,7 +158,6 @@ p {
 }
 
 .no-events h1 {
-  font-size: 4rem;
 }
 
 .events-grid {

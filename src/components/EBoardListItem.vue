@@ -48,7 +48,6 @@ export default {
 }
 
 p {
-  font-size: 2rem;
 }
 
 h2 {

@@ -64,14 +64,11 @@ export default {
 
 .event-card h1 {
   color: var(--red);
-  font-size: 3rem;
 }
 
 .event-card h2 {
-  font-size: 1.8rem;
 }
 
 .desc {
-  font-size: 2rem;
 }
 </style>

@@ -45,7 +45,6 @@ header>img {
 }
 
 h2 {
-  font-size: 9.8rem;
 }
 
 #header-centerpiece {

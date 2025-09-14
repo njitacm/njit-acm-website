@@ -423,7 +423,6 @@ export default {
 .tutoring-header button {
   border: none;
   background: none;
-  font-size: 4rem;
   color: white;
 }
 
@@ -446,15 +445,12 @@ export default {
 }
 
 .tutoring-sidebar h1.name {
-  font-size: 4rem;
 }
 
 .tutoring-sidebar h1 {
-  font-size: 3.25rem;
 }
 
 .tutoring-sidebar h2 {
-  font-size: 2rem;
   width: 65%;
   margin: 0 auto;
 }
@@ -468,7 +464,6 @@ export default {
 .tutoring-sidebar select {
   width: 80%;
   margin: 1rem;
-  font-size: 2.4rem;
   padding: 1rem;
   border-radius: var(--border-radius);
   cursor: pointer;
@@ -505,7 +500,6 @@ option {
   box-sizing: border-box;
   width: 100%;
   margin: 0.25rem;
-  font-size: 2.4rem;
   height: 5rem;
   align-self: center;
   justify-self: center;
@@ -527,11 +521,9 @@ option {
   padding-top: 4px;
   padding-left: 8px;
   grid-column: 1;
-  font-size: 1.25rem;
 }
 
 .date {
-  font-size: 3.2rem;
   margin: 0.125rem;
   height: 100%;
   display: flex;
@@ -541,13 +533,11 @@ option {
 }
 
 .day-time {
-  font-size: 3.6rem;
   text-align: center;
   margin-top: 2rem;
 }
 
 .selectionInfo h3 {
-  font-size: 1.8rem;
   text-align: left;
   margin-left: 4rem;
   margin-top: 2rem;
@@ -557,7 +547,6 @@ option {
 }
 
 .selectionInfo h2 {
-  font-size: 2rem;
   text-align: left;
   margin-left: 4rem;
   margin-top: 2rem;
@@ -579,21 +568,18 @@ option {
 }
 
 .courses-container p {
-  font-size: 2rem;
   margin-top: 1rem;
   width: 100%;
   text-align: center;
 }
 
 .tutors-container {
-  font-size: 2rem;
   text-align: left;
   margin-left: 4rem;
   margin-top: 0.5rem;
 }
 
 .tutors-container p {
-  font-size: 2rem;
   padding: 0.25rem 0;
 }
 
@@ -625,19 +611,15 @@ option {
 
 @media (max-width: 1350px) {
   .tutoring-sidebar h1.title {
-    font-size: 2.75rem;
   }
 
   .tutoring-sidebar h2.subtitle {
-    font-size: 1.75rem;
   }
 
   .tutoring-sidebar select {
-    font-size: 2rem;
   }
 
   button {
-    font-size: 2rem;
   }
 
   .courses-container {
@@ -646,15 +628,12 @@ option {
   }
 
   .courses-container p {
-    font-size: 1.75rem;
   }
 
   .tutors-container p {
-    font-size: 1.5rem;
   }
 
   .tutoring-sidebar h1 {
-    font-size: 2.75rem;
   }
 
   .tutoring-sidebar h2 {
@@ -664,19 +643,15 @@ option {
 
 @media (max-width: 1200px) {
   .tutoring-sidebar h1.title {
-    font-size: 1.75rem;
   }
 
   .tutoring-sidebar h2.subtitle {
-    font-size: 1.25rem;
   }
 
   .tutoring-sidebar select {
-    font-size: 1.5rem;
   }
 
   button {
-    font-size: 1.5rem;
   }
 }
 

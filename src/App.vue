@@ -119,7 +119,6 @@ body {
 
 html {
   background-color: whitesmoke;
-  font-size: 62.5%;
   overflow-x: hidden;
 }
 
@@ -133,10 +132,6 @@ html {
 
 .page {
   box-sizing: border-box;
-}
-
-p {
-  font-size: 2.5rem;
 }
 
 .fade-enter-active,
@@ -177,7 +172,6 @@ button {
 .section-header {
   width: 100%;
   margin: 2.5rem auto;
-  font-size: 48px;
   border-bottom: red 4px solid;
 }
 
@@ -188,7 +182,6 @@ button {
 
   .section-header {
     width: 90%;
-    font-size: 36px;
   }
 }
 

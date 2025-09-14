@@ -420,7 +420,6 @@ export default {
 }
 
 .no-tutoring {
-  font-size: 3rem;
   text-align: center;
   align-content: center;
   height: 100%;
@@ -448,15 +447,12 @@ export default {
 }
 
 .tutoring-sidebar h1.name {
-  font-size: 4rem;
 }
 
 .tutoring-sidebar h1 {
-  font-size: 3.25rem;
 }
 
 .tutoring-sidebar h2 {
-  font-size: 2rem;
   width: 65%;
 }
 
@@ -476,11 +472,9 @@ export default {
 
 @media (max-width: 800px) {
   h1.title {
-    font-size: 19pt;
   }
 
   .tutoring-calendar th {
-    font-size: 0.75em;
   }
 }
 
@@ -553,7 +547,6 @@ option {
   }
 
   .tutoring-calendar th {
-    font-size: 0.5em;
   }
 }
 
@@ -580,7 +573,6 @@ main .details-panel {
 }
 
 .no-selection p {
-  font-size: 25pt;
   text-align: center;
 }
 
@@ -592,19 +584,16 @@ main .details-panel {
 }
 
 .day-time {
-  font-size: 3.2rem;
   text-align: center;
 }
 
 .selection-info h3 {
-  font-size: 1.8rem;
   text-align: left;
   font-weight: initial;
   font-style: italic;
 }
 
 .selection-info h2 {
-  font-size: 2rem;
   text-align: left;
 }
 
@@ -617,17 +606,14 @@ main .details-panel {
 
 .courses-container p {
   width: min-content;
-  font-size: 2rem;
   text-align: left;
 }
 
 .tutors-container {
-  font-size: 2rem;
   text-align: left;
 }
 
 .tutors-container p {
-  font-size: 2rem;
 }
 
 .select-for-details {
@@ -652,7 +638,6 @@ main .details-panel {
 }
 
 .tutoring-calendar tr {
-  font-size: 2.5em;
   margin: 0;
 }
 
@@ -685,7 +670,6 @@ main .details-panel {
 .tutoring-calendar button {
   box-sizing: border-box;
   width: 100%;
-  font-size: 2.4rem;
   height: 5rem;
   align-self: center;
   justify-self: center;
@@ -712,11 +696,9 @@ main .details-panel {
 
 @media (max-width: 850px) {
   .tutoring-calendar button {
-    font-size: 12.5pt;
   }
 
   .no-selection p {
-    font-size: 15pt;
   }
 }
 

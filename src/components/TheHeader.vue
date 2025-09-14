@@ -164,7 +164,6 @@ header {
 
 .router-link-left {
   padding: 0 2px;
-  font-size: 4rem;
   text-decoration: none;
   font-weight: 500;
   display: flex;
@@ -182,7 +181,6 @@ header {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 3.2rem;
   text-decoration: none;
 }
 

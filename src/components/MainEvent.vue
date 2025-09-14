@@ -36,11 +36,9 @@ export default {
 }
 
 h1 {
-  font-size: 5rem;
 }
 
 .main-event-desc {
-  font-size: 2rem;
   align-self: center;
   font-weight: 450;
 }

@@ -4,7 +4,7 @@
     <HorizontalSection :imagePath="['eboard/2025/WholeBoard.jpg', 'eboard/2024/WholeBoard.jpg']" slideDuration="5000">
       <template v-slot:title>About Us</template>
       <template v-slot:content>
-        <p style="font-size: 2.5rem">
+        <p>
           If you're new to clubs at NJIT, the e-board is the group of students,
           elected at the end of every Fall, that run ACM! We handle all event
           planning and daily operations of the club. The current e-board is
@@ -234,7 +234,6 @@ header.page-header {
 .position-button {
   background: none;
   border: none;
-  font-size: 2rem;
 }
 
 .selected_position {
@@ -255,7 +254,6 @@ header.page-header {
   width: calc(100% - 4rem);
   margin-left: inherit;
   padding-left: 4rem;
-  font-size: 2.5rem;
 }
 
 .eboard-container>div {
@@ -331,14 +329,11 @@ header {
 }
 
 h2:not(.section-header) {
-  font-size: 48px;
 }
 
 .svg {
-  font-size: 5rem;
   transition: all 0.25s ease-in-out;
   cursor: pointer;
-  /* color: black; */
   align-self: center;
 }
 
@@ -405,7 +400,6 @@ h2:not(.section-header) {
   }
 
   h2:not(.section-header) {
-    font-size: 3.5rem;
   }
 
   .eboard-container>div {

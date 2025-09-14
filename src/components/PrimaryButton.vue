@@ -15,7 +15,6 @@ button {
   --btn-hov-col: color-mix(in srgb, var(--btn-red), var(--text-color) 10%);
   background-color: var(--btn-red);
   border-radius: var(--border-radius);
-  font-size: 2rem;
   padding: 0 1rem;
   border: none;
   cursor: pointer;

@@ -37,11 +37,8 @@ export default {
 }
 
 .event-card h1 {
-
-  font-size: 3rem;
 }
 
 .event-card p {
-  font-size: 1.8rem;
 }
 </style>

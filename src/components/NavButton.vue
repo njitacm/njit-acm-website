@@ -32,14 +32,9 @@ export default {
 button {
   background-color: transparent;
   border-radius: 10px;
-  /* margin: 0.25rem; */
   padding: 0 0.25rem;
   border: none;
   height: 1.8em;
-
-  font-size: 2.4rem;
-  /* flex: 1 1 0px; */
-  /* background-color: inherit; */
   cursor: pointer;
   transition: background-color var(--hover-speed) ease-in-out;
 }
@@ -69,7 +64,6 @@ button.selected>.router-link {
   color: var(--red);
   font-weight: bold;
   text-decoration: none;
-  font-size: 2.4rem;
   flex: 1 1 0px;
   padding: 0.8rem;
   border: none;
