@@ -15,7 +15,6 @@
 </template>
 
 <script>
-// TODO: CLICKING ON NAV BUTTONS SHOULD CLOSE IT
 import { OnClickOutside } from "@vueuse/components";
 
 export default {
