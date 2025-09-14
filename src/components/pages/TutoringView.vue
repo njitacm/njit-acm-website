@@ -4,9 +4,9 @@
       <div class="tutoring-sidebar">
         <div class="title-and-subtitle">
           <h1 class="title">YWCC Undergraduate Tutoring Schedule</h1>
-          <h2 class="subtitle">
+          <p class="subtitle">
             Tutoring from 11:30 AM - 6:30 PM. Walk-in only, no reservations. Available in both in-person and virtual.
-          </h2>
+          </p>
         </div>
         <div class="meet-link-button-and-dropdown">
           <PrimaryButton class="meet-link-button">
@@ -58,9 +58,9 @@
         <div class="details-panel">
           <Transition mode="out-in">
             <div v-if="dateSelected && classSelected && selectionInfo.empty" class="selection-info">
-              <h1 class="day-time">
+              <h2 class="day-time">
                 {{ selectionInfo.day }} {{ selectionInfo.time }}
-              </h1>
+              </h2>
               <p v-if="selectedCourse == -1" class="no-tutors">
                 There is no tutoring available during this time slot
               </p>
@@ -69,9 +69,9 @@
               </p>
             </div>
             <div v-else-if="dateSelected && classSelected" class="selection-info">
-              <h1 class="day-time">
+              <h2 class="day-time">
                 {{ selectionInfo.day }} {{ selectionInfo.time }}
-              </h1>
+              </h2>
               <h3>In-Person AND Virtual</h3>
               <br />
               <h2>
@@ -89,9 +89,9 @@
               </div>
             </div>
             <div v-else-if="dateSelected" class="selection-info">
-              <h1 class="day-time">
+              <h2 class="day-time">
                 {{ selectionInfo.day }} {{ selectionInfo.time }}
-              </h1>
+              </h2>
               <h3>In-Person AND Virtual</h3>
               <br />
               <h2 class="courses-title">Tutoring Offered</h2>
@@ -442,21 +442,15 @@ export default {
   padding: 1rem 2rem;
 }
 
-.tutoring-sidebar .title-and-subtitle {
-  width: fit-content;
-}
+.tutoring-sidebar h1.name {}
 
-.tutoring-sidebar h1.name {
-}
-
-.tutoring-sidebar h1 {
-}
+.tutoring-sidebar h1 {}
 
 .tutoring-sidebar h2 {
   width: 65%;
 }
 
-.tutoring-sidebar h2.subtitle {
+.tutoring-sidebar .subtitle {
   width: 100%;
   font-weight: initial;
 }
@@ -471,17 +465,17 @@ export default {
 }
 
 @media (max-width: 800px) {
-  h1.title {
-  }
+  h1.title {}
 
-  .tutoring-calendar th {
-  }
+  .tutoring-calendar th {}
 }
 
 /* meet link and dropdown */
 .meet-link-button-and-dropdown {
   display: flex;
   gap: 1rem;
+  flex-grow: 2;
+  flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
 }
@@ -491,15 +485,14 @@ div.dropdown {
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  justify-content: space-between;
+  gap: 1em;
+  justify-content: center;
 }
 
 .dropdown select {
-  padding: 1rem;
+  padding: 0.5em;
   border-radius: var(--border-radius);
   cursor: pointer;
-  height: 50px;
 }
 
 @media(hover: hover) and (pointer: fine) {
@@ -525,7 +518,7 @@ option {
 }
 
 .reset-button {
-  height: 4.25rem;
+  height: 2em;
   cursor: pointer;
 }
 
@@ -546,7 +539,12 @@ option {
     flex-direction: column;
   }
 
-  .tutoring-calendar th {
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropdown select {
+    flex-grow: 2;
   }
 }
 
@@ -613,8 +611,7 @@ main .details-panel {
   text-align: left;
 }
 
-.tutors-container p {
-}
+.tutors-container p {}
 
 .select-for-details {
   text-align: center;
@@ -695,11 +692,9 @@ main .details-panel {
 }
 
 @media (max-width: 850px) {
-  .tutoring-calendar button {
-  }
+  .tutoring-calendar button {}
 
-  .no-selection p {
-  }
+  .no-selection p {}
 }
 
 .v-enter-active,

@@ -40,10 +40,6 @@ export default {
       }
     },
     setNavOpen(open) {
-      if (this.$refs.menuIcon == undefined) {
-        return;
-      }
-
       if (open) {
         this.$refs.menuIcon.style.transform = "rotate(-90deg)";
         this.$refs.menuButton.style.backgroundColor = "var(--red)";
@@ -63,7 +59,7 @@ export default {
   },
   computed: {
     showNav() {
-      return this.navOpen || this.windowWidth > 550;
+      return this.navOpen || this.windowWidth > 625;
     },
   },
   mounted() {
@@ -79,7 +75,6 @@ export default {
 </script>
 
 <style scoped>
-
 #mmmBorger {
   display: none;
   box-sizing: margin-box;
@@ -98,6 +93,7 @@ export default {
 }
 
 #mmmBorger .menu-text {
+  font-size: 2em;
   display: block;
   height: inherit;
   padding: 0px 0px 0px 10px;
@@ -140,33 +136,31 @@ export default {
 }
 
 /* Desktop styles for nav */
-@media (min-width: 551px) {
-  .open-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5em;
-    margin-right: 1rem;
-  }
+.open-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+  margin-right: 1rem;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 625px) {
   #mmmBorger {
     display: flex;
+    align-items: center;
   }
 
   .open-nav {
     position: absolute;
-    right: 0px;
     display: flex;
     gap: 0.5rem;
+    top: calc(var(--nav-height) + 5px);
     flex-direction: column;
-    top: 61px;
+    align-items: stretch;
     background-color: var(--bkg-color);
     border-radius: 12px;
     padding: 5px;
     border: 2px red solid;
-    margin-top: 0.8rem;
     z-index: 100;
     box-shadow: var(--medium-shadow-black) 0px 0px 25px;
   }

@@ -34,13 +34,13 @@
           'eboard-header': true,
           'selected': showEboard[year]
         }">
-          <h2>{{ year }} Eboard</h2>
+          <h1>{{ year }} Eboard</h1>
           <span class="svg material-symbols-outlined" :class="{ open: showEboard[year] }">keyboard_arrow_down</span>
         </header>
         <TransitionExpand>
           <div class="eboard-container" :ref="year.toString()" v-show="showEboard[year]" v-if="year < 2024">
             <div class="spacer1"></div>
-            <div>
+            <div class="container">
               <EBoardCard v-for="member in getEboard(year)" :key="member.Role" :position="member.Role"
                 :positionDesc="member.Desc" :incumbent="member.Name" :incumbentDesc="member.Desc"
                 :imageName="getImagePath(member.Role, member.Term)" />
@@ -300,11 +300,12 @@ header {
 .eboard-header {
   transition: background-color var(--hover-speed) ease-in-out, color var(--hover-speed) ease-in-out;
   border-radius: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 1em;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
 }
 
 .eboard-header.selected {
