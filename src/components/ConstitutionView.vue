@@ -1,6 +1,5 @@
 <template>
   <div>
-    <link rel="preload" href="../assets/paperbg.jpg" as="image" />
     <div class="constitution-bg" @click="closeModal"></div>
     <div id="constitution">
       <header>
