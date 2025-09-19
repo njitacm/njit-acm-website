@@ -23,21 +23,21 @@ export default {
   methods: {
     startSlideshow() {
       if (!Array.isArray(this.$props.src)) {
-        this.currSrc = require('../assets/' + this.$props.src);
+        this.currSrc = new URL('../assets/' + this.$props.src, import.meta.url);
         return;
       }
       if (this.firstTime) {
-        this.currSrc = require('../assets/' + this.$props.src[this.imgIndex]);
-        this.currBkgImg = require('../assets/' + this.$props.src[this.imgIndex]);
+        this.currSrc = new URL('../assets/' + this.$props.src[this.imgIndex], import.meta.url);
+        this.currBkgImg = new URL('../assets/' + this.$props.src[this.imgIndex], import.meta.url);
         this.firstTime = false;
       }
 
       this.interval = setInterval(() => {
-        this.currBkgImg = require('../assets/' + this.$props.src[this.imgIndex]);
+        this.currBkgImg = new URL('../assets/' + this.$props.src[this.imgIndex], import.meta.url);
         this.$refs.img.style.opacity = "0";
         
         setTimeout(() => {
-          this.currSrc = require('../assets/' + this.$props.src[this.imgIndex]);
+          this.currSrc = new URL('../assets/' + this.$props.src[this.imgIndex], import.meta.url);
           this.$refs.img.style.opacity = "1";
         }, this.transitionDur);
 

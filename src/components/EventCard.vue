@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import PrimaryButton from '../components/PrimaryButton.vue';
+import PrimaryButton from './PrimaryButton.vue';
 
 export default {
   components: { PrimaryButton },

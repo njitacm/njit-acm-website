@@ -17,12 +17,12 @@ export default {
   data() {
     return {
       cssProps: {
-        backgroundImage: `url(${require('../assets/EventsPage/' + this.$props.imgName)})`,
+        backgroundImage: `url(${new URL(`../assets/EventsPage/${this.$props.imgName}`, import.meta.url)})`,
         backgroundSize: `contain`,
         backgroundRepeat: `no-repeat`,
         backgroundPosition: `center`,
       },
-      imagePath: require("../assets/EventsPage/" + this.$props.imgName),
+      imagePath: new URL(`../assets/EventsPage/${this.$props.imgName}`, import.meta.url),
     };
   },
 };
