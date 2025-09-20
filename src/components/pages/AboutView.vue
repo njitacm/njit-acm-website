@@ -1,7 +1,7 @@
 <template>
   <div class="outer-container">
     <!-- <HorizontalSection :imagePath="['eboard/2024/WholeBoard.png', 'eboard/2025/treasurer.png']" -->
-    <HorizontalSection :imagePath="['eboard/2025/WholeBoard.jpg', 'eboard/2024/WholeBoard.jpg']" slideDuration="5000">
+    <HorizontalSection :imagePath="['eboard/2025/WholeBoard.jpg', 'eboard/2024/WholeBoard.jpg']" :slideDuration="5000">
       <template v-slot:title>About Us</template>
       <template v-slot:content>
         <p>
@@ -42,7 +42,7 @@
             <div class="spacer1"></div>
             <div class="container">
               <EBoardCard v-for="member in getEboard(year)" :key="member.Role" :position="member.Role"
-                :positionDesc="member.Desc" :incumbent="member.Name" :incumbentDesc="member.Desc"
+                :incumbent="member.Name" :incumbentDesc="member.Desc"
                 :imageName="getImagePath(member.Role, member.Term)" />
             </div>
             <div class="spacer2"></div>

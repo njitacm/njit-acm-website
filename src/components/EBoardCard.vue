@@ -4,7 +4,6 @@
     <h1>{{ incumbent }}</h1>
     <h2>{{ position }}</h2>
   </div>
-  <p class="desc" v-show="descExists">{{ incumbentDesc }}</p>
 </template>
 
 <script>
@@ -14,19 +13,13 @@ export default {
   props: [
     "position",
     "incumbent",
-    "incumbentDesc",
     "imageName",
   ],
   data() {
     return {
       imagePath: getAssetUrl(`assets/eboard/${this.$props.imageName}`),
     };
-  },
-  computed: {
-    descExists() {
-      return this.$props.incumbentDesc !== "";
-    },
-  },
+  }
 };
 </script>
 
