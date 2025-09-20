@@ -6,18 +6,7 @@
 
 <script>
 // TODO: add photos
-
-function getImageUrl(name) {
-  // The 'as: "url"' option directly gives you the resolved URL string.
-  // The 'eager: true' option loads all images at once. If you have many,
-  // you can remove it for lazy loading, but you'll need to use async/await.
-  const images = import.meta.glob('/src/assets/HomePage/*.jpg', { eager: true, as: 'url' });
-
-  // The keys will be the full path, so we construct it.
-  const imagePath = `/src/assets/HomePage/${name}`;
-
-  return images[imagePath];
-}
+import { getImageUrl } from '../util';
 
 export default {
   // dur in ms
@@ -34,25 +23,25 @@ export default {
     }
   },
   methods: {
-    startSlideshow() {
-      const path = "Fall_2024_GBM.jpg";
-      this.currSrc = getImageUrl(path);
+    async startSlideshow() {
+      // const path = "HomePage/Fall_2024_GBM.jpg";
+      // this.currSrc = await getImageUrl(path);
       if (!Array.isArray(this.$props.src)) {
-        // this.currSrc = new URL(`../assets/${this.$props.src}`, import.meta.url).href;
+        this.currSrc = await getImageUrl(this.$props.src);
         return;
       }
       if (this.firstTime) {
-        // this.currSrc = new URL(`../assets/${this.$props.src[this.imgIndex]}`).href;
-        this.currBkgImg = new URL(`../assets/${this.$props.src[this.imgIndex]}`).href;
+        this.currSrc = await getImageUrl(this.$props.src[this.imgIndex]);
+        this.currBkgImg = await getImageUrl(this.$props.src[this.imgIndex]);
         this.firstTime = false;
       }
       
-      this.interval = setInterval(() => {
-        this.currBkgImg = new URL(`../assets/${this.$props.src[this.imgIndex]}`).href;
+      this.interval = setInterval(async () => {
+        this.currBkgImg = await getImageUrl(this.$props.src[this.imgIndex]);
         this.$refs.img.style.opacity = "0";
         
-        setTimeout(() => {
-          // this.currSrc = new URL(`../assets/${this.$props.src[this.imgIndex]}`).href;
+        setTimeout(async () => {
+          this.currSrc = await getImageUrl(this.$props.src[this.imgIndex]);
           
           if (this.$refs.img) {
             this.$refs.img.style.opacity = "1";
