@@ -18,7 +18,6 @@ export default {
       imgIndex: 0,
       currSrc: null,
       currBkgImg: null,
-
       transitionDur: 1000,
     }
   },
