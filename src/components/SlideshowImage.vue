@@ -40,7 +40,10 @@ export default {
         
         setTimeout(() => {
           this.currSrc = getAssetUrl(`assets/${this.$props.src[this.imgIndex]}`);
-          this.$refs.img.style.opacity = "1";
+          
+          if (this$refs.img) {
+            this.$refs.img.style.opacity = "1";
+          }
         }, this.transitionDur);
 
         this.imgIndex = this.getNextIndex(this.imgIndex);
