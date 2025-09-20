@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import { getAssetUrl } from '../util';
 
 export default {
   props: [
@@ -17,7 +16,7 @@ export default {
   ],
   data() {
     return {
-      imagePath: getAssetUrl(`assets/eboard/${this.$props.imageName}`),
+      imagePath: new URL(`../assets/eboard/${this.$props.imageName}`, import.meta.url).href,
     };
   }
 };

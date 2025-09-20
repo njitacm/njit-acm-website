@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import { getAssetUrl } from '../util';
 import PrimaryButton from './PrimaryButton.vue';
 
 export default {
@@ -28,7 +27,7 @@ export default {
   props: ['name', 'date', 'time', 'datetime', 'location', 'url', 'imageUrl', 'desc', 'links'],
   data() {
     return {
-      imageSrc: getAssetUrl(`assets/EventsPage/${this.$props.imageUrl}`),
+      imageSrc: new URL(`../assets/EventsPage/${this.$props.imageUrl}`, import.meta.url).href,
     };
   },
   mounted() {

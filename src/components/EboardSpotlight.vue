@@ -17,12 +17,11 @@
 </template>
 
 <script>
-import { getAssetUrl } from '../util';
 
 export default {
   computed: {
     imagePath() {
-      return getAssetUrl(`assets/eboard/${this.$props.imageName}`);
+      return new URL(`../assets/eboard/${this.$props.imageName}`, import.meta.url).href;
     },
   },
   props: [

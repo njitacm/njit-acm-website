@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import { getAssetUrl } from '../util';
 // TODO: add photos
 export default {
   // dur in ms
@@ -25,21 +24,21 @@ export default {
     startSlideshow() {
       // this.currSrc = getAssetUrl("assets/HomePage/Fall_2024_GBM.jpg");
       if (!Array.isArray(this.$props.src)) {
-        this.currSrc = getAssetUrl(`assets/${this.$props.src}`);
+        this.currSrc = new URL(`../assets/${this.$props.src}`, import.meta.url).href;
         return;
       }
       if (this.firstTime) {
-        this.currSrc = getAssetUrl(`assets/${this.$props.src[this.imgIndex]}`);
-        this.currBkgImg = getAssetUrl(`assets/${this.$props.src[this.imgIndex]}`);
+        this.currSrc = new URL(`../assets/${this.$props.src[this.imgIndex]}`).href;
+        this.currBkgImg = new URL(`../assets/${this.$props.src[this.imgIndex]}`).href;
         this.firstTime = false;
       }
       
       this.interval = setInterval(() => {
-        this.currBkgImg = getAssetUrl(`assets/${this.$props.src[this.imgIndex]}`);
+        this.currBkgImg = new URL(`../assets/${this.$props.src[this.imgIndex]}`).href;
         this.$refs.img.style.opacity = "0";
         
         setTimeout(() => {
-          this.currSrc = getAssetUrl(`assets/${this.$props.src[this.imgIndex]}`);
+          this.currSrc = new URL(`../assets/${this.$props.src[this.imgIndex]}`).href;
           
           if (this$refs.img) {
             this.$refs.img.style.opacity = "1";

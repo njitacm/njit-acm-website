@@ -23,14 +23,13 @@
 </template>
 
 <script>
-import { getAssetUrl } from '../util';
 
 export default {
   emits: ["close-modal"],
   props: ["event", "modalOpen"],
   data() {
     return {
-      imagePath: getAssetUrl(`assets/EventsPage/events/${this.$props.event.img}`),
+      imagePath: new URL(`../assets/EventsPage/events/${this.$props.event.img}`, import.meta.url).href,
     };
   },
   methods: {

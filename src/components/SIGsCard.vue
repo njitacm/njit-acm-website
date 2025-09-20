@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { getAssetUrl } from '../util';
 
 export default {
   props: {
@@ -31,7 +30,7 @@ export default {
   },
   data() {
     return {
-      imagePath: getAssetUrl(`assets/sigs/${this.$props.filename}`),
+      imagePath: new URL(`../assets/sigs/${this.$props.filename}`, import.meta.url).href,
     };
   }
 };
