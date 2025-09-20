@@ -18,13 +18,6 @@ export default {
       imagePath: getAssetUrl(`assets/eboard/${this.$props.imageName}`),
     };
   },
-  computed() {
-    return {
-      descExists() {
-        return this.$props.incumbentDesc !== "";
-      },
-    }
-  },
   props: [
     "position",
     "positionDesc",
