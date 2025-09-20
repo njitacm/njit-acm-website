@@ -33,7 +33,6 @@ button {
   background-color: transparent;
   border-radius: var(--border-radius);
   border: none;
-  padding: 0 0.75em;
   height: 1.75em;
   font-size: 1.25em;
   cursor: pointer;
@@ -43,6 +42,10 @@ button {
 }
 
 .router-link {
+  border-radius: var(--border-radius);
+  display: block;
+  padding: 0 0.75em;
+  align-content: center;
   text-decoration: none;
   color: var(--red);
   font-weight: bold;
@@ -51,6 +54,8 @@ button {
   border: none;
   background-color: transparent;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 button.selected {
