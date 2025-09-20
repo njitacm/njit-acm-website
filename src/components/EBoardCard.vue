@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { getImageUrl } from '../util';
+
 
 export default {
   props: [
@@ -16,8 +18,11 @@ export default {
   ],
   data() {
     return {
-      imagePath: new URL(`../assets/eboard/${this.$props.imageName}`, import.meta.url).href,
+      imagePath: "",
     };
+  },
+  async mounted() {
+    this.imagePath = await getImageUrl(`eboard/${this.$props.imageName}`);
   }
 };
 </script>
