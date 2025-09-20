@@ -12,7 +12,6 @@
 <script>
 import { getImageUrl } from '../util';
 
-
 export default {
   props: [
     "position",
