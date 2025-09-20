@@ -442,10 +442,6 @@ export default {
   padding: 1rem 2rem;
 }
 
-.tutoring-sidebar h1.name {}
-
-.tutoring-sidebar h1 {}
-
 .tutoring-sidebar h2 {
   width: 65%;
 }
@@ -462,12 +458,6 @@ export default {
     text-align: center;
     gap: 2rem;
   }
-}
-
-@media (max-width: 800px) {
-  h1.title {}
-
-  .tutoring-calendar th {}
 }
 
 /* meet link and dropdown */
@@ -612,8 +602,6 @@ main .details-panel {
   text-align: left;
 }
 
-.tutors-container p {}
-
 .select-for-details {
   text-align: center;
   margin: auto;
@@ -657,12 +645,7 @@ main .details-panel {
 }
 
 .tutoring-calendar td {
-  /* padding: 1rem; */
   border: 1px solid var(--bkg-color);
-}
-
-.tutoring-calendar thead th:not(:first-child) {
-  /* width: 20%; */
 }
 
 .tutoring-calendar button {
@@ -671,7 +654,6 @@ main .details-panel {
   height: 5rem;
   align-self: center;
   justify-self: center;
-  /* border-radius: var(--border-radius); */
   cursor: pointer;
   border: none;
 }
@@ -690,12 +672,6 @@ main .details-panel {
   .tutoring-calendar button:active {
     opacity: 0.75;
   }
-}
-
-@media (max-width: 850px) {
-  .tutoring-calendar button {}
-
-  .no-selection p {}
 }
 
 .v-enter-active,
