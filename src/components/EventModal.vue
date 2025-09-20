@@ -23,13 +23,13 @@
 </template>
 
 <script>
+
 export default {
   emits: ["close-modal"],
   props: ["event", "modalOpen"],
   data() {
     return {
-      imagePath: require("../assets/EventsPage/events/" +
-        this.$props.event.img),
+      imagePath: new URL(`../assets/EventsPage/events/${this.$props.event.img}`, import.meta.url).href,
     };
   },
   methods: {

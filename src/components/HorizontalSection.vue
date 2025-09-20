@@ -19,7 +19,7 @@ import SlideshowImage from './SlideshowImage.vue';
 export default {
   components: { SlideshowImage },
   props: {
-    imagePath: String,
+    imagePath: String | Array,
     small: Boolean,
     slideDuration: Number,
     keepFloating: Boolean

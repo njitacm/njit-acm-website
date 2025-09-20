@@ -15,7 +15,6 @@ button {
   --btn-hov-col: color-mix(in srgb, var(--btn-red), var(--text-color) 10%);
   background-color: var(--btn-red);
   border-radius: var(--border-radius);
-  padding: 0 1rem;
   border: none;
   cursor: pointer;
   height: 50px;
@@ -26,10 +25,11 @@ button {
 }
 
 :slotted(a), :slotted(.router-link), :slotted(span), :slotted(.red-button-text) {
-  /* box-sizing: border-box; */
+  border-radius: var(--border-radius);
   display: block;
   align-content: center;
   margin: 0;
+  padding: 0 1em;
   text-decoration: none;
   font-weight: bold;
   color: var(--text-color);

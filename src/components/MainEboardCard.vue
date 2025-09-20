@@ -1,11 +1,8 @@
 <template>
   <main>
-    <div class="container" 
-    @mouseenter="toggleFrontHover" 
-    @mouseleave="toggleFrontHover"
-    @click="toggleFrontClick">
+    <div class="container" @mouseenter="toggleFrontHover" @mouseleave="toggleFrontHover" @click="toggleFrontClick">
       <div class="front">
-        <img :src="imagePath" :class="{ frontFlipped: id === store.currEboardFlipped }"/>
+        <img :src="imagePath" :class="{ frontFlipped: id === store.currEboardFlipped }" />
       </div>
       <div class="back" :class="{ backFlipped: id === store.currEboardFlipped }">
         <p class="text">{{ personalDesc }}</p>
@@ -20,34 +17,34 @@
 
 <script>
 import { store } from "../store.js";
+import { getImageUrl } from "../util.js";
 
 export default {
   props: ["position", "name", "personalDesc", "imageName", "id"],
   data() {
     return {
       store,
+      imagePath: "",
     };
   },
-  computed: {
-    imagePath() {
-      try {
-        return require("../assets/eboard/" + this.$props.imageName);
-      } catch (err) {
-        console.log(err);
-        console.log('resorting to the blank-pfp instead')
-        return require("../assets/blank-pfp.png");
-      }
-    },
+  async mounted() {
+    try {
+      this.imagePath = await getImageUrl(`eboard/${this.$props.imageName}`);
+    } catch (err) {
+      console.log(err);
+      console.log('resorting to the blank-pfp instead')
+      this.imagePath = await getImageUrl("blank-pfp.png");
+    }
   },
   methods: {
     isMobile() {
       return (navigator.userAgent.match(/Android/i)
-              || navigator.userAgent.match(/webOS/i)
-              || navigator.userAgent.match(/iPhone/i)
-              || navigator.userAgent.match(/iPad/i)
-              || navigator.userAgent.match(/iPod/i)
-              || navigator.userAgent.match(/BlackBerry/i)
-              || navigator.userAgent.match(/Windows Phone/i));
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i));
     },
     toggleFrontHover() {
       if (this.isMobile())

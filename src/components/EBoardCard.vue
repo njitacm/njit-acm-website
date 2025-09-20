@@ -1,46 +1,29 @@
 <template>
-  <!-- <div
-    class="card"
-    @click="selectEboard"
-    :class="[{ selected: isSelected }, { currEboard: currEboard }]"
-    > -->
   <div class="card">
     <img :src="imagePath" />
     <h1>{{ incumbent }}</h1>
     <h2>{{ position }}</h2>
   </div>
-  <p class="desc" v-show="descExists">{{ incumbentDesc }}</p>
 </template>
 
 <script>
+import { getImageUrl } from '../util';
+
+
 export default {
-  // emits: ["selectEboard"],
-  data() {
-    return {
-      imagePath: require("../assets/eboard/" + this.$props.imageName),
-    };
-  },
-  computed() {
-    return {
-      descExists() {
-        return this.$props.incumbentDesc !== "";
-      },
-    }
-  },
   props: [
     "position",
-    "positionDesc",
     "incumbent",
-    "incumbentDesc",
     "imageName",
-    "isSelected",
-    "currEboard",
   ],
-  methods: {
-    // selectEboard() {
-    //   this.$emit("selectEboard", this.$props.position);
-    // },
+  data() {
+    return {
+      imagePath: "",
+    };
   },
+  async mounted() {
+    this.imagePath = await getImageUrl(`eboard/${this.$props.imageName}`);
+  }
 };
 </script>
 
@@ -55,8 +38,8 @@ export default {
 * {
   transition: all 500ms ease-in-out;
 }
+
 .card {
-  /* background-color: coral; */
   margin-top: 0.8rem;
   border-radius: 8px;
   text-align: center;
@@ -68,12 +51,7 @@ export default {
   transform: translateY(1.6rem);
   height: 100%;
 }
-/* .currEboard {
-  cursor: pointer;
-}
-.currEboard img {
-  filter: grayscale(55%);
-} */
+
 img {
   width: 20rem;
   height: 20rem;
@@ -81,28 +59,13 @@ img {
   border-radius: 8px;
 }
 
-/* .selected {
-  box-shadow: 0px 0px 7.5px 1px red;
-  opacity: 1;
-  transform: translateY(0rem);
-  height: 100%;
-}
-.selected img {
-  filter: grayscale(0%);
-  border-radius: 8px 8px 0px 0px;
-} */
-
-@media (max-width: 600px) {
-  /* .card {
-    width: 12rem;
-  } */
-}
 @media (max-width: 600px) {
   img {
     width: 18rem;
     height: 18rem;
   }
 }
+
 @media (max-width: 400px) {
   img {
     width: 15rem;

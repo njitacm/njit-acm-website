@@ -17,10 +17,11 @@
 </template>
 
 <script>
+
 export default {
   computed: {
     imagePath() {
-      return require("../assets/eboard/" + this.$props.imageName);
+      return new URL(`../assets/eboard/${this.$props.imageName}`, import.meta.url).href;
     },
   },
   props: [

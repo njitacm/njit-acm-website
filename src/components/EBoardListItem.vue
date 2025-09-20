@@ -10,19 +10,9 @@
 </template>
 
 <script>
+import { getImageUrl } from '../util';
+
 export default {
-  data() {
-    return {
-      imagePath: require("../assets/eboard/" + this.$props.imageName),
-    };
-  },
-  computed() {
-    return {
-      descExists() {
-        return this.$props.incumbentDesc !== "";
-      },
-    }
-  },
   props: [
     "position",
     "positionDesc",
@@ -32,6 +22,14 @@ export default {
     "isSelected",
     "currEboard",
   ],
+  data() {
+    return {
+      imagePath: "",
+    };
+  },
+  async mounted() {
+    this.imagePath = await getImageUrl(`eboard/${this.$props.imageName}`);
+  },
 };
 </script>
 

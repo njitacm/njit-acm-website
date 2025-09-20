@@ -8,7 +8,7 @@
             Tutoring from 11:30 AM - 6:30 PM. Walk-in only, no reservations. Available in both in-person and virtual.
           </p>
         </div>
-        <div class="meet-link-button-and-dropdown">
+        <div class="buttons-and-dropdown">
           <PrimaryButton class="meet-link-button">
             <a href="https://meet.google.com/tng-yefx-fqd" target="_blank">Google Meet Link</a>
           </PrimaryButton>
@@ -442,10 +442,6 @@ export default {
   padding: 1rem 2rem;
 }
 
-.tutoring-sidebar h1.name {}
-
-.tutoring-sidebar h1 {}
-
 .tutoring-sidebar h2 {
   width: 65%;
 }
@@ -464,20 +460,14 @@ export default {
   }
 }
 
-@media (max-width: 800px) {
-  h1.title {}
-
-  .tutoring-calendar th {}
-}
-
 /* meet link and dropdown */
-.meet-link-button-and-dropdown {
+.buttons-and-dropdown {
   display: flex;
   gap: 1rem;
   flex-grow: 2;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
+  justify-content: right;
 }
 
 div.dropdown {
@@ -485,12 +475,13 @@ div.dropdown {
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 1em;
+  gap: 0.5em;
   justify-content: center;
 }
 
 .dropdown select {
-  padding: 0.5em;
+  height: 50px;
+  padding: 1em;
   border-radius: var(--border-radius);
   cursor: pointer;
 }
@@ -518,7 +509,7 @@ option {
 }
 
 .reset-button {
-  height: 2em;
+  height: 50px;
   cursor: pointer;
 }
 
@@ -535,7 +526,7 @@ option {
     width: 100%;
   }
 
-  .meet-link-button-and-dropdown {
+  .buttons-and-dropdown {
     flex-direction: column;
   }
 
@@ -611,8 +602,6 @@ main .details-panel {
   text-align: left;
 }
 
-.tutors-container p {}
-
 .select-for-details {
   text-align: center;
   margin: auto;
@@ -656,12 +645,7 @@ main .details-panel {
 }
 
 .tutoring-calendar td {
-  /* padding: 1rem; */
   border: 1px solid var(--bkg-color);
-}
-
-.tutoring-calendar thead th:not(:first-child) {
-  /* width: 20%; */
 }
 
 .tutoring-calendar button {
@@ -670,7 +654,6 @@ main .details-panel {
   height: 5rem;
   align-self: center;
   justify-self: center;
-  /* border-radius: var(--border-radius); */
   cursor: pointer;
   border: none;
 }
@@ -689,12 +672,6 @@ main .details-panel {
   .tutoring-calendar button:active {
     opacity: 0.75;
   }
-}
-
-@media (max-width: 850px) {
-  .tutoring-calendar button {}
-
-  .no-selection p {}
 }
 
 .v-enter-active,

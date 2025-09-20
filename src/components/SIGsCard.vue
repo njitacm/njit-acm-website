@@ -18,6 +18,7 @@
 </template>
 
 <script>
+
 export default {
   props: {
     name: String,
@@ -29,7 +30,7 @@ export default {
   },
   data() {
     return {
-      imagePath: require("../assets/sigs/" + this.$props.filename),
+      imagePath: new URL(`../assets/sigs/${this.$props.filename}`, import.meta.url).href,
     };
   }
 };

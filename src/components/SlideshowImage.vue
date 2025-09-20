@@ -6,6 +6,8 @@
 
 <script>
 // TODO: add photos
+import { getImageUrl } from '../util';
+
 export default {
   // dur in ms
   props: [ 'src', 'alt', 'dur' ],
@@ -16,29 +18,33 @@ export default {
       imgIndex: 0,
       currSrc: null,
       currBkgImg: null,
-
       transitionDur: 1000,
     }
   },
   methods: {
-    startSlideshow() {
+    async startSlideshow() {
+      // const path = "HomePage/Fall_2024_GBM.jpg";
+      // this.currSrc = await getImageUrl(path);
       if (!Array.isArray(this.$props.src)) {
-        this.currSrc = new URL('../assets/' + this.$props.src, import.meta.url);
+        this.currSrc = await getImageUrl(this.$props.src);
         return;
       }
       if (this.firstTime) {
-        this.currSrc = new URL('../assets/' + this.$props.src[this.imgIndex], import.meta.url);
-        this.currBkgImg = new URL('../assets/' + this.$props.src[this.imgIndex], import.meta.url);
+        this.currSrc = await getImageUrl(this.$props.src[this.imgIndex]);
+        this.currBkgImg = await getImageUrl(this.$props.src[this.imgIndex]);
         this.firstTime = false;
       }
-
-      this.interval = setInterval(() => {
-        this.currBkgImg = new URL('../assets/' + this.$props.src[this.imgIndex], import.meta.url);
+      
+      this.interval = setInterval(async () => {
+        this.currBkgImg = await getImageUrl(this.$props.src[this.imgIndex]);
         this.$refs.img.style.opacity = "0";
         
-        setTimeout(() => {
-          this.currSrc = new URL('../assets/' + this.$props.src[this.imgIndex], import.meta.url);
-          this.$refs.img.style.opacity = "1";
+        setTimeout(async () => {
+          this.currSrc = await getImageUrl(this.$props.src[this.imgIndex]);
+          
+          if (this.$refs.img) {
+            this.$refs.img.style.opacity = "1";
+          }
         }, this.transitionDur);
 
         this.imgIndex = this.getNextIndex(this.imgIndex);
@@ -57,7 +63,7 @@ export default {
     },
   },
   mounted() {
-    this.firsTime = true;
+    this.firstTime = true;
     this.$refs.img.style.transition = 'opacity ' + (this.transitionDur/1000) + 's linear';
     this.startSlideshow();
   },
