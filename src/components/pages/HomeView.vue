@@ -6,7 +6,7 @@
       <HorizontalSection
         imagePath="HomePage/Fall_2024_GBM.jpg"
         class="border-bottom"
-        keepFloating="true"
+        :keepFloating="true"
       >
         <template v-slot:title>Who We Are</template>
         <template v-slot:content>
@@ -25,7 +25,7 @@
       <HorizontalSection
         imagePath="HomePage/HackNJIT2023Crowd.jpg"
         class="border-bottom"
-        keepFloating="true"
+        :keepFloating="true"
       >
         <template v-slot:title>What We Offer</template>
         <template v-slot:content>
@@ -46,7 +46,7 @@
       <HorizontalSection
         imagePath="HomePage/TheOffice.jpg"
         class="border-bottom"
-        keepFloating="true"
+        :keepFloating="true"
       >
         <template v-slot:title>The Office</template>
         <template v-slot:content>
