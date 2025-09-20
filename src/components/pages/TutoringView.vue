@@ -8,7 +8,7 @@
             Tutoring from 11:30 AM - 6:30 PM. Walk-in only, no reservations. Available in both in-person and virtual.
           </p>
         </div>
-        <div class="meet-link-button-and-dropdown">
+        <div class="buttons-and-dropdown">
           <PrimaryButton class="meet-link-button">
             <a href="https://meet.google.com/tng-yefx-fqd" target="_blank">Google Meet Link</a>
           </PrimaryButton>
@@ -471,13 +471,13 @@ export default {
 }
 
 /* meet link and dropdown */
-.meet-link-button-and-dropdown {
+.buttons-and-dropdown {
   display: flex;
   gap: 1rem;
   flex-grow: 2;
   flex-shrink: 0;
   align-items: center;
-  justify-content: space-between;
+  justify-content: right;
 }
 
 div.dropdown {
@@ -485,12 +485,13 @@ div.dropdown {
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 1em;
+  gap: 0.5em;
   justify-content: center;
 }
 
 .dropdown select {
-  padding: 0.5em;
+  height: 50px;
+  padding: 1em;
   border-radius: var(--border-radius);
   cursor: pointer;
 }
@@ -518,7 +519,7 @@ option {
 }
 
 .reset-button {
-  height: 2em;
+  height: 50px;
   cursor: pointer;
 }
 
@@ -535,7 +536,7 @@ option {
     width: 100%;
   }
 
-  .meet-link-button-and-dropdown {
+  .buttons-and-dropdown {
     flex-direction: column;
   }
 

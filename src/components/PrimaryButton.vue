@@ -29,6 +29,7 @@ button {
   display: block;
   align-content: center;
   margin: 0;
+  padding: 0 1em;
   text-decoration: none;
   font-weight: bold;
   color: var(--text-color);
