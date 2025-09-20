@@ -18,6 +18,8 @@
 </template>
 
 <script>
+import { getAssetUrl } from '../util';
+
 export default {
   props: {
     name: String,
@@ -29,7 +31,7 @@ export default {
   },
   data() {
     return {
-      imagePath: require("../assets/sigs/" + this.$props.filename),
+      imagePath: getAssetUrl(`assets/sigs/${this.$props.filename}`),
     };
   }
 };

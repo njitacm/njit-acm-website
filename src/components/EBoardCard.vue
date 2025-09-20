@@ -13,11 +13,13 @@
 </template>
 
 <script>
+import { getAssetUrl } from '../util';
+
 export default {
   // emits: ["selectEboard"],
   data() {
     return {
-      imagePath: require("../assets/eboard/" + this.$props.imageName),
+      imagePath: getAssetUrl(`assets/eboard/${this.$props.imageName}`),
     };
   },
   computed() {

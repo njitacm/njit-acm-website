@@ -1,6 +1,6 @@
 <template>
   <div class="event-card">
-    <img :src="require('../assets/EventsPage/' + imageUrl)" class="event-img">
+    <img :src="imageSrc" class="event-img">
     <div class="event-text">
       <h1>{{ name }}</h1>
       <h2><span class="red">When?</span> {{ datetime }}</h2>
@@ -20,11 +20,17 @@
 </template>
 
 <script>
+import { getAssetUrl } from '../util';
 import PrimaryButton from './PrimaryButton.vue';
 
 export default {
   components: { PrimaryButton },
   props: ['name', 'date', 'time', 'datetime', 'location', 'url', 'imageUrl', 'desc', 'links'],
+  data() {
+    return {
+      imageSrc: getAssetUrl(`assets/EventsPage/${this.$props.imageUrl}`),
+    };
+  },
   mounted() {
     console.log(this.$props.imageUrl)
   }

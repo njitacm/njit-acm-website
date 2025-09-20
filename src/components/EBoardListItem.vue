@@ -10,10 +10,12 @@
 </template>
 
 <script>
+import { getAssetUrl } from '../util';
+
 export default {
   data() {
     return {
-      imagePath: require("../assets/eboard/" + this.$props.imageName),
+      imagePath: getAssetUrl(`assets/eboard/${this.$props.imageName}`),
     };
   },
   computed() {

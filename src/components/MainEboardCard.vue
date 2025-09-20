@@ -20,6 +20,7 @@
 
 <script>
 import { store } from "../store.js";
+import { getAssetUrl } from "../util.js";
 
 export default {
   props: ["position", "name", "personalDesc", "imageName", "id"],
@@ -31,11 +32,11 @@ export default {
   computed: {
     imagePath() {
       try {
-        return require("../assets/eboard/" + this.$props.imageName);
+        return getAssetUrl(`assets/eboard/${this.$props.imageName}`);
       } catch (err) {
         console.log(err);
         console.log('resorting to the blank-pfp instead')
-        return require("../assets/blank-pfp.png");
+        return getAssetUrl("assets/blank-pfp.png");
       }
     },
   },
