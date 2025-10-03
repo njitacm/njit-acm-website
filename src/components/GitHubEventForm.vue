@@ -4,7 +4,7 @@
         <h2>[Date, Location]</h2>
         <p>[Description]</p>
         <PrimaryButton>
-            <a href="[google form link here]">Sign Up</a>
+            <a href="[google form link here]" target="_blank">Sign Up</a>
         </PrimaryButton>
     </div>
 </template>
@@ -19,7 +19,19 @@ export default {
 
 <style scoped>
 .GitHubEventForm {
-    display: flex;
-    gap: 4px;
+    display: grid;
+    gap: 16px;
+    max-width: 500px;
+    background-color: rgba(var(--bkg-color-nums), 0.5);
+    backdrop-filter: blur(25px);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    padding: 16px;
+}
+
+@media(max-width: 500px) {
+    h1 {
+        font-size: 1.875em;
+    }
 }
 </style>

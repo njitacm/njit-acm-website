@@ -1,16 +1,19 @@
 <template>
   <header @mousedown="pause" @mouseup="play" @mouseleave="play">
-    <div id="header-centerpiece">
-      <img src="../assets/logos/NJIT_ACM_LOGO.svg" alt="NJIT ACM Logo" id="main-logo" />
-    </div>
     <div class="background-container">
       <div ref="bg1" class="bg1" :style="styles"></div>
+      <div class="content">
+        <img src="../assets/logos/NJIT_ACM_LOGO.svg" alt="NJIT ACM Logo" id="main-logo" />
+        <GitHubEventForm id="GitHubEventForm" />
+      </div>
     </div>
   </header>
 </template>
 
 <script>
+import GitHubEventForm from "./GitHubEventForm.vue";
 export default {
+  components: { GitHubEventForm },
   data() {
     return {
       styles: { animationPlayState: 'running' }
@@ -31,7 +34,8 @@ export default {
 /* 1920px SCREEN WIDTH; NORMAL RULES */
 header {
   width: 100vw;
-  max-height: calc(100vh - var(--nav-height));
+  height: calc(100vh - var(--nav-height));
+  /* max-height: calc(100vh - var(--nav-height)); */
   position: relative;
   margin-bottom: 1rem;
   border-bottom: var(--hor-sec-img-border-width) solid red;
@@ -39,80 +43,64 @@ header {
   overflow: hidden;
 }
 
-header>img {
-  position: absolute;
-  z-index: -5;
-}
-
-h2 {
-}
-
-#header-centerpiece {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 0.8rem;
-  text-align: center;
-  z-index: 50;
-  animation: throb 3s ease-in-out infinite;
-}
-
-/* text-shadow: 1px 1px 0 #000,
-    -1px 1px 0 #000,
-    1px -1px 0 #000,
-    -1px -1px 0 #000,
-    0px 1px 0 #000,
-    0px -1px 0 #000,
-    -1px 0px 0 #000,
-    1px 0px 0 #000,
-    2px 2px 0 #000,
-    -2px 2px 0 #000,
-    2px -2px 0 #000,
-    -2px -2px 0 #000,
-    0px 2px 0 #000,
-    0px -2px 0 #000,
-    -2px 0px 0 #000,
-    2px 0px 0 #000,
-    1px 2px 0 #000,
-    -1px 2px 0 #000,
-    1px -2px 0 #000,
-    -1px -2px 0 #000,
-    2px 1px 0 #000,
-    -2px 1px 0 #000,
-    2px -1px 0 #000,
-    -2px -1px 0 #000; */
-#header-centerpiece>h2 {
-  text-shadow: 0px 0px 20px black;
-  text-align: center;
-  color: white;
+#GitHubEventForm {
+  /* position: absolute; */
+  z-index: 10;
 }
 
 #main-logo {
-  width: 90%;
-  max-width: 500px;
+  width: 35vw;
   opacity: 0.8;
 }
 
 .background-container {
   display: flex;
   flex-wrap: nowrap;
-  width: 100vw;
-  height: 56.25vw;
+  /* width: 100vw; */
+  height: 100%;
   overflow: hidden;
+}
+
+.content {
+  position: absolute;
+  /* transform-origin: 50% 50%; */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75vw;
+  height: 75vh;
 }
 
 .bg1 {
   background-image: url("../assets/HomePage/photo-collage.png");
   position: relative;
-
   width: 100vw;
-  height: 56.25vw;
+  height: 100%;
   background-size: 100%;
-
   object-fit: fill;
+}
+
+@media(max-width: 1000px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media(max-width: 900px) {
+  #main-logo {
+    width: 50vw;
+  }
+}
+
+@media(max-width: 500px) {
+  #main-logo {
+    width: 75vw;
+  }
 }
 
 @media(prefers-reduced-motion: no-preference) {
@@ -155,21 +143,4 @@ h2 {
   }
 }
 
-/* @media (max-width: 1550px) {
-  .background-container {
-  }
-  .bg1 {
-  }
-} */
-@media (max-width: 1100px) {
-  #main-logo {
-    width: 71.25%;
-  }
-}
-
-@media (max-width: 850px) {
-  #main-logo {
-    width: 60.25%;
-  }
-}
 </style>

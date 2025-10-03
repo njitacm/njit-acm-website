@@ -1,7 +1,6 @@
 <template>
   <div>
     <HomePageHeader />
-    <GitHubEventForm />
     <!-- Horizontal Sections -->
     <section class="outer-container">
       <HorizontalSection imagePath="HomePage/Fall_2024_GBM.jpg" class="border-bottom" :keepFloating="true">
@@ -59,7 +58,6 @@
 <script>
 import HomePageHeader from "../HomePageHeader.vue";
 import HorizontalSection from "../HorizontalSection.vue";
-import GitHubEventForm from "../GitHubEventForm.vue";
 import FAQ from "../FAQ.vue";
 
 export default {
@@ -67,7 +65,7 @@ export default {
   props: {
     msg: String,
   },
-  components: { HomePageHeader, HorizontalSection, FAQ, GitHubEventForm },
+  components: { HomePageHeader, HorizontalSection, FAQ },
   data() {
     return {
       qas: [

@@ -39,6 +39,7 @@ export default {
 
   /* Override default variables for light theme */
   --bkg-color: whitesmoke;
+  --bkg-color-nums: 245, 245, 245;
   --bkg-color-a625: rgba(245, 245, 245, 0.625);
   --red: rgb(204, 0, 0);
   --light-red: hsl(0, 100%, 90%);
@@ -62,6 +63,7 @@ export default {
   --card-bg-color: #2d2d2d;
 
   --bkg-color: #1a1a1a;
+  --bkg-color-nums: 26, 26, 26;
   --bkg-color-a625: rgba(26, 26, 26, 0.625);
   --red: rgb(255, 133, 133);
   --btn-red: rgb(190, 52, 52);
