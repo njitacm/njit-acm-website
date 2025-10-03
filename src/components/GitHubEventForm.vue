@@ -19,6 +19,8 @@ export default {
 
 <style scoped>
 .GitHubEventForm {
+    opacity: 0;
+    transform: translateY(-10px);
     display: grid;
     gap: 16px;
     max-width: 500px;
@@ -27,6 +29,19 @@ export default {
     border-radius: var(--border-radius);
     overflow: hidden;
     padding: 16px;
+    animation: appear 500ms ease 500ms forwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(2.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @media(max-width: 500px) {
