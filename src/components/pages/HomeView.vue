@@ -1,13 +1,10 @@
 <template>
   <div>
     <HomePageHeader />
+    <GitHubEventForm />
     <!-- Horizontal Sections -->
     <section class="outer-container">
-      <HorizontalSection
-        imagePath="HomePage/Fall_2024_GBM.jpg"
-        class="border-bottom"
-        :keepFloating="true"
-      >
+      <HorizontalSection imagePath="HomePage/Fall_2024_GBM.jpg" class="border-bottom" :keepFloating="true">
         <template v-slot:title>Who We Are</template>
         <template v-slot:content>
           We are a part of the national organization, Association for Computing
@@ -22,11 +19,7 @@
           part of.
         </template>
       </HorizontalSection>
-      <HorizontalSection
-        imagePath="HomePage/HackNJIT2023Crowd.jpg"
-        class="border-bottom"
-        :keepFloating="true"
-      >
+      <HorizontalSection imagePath="HomePage/HackNJIT2023Crowd.jpg" class="border-bottom" :keepFloating="true">
         <template v-slot:title>What We Offer</template>
         <template v-slot:content>
           NJIT ACM offers many things to club members and other students.
@@ -43,11 +36,7 @@
           asking any e-board member.
         </template>
       </HorizontalSection>
-      <HorizontalSection
-        imagePath="HomePage/TheOffice.jpg"
-        class="border-bottom"
-        :keepFloating="true"
-      >
+      <HorizontalSection imagePath="HomePage/TheOffice.jpg" class="border-bottom" :keepFloating="true">
         <template v-slot:title>The Office</template>
         <template v-slot:content>
           While ACM is a professional organization, we also pride ourselves on
@@ -70,13 +59,15 @@
 <script>
 import HomePageHeader from "../HomePageHeader.vue";
 import HorizontalSection from "../HorizontalSection.vue";
+import GitHubEventForm from "../GitHubEventForm.vue";
 import FAQ from "../FAQ.vue";
+
 export default {
   name: "HelloWorld",
   props: {
     msg: String,
   },
-  components: { HomePageHeader, HorizontalSection, FAQ },
+  components: { HomePageHeader, HorizontalSection, FAQ, GitHubEventForm },
   data() {
     return {
       qas: [
@@ -117,6 +108,7 @@ export default {
   margin-left: auto;
   margin-right: auto;
 }
+
 .border-bottom {
   border-bottom: 4px solid red;
 }
