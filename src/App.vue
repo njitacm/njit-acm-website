@@ -2,11 +2,11 @@
   <!-- <div id="grand-container"> -->
   <TheHeader />
   <div class="main-body">
-    <router-view v-slot="{ Component }" class="router-view">
+    <RouterView v-slot="{ Component }" class="router-view">
       <transition name="fade" mode="out-in">
         <component :is="Component" class="page" />
       </transition>
-    </router-view>
+    </RouterView>
     <TheFooter />
   </div>
   <!-- </div> -->
