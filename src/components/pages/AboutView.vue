@@ -111,6 +111,9 @@ export default {
         case "Event Master":
           path = "event_master.png";
           break;
+        case "Hack Master":
+          path = "hack_master.png";
+          break;
         default:
           break;
       }
@@ -137,12 +140,9 @@ export default {
     },
     sortEboard(eboard) {
       // constitution order
-      const constOrd = ["President", "Vice President", "Treasurer",
-        "Secretary", "Public Relations", "Webmaster",
-        "Graphic Designer", "SIG Master", "Event Master"];
       const sorted = [];
 
-      for (const role of constOrd) {
+      for (const role of this.eboardPositions) {
         const officer = eboard.find(officer => officer.Role.toLowerCase() === role.toLowerCase());
 
         if (officer) {
@@ -177,16 +177,20 @@ export default {
       showEboard: {
         2024: true
       },
+      // positions in constitution order
       eboardPositions: [
         "President",
         "Vice President",
-        "Secretary",
         "Treasurer",
-        "Graphic Designer",
-        "Webmaster",
-        "Event Master",
+        "Secretary",
         "Public Relations",
+        "Webmaster",
+        "Graphic Designer",
+        "SIG Master",
+        "Event Master",
+        "Hack Master"
       ],
+      // TODO: add section with general descriptions
       eboardDescs: {
         President:
           "The President of ACM is responsible for leading the club. You'll see them take center stage during our general body meetings with a gavel passed down through generations of Presidents. The President presides over all functions of the club, with all other e-board officers reporting directly to and being managed by them.",
@@ -329,8 +333,7 @@ header {
   color: var(--bkg-color);
 }
 
-h2:not(.section-header) {
-}
+h2:not(.section-header) {}
 
 .svg {
   transition: all 0.25s ease-in-out;
@@ -400,8 +403,7 @@ h2:not(.section-header) {
     margin: 0 1rem;
   }
 
-  h2:not(.section-header) {
-  }
+  h2:not(.section-header) {}
 
   .eboard-container>div {
     grid-template-columns: repeat(1, auto);
