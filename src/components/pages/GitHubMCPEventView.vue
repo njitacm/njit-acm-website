@@ -9,7 +9,7 @@
     <h4 class="location"></h4>
     <p class="description">Join us for Season 5 of GitHub’s Season of AI! Learn how to use MCP (the Model Context Protocol) to connect AI models with real-world tools, data, and environments.</p>
     </div>
-    <HorizontalSection imagePath="EventsPage/Season-of-AI-MCP-1.png">
+    <HorizontalSection>
       <template v-slot:title>MCP</template>
       <template v-slot:content>
         <p>

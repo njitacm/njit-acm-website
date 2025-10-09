@@ -23,8 +23,10 @@ export default {
   },
   methods: {
     async startSlideshow() {
-      // const path = "HomePage/Fall_2024_GBM.jpg";
-      // this.currSrc = await getImageUrl(path);
+      if (!this.$props.src) {
+        return;
+      }
+
       if (!Array.isArray(this.$props.src)) {
         this.currSrc = await getImageUrl(this.$props.src);
         return;
@@ -52,8 +54,9 @@ export default {
       }, this.$props.dur);
     },
     stopSlideshow() {
-      if (this.interval)
+      if (this.interval) {
         clearInterval(this.interval)
+      }
     },
     getNextIndex(i) {
       if (i < this.$props.src.length - 1)
