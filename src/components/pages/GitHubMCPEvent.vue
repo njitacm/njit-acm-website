@@ -16,7 +16,8 @@
         Hone your technical and AI skills in a hands on workshop, designed to teach you the ins and outs of MCP, including, but not limited to:
         </p>
         <ul>
-            <li>What is the Model Context Protocol and its significance in AI Pipelines</li>
+            <li>What is the Model Context Protocol</li>
+            <li>How can you use MCP in AI Pipelines</li>
             <li>Environment setup, basic servers/clients, integration</li>
             <li>Creating your first MCP server</li>
             <li>Using AI Toolkit with MCP</li>
