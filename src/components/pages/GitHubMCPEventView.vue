@@ -4,8 +4,8 @@
     <div class="content">
       <h1>GitHub Season of AI x ACM</h1>
       <div class="info-container">
-        <h3 class="time-date">Time Date</h3>
-        <h3 class="location">Location</h3>
+        <h3 class="time-date">Nov 21, 2025</h3>
+        <h3 class="location">GITC 3700</h3>
       </div>
       <p class="description">
         Join us for Season 5 of GitHub’s Season of AI! Learn how to use MCP (the Model Context
