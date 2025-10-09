@@ -1,73 +1,101 @@
 <template>
-  <div class="event-container">
-    <div class="mcp_banner">  
-      <img src = "../../assets/EventsPage/SoAI_MCP_Banner_1_No_Logo.png" alt="MCP_Banner">
-    </div>
+  <div class="event-container outer-container">
+    <img src="../../assets/EventsPage/SoAI_MCP_Banner_1_No_Logo.png" class="mcp-banner" alt="MCP_Banner">
     <div class="content">
-    <h1>GitHub Season of AI x ACM</h1>
-    <h3 class="time-date"></h3>
-    <h4 class="location"></h4>
-    <p class="description">Join us for Season 5 of GitHub’s Season of AI! Learn how to use MCP (the Model Context Protocol) to connect AI models with real-world tools, data, and environments.</p>
+      <h1>GitHub Season of AI x ACM</h1>
+      <div class="info-container">
+        <h3 class="time-date">Time Date</h3>
+        <h3 class="location">Location</h3>
+      </div>
+      <p class="description">
+        Join us for Season 5 of GitHub’s Season of AI! Learn how to use MCP (the Model Context
+        Protocol) to connect AI models with real-world tools, data, and environments.
+      </p>
     </div>
-    <HorizontalSection>
-      <template v-slot:title>MCP</template>
-      <template v-slot:content>
-        <p>
-        Hone your technical and AI skills in a hands on workshop, designed to teach you the ins and outs of MCP, including, but not limited to:
-        </p>
-        <ul>
-            <li>What is the Model Context Protocol and its significance in AI Pipelines</li>
-            <li>Environment setup, basic servers/clients, integration</li>
-            <li>Creating your first MCP server</li>
-            <li>Using AI Toolkit with MCP</li>
-            <li>Techniques for effective context engineering</li>
-          </ul>
-        <p>
+    <h2 class="section-header">MCP</h2>
+    <div class="section-container">
+      <p>
+        Hone your technical and AI skills in a hands on workshop, designed to teach you the ins and outs of MCP,
+        including, but not limited to:
+      </p>
+      <ul>
+        <li>What is the Model Context Protocol and its significance in AI Pipelines</li>
+        <li>Environment setup, basic servers/clients, integration</li>
+        <li>Creating your first MCP server</li>
+        <li>Using AI Toolkit with MCP</li>
+        <li>Techniques for effective context engineering</li>
+      </ul>
+      <p>
+        <PrimaryButton>
           <a href="https://forms.gle/scUjiszCSeEGu68fA" target="_blank">Sign Up Today!</a>
-        </p>
-      </template>
-    </HorizontalSection>
+        </PrimaryButton>
+      </p>
+    </div>
   </div>
 </template>
 
 <script setup>
-import HorizontalSection from "../HorizontalSection.vue";
-
+import PrimaryButton from "../PrimaryButton.vue";
 </script>
 
-<style>
-
-.mcp_banner {
-  width: 85vw;
-  margin: 16px auto;
-}
-.mcp_banner img {
+<style scoped>
+.mcp-banner {
+  height: min-content;
+  margin: 16px 0;
   width: 100%;
-  border-radius: 8px;
-}
-
-.content {
-  width: 85vw;
-  text-align: center;
-  margin: 16px auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
+  border-radius: var(--border-radius);
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3.5em;
 }
+
+.content {
+  background-color: #ffffff;
+  padding: 32px;
+  border-radius: var(--border-radius);
+  max-width: 800px;
+  text-align: center;
+  display: grid;
+  gap: 16px;
+  margin: 0 auto;
+}
+
+[data-theme="dark"] .content {
+  background-color: #272727;
+}
+
+.time-date,
+.location {
+  color: var(--red);
+}
+
+.content p {
+  text-align: left;
+}
+
+.info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
 
 ul {
-  padding-left: 32px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  line-height: 2em;
+  list-style-position: inside;
 }
 
-ul li {
-  font-size: 1.25rem;
+.section-container {
+  display: grid;
+  gap: 16px;
 }
 
+@media(max-width: 500px) {
+  .mcp-banner {
+    margin: 0px;
+    border-radius: 0;
+  }
+}
 </style>
