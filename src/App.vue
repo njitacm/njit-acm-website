@@ -146,6 +146,7 @@ p, li {
 }
 
 .outer-container {
+  margin: 0 auto;
   width: 80%;
   max-width: 1500px;
   margin-bottom: 10rem !important;
