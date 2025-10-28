@@ -1,14 +1,13 @@
 <template>
   <div class="event-card">
-    <img :src="imageSrc" class="event-img">
+    <img v-if="imageUrl !== ''" :src="imageSrc" class="event-img">
     <div class="event-text">
       <h1>{{ name }}</h1>
-      <h2><span class="red">When?</span> {{ datetime }}</h2>
-      <h2><span class="red">Where?</span> {{ location }}</h2>
-      <p class="desc">{{ desc }}</p>
-      <a :href="url"></a>
+      <h2 vif="datetime !== ''"><span class="red">When?</span> {{ datetime }}</h2>
+      <h2 v-if="location !== ''"><span class="red">Where?</span> {{ location }}</h2>
+      <p class="desc" v-if="desc !== ''">{{ desc }}</p>
     </div>
-    <div v-if="links">
+    <div v-if="links && Object.keys(links).length > 0">
       <div v-for="[text, link] in Object.entries(links)" :key="link.id" class="links">
         <PrimaryButton class="primary-button">
           <a :href="link.link" target="_blank" class="button-link">{{ text }}</a>
@@ -24,7 +23,7 @@ import PrimaryButton from './PrimaryButton.vue';
 
 export default {
   components: { PrimaryButton },
-  props: ['name', 'date', 'time', 'datetime', 'location', 'url', 'imageUrl', 'desc', 'links'],
+  props: ['name', 'date', 'time', 'datetime', 'location', 'imageUrl', 'desc', 'links'],
   data() {
     return {
       imageSrc: new URL(`../assets/EventsPage/${this.$props.imageUrl}`, import.meta.url).href,
@@ -48,7 +47,7 @@ export default {
 }
 
 .event-text {
-  padding: 1rem 2rem;
+  padding: 32px;
   display: grid;
   row-gap: 1rem;
   grid-template-columns: 100%;

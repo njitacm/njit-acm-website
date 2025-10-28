@@ -56,9 +56,9 @@ export default {
     "fa2025": [
         {
             "id": id++,
-            "name": "Spooky ",
+            "name": "Spooky CTF",
             "location": "",
-            "date": "Fri, Oct 21",
+            "date": "Fri, Oct 31",
             "time": "11:30 AM - 1 PM",
             "image": "",
             "desc": "",
