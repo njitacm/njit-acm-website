@@ -1,3 +1,4 @@
+let id = 4;
 /*
     "date" or "dates" [...]
     "time" or "times" [...] (indices match the dates, if it's a multi-day event, split up)
@@ -11,7 +12,7 @@ export default {
             "date": "Thu, Feb 20",
             "time": "7-9 PM",
             "image": "sp2025/BuzzerBeater3.png",
-            "desc": "Come enjoy a fun night of guessing song titles before your opponent in a tournament style! Do you have what it takes to win?",        
+            "desc": "Come enjoy a fun night of guessing song titles before your opponent in a tournament style! Do you have what it takes to win?",
         },
         {
             "id": 1,
@@ -30,7 +31,7 @@ export default {
             "name": "Jersey CTF V",
             "location": "Naimoli Tennis Center, NJIT",
             "dates": ["Sat, Mar 29", "Sun, Mar 30"],
-            "times": [{"start": "10 AM"}, {"end": "3:30 PM"}],
+            "times": [{ "start": "10 AM" }, { "end": "3:30 PM" }],
             "delimiter": " - ",
             "image": "sp2025/JCTFV_FullFlyer.png",
             "desc": "",
@@ -47,8 +48,22 @@ export default {
             "image": "sp2025/SpeedNetworking.png",
             "desc": "Drop by and meet people! Here, you will get to program your own NFC tag to make exchanging contacts as quick as a flash. Expand your network and mingle at this speed networking event! There will be free food and a photobooth to take pictures with your new pals.",
             "links": {
-                "RSVP Now": {"id": 0, "link": "https://njit.campuslabs.com/engage/event/11264412"},
-                "Add to Calendar": {"id": 1, "link": "https://njit.campuslabs.com/engage/event/11264412/googlepublish"}
+                "RSVP Now": { "id": 0, "link": "https://njit.campuslabs.com/engage/event/11264412" },
+                "Add to Calendar": { "id": 1, "link": "https://njit.campuslabs.com/engage/event/11264412/googlepublish" }
+            }
+        }
+    ],
+    "fa2025": [
+        {
+            "id": id++,
+            "name": "Spooky ",
+            "location": "",
+            "date": "Fri, Oct 21",
+            "time": "11:30 AM - 1 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
             }
         }
     ]
