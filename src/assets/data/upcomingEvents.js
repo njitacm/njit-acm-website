@@ -57,7 +57,7 @@ export default {
         {
             "id": id++,
             "name": "Spooky CTF",
-            "location": "",
+            "location": "GITC 3700",
             "date": "Fri, Oct 31",
             "time": "11:30 AM - 1 PM",
             "image": "",
@@ -65,6 +65,150 @@ export default {
             "links": {
                 
             }
-        }
+        },
+        {
+            "id": id++,
+            "name": "ALU Workshop",
+            "location": "GITC 3700",
+            "date": "Wed, Nov 5",
+            "time": "11:30 AM - 1 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "YWCC Registration",
+            "location": "GITC 3700",
+            "date": "Fri, Nov 7",
+            "time": "11:30 AM - 1 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "Speed Networking",
+            "location": "CC Atrium",
+            "date": "Mon, Nov 10",
+            "time": "7 - 8 PM",
+            "image": "",
+            "desc": "Take this opportunity to expand your network! Program your own NFC tag and mingle with your peers.",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "Create your own Discord Bot",
+            "location": "",
+            "date": "Wed, Nov 12",
+            "time": "2:30 - 4 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "ACM Election",
+            "location": "GITC 3700",
+            "date": "Fri, Nov 14",
+            "time": "11:30 AM - 1 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "Pathfinding Workshop",
+            "location": "",
+            "date": "Wed, Nov 19",
+            "time": "1 - 2 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "GitHub Season of AI: MCP",
+            "location": "GITC 3700",
+            "date": "Fri, Nov 21",
+            "time": "11:30 AM - 1 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "Parallel Processing Workshop",
+            "location": "",
+            "date": "Tue, Nov 25",
+            "time": "4 - 5 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "Battlesnake Series: Introduction to Web Development (#1)",
+            "location": "",
+            "date": "Mon, Dec 1",
+            "time": "6 - 7 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "Battlesnake Series: Introduction to Web Development (#2)",
+            "location": "",
+            "date": "Wed, Dec 3",
+            "time": "2:30 - 4 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "Battlesnake Series: Battlesnake",
+            "location": "GITC 3700",
+            "date": "Fri, Dec 5",
+            "time": "11:30 AM - 1 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "Build your own Joycon",
+            "location": "",
+            "date": "Fri, Dec 5",
+            "time": "6 - 7 PM",
+            "image": "",
+            "desc": "",
+            "links": {
+                
+            }
+        },
     ]
 };
