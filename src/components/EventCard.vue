@@ -43,7 +43,6 @@ export default {
 .event-card {
   border: var(--border-width) lightcoral solid;
   border-radius: var(--large-border-radius);
-  height: fit-content;
 }
 
 .event-text {
