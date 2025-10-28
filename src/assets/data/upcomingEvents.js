@@ -164,7 +164,7 @@ export default {
         },
         {
             "id": id++,
-            "name": "Battlesnake Series: Introduction to Web Development (#1)",
+            "name": "Battlesnake Series: Intro to Web Dev (#1)",
             "location": "",
             "date": "Mon, Dec 1",
             "time": "6 - 7 PM",
@@ -176,7 +176,7 @@ export default {
         },
         {
             "id": id++,
-            "name": "Battlesnake Series: Introduction to Web Development (#2)",
+            "name": "Battlesnake Series: Intro to Web Dev (#2)",
             "location": "",
             "date": "Wed, Dec 3",
             "time": "2:30 - 4 PM",
