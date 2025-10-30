@@ -176,6 +176,6 @@ export default [{ "Name": "Eduardo Preciado", "Role": "President", "UCID": "ejp9
     "Role": "Hack Master",
     "UCID": "erc",
     // "Major": "?",
-    // "Desc": "",
+    "Desc": "Hi! I'm Rain and I'm in my junior year studying computer science. In my free time I run a dnd game, play video games, and read books. I'm always looking to chat so swing by and say hi",
 }
 ]
