@@ -148,7 +148,7 @@ p, li, button {
 .outer-container {
   width: 80%;
   max-width: 1500px;
-  margin-bottom: 10rem !important;
+  margin-bottom: 64px;
 }
 
 .section-container {
@@ -173,7 +173,7 @@ button {
 .section-header {
   font-size: 2em;
   width: 100%;
-  margin: 2.5rem auto;
+  margin: 32px auto;
   padding-bottom: 0.5em;
   border-bottom: red 2px solid;
 }

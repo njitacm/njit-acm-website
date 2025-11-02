@@ -114,8 +114,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .outer-container {
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
 }
 .border-bottom {
   border-bottom: 4px solid red;

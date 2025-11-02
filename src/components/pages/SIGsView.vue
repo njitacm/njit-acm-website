@@ -100,8 +100,7 @@ export default {
 
 <style scoped>
 .outer-container {
-  margin: 0 auto;
-  margin-bottom: 10rem;
+  margin-inline: auto;
 }
 .sig-container {
   /* width: %; */

@@ -226,7 +226,7 @@ export default {
 
 <style scoped>
 .outer-container {
-  margin: 0 auto;
+  margin-inline: auto;
 }
 
 header.page-header {
