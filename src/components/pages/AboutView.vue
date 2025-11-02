@@ -37,7 +37,7 @@
           <h1>{{ year }} Eboard</h1>
           <span class="svg material-symbols-outlined" :class="{ open: showEboard[year] }">keyboard_arrow_down</span>
         </header>
-        <TransitionExpand>
+        <TransitionExpand :duration="500">
           <div class="eboard-container" :ref="year.toString()" v-show="showEboard[year]" v-if="year < 2024">
             <div class="spacer1"></div>
             <div class="container">

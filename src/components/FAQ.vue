@@ -5,13 +5,13 @@
         <button @click="selectItem(index + col.offset)" :class="{ selected : selectedItem === index + col.offset}">
           <p class="question">{{ item.title }}</p>
         </button>
-        <Transition-expand>
+        <TransitionExpand :duration="375">
           <div v-if="index + col.offset === selectedItem" class="answer-box">
             <p class="answer" v-if="index + col.offset === selectedItem">
               {{ item.content }}
             </p>
           </div>
-        </Transition-expand>
+        </TransitionExpand>
       </section>
     </div>
   </div>
