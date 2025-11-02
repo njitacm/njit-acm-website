@@ -1,9 +1,9 @@
 <template>
-  <div class="outer">
+  <div class="FAQ outer">
     <div class="inner" v-for="col in columns" :key="col">
       <section v-for="(item, index) in col.data" :key="item.title">
         <button @click="selectItem(index + col.offset)" :class="{ selected : selectedItem === index + col.offset}">
-          <p class="question">{{ item.title }}</p>
+          {{ item.title }}
         </button>
         <TransitionExpand :duration="375">
           <div v-if="index + col.offset === selectedItem" class="answer-box">
@@ -87,27 +87,32 @@ button {
   border: var(--text-color) 3px solid;
   border-radius: 8px;
   cursor: pointer;
-  transition: all var(--hover-speed) ease-in-out;
   color: var(--text-color);
 }
 
-button:not(.selected):hover {
-  background-color: var(--light-gray);
+@media(hover: hover) and (pointer: fine) {
+  button {
+    transition: background-color var(--hover-speed) ease;
+  }
+
+  button:not(.selected):hover {
+    background-color: var(--light-gray);
+  }
 }
+
+@media (pointer: coarse) {
+
+  button:not(.selected):active {
+    background-color: var(--light-gray);
+  }
+}
+
 
 button.selected {
-  background-color: black;
-  color: white;
+  background-color: var(--text-color);
+  color: var(--bkg-color);
 }
 
-[data-theme="dark"] button.selected {
-  background-color: white;
-  color: black;
-}
-
-p.question {
-  
-}
 .answer-box {
   overflow: hidden;
   text-overflow: clip;

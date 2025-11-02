@@ -119,7 +119,7 @@ html {
   overflow-x: hidden;
 }
 
-p, li {
+p, li, button {
   font-size: 1.25em;
 }
 
