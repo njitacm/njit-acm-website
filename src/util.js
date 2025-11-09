@@ -7,7 +7,7 @@ const IMAGES = import.meta.glob(
     ],
     // The 'eager: true' option loads all images at once,
     // which might cause performance issues for many images.
-    { eager: false, as: 'url' }
+    { eager: false, query: '?url', import: 'default' }
 );
 
 async function getImageUrl(name) {
