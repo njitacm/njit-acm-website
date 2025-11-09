@@ -5,7 +5,7 @@
       <div class="title">
         <div class="name-leader">
           <h3 class="name">{{ name }}</h3>
-          <h4 class="leader">Led by {{ leaders }}</h4>
+          <h4 class="leaders">Led by {{ leaders }}</h4>
         </div>
         <div class="loc-time">
           <h5 class="loc">{{ loc }}</h5>
@@ -70,7 +70,16 @@ export default {
   column-gap: 1rem;
 }
 
+.name {
+  font-size: 1.5em;
+}
+
+.leaders {
+  font-size: 1.1em;
+}
+
 .loc-time {
+  font-size: 1.1em;
   margin: auto 0;
 }
 
@@ -94,6 +103,7 @@ h4 {
   align-content: center;
   text-align: left;
   overflow: auto;
+  font-size: 1.1em;
   max-height: 20rem;
   background-color: var(--bkg-color);
 }
@@ -110,12 +120,6 @@ img {
 }
 
 @media (max-width: 775px) {
-  .name {}
-
-  .leader {}
-
-  div.desc {}
-
   .title {
     display: unset;
   }
