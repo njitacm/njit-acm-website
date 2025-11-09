@@ -1,6 +1,6 @@
 <template>
-  <div class="card" ref="card">
-    <img :src="imagePath" ref="img" />
+  <div class="card">
+    <img :src="imagePath" />
     <div class="content">
       <div class="title">
         <div class="name-leader">
@@ -12,7 +12,7 @@
           <h5 class="time">{{ time }}</h5>
         </div>
       </div>
-      <div class="desc" ref="desc">{{ desc }}</div>
+      <div class="desc">{{ desc }}</div>
     </div>
   </div>
 </template>
@@ -84,7 +84,8 @@ h4 {
   text-align: left;
 }
 
-.loc, .time {
+.loc,
+.time {
   text-align: right;
   font-style: italic;
 }
@@ -109,21 +110,24 @@ img {
 }
 
 @media (max-width: 775px) {
-  .name {
-  }
-  .leader {
-  }
-  div.desc {
-  }
+  .name {}
+
+  .leader {}
+
+  div.desc {}
+
   .title {
     display: unset;
   }
+
   .loc-time {
     display: grid;
     grid-template-columns: repeat(2, max-content);
     column-gap: 2rem;
   }
-  .loc, .time {
+
+  .loc,
+  .time {
     text-align: unset;
     font-weight: normal;
   }
