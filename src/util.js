@@ -20,11 +20,9 @@ async function getImageUrl(name) {
 
     // Call the importer function. This returns a Promise.
     const importer = IMAGES[imagePath];
-    console.log(importer());
     const module = await importer();
 
     // The resolved module will have a 'default' property with the URL.
-    console.log(module);
     return module;
 }
 
