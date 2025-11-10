@@ -133,8 +133,8 @@ export default {
             "location": "GITC 3700",
             "date": "Wed, Nov 19",
             "time": "3:00 - 4:30 PM",
-            "image": "",
-            "desc": "",
+            // "image": "fa2025/ALU_Workshop_Flyer.png",
+            "desc": "Learn, build, and tinker with your own Arithmetic Logic Unit hands on!",
             "links": {
                 
             }

@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { getImageUrl } from '../util';
 import PrimaryButton from './PrimaryButton.vue';
 
 export default {
@@ -23,11 +24,13 @@ export default {
   props: ['name', 'date', 'time', 'datetime', 'location', 'imageUrl', 'desc', 'links'],
   data() {
     return {
-      imageSrc: new URL(`../assets/EventsPage/${this.$props.imageUrl}`, import.meta.url).href,
+      imageSrc: "",
     };
   },
-  mounted() {
-    console.log(this.$props.imageUrl)
+  async mounted() {
+    if (this.$props.imageUrl) {
+      this.imageSrc = await getImageUrl(`EventsPage/${this.$props.imageUrl}`);
+    }
   }
 }
 </script>
@@ -51,7 +54,7 @@ export default {
 
 .event-img {
   width: 100%;
-  border-bottom: lightcoral var(--border-width) solid;
+  border-bottom: var(--gray) 1px solid;
   border-radius: calc(var(--large-border-radius) - var(--border-width)) calc(var(--large-border-radius) - var(--border-width)) 0 0;
 }
 
