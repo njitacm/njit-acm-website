@@ -1,5 +1,5 @@
 <template>
-  <div class="outer-container">
+  <div class="EventsView outer-container">
     <HorizontalSection imagePath="EventsPage/HackNJIT2023.jpg">
       <template v-slot:title>Events</template>
       <template v-slot:content>
@@ -19,10 +19,13 @@
       </template>
     </HorizontalSection>
     <h2 v-show="upcomingEvents.length" class="section-header">Upcoming Events</h2>
-    <div v-show="upcomingEvents.length" class="upcoming-events">
-      <EventCard v-for="event in upcomingEvents" :key="event.id" :name="event.name" :datetime="event.datetime"
-        :location="event.location" :imageUrl="event.image" :desc="event.desc" :links="event.links">
-      </EventCard>
+    <div class="upcoming-events">
+      <p>Event details are subject to change, so make sure to check back often!</p>
+      <div v-show="upcomingEvents.length" class="upcoming-events-grid">
+        <EventCard v-for="event in upcomingEvents" :key="event.id" :name="event.name" :datetime="event.datetime"
+          :location="event.location" :imageUrl="event.image" :desc="event.desc" :links="event.links">
+        </EventCard>
+      </div>
     </div>
     <h2 class="section-header">Events Calendar</h2>
     <EmbeddedCalendar
@@ -114,20 +117,24 @@ export default {
         },
       ],
       currYear: '2025',
-      upcomingEventsRaw: upcomingEventsData['sp2025'],
+      upcomingEventsRaw: upcomingEventsData['fa2025'],
       upcomingEvents: [],
       events: eventsJSON,
     };
   },
   methods: {
     isObject(o) {
-      return typeof(o) === 'object' && o !== null && !Array.isArray(o)
+      return typeof (o) === 'object' && o !== null && !Array.isArray(o)
     }
   }
 };
 </script>
 
 <style scoped>
+.EventsView {
+  --grid-side-padding: 32px;
+}
+
 .outer-container {
   margin: 0 auto;
 }
@@ -153,9 +160,6 @@ export default {
   margin: auto 0;
 }
 
-.no-events h1 {
-}
-
 .events-grid {
   display: grid;
   grid-template-rows: 1fr;
@@ -172,22 +176,21 @@ export default {
 }
 
 .upcoming-events {
-  margin-top: 4rem;
+  width: calc(100% - var(--grid-side-padding));
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 50%);
+  gap: 32px;
+}
+
+.upcoming-events p {
+  padding-inline: 32px;
+}
+
+.upcoming-events-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: auto auto;
   justify-content: space-around;
-}
-
-@media (max-width: 1800px) {
-  .events-grid {
-    grid-template-columns: repeat(3, 33%);
-  }
-}
-
-@media (max-width: 1400px) {
-  .events-grid {
-    grid-template-columns: repeat(2, 50%);
-  }
 }
 
 @media (max-width: 950px) {
@@ -196,21 +199,11 @@ export default {
     grid-template-columns: 80%;
   }
 
-  .events-grid {
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 80%;
-    justify-content: center;
-  }
 }
 
-@media (max-width: 650px) {
-
-  .upcoming-events {
-    grid-template-columns: 90%;
-  }
-
-  .events-grid {
-    grid-template-rows: auto;
+@media (max-width: 1000px) {
+  .upcoming-events-grid {
+    grid-template-columns: auto;
   }
 }
 </style>
