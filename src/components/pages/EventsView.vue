@@ -32,9 +32,7 @@
     <div>
       <h2 class="section-header">Annual Events</h2>
       <div class="main-events-container">
-        <MainEvent v-for="event in mainEvents" :key="event.title" :title="event.title" :desc="event.desc"
-          :imgName="event.imgName">
-        </MainEvent>
+        <MainEvent v-for="event in mainEvents" :key="event.title" v-bind="event" />
       </div>
     </div>
   </div>
@@ -42,7 +40,7 @@
 
 <script>
 import HorizontalSection from "../HorizontalSection.vue";
-import MainEvent from "../MainEvent.vue";
+import MainEvent from "../AnnualEvent.vue";
 import eventsJSON from "../../assets/data/events.json";
 import EventCard from "../EventCard.vue";
 import EmbeddedCalendar from "../EmbeddedCalendar.vue";
@@ -105,12 +103,15 @@ export default {
         {
           title: "HackNJIT",
           desc: "HackNJIT is a 24-hour hackathon at the New Jersey Institute ofTechnology, run by its ACM student chapter in conjunction with the Ying Wu College of Computing.",
-          imgName: "hacknjit.png",
+          links: {
+            "Learn More": "https://hacknjit.org/"
+          },
+          // imgName: "hacknjit.png",
         },
         {
           title: "JerseyCTF",
           desc: "JerseyCTF is a beginner-friendly Capture the Flag competition that aims to inspire interest in cybersecurity. Hosted by the NJIT ACM and NICC organizations and NJIT SCI program, it is geared towards students, beginners, and professionals alike.",
-          imgName: "jerseyctf.png",
+          // imgName: "jerseyctf.png",
         },
       ],
       currYear: '2025',
@@ -121,7 +122,7 @@ export default {
   },
   methods: {
     isObject(o) {
-      return typeof(o) === 'object' && o !== null && !Array.isArray(o)
+      return typeof (o) === 'object' && o !== null && !Array.isArray(o)
     }
   }
 };
@@ -153,9 +154,6 @@ export default {
   margin: auto 0;
 }
 
-.no-events h1 {
-}
-
 .events-grid {
   display: grid;
   grid-template-rows: 1fr;
@@ -165,10 +163,9 @@ export default {
 .main-events-container {
   margin-top: 5rem;
   justify-content: space-around;
-  gap: 5%;
+  gap: 32px;
   display: grid;
-  grid-template-rows: 400px;
-  grid-template-columns: 40% 40%;
+  grid-template-columns: auto auto;
 }
 
 .upcoming-events {
@@ -192,8 +189,7 @@ export default {
 
 @media (max-width: 950px) {
   .main-events-container {
-    grid-template-rows: 400px 400px;
-    grid-template-columns: 80%;
+    grid-template-columns: auto;
   }
 
   .events-grid {
