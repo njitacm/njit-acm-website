@@ -68,18 +68,6 @@ export default {
         },
         {
             "id": id++,
-            "name": "ALU Workshop",
-            "location": "GITC 3700",
-            "date": "Wed, Nov 5",
-            "time": "11:30 AM - 1 PM",
-            "image": "",
-            "desc": "",
-            "links": {
-                
-            }
-        },
-        {
-            "id": id++,
             "name": "YWCC Registration",
             "location": "GITC 3700",
             "date": "Fri, Nov 7",
@@ -99,17 +87,18 @@ export default {
             "image": "",
             "desc": "Take this opportunity to expand your network! Program your own NFC tag and mingle with your peers.",
             "links": {
-                
+                "RSVP now": "https://njit.campuslabs.com/engage/event/11876614",
+                "Add to calendar": "https://njit.campuslabs.com/engage/event/11876614/googlepublish"
             }
         },
         {
             "id": id++,
-            "name": "Create your own Discord Bot",
+            "name": "Create Your Own Discord Bot",
             "location": "",
             "date": "Wed, Nov 12",
             "time": "2:30 - 4 PM",
             "image": "",
-            "desc": "",
+            "desc": "Learn how to develop and deploy your own Discord bot using Python!",
             "links": {
                 
             }
@@ -121,7 +110,7 @@ export default {
             "date": "Fri, Nov 14",
             "time": "11:30 AM - 1 PM",
             "image": "",
-            "desc": "",
+            "desc": "Come to see candidates' presentations and vote on the 2026 ACM E-Board!",
             "links": {
                 
             }
@@ -132,6 +121,18 @@ export default {
             "location": "",
             "date": "Wed, Nov 19",
             "time": "1 - 2 PM",
+            "image": "",
+            "desc": "Programm your own controllable robots using Raspberry PIs and electronic sensors!",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "ALU Workshop",
+            "location": "GITC 3700",
+            "date": "Wed, Nov 19",
+            "time": "3:00 - 4:30 PM",
             "image": "",
             "desc": "",
             "links": {
@@ -145,7 +146,7 @@ export default {
             "date": "Fri, Nov 21",
             "time": "11:30 AM - 1 PM",
             "image": "",
-            "desc": "",
+            "desc": "Learn how GitHub's Model Context Protocol works!",
             "links": {
                 
             }
@@ -157,7 +158,7 @@ export default {
             "date": "Tue, Nov 25",
             "time": "4 - 5 PM",
             "image": "",
-            "desc": "",
+            "desc": "Learn how parallel processing works!",
             "links": {
                 
             }
@@ -193,19 +194,19 @@ export default {
             "date": "Fri, Dec 5",
             "time": "11:30 AM - 1 PM",
             "image": "",
-            "desc": "",
+            "desc": "A competitive weekend hackathon where you get to program a web server that responds to API requests for a game of competitive snake, known as Battlesnake!",
             "links": {
                 
             }
         },
         {
             "id": id++,
-            "name": "Build your own Joycon",
+            "name": "Build Your Own Joycon",
             "location": "",
             "date": "Fri, Dec 5",
             "time": "6 - 7 PM",
             "image": "",
-            "desc": "",
+            "desc": "Come repair your broken joycons, relax, and game afterwards!",
             "links": {
                 
             }

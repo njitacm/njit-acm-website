@@ -7,14 +7,11 @@
       <h2 v-if="location !== ''"><span class="red">Where?</span> {{ location }}</h2>
       <p class="desc" v-if="desc !== ''">{{ desc }}</p>
     </div>
-    <div v-if="links && Object.keys(links).length > 0">
-      <div v-for="[text, link] in Object.entries(links)" :key="link.id" class="links">
-        <PrimaryButton class="primary-button">
-          <a :href="link.link" target="_blank" class="button-link">{{ text }}</a>
-        </PrimaryButton>
-      </div>
+    <div v-if="links && Object.keys(links).length > 0" class="links">
+      <PrimaryButton v-for="(href, text, index) in links" :key="index">
+        <a :href ="href" target="_blank">{{ text }}</a>
+      </PrimaryButton>
     </div>
-    
   </div>
 </template>
 
@@ -35,14 +32,14 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .red {
   color: var(--red);
 }
 
 .event-card {
-  border: var(--border-width) lightcoral solid;
-  border-radius: var(--large-border-radius);
+  border: 1px var(--gray) solid;
+  border-radius: 10px;
 }
 
 .event-text {
@@ -59,19 +56,18 @@ export default {
 }
 
 .links {
-  display: grid;
-  gap: 2rem;
-  width: calc(100% - 2rem);
-  margin: 0 auto 1rem auto;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.PrimaryButton {
+  flex-grow: 1;
 }
 
 .event-card h1 {
   color: var(--red);
-}
-
-.event-card h2 {
-}
-
-.desc {
 }
 </style>

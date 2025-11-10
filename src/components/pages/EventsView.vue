@@ -100,8 +100,6 @@ export default {
       if (diffDays <= 1) {
         this.upcomingEvents.push(event);
       }
-      console.log(this.upcomingEventsRaw);
-      console.log(this.upcomingEvents);
     }
   },
   data() {
