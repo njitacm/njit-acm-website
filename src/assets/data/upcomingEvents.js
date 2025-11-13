@@ -170,7 +170,7 @@ export default {
             "date": "Wed, Dec 3",
             "time": "11:30 AM - 1:45 PM",
             "image": "",
-            "desc": "Programm your own controllable robots using Raspberry PIs and electronic sensors!",
+            "desc": "Building, wire, and program robots with Path Planning Algorithms!",
             "links": {
                 
             }
