@@ -117,18 +117,6 @@ export default {
         },
         {
             "id": id++,
-            "name": "Pathfinding Workshop",
-            "location": "",
-            "date": "Wed, Nov 19",
-            "time": "1 - 2 PM",
-            "image": "",
-            "desc": "Programm your own controllable robots using Raspberry PIs and electronic sensors!",
-            "links": {
-                
-            }
-        },
-        {
-            "id": id++,
             "name": "ALU Workshop",
             "location": "GITC 3700",
             "date": "Wed, Nov 19",
@@ -171,6 +159,18 @@ export default {
             "time": "6 - 7 PM",
             "image": "",
             "desc": "",
+            "links": {
+                
+            }
+        },
+        {
+            "id": id++,
+            "name": "Pathfinding Workshop",
+            "location": "Campus Center Ballroom B",
+            "date": "Wed, Dec 3",
+            "time": "11:30 AM - 1:45 PM",
+            "image": "",
+            "desc": "Programm your own controllable robots using Raspberry PIs and electronic sensors!",
             "links": {
                 
             }
