@@ -201,7 +201,7 @@ export default {
         },
         {
             "id": id++,
-            "name": "Build Your Own Joycon",
+            "name": "Bring Your Own Joycon",
             "location": "",
             "date": "Fri, Dec 5",
             "time": "6 - 7 PM",
