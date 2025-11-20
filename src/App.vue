@@ -28,6 +28,7 @@ export default {
   --border-width: 3px;
   --border-radius: 10px;
   --large-border-radius: 20px;
+  --indentation: 64px;
 
   --bkg-color: whitesmoke;
   --text-color: #333;
@@ -82,21 +83,30 @@ section {
   text-align: center;
   color: var(--text-color);
   border-bottom: var(--border-width) solid var(--red);
-  font-size: 2em;
-  padding-bottom: 16px;
+  font-size: 2.25em;
   margin: 0 auto;
   margin-bottom: 32px;
 }
 
 .section-container {
-  width: calc(100% - 64px);
+  width: calc(100% - var(--indentation));
   margin: 0 auto;
 }
 
 .outer-container {
-  width: calc(100% - 64px);
+  width: calc(100% - var(--indentation));
   max-width: 1250px;
   margin-bottom: 64px;
+}
+
+h1 {
+  font-size: 3em;
+  line-height: 2em;
+}
+
+h2 {
+  font-size: 2.25em;
+  line-height: 2em;
 }
 
 p,
@@ -139,13 +149,13 @@ button {
   opacity: 0;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 750px) {
   .outer-container {
-    width: calc(100%);
+    width: 100%;
   }
 
-  .section-header {
-    width: calc(100% - 32px);
+  :root {
+    --indentation: 32px;
   }
 }
 

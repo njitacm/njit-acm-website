@@ -1,93 +1,105 @@
 <template>
-  <section :class="{ small: small, 'keep-floating': keepFloating}">
-    <div class="section-content">
-      <h3><slot name="title"></slot></h3>
+  <main class="HorizontalSection" :class="{ 'keep-floating': keepFloating, banner: banner }">
+    <img v-if="imagePath !== ''" :src="imgSrc" :style="{ objectPosition: objPosX + ' ' + objPosY }" />
+    <div class="content">
+      <h1 class="title">
+        <slot name="title"></slot>
+      </h1>
       <p>
         <slot name="content"></slot>
       </p>
       <slot name="button"></slot>
     </div>
-    <SlideshowImage :src="imagePath" :class="{ small: small, 'keep-floating': keepFloating, 'img': 'true' }"
-      :dur="slideDuration"
-      alt="NJIT ACM photo slideshow">
-    </SlideshowImage>
-  </section>
+  </main>
 </template>
 
 <script>
-import SlideshowImage from './SlideshowImage.vue';
+import { getImageUrl } from '../util';
 export default {
-  components: { SlideshowImage },
+  name: "HorizontalSection",
   props: {
-    imagePath: String | Array,
-    small: Boolean,
-    slideDuration: Number,
-    keepFloating: Boolean
+    banner: {
+      type: Boolean,
+      default: true
+    },
+    objPosX: {
+      type: String,
+      default: "0px"
+    },
+    objPosY: {
+      type: String,
+      default: "0px"
+    },
+    imagePath: {
+      type: String,
+      default: ""
+    },
+    keepFloating: {
+      type: Boolean,
+      default: false
+    }
   },
+  data() {
+    return {
+      imgSrc: ""
+    };
+  },
+  async mounted() {
+    this.imgSrc = await getImageUrl(this.$props.imagePath);
+  }
 };
 </script>
 
 <style scoped>
-section {
-  /* margin-top: 2rem; */
+.HorizontalSection {
   display: flex;
-  padding: 3rem;
-  gap: 3rem;
+  gap: 32px;
 }
-.small {
+
+.HorizontalSection.banner {
+  padding-block: 32px;
+  flex-direction: column;
+}
+
+.HorizontalSection:not(.banner) {
+  padding: 32px;
+}
+
+img {
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-gray) 0px 10px 25px;
   width: 50%;
-}
-section:nth-child(even) {
-  flex-direction: row-reverse;
-}
-h3 {
-  font-size: 3rem;
-  margin-bottom: 0.8rem;
-}
-p {
-  line-height: 32px;
-}
-.section-content {
-  margin: auto;
-  flex: 2;
+  object-fit: cover;
 }
 
-@media (max-width: 1400px) {
-  section {
-    flex-wrap: wrap-reverse;
-    gap: 1rem;
-  }
-  section {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  h3 {
-    text-align: center;
-  }
-
-  h3 {
-    margin-top: 1rem;
-  }
-
-  .img {
-    width: 100%;
-  }
+.banner img {
+  width: 100%;
+  height: 300px;
 }
-@media (max-width: 500px) {
-  .section-content {
-    max-width: 90%;
+
+.title {
+  text-align: center;
+}
+
+.content {
+  width: calc(100% - var(--indentation));
+  margin: 0 auto;
+}
+
+@media (max-width: 750px) {
+  .content {
+    max-width: var(100% - calc(--indentation));
   }
 
-  section:not(.keep-floating) {
+  .HorizontalSection:not(.keep-floating) {
     margin: 0;
     padding: 0;
   }
-  
-  .img:not(.keep-floating) {
+
+  img:not(.keep-floating) {
     box-shadow: none;
     border-radius: 0;
-    border-bottom: var(--hor-sec-img-border-width) red solid;
+    border-bottom: var(--hor-sec-img-border-width) var(--red) solid;
   }
 }
 </style>

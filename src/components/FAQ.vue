@@ -53,8 +53,8 @@ export default {
   border: var(--border-width) var(--red) solid;
   border-radius: 10px;
   padding: 32px;
+  padding-top: 16px;
   display: grid;
-  gap: 16px;
 }
 
 .container {

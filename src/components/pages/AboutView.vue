@@ -1,7 +1,6 @@
 <template>
   <div class="outer-container">
-    <!-- <HorizontalSection :imagePath="['eboard/2024/WholeBoard.png', 'eboard/2025/treasurer.png']" -->
-    <HorizontalSection :imagePath="['eboard/2025/WholeBoard.jpg', 'eboard/2024/WholeBoard.jpg']" :slideDuration="5000">
+    <HorizontalSection imagePath="eboard/2025/WholeBoard.jpg'">
       <template v-slot:title>About Us</template>
       <template v-slot:content>
         <p>

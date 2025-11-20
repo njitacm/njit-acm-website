@@ -28,7 +28,7 @@
       </template>
     </HorizontalSection>
     <section class="current-sigs">
-      <h3 class="section-header">Current SIGs</h3>
+      <h2 class="section-header">Current SIGs</h2>
       <div v-if="sigs.length > 0" class="section-container sig-container">
         <SIGsCard v-for="sig in sigs" :key="sig.name" :name="sig.name" :desc="sig.desc" :leaders="sig.leaders"
           :time="sig.time" :loc="sig.loc" :filename="sig.filename"></SIGsCard>
@@ -48,7 +48,7 @@
       </div>
     </section>
     <section class="how-to-join">
-      <h3 class="section-header">How to Join SIGs</h3>
+      <h2 class="section-header">How to Join SIGs</h2>
       <div class="section-container">
         <ol>
           <li>Join the <a :href="discord" target="_blank">ACM Discord</a>.</li>
@@ -61,7 +61,7 @@
       </div>
     </section>
     <section class="how-to-create">
-      <h3 class="section-header">How to Make Your Own SIG</h3>
+      <h2 class="section-header">How to Make Your Own SIG</h2>
       <div class="section-container">
         <p>At the start of every semester, a form is sent out on the
           <a :href="discord" target="_blank">ACM Discord</a> to request a SIG of your own.

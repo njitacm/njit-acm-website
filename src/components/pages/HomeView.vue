@@ -3,7 +3,7 @@
     <HomePageHeader />
     <!-- Horizontal Sections -->
     <section class="outer-container container">
-      <HorizontalSection imagePath="HomePage/Fall_2024_GBM.jpg" class="border-bottom" :keepFloating="true">
+      <HorizontalSection imagePath="HomePage/Fall_2024_GBM.jpg" class="border-bottom" :keepFloating="true" :banner="false" objPosX="40%">
         <template v-slot:title>Who We Are</template>
         <template v-slot:content>
           We are a part of the national organization, Association for Computing
@@ -18,7 +18,7 @@
           part of.
         </template>
       </HorizontalSection>
-      <HorizontalSection imagePath="HomePage/HackNJIT2023Crowd.jpg" class="border-bottom" :keepFloating="true">
+      <HorizontalSection imagePath="HomePage/HackNJIT2023Crowd.jpg" class="border-bottom" :keepFloating="true" :banner="false">
         <template v-slot:title>What We Offer</template>
         <template v-slot:content>
           NJIT ACM offers many things to club members and other students.
@@ -35,7 +35,7 @@
           asking any e-board member.
         </template>
       </HorizontalSection>
-      <HorizontalSection imagePath="HomePage/TheOffice.jpg" class="border-bottom" :keepFloating="true">
+      <HorizontalSection imagePath="HomePage/TheOffice.jpg" class="border-bottom" :keepFloating="true" :banner=false objPosX="75%">
         <template v-slot:title>The Office</template>
         <template v-slot:content>
           While ACM is a professional organization, we also pride ourselves on
