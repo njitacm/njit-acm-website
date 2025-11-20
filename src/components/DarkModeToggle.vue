@@ -3,25 +3,37 @@
   <button
     @click="toggleTheme"
     class="toggle-btn"
-    :aria-label="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
   >
-    <span class="icon" v-if="isDarkMode">🌞</span>
-    <span class="icon" v-else>🌙</span>
+  <span class="icon" v-if="theme === 'light'">🌕</span>
+  <span class="icon" v-else-if="theme === 'dark'">🌑</span>
+  <!-- auto -->
+  <span class="icon" v-else>🌓</span>
   </button>
 </template>
 
 <script>
 import { useTheme } from "../composables/useTheme";
+const { theme, setTheme } = useTheme();
 
 export default {
   setup() {
-    const { isDarkMode, toggleTheme } = useTheme();
 
     return {
-      isDarkMode,
-      toggleTheme,
+      theme,
+      setTheme,
     };
   },
+  methods: {
+    toggleTheme() {
+      if (theme.value === "light") {
+        setTheme("dark");
+      } else if (theme.value === "dark") {
+        setTheme("auto");
+      } else {
+        setTheme("light")
+      }
+    }
+  }
 };
 </script>
 

@@ -1,36 +1,52 @@
 import { ref, onMounted } from "vue";
 
 export function useTheme() {
-  const isDarkMode = ref(false);
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const theme = ref("auto");
 
-  const applyTheme = (theme) => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
+  const onThemeUpdate = (e) => {
+    if (e.matches) {
+      // dark
+      console.log("match");
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      // light
+      console.log("not match");
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }
+
+  const applyTheme = (newTheme) => {
+    localStorage.setItem("theme", newTheme);
+
+    // TOOD
+    if (newTheme === "auto") {
+      onThemeUpdate({ matches: mq.matches });
+      mq.addEventListener("change", onThemeUpdate);
+    } else {
+      mq.removeEventListener("change", onThemeUpdate);
+      document.documentElement.setAttribute("data-theme", newTheme);
+    }
   };
 
-  onMounted(() => {
-    // Check for saved theme preference or default to system preference
-    const savedTheme = localStorage.getItem("theme");
+  // Check for saved theme preference or default to system preference
+  const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme) {
-      isDarkMode.value = savedTheme === "dark";
-      applyTheme(savedTheme);
-    } else {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      isDarkMode.value = prefersDark;
-      applyTheme(prefersDark ? "dark" : "light");
-    }
-  });
+  console.log("saved theme:", savedTheme);
 
-  const toggleTheme = () => {
-    isDarkMode.value = !isDarkMode.value;
-    applyTheme(isDarkMode.value ? "dark" : "light");
+  if (savedTheme) {
+    theme.value = savedTheme;
+    applyTheme(savedTheme);
+  }
+
+  const setTheme = (newTheme) => {
+    theme.value = newTheme;
+    console.log(newTheme);
+    applyTheme(theme.value);
   };
 
   return {
-    isDarkMode,
-    toggleTheme,
+    theme,
+    setTheme,
   };
 }
