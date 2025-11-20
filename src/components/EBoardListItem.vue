@@ -75,7 +75,7 @@ h2 {
   height: 20rem;
   object-fit: cover;
   border-radius: 8px;
-  box-shadow: var(--light-shadow-gray) 0px 0px 25px;
+  box-shadow: var(--shadow-gray) 0px 0px 25px;
 }
 
 @media (max-width: 1750px) {

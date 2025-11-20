@@ -63,7 +63,7 @@ button.selected {
 }
 
 button.selected>.router-link {
-  color: var(--card-bg-color);
+  color: var(--bkg-color);
 }
 
 @media (hover: hover) and (pointer: fine) {

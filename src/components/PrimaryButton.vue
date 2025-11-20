@@ -12,8 +12,8 @@ export default {
 
 <style scoped>
 button {
-  --btn-hov-col: color-mix(in srgb, var(--btn-red), var(--text-color) 10%);
-  background-color: var(--btn-red);
+  --btn-hov-col: color-mix(in srgb, var(--light-red), var(--text-color) 10%);
+  background-color: var(--light-red);
   border-radius: var(--border-radius);
   border: none;
   cursor: pointer;

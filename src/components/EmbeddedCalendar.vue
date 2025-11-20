@@ -26,7 +26,7 @@ export default {
   width: 100%;
   height: 600px;
   border-radius: var(--large-border-radius);
-  box-shadow: var(--light-shadow-gray) 0px 0px 10px;
+  box-shadow: var(--shadow-gray) 0px 0px 10px;
 }
 
 .events-calendar .button {

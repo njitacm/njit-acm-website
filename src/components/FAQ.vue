@@ -50,7 +50,7 @@ export default {
 .outer-container {
   margin-inline: auto;
   margin-top: 32px;
-  border: 3px var(--red) solid;
+  border: var(--border-width) var(--red) solid;
   border-radius: 10px;
   padding: 32px;
   display: grid;
@@ -94,13 +94,13 @@ hr {
   }
 
   .faq:not(.selected):hover {
-    background-color: var(--light-gray);
+    background-color: var(--gray);
   }
 }
 
 @media (pointer: coarse) {
   .faq:not(.selected):active {
-    background-color: var(--light-gray);
+    background-color: var(--gray);
   }
 }
 

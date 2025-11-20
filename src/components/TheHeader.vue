@@ -48,7 +48,7 @@ export default {
   methods: {
     updateDropShadow() {
       if (document.documentElement.scrollTop > 0) {
-        this.$refs.pageHeader.style.boxShadow = "var(--light-shadow-black) 0px 0px 25px";
+        this.$refs.pageHeader.style.boxShadow = "var(--shadow-gray) 0px 0px 25px";
       } else {
         this.$refs.pageHeader.style.boxShadow = "none";
       }

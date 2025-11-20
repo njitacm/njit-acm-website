@@ -27,57 +27,50 @@
         </p>
       </template>
     </HorizontalSection>
-    <div class="current-sigs">
+    <section class="current-sigs">
       <h3 class="section-header">Current SIGs</h3>
-      <div v-if="sigs.length > 0" class="sig-container">
-        <SIGsCard
-          v-for="sig in sigs"
-          :key="sig.name"
-          :name="sig.name"
-          :desc="sig.desc"
-          :leaders="sig.leaders"
-          :time="sig.time"
-          :loc="sig.loc"
-          :filename="sig.filename"
-        ></SIGsCard>
+      <div v-if="sigs.length > 0" class="section-container sig-container">
+        <SIGsCard v-for="sig in sigs" :key="sig.name" :name="sig.name" :desc="sig.desc" :leaders="sig.leaders"
+          :time="sig.time" :loc="sig.loc" :filename="sig.filename"></SIGsCard>
       </div>
-      <div v-else class="no-sig-container section-container">
+      <div v-else class="section-container no-sig-container">
         <!-- <p>There are currently no SIGs in session. Please check back later!</p> -->
         <p>Fall 2025 SIGs are coming soon, hang tight!</p>
       </div>
-    </div>
-    <h2 class="section-header">SIG Calendar</h2>
-    <EmbeddedCalendar 
-      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20SIG%20Schedule%20Spring%202025&src=Y19hNTM1ZWI4ZmY0NTA3NTg2NDk0MjY3MjE0ODdiMjc3NjE0MjA3OTc1MWY2YjRhODFhZTVhNDA0MmI2NzlmMmFiQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%234285F4"
-      href="https://calendar.google.com/calendar/embed?src=c_a535eb8ff450758649426721487b2776142079751f6b4a81ae5a4042b679f2ab%40group.calendar.google.com&ctz=America%2FNew_York"
-      buttonText="View Calendar"
-    >
-    </EmbeddedCalendar>
-    <div class="how-to-join">
+    </section>
+    <section>
+      <h2 class="section-header">SIG Calendar</h2>
+      <div class="section-container">
+        <EmbeddedCalendar
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20SIG%20Schedule%20Spring%202025&src=Y19hNTM1ZWI4ZmY0NTA3NTg2NDk0MjY3MjE0ODdiMjc3NjE0MjA3OTc1MWY2YjRhODFhZTVhNDA0MmI2NzlmMmFiQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%234285F4"
+          href="https://calendar.google.com/calendar/embed?src=c_a535eb8ff450758649426721487b2776142079751f6b4a81ae5a4042b679f2ab%40group.calendar.google.com&ctz=America%2FNew_York"
+          buttonText="View Calendar" />
+      </div>
+    </section>
+    <section class="how-to-join">
       <h3 class="section-header">How to Join SIGs</h3>
       <div class="section-container">
         <ol>
           <li>Join the <a :href="discord" target="_blank">ACM Discord</a>.</li>
           <li>Go to "Channels & Roles."</li>
           <li>Assign yourself the role for the SIG you want to join.</li>
-          <li>Now you should have access to that SIG channel! 
+          <li>Now you should have access to that SIG channel!
             Make sure to introduce yourself and communicate with the SIG leader(s)
             that you joined!</li>
         </ol>
       </div>
-    </div>
-    <div class="how-to-create">
+    </section>
+    <section class="how-to-create">
       <h3 class="section-header">How to Make Your Own SIG</h3>
       <div class="section-container">
-        <p>At the start of every semester, a form is sent out on the 
+        <p>At the start of every semester, a form is sent out on the
           <a :href="discord" target="_blank">ACM Discord</a> to request a SIG of your own.
           After filling it out, you'll be lightly interviewed about how you plan to run the SIG.
-          If your interview goes well, you now have your own SIG! Note: SIGs <i>cannot</i> 
+          If your interview goes well, you now have your own SIG! Note: SIGs <i>cannot</i>
           be created mid-semester. Please adhere to the form's deadline.
         </p>
       </div>
-    </div>
-
+    </section>
   </div>
 </template>
 
@@ -102,6 +95,7 @@ export default {
 .outer-container {
   margin-inline: auto;
 }
+
 .sig-container {
   /* width: %; */
   display: grid;
@@ -111,13 +105,6 @@ export default {
   margin-left: auto;
   margin-right: auto;
   justify-content: center;
-}
-
-p, li {
-}
-
-.section-container {
-  margin: 3rem auto;
 }
 
 @media (max-width: 1400px) {

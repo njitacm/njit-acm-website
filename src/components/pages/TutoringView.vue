@@ -550,7 +550,7 @@ main {
 main .details-panel {
   flex-basis: 30%;
   overflow: hidden;
-  border: var(--border-width) var(--light-gray) solid;
+  border: var(--border-width) var(--gray) solid;
   border-radius: var(--border-radius);
   padding: 2rem;
   display: flex;

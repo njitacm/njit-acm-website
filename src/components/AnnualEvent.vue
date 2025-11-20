@@ -45,7 +45,7 @@ export default {
 
 <style scoped>
 .AnnualEvent {
-  border: 1px solid var(--gray);
+  border: var(--border-width) solid var(--gray);
   border-radius: 10px;
   padding: 32px;
   display: grid;

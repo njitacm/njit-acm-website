@@ -162,7 +162,7 @@ export default {
     padding: 5px;
     border: 2px red solid;
     z-index: 100;
-    box-shadow: var(--medium-shadow-black) 0px 0px 25px;
+    box-shadow: var(--shadow-gray) 0px 0px 25px;
   }
 
   div {

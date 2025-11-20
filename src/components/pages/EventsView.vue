@@ -24,17 +24,22 @@
         :location="event.location" :imageUrl="event.image" :desc="event.desc" :links="event.links">
       </EventCard>
     </div>
-    <h2 class="section-header">Events Calendar</h2>
-    <EmbeddedCalendar
-      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=MONTH&src=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23795548"
-      href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
-      buttonText="Add Calendar"></EmbeddedCalendar>
-    <div>
+    <section>
+      <h2 class="section-header">Events Calendar</h2>
+      <div class="section-container">
+
+        <EmbeddedCalendar
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=MONTH&src=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23795548"
+          href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+          buttonText="Add Calendar" />
+      </div>
+    </section>
+    <section>
       <h2 class="section-header">Annual Events</h2>
-      <div class="main-events-container">
+      <div class="section-container main-events-container">
         <MainEvent v-for="event in mainEvents" :key="event.title" v-bind="event" />
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
