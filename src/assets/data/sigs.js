@@ -182,7 +182,7 @@ export default {
         },
         {
             name: "sig-infra",
-            leaders: "Nigel",
+            leaders: "Nigel _ _ _ _ _ _ _",
             desc: "Get hands-on networking and IT experience by helping set up infrastructure in ACM's office! We will be working with Windows Active Directory, custom router firmware, and Network Attached Storages. This SIG serves as both a learning experience and a way to help out the greater NJIT ACM.",
             time: "Thu 4:00 PM",
             loc: "GITC 3704",
