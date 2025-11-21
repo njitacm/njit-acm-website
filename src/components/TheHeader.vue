@@ -20,7 +20,7 @@
 
 <script>
 import CollapsableNav from "./CollapsableNav.vue";
-import DarkModeToggle from "./DarkModeToggle.vue";
+import DarkModeToggle from "./ThemeToggle.vue";
 import NavButton from "./NavButton.vue";
 
 export default {

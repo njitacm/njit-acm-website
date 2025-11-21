@@ -1,4 +1,5 @@
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
+const THEME_OPTIONS = ["auto", "light", "dark"];
 
 export function useTheme() {
   const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -7,11 +8,9 @@ export function useTheme() {
   const onThemeUpdate = (e) => {
     if (e.matches) {
       // dark
-      console.log("match");
       document.documentElement.setAttribute("data-theme", "dark");
     } else {
       // light
-      console.log("not match");
       document.documentElement.setAttribute("data-theme", "light");
     }
   }
@@ -41,12 +40,12 @@ export function useTheme() {
 
   const setTheme = (newTheme) => {
     theme.value = newTheme;
-    console.log(newTheme);
     applyTheme(theme.value);
   };
 
   return {
     theme,
     setTheme,
+    THEME_OPTIONS,
   };
 }
