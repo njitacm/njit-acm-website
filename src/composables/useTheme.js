@@ -1,10 +1,12 @@
-import { ref } from "vue";
+import { ref, readonly } from "vue";
 const THEME_OPTIONS = ["auto", "light", "dark"];
 
 export function useTheme() {
   const mq = window.matchMedia('(prefers-color-scheme: dark)');
   const theme = ref("auto");
+  const readonlyTheme = readonly(theme);
 
+  // sync to system
   const onThemeUpdate = (e) => {
     if (e.matches) {
       // dark
@@ -15,10 +17,10 @@ export function useTheme() {
     }
   }
 
+  // manually apply theme and update local storage
   const applyTheme = (newTheme) => {
     localStorage.setItem("theme", newTheme);
 
-    // TOOD
     if (newTheme === "auto") {
       onThemeUpdate({ matches: mq.matches });
       mq.addEventListener("change", onThemeUpdate);
@@ -28,10 +30,8 @@ export function useTheme() {
     }
   };
 
-  // Check for saved theme preference or default to system preference
+  // Retrieve saved theme
   const savedTheme = localStorage.getItem("theme");
-
-  console.log("saved theme:", savedTheme);
 
   if (savedTheme) {
     theme.value = savedTheme;
@@ -44,7 +44,7 @@ export function useTheme() {
   };
 
   return {
-    theme,
+    theme: readonlyTheme,
     setTheme,
     THEME_OPTIONS,
   };

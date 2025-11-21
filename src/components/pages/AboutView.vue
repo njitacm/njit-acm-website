@@ -1,6 +1,6 @@
 <template>
   <div class="outer-container">
-    <HorizontalSection imagePath="eboard/2025/WholeBoard.jpg'">
+    <HorizontalSection imagePath="eboard/2025/WholeBoard.jpg" objPosY="47.5%">
       <template v-slot:title>About Us</template>
       <template v-slot:content>
         <p>
