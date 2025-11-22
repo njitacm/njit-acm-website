@@ -21,7 +21,7 @@ import { store } from "../stores/eboard_card_store.js";
 import { getImageUrl } from "../util.js";
 
 export default {
-  name: "MainEboardCard",
+  name: "FlippableEBoardCard",
   props: {
     name: {
       type: String,
@@ -29,7 +29,7 @@ export default {
     },
     position: {
       type: String,
-      default: ""
+      required: true
     },
     desc: {
       type: String,
@@ -124,6 +124,7 @@ img {
 img {
   width: 100%;
   aspect-ratio: 1;
+  border: var(--border-width) var(--red) solid;
 }
 
 .back {
@@ -132,6 +133,7 @@ img {
   transform: rotateY(-180deg);
   background-color: var(--bkg-color);
   align-content: center;
+  border: var(--border-width) var(--red) solid;
 }
 
 .flipped .front {
@@ -141,9 +143,7 @@ img {
 }
 
 .flipped .back {
-  box-shadow: var(--shadow-gray) 0px var(--shadow-offset-y) var(--shadow-blur);
   transform: rotateY(0deg);
-  border: var(--border-width) var(--red) solid;
   z-index: 1;
   opacity: 1;
 }
@@ -164,10 +164,12 @@ img {
 
 .name {
   color: var(--red);
+  text-align: center;
 }
 
 .position {
   font-weight: bold;
   font-size: 1.5em;
+  text-align: center;
 }
 </style>

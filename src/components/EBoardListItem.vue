@@ -21,7 +21,7 @@ export default {
     },
     position: {
       type: String,
-      default: ""
+      required: true
     },
     desc: {
       type: String,
@@ -77,7 +77,7 @@ img {
   height: auto;
   aspect-ratio: 1;
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow-gray) 0px var(--shadow-offset-y) var(--shadow-blur);
+  border: var(--border-width) var(--red) solid;
 }
 
 @media(max-width: 1000px) {

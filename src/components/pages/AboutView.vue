@@ -15,7 +15,7 @@
     <section>
       <h2 class="section-header">Current E-Board</h2>
       <div class="section-container curr-eboard-container">
-        <MainEboardCard v-for="(member, index) in getEboard(currEboardYear)" :key="index" :name="member.Name"
+        <FlippableEBoardCard v-for="(member, index) in getEboard(currEboardYear)" :key="index" :name="member.Name"
           :position="member.Role" :desc="member.Desc" :imagePath="getImagePath(member.Role, member.Term)" :id="index" />
       </div>
     </section>
@@ -45,9 +45,8 @@
               :position="member.Role" :desc="member.Desc" :imagePath="getImagePath(member.Role, member.Term)" />
           </div>
           <div v-else class="prev-eboard card-container" :ref="year.toString()" v-show="showEboard[year]">
-            <EBoardCard v-for="member in getEboard(year)" :key="member.Role" :position="member.Role"
-              :incumbent="member.Name" :incumbentDesc="member.Desc"
-              :imageName="getImagePath(member.Role, member.Term)" />
+            <EBoardCard v-for="(member, index) in getEboard(year)" :key="index" :position="member.Role"
+              :name="member.Name" :imagePath="getImagePath(member.Role, member.Term)" />
           </div>
         </TransitionExpand>
         <hr v-if="year > firstEboardYear" />
@@ -61,30 +60,20 @@ import "material-symbols";
 import EBoardCard from "../EBoardCard.vue";
 import jsonEboard from "../../assets/data/eboard.js";
 import TransitionExpand from "../TransitionExpand.vue";
-import MainEboardCard from "../MainEboardCard.vue";
+import FlippableEBoardCard from "../FlippableEBoardCard.vue";
 import HorizontalSection from "../HorizontalSection.vue";
 import EBoardListItem from "../EBoardListItem.vue";
 import EmbeddedCalendar from "../EmbeddedCalendar.vue";
 
-const EBOARD_POS = [
-  "President",
-  "Vice President",
-  "Treasurer",
-  "Secretary",
-  "Public Relations",
-  "Webmaster",
-  "Graphic Designer",
-  "SIG Master",
-  "Event Master",
-  "Hack Master"
-];
+const EBOARD_POS = ["President", "Vice President", "Treasurer", "Secretary", "Public Relations",
+  "Webmaster", "Graphic Designer", "SIG Master", "Event Master", "Hack Master"];
 
 export default {
   name: "AboutView",
   components: {
     EBoardCard,
     TransitionExpand,
-    MainEboardCard,
+    FlippableEBoardCard,
     HorizontalSection,
     EBoardListItem,
     EmbeddedCalendar
@@ -206,18 +195,19 @@ export default {
   justify-items: center;
 }
 
-.prev-eboard > *:first-child {
+.prev-eboard>*:first-child,
+.prev-eboard.card-container>*:nth-child(-n+3) {
   margin-top: 32px;
 }
 
-.prev-eboard > *:last-child {
+.prev-eboard>*:last-child,
+.prev-eboard.card-container>*:nth-last-child(-n+3) {
   margin-bottom: 64px;
 }
 
-.prev-eboard.card-container>div {
+.prev-eboard.card-container {
   display: grid;
-  /* grid-template-rows: 250px 250px; */
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   width: 90%;
   margin: 0 auto;
