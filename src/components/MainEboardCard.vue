@@ -1,39 +1,61 @@
 <template>
-  <main>
-    <div class="container" @mouseenter="toggleFrontHover" @mouseleave="toggleFrontHover" @click="toggleFrontClick">
+  <main class="MainEboardCard">
+    <div class="card" @mouseenter="toggleFrontHover" @mouseleave="toggleFrontHover" @click="toggleFrontClick"
+      :class="{ flipped: id === store.currEboardFlipped }">
       <div class="front">
-        <img :src="imagePath" :class="{ frontFlipped: id === store.currEboardFlipped }" />
+        <img :src="imgSrc" />
       </div>
-      <div class="back" :class="{ backFlipped: id === store.currEboardFlipped }">
-        <p class="text">{{ personalDesc }}</p>
+      <div class="back">
+        <p class="desc">{{ desc }}</p>
       </div>
     </div>
-    <div class="subtitle">
-      <p class="name">{{ name }}</p>
-      <p class="position">ACM {{ position }}</p>
+    <div class="info">
+      <h3 class="name">{{ name }}</h3>
+      <p class="position">{{ position }}</p>
     </div>
   </main>
 </template>
 
 <script>
-import { store } from "../store.js";
+import { store } from "../stores/eboard_card_store.js";
 import { getImageUrl } from "../util.js";
 
 export default {
-  props: ["position", "name", "personalDesc", "imageName", "id"],
+  name: "MainEboardCard",
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    position: {
+      type: String,
+      default: ""
+    },
+    desc: {
+      type: String,
+      default: ""
+    },
+    imagePath: {
+      type: String,
+      default: ""
+    },
+    id: {
+      type: Number,
+      required: ""
+    }
+  },
   data() {
     return {
       store,
-      imagePath: "",
+      imgSrc: "",
     };
   },
   async mounted() {
-    try {
-      this.imagePath = await getImageUrl(`eboard/${this.$props.imageName}`);
-    } catch (err) {
-      console.log(err);
-      console.log('resorting to the blank-pfp instead')
-      this.imagePath = await getImageUrl("blank-pfp.png");
+    const imgPath = this.$props.imagePath;
+    if (!imgPath || imgPath === "") {
+      this.imgSrc = await getImageUrl("blank-pfp.png");
+    } else {
+      this.imgSrc = await getImageUrl(`eboard/${this.$props.imagePath}`);
     }
   },
   methods: {
@@ -47,8 +69,7 @@ export default {
         || navigator.userAgent.match(/Windows Phone/i));
     },
     toggleFrontHover() {
-      if (this.isMobile())
-        return;
+      if (this.isMobile()) return;
       this.toggleFront();
     },
     toggleFrontClick() {
@@ -57,8 +78,7 @@ export default {
       this.toggleFront();
     },
     toggleFront() {
-      if (this.$props.personalDesc === undefined || this.$props.personalDesc === '')
-        return;
+      if (this.$props.desc === undefined || this.$props.desc === '') return;
       if (this.store.currEboardFlipped == this.id)
         this.store.currEboardFlipped = -1;
       else
@@ -69,72 +89,85 @@ export default {
 </script>
 
 <style scoped>
-* {
-  transition: all 0.25s ease-in-out;
-}
-
-.container {
-  position: relative;
-  width: 350px;
-  height: 350px;
-}
-
-.front {
-  position: absolute;
-  z-index: 1;
+.MainEboardCard {
   width: 100%;
-  height: 100%;
 }
 
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.front,
+.back,
+img {
+  transition: transform 250ms linear;
+  border-radius: var(--large-border-radius);
+}
+
+.front,
 .back {
   position: absolute;
   height: 100%;
   width: 100%;
-  padding: 0 1rem;
-  z-index: 0;
-  transform: rotateY(-180deg);
-  background-color: var(--bkg-color);
-  border: var(--border-width) lightcoral solid;
-  border-radius: 16px;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 100%;
 }
 
-.frontFlipped {
-  transform: rotateY(180deg);
-  box-shadow: var(--shadow-gray) 0px 0px 20px;
-  z-index: 0;
-}
-
-.backFlipped {
-  transform: rotateY(0deg);
+.front {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
 }
 
-.front img {
+img {
   width: 100%;
-  height: 100%;
-  border-radius: 16px;
+  aspect-ratio: 1;
 }
 
-.back .text {
-  align-self: center;
-  justify-self: center;
+.back {
+  opacity: 0;
+  z-index: 0;
+  transform: rotateY(-180deg);
+  background-color: var(--bkg-color);
+  align-content: center;
+}
+
+.flipped .front {
+  transform: rotateY(180deg);
+  z-index: 0;
+  opacity: 0;
+}
+
+.flipped .back {
+  box-shadow: var(--shadow-gray) 0px var(--shadow-offset-y) var(--shadow-blur);
+  transform: rotateY(0deg);
+  border: var(--border-width) var(--red) solid;
+  z-index: 1;
+  opacity: 1;
+}
+
+.back .desc {
+  width: calc(100% - 32px);
+  height: calc(100% - 32px);
+  overflow: auto;
   text-align: center;
+  align-content: center;
+  margin: 0 auto;
 }
 
-.subtitle {
-  margin: 1rem;
-  width: 100%;
+.info {
+  margin: 16px;
+  width: calc(100% - 32px);
 }
 
 .name {
-  padding-bottom: 0.5rem;
-  font-weight: 550;
+  color: var(--red);
 }
 
 .position {
-  font-weight: 350;
+  font-weight: bold;
+  font-size: 1.5em;
 }
 </style>

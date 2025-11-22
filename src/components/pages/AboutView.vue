@@ -14,14 +14,12 @@
     </HorizontalSection>
     <section>
       <h2 class="section-header">Current E-Board</h2>
-      <div class="section-container spotlight">
-        <MainEboardCard v-for="(member, i) in getEboard(currEboardYear)" :key="member" :position="member.Role"
-          :name="member.Name" :personalDesc="member.Desc" :imageName="getImagePath(member.Role, member.Term)" :id="i">
-        </MainEboardCard>
+      <div class="section-container curr-eboard-container">
+        <MainEboardCard v-for="(member, index) in getEboard(currEboardYear)" :key="index" :name="member.Name"
+          :position="member.Role" :desc="member.Desc" :imagePath="getImagePath(member.Role, member.Term)" :id="index" />
       </div>
     </section>
     <section>
-
       <h2 class="section-header">Office Hours</h2>
       <div class="section-container office-hours">
         <p>Every e-board member has office hours at the ACM Office (located in GITC 3700).
@@ -32,39 +30,29 @@
           buttonText="Add Calendar"></EmbeddedCalendar>
       </div>
     </section>
-    <div class="pastEboard">
-      <div v-for="year in years" :key="year">
-        <header @click="toggleEboard(year)" :class="{
-          'eboard-header': true,
-          'selected': showEboard[year]
-        }">
-          <h1>{{ year }} Eboard</h1>
-          <span class="svg material-symbols-outlined" :class="{ open: showEboard[year] }">keyboard_arrow_down</span>
-        </header>
+    <section>
+      <h2 class="section-header">Previous E-Board</h2>
+      <div
+        v-for="year in Array.from({ length: currEboardYear - firstEboardYear }, (_, i) => i + firstEboardYear).reverse()"
+        :key="year">
+        <button @click="toggleEboard(year)" class="accordion-toggle" :class="{ 'selected': showEboard[year] }">
+          {{ year }} Eboard
+        </button>
         <TransitionExpand :duration="500">
-          <div class="eboard-container" :ref="year.toString()" v-show="showEboard[year]" v-if="year < 2024">
-            <div class="spacer1"></div>
-            <div class="container">
-              <EBoardCard v-for="member in getEboard(year)" :key="member.Role" :position="member.Role"
-                :incumbent="member.Name" :incumbentDesc="member.Desc"
-                :imageName="getImagePath(member.Role, member.Term)" />
-            </div>
-            <div class="spacer2"></div>
-          </div>
           <!-- 2024 and beyond uses list items instead of cards -->
-          <div v-else class="eboard-list-container" :ref="year.toString()" v-show="showEboard[year]">
-            <div class="spacer1"></div>
-            <div>
-              <EBoardListItem v-for="member in getEboard(year)" class="eboard-list-item" :key="member.Role"
-                :position="member.Role" :positionDesc="member.Desc" :incumbent="member.Name"
-                :incumbentDesc="member.Desc" :imageName="getImagePath(member.Role, member.Term)">
-              </EBoardListItem>
-            </div>
-            <div class="spacer2"></div>
+          <div v-if="year >= 2024" class="prev-eboard list-container" :ref="year.toString()" v-show="showEboard[year]">
+            <EBoardListItem v-for="member in getEboard(year)" :key="member.Role" :name="member.Name"
+              :position="member.Role" :desc="member.Desc" :imagePath="getImagePath(member.Role, member.Term)" />
+          </div>
+          <div v-else class="prev-eboard card-container" :ref="year.toString()" v-show="showEboard[year]">
+            <EBoardCard v-for="member in getEboard(year)" :key="member.Role" :position="member.Role"
+              :incumbent="member.Name" :incumbentDesc="member.Desc"
+              :imageName="getImagePath(member.Role, member.Term)" />
           </div>
         </TransitionExpand>
+        <hr v-if="year > firstEboardYear" />
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -78,7 +66,21 @@ import HorizontalSection from "../HorizontalSection.vue";
 import EBoardListItem from "../EBoardListItem.vue";
 import EmbeddedCalendar from "../EmbeddedCalendar.vue";
 
+const EBOARD_POS = [
+  "President",
+  "Vice President",
+  "Treasurer",
+  "Secretary",
+  "Public Relations",
+  "Webmaster",
+  "Graphic Designer",
+  "SIG Master",
+  "Event Master",
+  "Hack Master"
+];
+
 export default {
+  name: "AboutView",
   components: {
     EBoardCard,
     TransitionExpand,
@@ -86,6 +88,22 @@ export default {
     HorizontalSection,
     EBoardListItem,
     EmbeddedCalendar
+  },
+  data() {
+    return {
+      selectedPosition: "President",
+      currEboardYear: 2025,
+      firstEboardYear: 2016,
+      showEboard: {
+        2024: true
+      },
+      // TODO: add section with general descriptions
+      eboardDescs: {
+
+      },
+      eboard: jsonEboard,
+
+    };
   },
   methods: {
     getImagePath(role, year) {
@@ -146,7 +164,7 @@ export default {
       // constitution order
       const sorted = [];
 
-      for (const role of this.eboardPositions) {
+      for (const role of EBOARD_POS) {
         const officer = eboard.find(officer => officer.Role.toLowerCase() === role.toLowerCase());
 
         if (officer) {
@@ -161,82 +179,12 @@ export default {
       return sorted;
     }
   },
-
-  data() {
-    return {
-      selectedPosition: "President",
-      currEboardYear: 2025,
-      years: [
-        // "2025",
-        "2024",
-        "2023",
-        "2022",
-        "2021",
-        "2020",
-        "2019",
-        "2018",
-        "2017",
-        "2016",
-      ],
-      showEboard: {
-        2024: true
-      },
-      // positions in constitution order
-      eboardPositions: [
-        "President",
-        "Vice President",
-        "Treasurer",
-        "Secretary",
-        "Public Relations",
-        "Webmaster",
-        "Graphic Designer",
-        "SIG Master",
-        "Event Master",
-        "Hack Master"
-      ],
-      // TODO: add section with general descriptions
-      eboardDescs: {
-        President:
-          "The President of ACM is responsible for leading the club. You'll see them take center stage during our general body meetings with a gavel passed down through generations of Presidents. The President presides over all functions of the club, with all other e-board officers reporting directly to and being managed by them.",
-
-        "Vice President":
-          "The Vice-President of ACM the second in command in the organization. They work directly alongside the President and take over for them if need be. They are also responsible for handling all tutoring done by ACM.",
-
-        Secretary:
-          "ACM's secretary managed all our out-of-school connections. They talk to outside organizations for the purposes of planning events and gathering sponsors.",
-
-        Treasurer:
-          "ACM's treasurer manages the club's budget and finances. They are responsible for procuring funding and overseeing the spending of that funding. It's thanks to them that we're able to support our SIGs financially, fund large-scale events, and buy computer parts for the office.",
-
-        "Graphic Designer":
-          "ACM's Graphic Designer oversees the creation of all promotional material and other art-work for the club, including SIG posters, social media posts, and event fliers. We have them to thank for much of our most iconic imagery, including the club logo and it's many variations.",
-
-        Webmaster:
-          "The Webmaster of ACM is responsible for building and maintaining ACM's websites, namely this ACM site, the Hacknjit site, and the JerseyCTF site. The websites are built in golang, vue, and bootstrap and can be viewed on our github.",
-
-        "Event Master":
-          "The event master is responsible for managing ACM's Special Interest Groups (SIGs) and is in charge of minor events. Organizations should feel free to reach out for collaboration!",
-
-        // TODO - Write PR Position Desc
-        "Public Relations":
-          "ACM's Head of Public Relations is responsible for all advertisting, including running our various social media accounts, putting up posters, and spreading ACM news by word of mouth. ",
-      },
-      eboard: jsonEboard,
-
-    };
-  },
 };
 </script>
 
 <style scoped>
 .outer-container {
   margin-inline: auto;
-}
-
-header.page-header {
-  margin: 1rem auto;
-  display: flex;
-  justify-content: center;
 }
 
 .position-button {
@@ -246,19 +194,27 @@ header.page-header {
 
 .selected_position {
   transform: scale(1.05);
-  color: red;
+  color: var(--red);
 }
 
-.spotlight {
+.curr-eboard-container {
   margin: 0 auto;
   display: grid;
-  row-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, 25%);
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
   justify-items: center;
 }
 
-.eboard-container>div {
+.prev-eboard > *:first-child {
+  margin-top: 32px;
+}
+
+.prev-eboard > *:last-child {
+  margin-bottom: 64px;
+}
+
+.prev-eboard.card-container>div {
   display: grid;
   /* grid-template-rows: 250px 250px; */
   grid-template-columns: repeat(4, auto);
@@ -268,76 +224,70 @@ header.page-header {
   justify-content: space-evenly;
 }
 
-.eboard-container>div * {
+.prev-eboard.card-container>div * {
   justify-self: center;
 }
 
-.eboard-list-container>div {
+.prev-eboard.list-container {
+  width: calc(100% - var(--indentation));
+  height: fit-content;
   display: grid;
-  width: 90%;
   margin: 0 auto;
-  grid-template-columns: repeat(2, auto);
-  gap: 2rem;
+  gap: 64px;
   justify-content: space-evenly;
 }
 
-
-.spacer1 {
-  height: 2rem;
-}
-
-.spacer2 {
-  height: 4rem;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 4rem;
-  border-bottom: red 4px solid;
-  padding-bottom: 1rem;
-  padding-top: 2rem;
-}
-
-.eboard-header {
-  transition: background-color var(--hover-speed) ease-in-out, color var(--hover-speed) ease-in-out;
-  border-radius: 1rem;
-  padding: 1em;
+.accordion-toggle {
+  font-size: 2em;
+  text-align: center;
+  color: var(--text-color);
   cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  display: flex;
-  align-items: center;
+  padding: 0 32px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  border-radius: var(--border-radius);
+  margin-block: 8px;
+  padding-block: 8px;
 }
 
-.eboard-header.selected {
+hr {
+  border: none;
+  border-bottom: var(--gray) var(--border-width) solid;
+}
+
+.accordion-toggle.selected {
   background-color: var(--red);
   color: var(--bkg-color);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .eboard-header:hover:not(.eboard-header.selected) {
-    background-color: var(--light-red);
+  .accordion-toggle {
+    transition: background-color var(--hover-speed) ease-in-out, color var(--hover-speed) ease-in-out;
+  }
+
+  .accordion-toggle:hover:not(.accordion-toggle.selected) {
+    background-color: var(--gray);
   }
 }
 
 @media (pointer: coarse) {
-  .eboard-header:active:not(.eboard-header.selected) {
+  .accordion-toggle:active:not(.accordion-toggle.selected) {
     background-color: var(--light-red);
   }
 }
 
-.eboard-header.selected>.svg {
+.accordion-toggle.selected>.arrow {
   color: var(--bkg-color);
 }
 
-.svg {
-  transition: all 0.25s ease-in-out;
+.arrow {
   cursor: pointer;
   align-self: center;
+  font-size: 2em;
 }
 
-.open {
+.arrow.open {
   transform: rotate(180deg);
 }
 
@@ -353,19 +303,19 @@ header {
 }
 
 @media (max-width: 1800px) {
-  .spotlight {
+  .curr-eboard-container {
     grid-template-columns: repeat(3, 33%);
   }
 }
 
 @media (max-width: 1700px) {
-  .eboard-container>div {
+  .prev-eboard.card-container>div {
     grid-template-columns: repeat(3, auto);
   }
 }
 
 @media (max-width: 1400px) {
-  .spotlight {
+  .curr-eboard-container {
     grid-template-columns: repeat(2, 50%);
   }
 }
@@ -375,7 +325,7 @@ header {
     min-width: 30%;
   }
 
-  .eboard-container>div {
+  .prev-eboard.card-container>div {
     grid-template-columns: repeat(2, auto);
   }
 
@@ -389,7 +339,7 @@ header {
 }
 
 @media (max-width: 1000px) {
-  .spotlight {
+  .curr-eboard-container {
     grid-template-columns: repeat(1, 100%);
   }
 }
@@ -399,11 +349,7 @@ header {
     margin: 0 1rem;
   }
 
-  .eboard-container>div {
-    grid-template-columns: repeat(1, auto);
-  }
-
-  .eboard-list-container>div {
+  .prev-eboard.card-container>div {
     grid-template-columns: repeat(1, auto);
   }
 }

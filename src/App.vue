@@ -29,6 +29,8 @@ export default {
   --border-radius: 10px;
   --large-border-radius: 20px;
   --indentation: 64px;
+  --shadow-blur: 25px;
+  --shadow-offset-y: 10px;
 
   --bkg-color: whitesmoke;
   --text-color: #333;
@@ -107,6 +109,16 @@ h1 {
 h2 {
   font-size: 2.25em;
   line-height: 2em;
+}
+
+h3 {
+  font-size: 1.9em;
+  line-height: 1.75em;
+}
+
+h4 {
+  font-size: 1.5em;
+  line-height: 1.25em;
 }
 
 p,

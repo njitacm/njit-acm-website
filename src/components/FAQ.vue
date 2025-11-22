@@ -74,13 +74,13 @@ export default {
 
 hr {
   border: none;
-  border-bottom: var(--gray) 2px solid;
+  border-bottom: var(--gray) var(--border-width) solid;
 }
 
 .faq {
   background-color: var(--bkg-color);
   width: 100%;
-  padding: 0.8rem;
+  padding: 8px;
   text-align: center;
   border: none;
   border-radius: 10px;
@@ -105,7 +105,7 @@ hr {
 }
 
 .faq.selected {
-  background-color: var(--text-color);
+  background-color: var(--red);
   color: var(--bkg-color);
 }
 

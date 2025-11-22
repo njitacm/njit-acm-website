@@ -67,7 +67,7 @@ export default {
 
 img {
   border-radius: var(--border-radius);
-  box-shadow: var(--shadow-gray) 0px 10px 25px;
+  box-shadow: var(--shadow-gray) 0px var(--shadow-offset-y) var(--shadow-blur);
   width: 50%;
   object-fit: cover;
 }

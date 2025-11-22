@@ -1,113 +1,105 @@
 <template>
-  <div class="list-item">
-    <img :src="imagePath" />
-    <div>
-      <h1>{{ incumbent }}</h1>
-      <h2>{{ position }}</h2>
-      <p class="desc">{{ incumbentDesc }}</p>
+  <main class="EBoardListItem">
+    <img :src="imgSrc" />
+    <div class="info">
+      <h3 class="name">{{ name }}</h3>
+      <p class="position">{{ position }}</p>
+      <p class="desc">{{ desc }}</p>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
 import { getImageUrl } from '../util';
 
 export default {
-  props: [
-    "position",
-    "positionDesc",
-    "incumbent",
-    "incumbentDesc",
-    "imageName",
-    "isSelected",
-    "currEboard",
-  ],
+  name: "EBoardListItem",
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    position: {
+      type: String,
+      default: ""
+    },
+    desc: {
+      type: String,
+      default: ""
+    },
+    imagePath: {
+      type: String,
+      default: ""
+    },
+  },
   data() {
     return {
-      imagePath: "",
+      imgSrc: "",
     };
   },
   async mounted() {
-    this.imagePath = await getImageUrl(`eboard/${this.$props.imageName}`);
+    if (!this.$props.imagePath || this.$props.imagePath === "") {
+      this.imgSrc = await getImageUrl("blank-pfp.png");
+    } else {
+      this.imgSrc = await getImageUrl(`eboard/${this.$props.imagePath}`);
+    }
   },
 };
 </script>
 
 <style scoped>
-/*
-- Font sizes (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
-
-- Spacing system (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 /48 /64 /80 /96 / 128
-*/
-* {
-  transition: all 500ms ease-in-out;
+.EBoardListItem {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
 }
 
-p {
+.info {
+  height: calc(100% - 16px);
 }
 
-h2 {
+.name {
+  margin-top: 16px;
   color: var(--red);
 }
 
-.list-item {
-  /* background-color: coral; */
-  display: flex;
-  border-radius: 20px;
-  text-align: left;
-  box-shadow: none;
-  opacity: 0.9;
-  width: fit-content;
-  transform: translateY(1.6rem);
+.position {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 16px;
+}
+
+img {
+  width: 300px;
   height: auto;
-  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-gray) 0px var(--shadow-offset-y) var(--shadow-blur);
 }
 
-.list-item > div, .list-item > img {
-  margin: auto 2rem;
-}
-
-.list-item > img {
-  display: block;
-  width: 20rem;
-  height: 20rem;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: var(--shadow-gray) 0px 0px 25px;
-}
-
-@media (max-width: 1750px) {
-  .list-item {
-    display: inline;
-  }
-  .list-item > div {
-    /* margin: 0 0; */
-    margin: 2rem auto;
-  }
-
-  /* center the img in .list-item horizontally */
-  .list-item > img {
-    margin: auto;
-  }
-
-  .list-item > img {
-    width: 25rem;
-    height: 25rem;
+@media(max-width: 1000px) {
+  img {
+    width: 200px;
   }
 }
 
-@media (max-width: 600px) {
-  .list-item > img {
-    width: 18rem;
-    height: 18rem;
+@media(max-width: 750px) {
+  img {
+    width: 300px;
+  }
+
+  .EBoardListItem {
+    flex-direction: column;
+    align-items: center;
   }
 }
+
 @media (max-width: 400px) {
-  .list-item > img {
-    width: 15rem;
-    height: 15rem;
+  img {
+    width: 250px;
   }
 }
 </style>
