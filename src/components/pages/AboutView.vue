@@ -16,8 +16,8 @@
       <h2 class="section-header">Current E-Board</h2>
       <div class="section-container curr-eboard-container">
         <div class="curr-eboard-sub-container">
-          <FlippableEBoardCard v-for="(member, index) in getEboard(currEboardYear)" :key="index" :name="member.Name"
-            :position="member.Role" :desc="member.Desc" :imagePath="getImagePath(member.Role, member.Term)"
+          <FlippableEBoardCard v-for="(member, index) in getEboard(currEboardYear)" :key="index" :name="member.name"
+            :position="member.position" :desc="member.desc" :imagePath="getImagePath(member.position, member.term)"
             :id="index" />
         </div>
         <button @click="togglePosDesc" class="accordion-toggle pos-desc" :class="{ selected: showPosDesc }">
@@ -27,7 +27,7 @@
           <div v-show="showPosDesc" class="section-container">
             <div v-for="(pos, index) in EBOARD_POS" :key="index">
               <h3>{{ pos }}</h3>
-              <p class="pos-desc">{{ eboardDescs[pos] }}</p>
+              <p class="pos-desc">{{ eboardPosDesc[pos] }}</p>
             </div>
           </div>
         </TransitionExpand>
@@ -41,7 +41,7 @@
         <EmbeddedCalendar
           src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20E-Board%20Office%20Hours&src=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233F51B5"
           href="https://calendar.google.com/calendar/u/0?cid=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
-          buttonText="Add Calendar" />
+          button-text="Add Calendar" />
       </div>
     </section>
     <section>
@@ -56,14 +56,17 @@
           <!-- 2024 and beyond uses list items instead of cards since they have desc -->
           <div v-if="year >= 2024" v-show="showEboard[year]" class="section-container prev-eboard list-container"
             :ref="year.toString()">
-            <EBoardListItem v-for="member in getEboard(year)" :key="member.Role" :name="member.Name"
-              :position="member.Role" :desc="member.Desc" :imagePath="getImagePath(member.Role, member.Term)" />
+            <EBoardListItem v-for="(member, index) in getEboard(year)" :key="index" :name="member.name"
+              :position="member.position" :desc="member.desc" :imagePath="getImagePath(member.position, member.term)" />
           </div>
           <!-- the older ones use cards since they don't have desc -->
-          <div v-else v-show="showEboard[year]" class="section-container prev-eboard card-container"
-            :ref="year.toString()">
-            <EBoardCard v-for="(member, index) in getEboard(year)" :key="index" :position="member.Role"
-              :name="member.Name" :imagePath="getImagePath(member.Role, member.Term)" />
+          <div v-else v-show="showEboard[year]" class="section-container prev-eboard" :ref="year.toString()">
+            <div class="spacer-start"></div>
+            <div class="card-sub-container">
+              <EBoardCard v-for="(member, index) in getEboard(year)" :key="index" :position="member.position"
+                :name="member.name" :imagePath="getImagePath(member.position, member.term)" />
+            </div>
+            <div class="spacer-end"></div>
           </div>
         </TransitionExpand>
         <hr v-if="year > firstEboardYear" />
@@ -73,16 +76,17 @@
 </template>
 
 <script>
-import EBoardCard from "../EBoardCard.vue";
-import jsonEboard from "../../assets/data/eboard.js";
+import eboardData from "../../assets/data/eboard.js";
 import defaultImgPaths from "../../assets/data/eboard_default_img_paths.js";
 import eboardPosDesc from "../../assets/data/eboard_pos_desc.js";
 import TransitionExpand from "../TransitionExpand.vue";
-import FlippableEBoardCard from "../FlippableEBoardCard.vue";
 import HorizontalSection from "../HorizontalSection.vue";
-import EBoardListItem from "../EBoardListItem.vue";
 import EmbeddedCalendar from "../EmbeddedCalendar.vue";
+import FlippableEBoardCard from "../FlippableEBoardCard.vue";
+import EBoardListItem from "../EBoardListItem.vue";
+import EBoardCard from "../EBoardCard.vue";
 
+// in constituion order
 const EBOARD_POS = ["President", "Vice President", "Treasurer", "Secretary", "Public Relations",
   "Webmaster", "Graphic Designer", "SIG Master", "Event Master", "Hack Master"];
 
@@ -99,11 +103,9 @@ export default {
       currEboardYear: 2025,
       firstEboardYear: 2016,
       showPosDesc: false,
-      showEboard: {
-        2024: true
-      },
-      eboardDescs: eboardPosDesc,
-      eboard: jsonEboard,
+      showEboard: { 2024: true },
+      eboardPosDesc,
+      eboardData,
     };
   },
   methods: {
@@ -111,7 +113,7 @@ export default {
       return `${year}/${defaultImgPaths[role]}`;
     },
     getEboard(year) {
-      return this.sortEboard(this.eboard.filter((member) => member.Term == year));
+      return this.sortEboard(this.eboardData.filter((member) => member.term == year));
     },
     setPosition(position) {
       this.selectedPosition = position;
@@ -136,7 +138,7 @@ export default {
       const sorted = [];
 
       for (const role of EBOARD_POS) {
-        const officer = eboard.find(officer => officer.Role.toLowerCase() === role.toLowerCase());
+        const officer = eboard.find(officer => officer.position.toLowerCase() === role.toLowerCase());
 
         if (officer) {
           sorted.push(officer);
@@ -144,7 +146,7 @@ export default {
       }
 
       if (sorted.length !== eboard.length) {
-        console.log(`Lost memebers for year ${eboard[0]?.Term}`);
+        console.log(`Lost memebers for year ${eboard[0]?.term}`);
       }
 
       return sorted;
@@ -179,26 +181,20 @@ export default {
   justify-items: center;
 }
 
-.prev-eboard>*:first-child,
-.prev-eboard.card-container>*:nth-child(-n+3) {
+.prev-eboard>*:first-child {
   margin-top: 32px;
 }
 
-.prev-eboard>*:last-child,
-.prev-eboard.card-container>*:nth-last-child(-n+3) {
+.prev-eboard>*:last-child {
   margin-bottom: 64px;
 }
 
-.prev-eboard.card-container {
+.prev-eboard .card-sub-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 16px;
   margin: 0 auto;
-  justify-content: space-evenly;
-}
-
-.prev-eboard.card-container>div * {
-  justify-self: center;
+  justify-items: center;
 }
 
 .prev-eboard.list-container {
@@ -206,7 +202,6 @@ export default {
   display: grid;
   margin: 0 auto;
   gap: 64px;
-  justify-content: space-evenly;
 }
 
 .accordion-toggle {

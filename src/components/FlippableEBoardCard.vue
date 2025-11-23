@@ -91,6 +91,7 @@ export default {
 <style scoped>
 .MainEboardCard {
   width: 100%;
+  max-width: 350px;
 }
 
 .card {

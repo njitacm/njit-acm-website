@@ -47,6 +47,7 @@ export default {
 .EBoardCard {
   text-align: center;
   height: 100%;
+  max-width: 350px;
 }
 
 img {
