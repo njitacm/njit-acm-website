@@ -15,8 +15,22 @@
     <section>
       <h2 class="section-header">Current E-Board</h2>
       <div class="section-container curr-eboard-container">
-        <FlippableEBoardCard v-for="(member, index) in getEboard(currEboardYear)" :key="index" :name="member.Name"
-          :position="member.Role" :desc="member.Desc" :imagePath="getImagePath(member.Role, member.Term)" :id="index" />
+        <div class="curr-eboard-sub-container">
+          <FlippableEBoardCard v-for="(member, index) in getEboard(currEboardYear)" :key="index" :name="member.Name"
+            :position="member.Role" :desc="member.Desc" :imagePath="getImagePath(member.Role, member.Term)"
+            :id="index" />
+        </div>
+        <button @click="togglePosDesc" class="accordion-toggle pos-desc" :class="{ selected: showPosDesc }">
+          Descriptions of E-Board Positions
+        </button>
+        <TransitionExpand>
+          <div v-show="showPosDesc" class="section-container">
+            <div v-for="(pos, index) in EBOARD_POS" :key="index">
+              <h3>{{ pos }}</h3>
+              <p class="pos-desc">{{ eboardDescs[pos] }}</p>
+            </div>
+          </div>
+        </TransitionExpand>
       </div>
     </section>
     <section>
@@ -40,12 +54,14 @@
         </button>
         <TransitionExpand :duration="500">
           <!-- 2024 and beyond uses list items instead of cards since they have desc -->
-          <div v-if="year >= 2024" class="prev-eboard list-container" :ref="year.toString()" v-show="showEboard[year]">
+          <div v-if="year >= 2024" v-show="showEboard[year]" class="section-container prev-eboard list-container"
+            :ref="year.toString()">
             <EBoardListItem v-for="member in getEboard(year)" :key="member.Role" :name="member.Name"
               :position="member.Role" :desc="member.Desc" :imagePath="getImagePath(member.Role, member.Term)" />
           </div>
           <!-- the older ones use cards since they don't have desc -->
-          <div v-else class="prev-eboard card-container" :ref="year.toString()" v-show="showEboard[year]">
+          <div v-else v-show="showEboard[year]" class="section-container prev-eboard card-container"
+            :ref="year.toString()">
             <EBoardCard v-for="(member, index) in getEboard(year)" :key="index" :position="member.Role"
               :name="member.Name" :imagePath="getImagePath(member.Role, member.Term)" />
           </div>
@@ -60,6 +76,7 @@
 import EBoardCard from "../EBoardCard.vue";
 import jsonEboard from "../../assets/data/eboard.js";
 import defaultImgPaths from "../../assets/data/eboard_default_img_paths.js";
+import eboardPosDesc from "../../assets/data/eboard_pos_desc.js";
 import TransitionExpand from "../TransitionExpand.vue";
 import FlippableEBoardCard from "../FlippableEBoardCard.vue";
 import HorizontalSection from "../HorizontalSection.vue";
@@ -77,18 +94,16 @@ export default {
   },
   data() {
     return {
+      EBOARD_POS,
       selectedPosition: "President",
       currEboardYear: 2025,
       firstEboardYear: 2016,
+      showPosDesc: false,
       showEboard: {
         2024: true
       },
-      // TODO: add section with general descriptions
-      eboardDescs: {
-
-      },
+      eboardDescs: eboardPosDesc,
       eboard: jsonEboard,
-
     };
   },
   methods: {
@@ -112,6 +127,9 @@ export default {
           this.showEboard[index] = false;
         }
       }
+    },
+    togglePosDesc() {
+      this.showPosDesc = !this.showPosDesc;
     },
     sortEboard(eboard) {
       // constitution order
@@ -147,6 +165,12 @@ export default {
 }
 
 .curr-eboard-container {
+  display: grid;
+  justify-items: center;
+}
+
+.curr-eboard-sub-container {
+  width: 100%;
   margin: 0 auto;
   display: grid;
   gap: 16px;
@@ -169,7 +193,6 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  width: 90%;
   margin: 0 auto;
   justify-content: space-evenly;
 }
@@ -179,7 +202,6 @@ export default {
 }
 
 .prev-eboard.list-container {
-  width: calc(100% - var(--indentation));
   height: fit-content;
   display: grid;
   margin: 0 auto;
@@ -211,6 +233,21 @@ hr {
   color: var(--bkg-color);
 }
 
+.accordion-toggle.pos-desc {
+  width: fit-content;
+  font-size: 1.5em;
+  color: var(--red);
+  border: var(--border-width) solid var(--red);
+}
+
+.accordion-toggle.pos-desc.selected {
+  color: var(--bkg-color);
+}
+
+p.pos-desc {
+  margin-bottom: 16px;
+}
+
 @media (hover: hover) and (pointer: fine) {
   .accordion-toggle {
     transition: background-color var(--hover-speed) ease-in-out, color var(--hover-speed) ease-in-out;
@@ -219,10 +256,18 @@ hr {
   .accordion-toggle:hover:not(.accordion-toggle.selected) {
     background-color: var(--gray);
   }
+
+  .accordion-toggle.pos-desc:hover:not(.accordion-toggle.selected) {
+    background-color: var(--light-red);
+  }
 }
 
 @media (pointer: coarse) {
   .accordion-toggle:active:not(.accordion-toggle.selected) {
+    background-color: var(--gray);
+  }
+
+  .accordion-toggle.pos-desc:active:not(.accordion-toggle.selected) {
     background-color: var(--light-red);
   }
 }
@@ -252,55 +297,9 @@ hr {
   transform: translateY(-60px);
 }
 
-@media (max-width: 1800px) {
-  .curr-eboard-container {
-    grid-template-columns: repeat(3, 33%);
-  }
-}
-
-@media (max-width: 1700px) {
-  .prev-eboard.card-container>div {
-    grid-template-columns: repeat(3, auto);
-  }
-}
-
-@media (max-width: 1400px) {
-  .curr-eboard-container {
-    grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (max-width: 1350px) {
-  .card {
-    min-width: 30%;
-  }
-
-  .prev-eboard.card-container>div {
-    grid-template-columns: repeat(2, auto);
-  }
-
-  .spacer1 {
-    display: none;
-  }
-
-  .spacer2 {
-    display: none;
-  }
-}
-
-@media (max-width: 1000px) {
-  .curr-eboard-container {
-    grid-template-columns: repeat(1, 100%);
-  }
-}
-
 @media (max-width: 750px) {
-  header {
-    margin: 0 1rem;
-  }
-
-  .prev-eboard.card-container>div {
-    grid-template-columns: repeat(1, auto);
+  .accordion-toggle.pos-desc {
+    width: 100%;
   }
 }
 </style>

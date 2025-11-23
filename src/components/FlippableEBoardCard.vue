@@ -11,12 +11,7 @@
     </div>
     <div class="info">
       <h3 class="name">{{ name }}</h3>
-      <p class="position">
-        <span>{{ position }}</span>
-        <button class="info-btn">
-          <img src="../assets/icons/info.svg" class="info-icon" alt="Info" />
-        </button>
-      </p>
+      <p class="position">{{ position }}</p>
     </div>
   </main>
 </template>
@@ -179,40 +174,5 @@ export default {
   font-weight: bold;
   font-size: 1.5em;
   text-align: center;
-  display: inline-flex;
-  width: fit-content;
-  align-items: center;
-  gap: 16px;
-}
-
-.position span {
-  flex-grow: 1;
-}
-
-.position button {
-  flex-shrink: 1;
-}
-
-.info-btn {
-  border: none;
-  background-color: transparent;
-  width: fit-content
-}
-
-.info-btn {
-  width: 1em;
-  height: 1em;
-  display: grid;
-  place-items: center;
-}
-
-.info-icon {
-  opacity: 0.5;
-  width: 0.75em;
-  height: 0.75em;
-}
-
-[data-theme="dark"] .info-icon {
-  filter: invert(1);
 }
 </style>

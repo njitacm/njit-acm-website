@@ -1,26 +1,21 @@
 export default {
-    President:
-        "The President of ACM is responsible for leading the club. You'll see them take center stage during our general body meetings with a gavel passed down through generations of Presidents. The President presides over all functions of the club, with all other e-board officers reporting directly to and being managed by them.",
+    President: "The President of ACM is responsible for leading the club. They take center stage during our general body meetings with a gavel passed down through generations of Presidents. They preside over all functions of the club and manage all other e-board officers.",
 
-    "Vice President":
-        "The Vice-President of ACM the second in command in the organization. They work directly alongside the President and take over for them if need be. They are also responsible for handling all tutoring done by ACM.",
+    "Vice President": "The Vice President of ACM the second-in-command in the organization. They work directly alongside the President and substitute for them if need be. They are also responsible for handling all ACM-run tutoring.",
 
-    Secretary:
-        "ACM's secretary managed all our out-of-school connections. They talk to outside organizations for the purposes of planning events and gathering sponsors.",
+    Treasurer: "The Treasurer of ACM manages the club's budget and finances. They are responsible for procuring funding and overseeing spending, financially supporting our SIGs, large-scale events, and computer parts for the office.",
 
-    Treasurer:
-        "ACM's treasurer manages the club's budget and finances. They are responsible for procuring funding and overseeing the spending of that funding. It's thanks to them that we're able to support our SIGs financially, fund large-scale events, and buy computer parts for the office.",
+    Secretary: "The Secretary of ACM manages all our out-of-school connections. They communicate with outside organizations for planning events and gathering sponsors.",
 
-    "Graphic Designer":
-        "ACM's Graphic Designer oversees the creation of all promotional material and other art-work for the club, including SIG posters, social media posts, and event fliers. We have them to thank for much of our most iconic imagery, including the club logo and it's many variations.",
+    "Public Relations": "The Head of Public Relations of ACM is responsible for promoting the club through advertisting, running all our social media accounts, posting flyers, and spreading ACM news by word of mouth.",
 
-    Webmaster:
-        "The Webmaster of ACM is responsible for building and maintaining ACM's websites, namely this ACM site, the Hacknjit site, and the JerseyCTF site. The websites are built in golang, vue, and bootstrap and can be viewed on our github.",
+    Webmaster: "The Webmaster of ACM is responsible for building and maintaining the club's websites, namely this ACM main site, the HackNJIT site, and the JerseyCTF site. They are also in charge of backend infrastructure.",
 
-    "Event Master":
-        "The event master is responsible for managing ACM's Special Interest Groups (SIGs) and is in charge of minor events. Organizations should feel free to reach out for collaboration!",
+    "Graphic Designer": "The Graphic Designer of ACM oversees the creation of all promotional material and other artwork for the club, including SIG posters, social media posts, and event flyers.",
 
-    // TODO - Write PR Position Desc
-    "Public Relations":
-        "ACM's Head of Public Relations is responsible for all advertisting, including running our various social media accounts, putting up posters, and spreading ACM news by word of mouth. ",
+    "SIG Master": "The SIG Master of ACM manages ACM's Special Interest Groups (SIGs), including SIG applications, interviews, and communication with SIG leaders.",
+
+    "Event Master": "The Event Master of ACM manages all club-run events, including planning, collaboration with other clubs, booking rooms, and writing event reports.",
+
+    "Hack Master": "The Hack Master of ACM manages all club-run hackathons, namely HackNJIT and JerseyCTF.",
 };
