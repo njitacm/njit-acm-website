@@ -5,7 +5,7 @@ export default {
 
     Treasurer: "The Treasurer of ACM manages the club's budget and finances. They are responsible for procuring funding and overseeing spending, financially supporting our SIGs, large-scale events, and computer parts for the office.",
 
-    Secretary: "The Secretary of ACM manages all our out-of-school connections. They communicate with outside organizations for planning events and gathering sponsors.",
+    Secretary: "The Secretary of ACM manages all our out-of-school connections. They communicate with outside organizations for planning events and gathering sponsors. Additionally, they are responsible for taking notes during executive board meetings.",
 
     "Public Relations": "The Head of Public Relations of ACM is responsible for promoting the club through advertisting, running all our social media accounts, posting flyers, and spreading ACM news by word of mouth.",
 

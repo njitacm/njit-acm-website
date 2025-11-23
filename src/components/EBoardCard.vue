@@ -2,7 +2,7 @@
   <main class="EBoardCard">
     <img :src="imgSrc" />
     <div class="info">
-      <h3 class="name">{{ name }}</h3>
+      <h4 class="name">{{ name }}</h4>
       <p class="position">{{ position }}</p>
     </div>
   </main>
@@ -46,7 +46,7 @@ export default {
 <style scoped>
 .EBoardCard {
   text-align: center;
-  height: 100%;
+  width: 100%;
   max-width: 350px;
 }
 

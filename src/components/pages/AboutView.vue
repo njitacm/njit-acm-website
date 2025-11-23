@@ -50,7 +50,7 @@
         v-for="year in Array.from({ length: currEboardYear - firstEboardYear }, (_, i) => i + firstEboardYear).reverse()"
         :key="year">
         <button @click="toggleEboard(year)" class="accordion-toggle" :class="{ 'selected': showEboard[year] }">
-          {{ year }} Eboard
+          <h3>{{ year }}</h3>
         </button>
         <TransitionExpand :duration="500">
           <!-- 2024 and beyond uses list items instead of cards since they have desc -->
@@ -205,7 +205,7 @@ export default {
 }
 
 .accordion-toggle {
-  font-size: 2em;
+  font-size: 1em;
   text-align: center;
   color: var(--text-color);
   cursor: pointer;
