@@ -48,7 +48,6 @@ export default {
 
 <style scoped>
 .outer-container {
-  margin-inline: auto;
   margin-top: 32px;
   border: var(--border-width) var(--red) solid;
   border-radius: 10px;

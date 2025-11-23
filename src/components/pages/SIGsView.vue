@@ -1,5 +1,5 @@
 <template>
-  <div class="outer-container">
+  <main class="SIGsView outer-container">
     <HorizontalSection imagePath="sigs/SIG_Frontline_Meeting.jpg">
       <template v-slot:title>SIGs</template>
       <template v-slot:content>
@@ -71,7 +71,7 @@
         </p>
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -92,10 +92,6 @@ export default {
 </script>
 
 <style scoped>
-.outer-container {
-  margin-inline: auto;
-}
-
 .sig-container {
   /* width: %; */
   display: grid;

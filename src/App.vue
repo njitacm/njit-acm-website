@@ -96,6 +96,7 @@ section {
 }
 
 .outer-container {
+  margin-inline: auto;
   width: calc(100% - var(--indentation));
   max-width: 1250px;
   margin-bottom: 64px;

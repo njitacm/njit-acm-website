@@ -1,5 +1,5 @@
 <template>
-  <div class="outer-container">
+  <main class="AboutView outer-container">
     <HorizontalSection imagePath="eboard/2025/WholeBoard.jpg" objPosY="47.5%">
       <template v-slot:title>About Us</template>
       <template v-slot:content>
@@ -27,7 +27,7 @@
         <EmbeddedCalendar
           src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20E-Board%20Office%20Hours&src=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233F51B5"
           href="https://calendar.google.com/calendar/u/0?cid=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
-          buttonText="Add Calendar"></EmbeddedCalendar>
+          buttonText="Add Calendar" />
       </div>
     </section>
     <section>
@@ -39,11 +39,12 @@
           {{ year }} Eboard
         </button>
         <TransitionExpand :duration="500">
-          <!-- 2024 and beyond uses list items instead of cards -->
+          <!-- 2024 and beyond uses list items instead of cards since they have desc -->
           <div v-if="year >= 2024" class="prev-eboard list-container" :ref="year.toString()" v-show="showEboard[year]">
             <EBoardListItem v-for="member in getEboard(year)" :key="member.Role" :name="member.Name"
               :position="member.Role" :desc="member.Desc" :imagePath="getImagePath(member.Role, member.Term)" />
           </div>
+          <!-- the older ones use cards since they don't have desc -->
           <div v-else class="prev-eboard card-container" :ref="year.toString()" v-show="showEboard[year]">
             <EBoardCard v-for="(member, index) in getEboard(year)" :key="index" :position="member.Role"
               :name="member.Name" :imagePath="getImagePath(member.Role, member.Term)" />
@@ -52,13 +53,13 @@
         <hr v-if="year > firstEboardYear" />
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>
-import "material-symbols";
 import EBoardCard from "../EBoardCard.vue";
 import jsonEboard from "../../assets/data/eboard.js";
+import defaultImgPaths from "../../assets/data/eboard_default_img_paths.js";
 import TransitionExpand from "../TransitionExpand.vue";
 import FlippableEBoardCard from "../FlippableEBoardCard.vue";
 import HorizontalSection from "../HorizontalSection.vue";
@@ -71,12 +72,8 @@ const EBOARD_POS = ["President", "Vice President", "Treasurer", "Secretary", "Pu
 export default {
   name: "AboutView",
   components: {
-    EBoardCard,
-    TransitionExpand,
-    FlippableEBoardCard,
-    HorizontalSection,
-    EBoardListItem,
-    EmbeddedCalendar
+    EBoardCard, TransitionExpand, FlippableEBoardCard,
+    HorizontalSection, EBoardListItem, EmbeddedCalendar
   },
   data() {
     return {
@@ -96,40 +93,7 @@ export default {
   },
   methods: {
     getImagePath(role, year) {
-      let path = "webmaster.png";
-      switch (role) {
-        case "President":
-          path = "president.png";
-          break;
-        case "Vice President":
-          path = "vice_president.png";
-          break;
-        case "Treasurer":
-          path = "treasurer.png";
-          break;
-        case "Secretary":
-          path = "secretary.png";
-          break;
-        case "Public Relations":
-          path = "public_relations.png";
-          break;
-        case "Graphic Designer":
-          path = "graphic_designer.png";
-          break;
-        case "SIG Master":
-          path = "sig_master.png";
-          break;
-        case "Event Master":
-          path = "event_master.png";
-          break;
-        case "Hack Master":
-          path = "hack_master.png";
-          break;
-        default:
-          break;
-      }
-
-      return year + "/" + path;
+      return `${year}/${defaultImgPaths[role]}`;
     },
     getEboard(year) {
       return this.sortEboard(this.eboard.filter((member) => member.Term == year));
@@ -172,10 +136,6 @@ export default {
 </script>
 
 <style scoped>
-.outer-container {
-  margin-inline: auto;
-}
-
 .position-button {
   background: none;
   border: none;

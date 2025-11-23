@@ -1,5 +1,5 @@
 <template>
-  <div class="outer-container">
+  <main class="EventsView outer-container">
     <HorizontalSection imagePath="EventsPage/HackNJIT2023.jpg" objPosY="50%">
       <template v-slot:title>Events</template>
       <template v-slot:content>
@@ -40,7 +40,7 @@
         <MainEvent v-for="event in mainEvents" :key="event.title" v-bind="event" />
       </div>
     </section>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -134,10 +134,6 @@ export default {
 </script>
 
 <style scoped>
-.outer-container {
-  margin-inline: auto;
-}
-
 /* .main {
   display: flex;
   justify-content: center;

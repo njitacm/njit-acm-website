@@ -3,7 +3,7 @@
     <div class="card" @mouseenter="toggleFrontHover" @mouseleave="toggleFrontHover" @click="toggleFrontClick"
       :class="{ flipped: id === store.currEboardFlipped }">
       <div class="front">
-        <img :src="imgSrc" />
+        <img class="pic" :src="imgSrc" />
       </div>
       <div class="back">
         <p class="desc">{{ desc }}</p>
@@ -11,7 +11,12 @@
     </div>
     <div class="info">
       <h3 class="name">{{ name }}</h3>
-      <p class="position">{{ position }}</p>
+      <p class="position">
+        <span>{{ position }}</span>
+        <button class="info-btn">
+          <img src="../assets/icons/info.svg" class="info-icon" alt="Info" />
+        </button>
+      </p>
     </div>
   </main>
 </template>
@@ -101,7 +106,7 @@ export default {
 
 .front,
 .back,
-img {
+.pic {
   transition: transform 250ms linear;
   border-radius: var(--large-border-radius);
 }
@@ -121,7 +126,7 @@ img {
   z-index: 1;
 }
 
-img {
+.pic {
   width: 100%;
   aspect-ratio: 1;
   border: var(--border-width) var(--red) solid;
@@ -158,8 +163,11 @@ img {
 }
 
 .info {
-  margin: 16px;
+  margin: 16px auto;
   width: calc(100% - 32px);
+  display: grid;
+  justify-content: center;
+  justify-items: center;
 }
 
 .name {
@@ -171,5 +179,40 @@ img {
   font-weight: bold;
   font-size: 1.5em;
   text-align: center;
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 16px;
+}
+
+.position span {
+  flex-grow: 1;
+}
+
+.position button {
+  flex-shrink: 1;
+}
+
+.info-btn {
+  border: none;
+  background-color: transparent;
+  width: fit-content
+}
+
+.info-btn {
+  width: 1em;
+  height: 1em;
+  display: grid;
+  place-items: center;
+}
+
+.info-icon {
+  opacity: 0.5;
+  width: 0.75em;
+  height: 0.75em;
+}
+
+[data-theme="dark"] .info-icon {
+  filter: invert(1);
 }
 </style>
