@@ -4,14 +4,8 @@
   </button>
 </template>
 
-<script>
-export default {
-
-}
-</script>
-
 <style scoped>
-button {
+.PrimaryButton {
   --btn-hov-col: color-mix(in srgb, var(--light-red), var(--text-color) 10%);
   background-color: var(--light-red);
   border-radius: var(--border-radius);
@@ -24,7 +18,10 @@ button {
   font-size: 1.25em;
 }
 
-:slotted(a), :slotted(.router-link), :slotted(span), :slotted(.red-button-text) {
+:slotted(a),
+:slotted(.router-link),
+:slotted(span),
+:slotted(.red-button-text) {
   border-radius: var(--border-radius);
   display: block;
   align-content: center;
@@ -42,10 +39,10 @@ button {
     background-color: var(--btn-hov-col);
   }
 }
+
 @media (pointer: coarse) {
   button:active {
     background-color: var(--btn-hov-col);
   }
 }
-
 </style>
