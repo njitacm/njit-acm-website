@@ -1,7 +1,7 @@
 <template>
   <main clas="NavBar">
     <Transition>
-      <header class="header" ref="pageHeader">
+      <header class="header" :class="{ 'shadow': showShadow }" ref="pageHeader">
         <RouterLink to="/" class="home-link" @click="toTop">
           <img src="../assets/logos/NJIT_ACM_LOGO.svg" class="logo" />
           <span class="home-link-text">Association for Computing Machinery</span>
@@ -28,7 +28,8 @@ export default {
   components: { CollapsableNav, NavButton, ThemeToggle },
   data() {
     return {
-      currPath: undefined,
+      currPath: null,
+      showShadow: false,
       navData: {
         '/sigs': { id: 0, text: 'SIGs' },
         '/events': { id: 1, text: 'Events' },
@@ -48,13 +49,13 @@ export default {
   methods: {
     updateDropShadow() {
       if (document.documentElement.scrollTop > 0) {
-        this.$refs.pageHeader.style.boxShadow = "var(--shadow-gray) 0px 0px 25px";
+        this.showShadow = true;
       } else {
-        this.$refs.pageHeader.style.boxShadow = "none";
+        this.showShadow = false;
       }
     },
     updateTabSelection() {
-      if (this.currPath === undefined)
+      if (this.currPath == null)
         return;
 
       if (this.navData[this.currPath])
@@ -117,7 +118,7 @@ export default {
   background-color: var(--bkg-color) !important;
   color: var(--text-color);
   z-index: 100;
-  padding-inline: 5px;
+  padding-inline: 8px;
   display: flex;
   justify-content: space-between;
   border-bottom: var(--red) var(--nav-border-width) solid;
@@ -128,6 +129,10 @@ export default {
   box-sizing: border-box;
   height: var(--nav-height);
   position: fixed;
+}
+
+.header.shadow {
+  box-shadow: var(--shadow-gray) 0px var(--shadow-offset-y) var(--shadow-blur);
 }
 
 .logo {
@@ -176,6 +181,10 @@ a {
 
 /* make sure this number matches that in CollapsableNav.vue! */
 @media (max-width: 625px) {
+  .ThemeToggle {
+    height: calc(var(--nav-height) - 16px);
+  }
+
   .CollapsableNav {
     order: 1;
   }

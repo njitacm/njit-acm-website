@@ -44,6 +44,7 @@ export default {
 
 <style scoped>
 .ThemeToggle {
+  aspect-ratio: 1;
   background: transparent;
   border: none;
   border-radius: var(--border-radius);

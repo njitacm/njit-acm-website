@@ -62,13 +62,10 @@ export default {
 <style scoped>
 #mmmBorger {
   display: none;
-  box-sizing: margin-box;
   background-color: var(--bkg-color);
   border: none;
   color: var(--red);
-  height: calc(var(--nav-height) - var(--nav-border-width));
-  width: auto;
-  right: 0;
+  cursor: pointer;
 }
 
 #mmmBorger .menu-icon {
@@ -86,25 +83,17 @@ export default {
   color: var(--bkg-color);
 }
 
-#mmmBorger .menu-text {
-  font-size: 2em;
-  display: block;
-  height: inherit;
-  padding: 0px 0px 0px 10px;
-  line-height: var(--nav-height);
-}
-
 @media (hover: hover) and (pointer: fine) {
   #mmmBorger:hover:not(.selected) .menu-icon {
     /* mark as important bc JavaScript overriding it disables hover */
-    background-color: var(--light-red) !important;
+    background-color: var(--light-red);
   }
 }
 
 @media (pointer: coarse) {
   #mmmBorger:active:not(.selected) .menu-icon {
     /* mark as important bc JavaScript overriding it disables hover */
-    background-color: var(--light-red) !important;
+    background-color: var(--light-red);
   }
 }
 
@@ -113,18 +102,15 @@ export default {
 }
 
 .v-enter-active {
-  transition: transform var(--hover-speed) linear;
+  transition: transform var(--hover-speed) var(--hover-func), opacity var(--hover-speed) var(--hover-func);
 }
 
 .v-leave-active {
-  transition: all var(--hover-speed) linear;
+  transition: transform var(--hover-speed) var(--hover-func), opacity var(--hover-speed) var(--hover-func);
 }
 
 .v-enter-from,
-.v-leave-to
-
-/* .fade-leave-active in <2.1.8 */
-  {
+.v-leave-to {
   opacity: 0;
   transform: translateY(-10px);
 }
@@ -132,7 +118,6 @@ export default {
 /* Desktop styles for nav */
 .open-nav {
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 8px;
 }
@@ -145,15 +130,14 @@ export default {
 
   .open-nav {
     position: absolute;
-    display: flex;
-    top: calc(var(--nav-height) + 5px);
-    right: 5px;
+    top: calc(var(--nav-height) + 8px);
+    right: 8px;
     flex-direction: column;
     align-items: stretch;
     background-color: var(--bkg-color);
-    border-radius: 12px;
-    padding: 5px;
-    border: 2px var(--red) solid;
+    border-radius: var(--border-radius);
+    padding: 8px;
+    border: var(--border-width) var(--red) solid;
     z-index: 100;
     filter: drop-shadow(0px var(--shadow-offset-y) var(--shadow-blur) var(--shadow-gray));
   }
