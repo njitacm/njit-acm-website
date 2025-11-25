@@ -9,6 +9,7 @@
           competition, we regularly host workshops, networking events, social
           events, and more!
         </p>
+        <br />
         <p>
           To learn more about what we have to offer, follow ACM on
           <a href="https://njit.campuslabs.com/engage/organization/acm" target="_blank">Highlander Hub</a>, or stop by

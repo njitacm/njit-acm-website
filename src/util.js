@@ -2,6 +2,7 @@ const IMAGES = import.meta.glob(
     [
         // add as needed for more image extensions
         '/src/assets/**/*.jpg',
+        '/src/assets/**/*.jpeg',
         '/src/assets/**/*.png',
         '/src/assets/**/*.svg',
     ],
@@ -17,6 +18,7 @@ async function getImageUrl(name) {
     if (!IMAGES[imagePath]) {
         throw new Error(`Image not found: ${name}`);
     }
+    console.log(imagePath);
 
     // Call the importer function. This returns a Promise.
     const importer = IMAGES[imagePath];
