@@ -1,7 +1,7 @@
 <template>
   <main class="MainEboardCard">
     <div class="card" @mouseenter="toggleFrontHover" @mouseleave="toggleFrontHover" @click="toggleFrontClick"
-      :class="{ flipped: id === store.currEboardFlipped }">
+      :class="{ flipped: id === $store.state.currEboardCardFlipped }">
       <div class="front">
         <img class="pic" :src="imgSrc" />
       </div>
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import { store } from "../stores/eboard_card_store.js";
 import { getImageUrl } from "../util.js";
 
 export default {
@@ -46,7 +45,6 @@ export default {
   },
   data() {
     return {
-      store,
       imgSrc: "",
     };
   },
@@ -79,10 +77,10 @@ export default {
     },
     toggleFront() {
       if (this.$props.desc === undefined || this.$props.desc === '') return;
-      if (this.store.currEboardFlipped == this.id)
-        this.store.currEboardFlipped = -1;
+      if (this.$store.state.currEboardCardFlipped == this.id)
+        this.$store.state.currEboardCardFlipped = -1;
       else
-        this.store.currEboardFlipped = this.id;
+        this.$store.state.currEboardCardFlipped = this.id;
     },
   },
 };

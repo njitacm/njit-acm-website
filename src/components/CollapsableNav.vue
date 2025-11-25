@@ -1,24 +1,25 @@
 <template>
-  <OnClickOutside @trigger="setNavOpen(false)">
-    <div>
-      <button @click="toggleNav" ref="menuButton" id="mmmBorger" :class="{ 'nav-open': navOpen }">
-        <span class="menu-text">Menu</span>
-        <span class="material-symbols-sharp menu-icon" ref="menuIcon">format_align_justify</span>
+  <main class="CollapsableNav">
+    <OnClickOutside @trigger="setNavOpen(false)">
+      <button @click="toggleNav" ref="menuButton" id="mmmBorger" :class="{ 'selected': navOpen }">
+        <span class="material-symbols-sharp menu-icon" ref="menuIcon">
+          format_align_justify
+        </span>
       </button>
       <Transition>
         <nav class="open-nav" v-show="showNav" ref="nav">
           <slot></slot>
         </nav>
       </Transition>
-    </div>
-  </OnClickOutside>
+    </OnClickOutside>
+  </main>
 </template>
 
 <script>
 import { OnClickOutside } from "@vueuse/components";
 
 export default {
-  emits: ['collapsableNavOpened'],
+  name: "CollapsableNav",
   components: { OnClickOutside },
   data() {
     return {
@@ -28,30 +29,17 @@ export default {
   },
   watch: {
     $route() {
+      // after switching pages, close the collapsable nav
       this.setNavOpen(false);
     }
   },
   methods: {
     toggleNav() {
-      if (!this.navOpen) {
-        this.setNavOpen(true);
-      } else {
-        this.setNavOpen(false);
-      }
+      this.setNavOpen(!this.navOpen);
     },
     setNavOpen(open) {
-      if (open) {
-        this.$refs.menuIcon.style.transform = "rotate(-90deg)";
-        this.$refs.menuButton.style.backgroundColor = "var(--red)";
-        this.$refs.menuButton.style.color = "var(--bkg-color)";
-        this.navOpen = true;
-        this.$emit('collapsableNavOpened');
-      } else {
-        this.$refs.menuIcon.style.transform = "rotate(0deg)";
-        this.$refs.menuButton.style.backgroundColor = "var(--bkg-color)";
-        this.$refs.menuButton.style.color = "var(--red)";
-        this.navOpen = false;
-      }
+      this.navOpen = open;
+      this.$refs.menuIcon.style.transform = open ? "rotate(-90deg)" : "rotate(0deg)";
     },
     onResize() {
       this.windowWidth = window.innerWidth;
@@ -63,11 +51,8 @@ export default {
     },
   },
   mounted() {
-    this.$nextTick(() => {
-      window.addEventListener("resize", this.onResize);
-    });
+    window.addEventListener("resize", this.onResize);
   },
-
   beforeUnmount() {
     window.removeEventListener("resize", this.onResize);
   },
@@ -80,7 +65,6 @@ export default {
   box-sizing: margin-box;
   background-color: var(--bkg-color);
   border: none;
-  border-left: var(--red) 2px solid;
   color: var(--red);
   height: calc(var(--nav-height) - var(--nav-border-width));
   width: auto;
@@ -88,8 +72,18 @@ export default {
 }
 
 #mmmBorger .menu-icon {
-  padding: 10px;
+  aspect-ratio: 1;
+  border-radius: var(--border-radius);
+  height: calc(var(--nav-height) - 16px);
+  font-size: 1.5em;
   transition: transform var(--hover-speed) ease;
+  display: grid;
+  align-items: center;
+}
+
+#mmmBorger.selected .menu-icon {
+  background-color: var(--red);
+  color: var(--bkg-color);
 }
 
 #mmmBorger .menu-text {
@@ -101,14 +95,14 @@ export default {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  #mmmBorger:hover:not(.nav-open) {
+  #mmmBorger:hover:not(.selected) .menu-icon {
     /* mark as important bc JavaScript overriding it disables hover */
     background-color: var(--light-red) !important;
   }
 }
 
 @media (pointer: coarse) {
-  #mmmBorger:active:not(.nav-open) {
+  #mmmBorger:active:not(.selected) .menu-icon {
     /* mark as important bc JavaScript overriding it disables hover */
     background-color: var(--light-red) !important;
   }
@@ -140,33 +134,28 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 0.5em;
-  margin-right: 1rem;
+  gap: 8px;
 }
 
+/* make sure this number matches the one in in the <script> section! */
 @media (max-width: 625px) {
   #mmmBorger {
-    display: flex;
-    align-items: center;
+    display: unset;
   }
 
   .open-nav {
     position: absolute;
     display: flex;
-    gap: 0.5rem;
     top: calc(var(--nav-height) + 5px);
+    right: 5px;
     flex-direction: column;
     align-items: stretch;
     background-color: var(--bkg-color);
     border-radius: 12px;
     padding: 5px;
-    border: 2px red solid;
+    border: 2px var(--red) solid;
     z-index: 100;
-    box-shadow: var(--shadow-gray) 0px 0px 25px;
-  }
-
-  div {
-    position: relative;
+    filter: drop-shadow(0px var(--shadow-offset-y) var(--shadow-blur) var(--shadow-gray));
   }
 }
 </style>

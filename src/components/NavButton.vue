@@ -1,52 +1,51 @@
 <template>
-  <button :class="{ selected: isSelected }">
+  <button class="NavButton" :class="{ selected: $store.state.navBtnSelected === id }">
     <RouterLink :to="to" class="router-link">{{ text }}</RouterLink>
   </button>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      isSelected: false
-    };
+  name: "NavButton",
+  props: {
+    to: {
+      type: String,
+      required: true,
+    },
+    text: {
+      type: String,
+      required: true,
+    },
+    id: {
+      type: Number,
+      required: true,
+    },
   },
-  props: ['to', 'text', 'id', 'selectedId'],
-  methods: {
-    updateSelection() {
-      this.isSelected = this.$props.id == this.$props.selectedId;
-    }
-  },
-  // e.g. when collapsable nav opens
-  mounted() {
-    this.updateSelection()
-  },
-  // e.g. when user clicks & changes "tab"
-  updated() {
-    this.updateSelection()
-  }
 }
 </script>
 
 <style scoped>
-button {
+.NavButton {
   background-color: transparent;
   border-radius: var(--border-radius);
   border: none;
   height: 1.75em;
   font-size: 1.25em;
   cursor: pointer;
-  transition: background-color var(--hover-speed) ease-in-out;
+  transition: background-color var(--hover-speed) var(--hover-func);
   align-content: center;
   line-height: 1.5em;
+}
+
+.NavButton.selected {
+  background-color: var(--red);
 }
 
 .router-link {
   border-radius: var(--border-radius);
   display: block;
-  padding: 0 0.75em;
+  padding: 0 16px;
   align-content: center;
-  text-decoration: none;
   color: var(--red);
   font-weight: bold;
   text-decoration: none;
@@ -58,11 +57,7 @@ button {
   height: 100%;
 }
 
-button.selected {
-  background-color: var(--red);
-}
-
-button.selected>.router-link {
+.NavButton.selected .router-link {
   color: var(--bkg-color);
 }
 

@@ -230,7 +230,7 @@ p.pos-desc {
 
 @media (hover: hover) and (pointer: fine) {
   .accordion-toggle {
-    transition: background-color var(--hover-speed) ease-in-out, color var(--hover-speed) ease-in-out;
+    transition: background-color var(--hover-speed) var(--hover-func), color var(--hover-speed) var(--hover-func);
   }
 
   .accordion-toggle:hover:not(.accordion-toggle.selected) {

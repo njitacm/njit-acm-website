@@ -1,5 +1,5 @@
 <template>
-  <button @click="toggleTheme" class="toggle-btn" :title="themeTitle">
+  <button @click="toggleTheme" class="ThemeToggle" :title="themeTitle">
     {{ themeIcon }}
   </button>
 </template>
@@ -43,9 +43,9 @@ export default {
 </script>
 
 <style scoped>
-.toggle-btn {
+.ThemeToggle {
   background: transparent;
-  border: 2px solid var(--red);
+  border: none;
   border-radius: var(--border-radius);
   height: 1.5em;
   font-size: 1.5em;
@@ -54,18 +54,18 @@ export default {
 }
 
 @media(hover: hover) and (pointer: fine) {
-  .toggle-btn {
-    transition: background-color var(--hover-speed) ease;
+  .ThemeToggle {
+    transition: background-color var(--hover-speed) var(--hover-func);
   }
 
-  .toggle-btn:hover {
-    background: var(--red);
+  .ThemeToggle:hover {
+    background-color: var(--light-red);
   }
 }
 
 @media(pointer: coarse) {
-  .toggle-btn:active {
-    background: var(--red);
+  .ThemeToggle:active {
+    background: var(--light-red);
   }
 }
 </style>

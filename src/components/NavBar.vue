@@ -1,17 +1,18 @@
 <template>
-  <main clas="Header">
+  <main clas="NavBar">
     <Transition>
       <header class="header" ref="pageHeader">
         <RouterLink to="/" class="home-link" @click="toTop">
           <img src="../assets/logos/NJIT_ACM_LOGO.svg" class="logo" />
           <span class="home-link-text">Association for Computing Machinery</span>
         </RouterLink>
-        <CollapsableNav @collapsableNavOpened="updateTabSelection">
-          <NavButton v-for="(button, to) in navData" :key="button.id" :id="button.id" :to="to" :text="button.text"
-            :selectedId="selectedId">
-          </NavButton>
-          <DarkModeToggle />
-        </CollapsableNav>
+        <div class="right-container">
+          <CollapsableNav>
+            <NavButton v-for="(button, to) in navData" :key="button.id" :id="button.id" :to="to" :text="button.text">
+            </NavButton>
+          </CollapsableNav>
+          <ThemeToggle />
+        </div>
       </header>
     </Transition>
   </main>
@@ -19,15 +20,14 @@
 
 <script>
 import CollapsableNav from "./CollapsableNav.vue";
-import DarkModeToggle from "./ThemeToggle.vue";
+import ThemeToggle from "./ThemeToggle.vue";
 import NavButton from "./NavButton.vue";
 
 export default {
-  name: "Header",
-  components: { CollapsableNav, NavButton, DarkModeToggle },
+  name: "NavBar",
+  components: { CollapsableNav, NavButton, ThemeToggle },
   data() {
     return {
-      selectedId: -1,
       currPath: undefined,
       navData: {
         '/sigs': { id: 0, text: 'SIGs' },
@@ -58,9 +58,9 @@ export default {
         return;
 
       if (this.navData[this.currPath])
-        this.selectedId = this.navData[this.currPath].id
+        this.$store.commit('selectNavBtn', this.navData[this.currPath].id)
       else    // no tab e.g. "home" etc.
-        this.selectedId = -1;
+        this.$store.commit('selectNavBtn', -1);
     },
     handleScroll() {
       if (window.innerWidth < 550) {
@@ -124,11 +124,10 @@ export default {
   align-items: center;
   width: 100%;
   top: 0;
-  transition: box-shadow var(--hover-speed) linear;
+  transition: box-shadow 250ms linear;
   box-sizing: border-box;
   height: var(--nav-height);
   position: fixed;
-  overflow-y: hidden;
 }
 
 .logo {
@@ -147,20 +146,24 @@ a {
   align-items: center;
   text-decoration: none;
   gap: 32px;
+  height: var(--nav-height);
+  overflow-y: hidden;
+}
+
+.right-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 @media (hover: hover) and (pointer: fine) {
-
-  .home-link:hover,
-  .router-link-center:hover {
+  .home-link:hover {
     color: var(--red);
   }
 }
 
 @media (pointer: coarse) {
-
-  .home-link:active,
-  .router-link-center:active {
+  .home-link:active {
     color: var(--red);
   }
 }
@@ -168,6 +171,13 @@ a {
 @media (max-width: 1100px) {
   .home-link-text {
     display: none;
+  }
+}
+
+/* make sure this number matches that in CollapsableNav.vue! */
+@media (max-width: 625px) {
+  .CollapsableNav {
+    order: 1;
   }
 }
 </style>

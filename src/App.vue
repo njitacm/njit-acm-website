@@ -1,5 +1,5 @@
 <template>
-  <Header />
+  <NavBar />
   <div class="main-body">
     <RouterView v-slot="{ Component }" class="router-view">
       <Transition name="fade" mode="out-in">
@@ -39,6 +39,7 @@ export default {
   --gray: rgb(225, 225, 225);
   --shadow-gray: rgb(100, 100, 100);
 
+  --hover-func: ease-in-out;
   --hover-speed: 0.15s;
   --hover-opacity: 0.625;
 }
@@ -136,7 +137,7 @@ button {
 }
 
 a {
-  transition: opacity var(--hover-speed) linear;
+  transition: opacity var(--hover-speed) var(--hover-func);
   color: var(--red);
 }
 
