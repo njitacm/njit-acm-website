@@ -1,12 +1,11 @@
 <template>
-  <div>
+  <main clas="Header">
     <Transition>
-      <header class="fixed-header" ref="pageHeader">
-        <RouterLink to="/" class="router-link-left" @click="toTop">
+      <header class="header" ref="pageHeader">
+        <RouterLink to="/" class="home-link" @click="toTop">
           <img src="../assets/logos/NJIT_ACM_LOGO.svg" class="logo" />
+          <span class="home-link-text">Association for Computing Machinery</span>
         </RouterLink>
-        <RouterLink to="/" class="router-link-center" @click="toTop">
-          Association for Computing Machinery</RouterLink>
         <CollapsableNav @collapsableNavOpened="updateTabSelection">
           <NavButton v-for="(button, to) in navData" :key="button.id" :id="button.id" :to="to" :text="button.text"
             :selectedId="selectedId">
@@ -15,7 +14,7 @@
         </CollapsableNav>
       </header>
     </Transition>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -24,6 +23,7 @@ import DarkModeToggle from "./ThemeToggle.vue";
 import NavButton from "./NavButton.vue";
 
 export default {
+  name: "Header",
   components: { CollapsableNav, NavButton, DarkModeToggle },
   data() {
     return {
@@ -61,14 +61,6 @@ export default {
         this.selectedId = this.navData[this.currPath].id
       else    // no tab e.g. "home" etc.
         this.selectedId = -1;
-
-      // if (this.$props.to !== this.currPath) {
-      //   this.isSelected = false;
-      //   console.log("left " + this.currPath);
-      // } else {
-      //   this.isSelected = true;
-      //   console.log("entered " + this.currPath);
-      // }
     },
     handleScroll() {
       if (window.innerWidth < 550) {
@@ -89,15 +81,19 @@ export default {
 
       // For mobile or negative scrolling
       this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-
-      // this.fixedHeader =
-      //   window.scrollY > this.$refs.pageHeader.clientHeight + 400;
-      // this.showHeader =
-      //   window.scrollY > this.$refs.pageHeader.clientHeight + 1000;
     },
     toTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     },
+  },
+  created() {
+    window.addEventListener("scroll", this.updateDropShadow);
+  },
+  unmounted() {
+    window.removeEventListener("scroll", this.updateDropShadow);
+  },
+  toTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   },
   created() {
     window.addEventListener("scroll", this.updateDropShadow);
@@ -114,27 +110,25 @@ export default {
 <style scoped>
 .v-enter-active,
 .v-leave-active {
-  transition: top 0.25s ease-in-out;
+  transition: top 250ms ease-in-out;
 }
 
-header {
+.header {
   background-color: var(--bkg-color) !important;
   color: var(--text-color);
   z-index: 100;
-  padding-left: 5px;
+  padding-inline: 5px;
   display: flex;
   justify-content: space-between;
-  border-bottom: red var(--nav-border-width) solid;
+  border-bottom: var(--red) var(--nav-border-width) solid;
   align-items: center;
-  top: 0;
   width: 100%;
+  top: 0;
   transition: box-shadow var(--hover-speed) linear;
   box-sizing: border-box;
-}
-
-.fixed-header {
   height: var(--nav-height);
   position: fixed;
+  overflow-y: hidden;
 }
 
 .logo {
@@ -145,31 +139,19 @@ a {
   font-size: 1.5em;
 }
 
-.router-link-left,
-.router-link-center {
+.home-link {
   color: var(--text-color);
   -webkit-tap-highlight-color: transparent;
   transition: color var(--hover-speed) linear;
-}
-
-.router-link-left {
-  text-decoration: none;
   display: flex;
   align-items: center;
-  overflow-y: hidden;
-  height: 100%;
-}
-
-.router-link-center {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   text-decoration: none;
+  gap: 32px;
 }
 
 @media (hover: hover) and (pointer: fine) {
 
-  .router-link-left:hover,
+  .home-link:hover,
   .router-link-center:hover {
     color: var(--red);
   }
@@ -177,16 +159,15 @@ a {
 
 @media (pointer: coarse) {
 
-  .router-link-left:active,
+  .home-link:active,
   .router-link-center:active {
     color: var(--red);
   }
 }
 
-@media (max-width: 1750px) {
-  .router-link-center {
+@media (max-width: 1100px) {
+  .home-link-text {
     display: none;
   }
 }
-
 </style>

@@ -14,6 +14,7 @@
 import PrimaryButton from './PrimaryButton.vue';
 
 export default {
+  name: "AnnualEventCard",
   components: { PrimaryButton },
   props: {
     title: {
