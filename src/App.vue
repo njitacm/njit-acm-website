@@ -60,6 +60,12 @@ export default {
   font-family: sans-serif;
 }
 
+html,
+body,
+#app {
+  transition: background-color 250ms linear;
+}
+
 html {
   height: 100%;
   overflow-x: hidden;

@@ -105,7 +105,6 @@ export default {
 
 .desc {
   overflow: auto;
-  background-color: var(--bkg-color);
 }
 
 img {

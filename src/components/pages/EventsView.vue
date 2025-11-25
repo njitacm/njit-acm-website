@@ -38,7 +38,7 @@
     <section>
       <h2 class="section-header">Annual Events</h2>
       <div class="section-container main-events-container">
-        <MainEvent v-for="event in mainEvents" :key="event.title" v-bind="event" />
+        <AnnualEventCard v-for="event in mainEvents" :key="event.title" v-bind="event" />
       </div>
     </section>
   </main>
@@ -46,14 +46,14 @@
 
 <script>
 import HorizontalSection from "../HorizontalSection.vue";
-import MainEvent from "../AnnualEvent.vue";
+import AnnualEventCard from "../AnnualEventCard.vue";
 import eventsJSON from "../../assets/data/events.json";
 import EventCard from "../EventCard.vue";
 import EmbeddedCalendar from "../EmbeddedCalendar.vue";
 import upcomingEventsData from "../../assets/data/upcomingEvents.js";
 
 export default {
-  components: { HorizontalSection, MainEvent, EventCard, EmbeddedCalendar },
+  components: { HorizontalSection, AnnualEventCard, EventCard, EmbeddedCalendar },
   mounted() {
     // filter out old events automatically (don't display them)
     for (let i = 0; i < this.upcomingEventsRaw.length; i++) {
