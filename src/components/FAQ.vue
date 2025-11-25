@@ -1,6 +1,6 @@
 <template>
   <div class="FAQ outer-container">
-    <h2 class="title">FAQ</h2>
+    <h1 class="title">FAQ</h1>
     <div class="container">
       <div v-for="(item, index) in faq" :key="item.title" class="faq-container">
         <div>

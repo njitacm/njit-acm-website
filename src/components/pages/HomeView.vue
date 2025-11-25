@@ -1,9 +1,8 @@
 <template>
-  <div>
-    <HomePageHeader />
-    <!-- Horizontal Sections -->
-    <section class="outer-container container">
-      <HorizontalSection imagePath="HomePage/Fall_2024_GBM.jpg" class="border-bottom" :keepFloating="true" :banner="false" objPosX="40%">
+  <main class="HomeView">
+    <Banner />
+    <div class="outer-container container">
+      <HorizontalSection imagePath="HomePage/Fall_2024_GBM.jpg" :keepFloating="true" :banner="false" objPosX="40%">
         <template v-slot:title>Who We Are</template>
         <template v-slot:content>
           We are a part of the national organization, Association for Computing
@@ -18,7 +17,8 @@
           part of.
         </template>
       </HorizontalSection>
-      <HorizontalSection imagePath="HomePage/HackNJIT2023Crowd.jpg" class="border-bottom" :keepFloating="true" :banner="false">
+      <hr />
+      <HorizontalSection imagePath="HomePage/HackNJIT2023Crowd.jpg" :keepFloating="true" :banner="false">
         <template v-slot:title>What We Offer</template>
         <template v-slot:content>
           NJIT ACM offers many things to club members and other students.
@@ -35,7 +35,8 @@
           asking any e-board member.
         </template>
       </HorizontalSection>
-      <HorizontalSection imagePath="HomePage/TheOffice.jpg" class="border-bottom" :keepFloating="true" :banner=false objPosX="75%">
+      <hr />
+      <HorizontalSection imagePath="HomePage/TheOffice.jpg" :keepFloating="true" :banner=false objPosX="75%">
         <template v-slot:title>The Office</template>
         <template v-slot:content>
           While ACM is a professional organization, we also pride ourselves on
@@ -48,34 +49,30 @@
           community. We hope to see you around.
         </template>
       </HorizontalSection>
-    </section>
-
-    <!-- FAQ -->
+    </div>
     <FAQ />
-  </div>
+  </main>
 </template>
 
 <script>
-import HomePageHeader from "../HomePageHeader.vue";
+import Banner from "../Banner.vue";
 import HorizontalSection from "../HorizontalSection.vue";
 import FAQ from "../FAQ.vue";
+
 export default {
-  name: "HelloWorld",
-  props: {
-    msg: String,
-  },
-  components: { HomePageHeader, HorizontalSection, FAQ },
+  name: "HomeView",
+  components: { Banner, HorizontalSection, FAQ },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .container {
   margin-inline: auto;
   margin-bottom: 0;
 }
 
-.border-bottom {
-  border-bottom: 4px solid red;
+hr {
+  border: none;
+  border-bottom: var(--border-width) var(--red) solid;
 }
 </style>

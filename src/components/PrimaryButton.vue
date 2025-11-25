@@ -4,6 +4,12 @@
   </button>
 </template>
 
+<script>
+export default {
+  name: "PrimaryButton",
+};
+</script>
+
 <style scoped>
 .PrimaryButton {
   --btn-hov-col: color-mix(in srgb, var(--light-red), var(--text-color) 10%);

@@ -1,5 +1,5 @@
 <template>
-  <main class="HorizontalSection" :class="{ 'keep-floating': keepFloating, banner: banner }">
+  <main class="HorizontalSection" :class="{ 'keep-floating': keepFloating, 'banner': banner }">
     <img v-if="imagePath !== ''" :src="imgSrc" :style="{ objectPosition: objPosX + ' ' + objPosY }" />
     <div class="content">
       <h1 class="title">
@@ -68,7 +68,7 @@ export default {
 img {
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-gray) 0px var(--shadow-offset-y) var(--shadow-blur);
-  width: 50%;
+  width: 400px;
   object-fit: cover;
 }
 
@@ -86,6 +86,17 @@ img {
   margin: 0 auto;
 }
 
+@media(max-width: 1000px) {
+  img {
+    width: 100%;
+  }
+
+  .HorizontalSection:not(.banner) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 @media (max-width: 750px) {
   .content {
     max-width: var(100% - calc(--indentation));
@@ -99,7 +110,7 @@ img {
   img:not(.keep-floating) {
     box-shadow: none;
     border-radius: 0;
-    border-bottom: var(--hor-sec-img-border-width) var(--red) solid;
+    border-bottom: var(--border-width) var(--red) solid;
   }
 }
 </style>
