@@ -1,8 +1,8 @@
 <template>
   <main class="AboutView outer-container">
     <HorizontalSection imagePath="eboard/2025/WholeBoard.jpg" objPosY="47.5%">
-      <template v-slot:title>About Us</template>
-      <template v-slot:content>
+      <template #title>About Us</template>
+      <template #content>
         <p>
           If you're new to clubs at NJIT, the e-board is the group of students,
           elected at the end of every Fall, that run ACM! We handle all event

@@ -1,8 +1,8 @@
 <template>
   <main class="SIGsView outer-container">
     <HorizontalSection imagePath="sigs/SIG_Frontline_Meeting.jpg">
-      <template v-slot:title>SIGs</template>
-      <template v-slot:content>
+      <template #title>SIGs</template>
+      <template #content>
         <p>
           Student Interest Groups, or SIGs for short, are student run
           initiatives where a student teaches about a subject they are

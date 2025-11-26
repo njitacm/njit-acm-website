@@ -1,9 +1,7 @@
 <template>
   <main class="Banner">
     <img src="../assets/logos/NJIT_ACM_LOGO.svg" alt="NJIT ACM Logo" class="logo" />
-    <div class="bkg-container">
-      <div class="bg"></div>
-    </div>
+    <div class="bkg"></div>
   </main>
 </template>
 
@@ -35,17 +33,8 @@ export default {
   opacity: 1;
 }
 
-.bkg-container {
-  display: flex;
-  flex-wrap: nowrap;
-  width: 100vw;
-  height: 56.25vw;
-  overflow: hidden;
-}
-
-.bg {
+.bkg {
   background-image: url("../assets/HomePage/photo-collage.png");
-  position: relative;
   width: 100vw;
   height: 56.25vw;
   background-size: 100%;
@@ -53,7 +42,7 @@ export default {
 }
 
 @media(prefers-reduced-motion: no-preference) {
-  .bg {
+  .bkg {
     animation: scroll-left 45s linear infinite, zoom 45s ease-in-out infinite alternate;
   }
 

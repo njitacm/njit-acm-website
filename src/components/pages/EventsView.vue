@@ -1,8 +1,8 @@
 <template>
   <main class="EventsView outer-container">
     <HorizontalSection imagePath="EventsPage/HackNJIT2023.jpg" objPosY="50%">
-      <template v-slot:title>Events</template>
-      <template v-slot:content>
+      <template #title>Events</template>
+      <template #content>
         <p>
           ACM hosts a varierty of events throughout the year, both professional
           and social. In addition to our biannual hackathon and capture the flag

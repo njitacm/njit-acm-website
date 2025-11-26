@@ -12,8 +12,9 @@ export default {
 
 <style scoped>
 .PrimaryButton {
-  --btn-hov-col: color-mix(in srgb, var(--light-red), var(--text-color) 10%);
-  background-color: var(--light-red);
+  --btn-hov-col: color-mix(in srgb, var(--red), var(--bkg-color) 25%);
+  color: var(--bkg-color);
+  background-color: var(--red);
   border-radius: var(--border-radius);
   border: none;
   cursor: pointer;
@@ -35,7 +36,7 @@ export default {
   padding: 0 1em;
   text-decoration: none;
   font-weight: bold;
-  color: var(--text-color);
+  color: inherit;
   width: 100%;
   height: 100%;
 }

@@ -1,6 +1,6 @@
 <template>
   <main class="HorizontalSection" :class="{ 'keep-floating': keepFloating, 'banner': banner }">
-    <img v-if="imagePath !== ''" :src="imgSrc" :style="{ objectPosition: objPosX + ' ' + objPosY }" />
+    <img v-if="imagePath !== ''" :src="imgSrc" :style="{ 'object-position': objPosX + ' ' + objPosY }" />
     <div class="content">
       <h1 class="title">
         <slot name="title"></slot>

@@ -1,10 +1,10 @@
 <template>
   <main class="HomeView">
     <Banner />
-    <div class="outer-container container">
+    <div class="outer-container">
       <HorizontalSection imagePath="HomePage/Fall_2024_GBM.jpg" :keepFloating="true" :banner="false" objPosX="40%">
-        <template v-slot:title>Who We Are</template>
-        <template v-slot:content>
+        <template #title>Who We Are</template>
+        <template #content>
           We are a part of the national organization, Association for Computing
           Machinery, which is the world's largest educational computer science
           organization. ACM is divided up into many student chapters, and we are
@@ -19,8 +19,8 @@
       </HorizontalSection>
       <hr />
       <HorizontalSection imagePath="HomePage/HackNJIT2023Crowd.jpg" :keepFloating="true" :banner="false">
-        <template v-slot:title>What We Offer</template>
-        <template v-slot:content>
+        <template #title>What We Offer</template>
+        <template #content>
           NJIT ACM offers many things to club members and other students.
           Firstly, we provision free tutoring for CS, IT, and IS classes,
           offering assistance to students of all levels. We also run SIGs, or
@@ -37,8 +37,8 @@
       </HorizontalSection>
       <hr />
       <HorizontalSection imagePath="HomePage/TheOffice.jpg" :keepFloating="true" :banner=false objPosX="75%">
-        <template v-slot:title>The Office</template>
-        <template v-slot:content>
+        <template #title>The Office</template>
+        <template #content>
           While ACM is a professional organization, we also pride ourselves on
           providing a fun, safe, and friendly work environment. The ACM office,
           located at GITC 3704, is a place we maintain for people to go do work,
@@ -66,11 +66,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin-inline: auto;
-  margin-bottom: 0;
-}
-
 hr {
   border: none;
   border-bottom: var(--border-width) var(--red) solid;
