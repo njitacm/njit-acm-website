@@ -1,15 +1,21 @@
 <template>
-  <div>
-    <div class="constitution-bg" @click="closeModal"></div>
-    <div id="constitution">
-      <header>
-        <h1 class="constTitle">NJIT ACM Constitution</h1>
-      </header>
+  <main class="ConstitutionView outer-container">
+    <header class="header">
+      <h1 class="title">ACM Constitution</h1>
+      <p>The following is NJIT ACM's official constitution. Our constitution defines the rules and regulations of our
+        ACM chapter and is upheld by the NJIT Student Senate. As stated in our constitution, we also abide by the
+        <a href="https://www.acm.org/code-of-ethics" target="_blank">
+          National ACM Code of Ethics and Professional
+          Conduct
+        </a>.
+      </p>
+    </header>
+    <div>
       <div v-for="(item, index) in constitution" :key="index">
-        <component v-if="item" :is="item.tag" :class="item.className" v-html="item.content" />
+        <component v-if="item != null" :is="item.tag" :class="item.className" v-html="item.content" />
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -27,53 +33,33 @@ export default {
 </script>
 
 <style scoped>
-#constitution {
-  width: 97.5vw;
-  max-width: 1000px;
-  padding: 2rem;
-  margin: 1rem auto;
-  border-radius: 16px;
-  z-index: 1;
+.header {
+  margin-block: 32px 64px;
 }
 
-.constTitle {
-  margin-top: 1% !important;
-}
-
-.section-num {
-  font-weight: bold;
-}
-
-h3 {
+.title {
   text-align: center;
 }
 
-h5 {
+:deep(.article-title) {
+  margin-top: 32px;
+}
+
+:deep(.section-title) {
   text-align: center;
 }
 
-ul {
-  width: 90%;
-  margin: 0 auto;
+:deep(.section-content) {
+  margin-bottom: 32px;
 }
 
-p,
-li {
-  margin: 1.5rem 0rem;
-}
-
-header {
-  text-align: center;
-}
-
-button {
-  position: relative;
-  right: 50rem;
-}
-
-@media(max-width: 600px) {
-
-  p,
-  li {}
+/* 
+  make it obnoxious so we can see it,
+  then adjust the raw text file to 
+  format text correctly to remove 
+  stray content 
+*/
+:deep(.stray-content) {
+  color: red;
 }
 </style>

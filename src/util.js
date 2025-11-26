@@ -51,7 +51,7 @@ const parseConstitution = (rawText) => {
         const articlePattern = /^Article\s+[IVX0-9]+/i;
 
         // Matches "Section 1", "Section 2.3", "Section 1:"
-        const sectionPattern = /^Section\s+[0-9\.]+/i;
+        const sectionPattern = /(Section\s+[0-9\.])[:\.]?(.+)/i;
 
         // Matches lists like "a.", "1.", "i)" (Optional, for finer detail)
         const listPattern = /^[a-z0-9]+\.|^[a-z0-9]+\)/i;
@@ -67,31 +67,34 @@ const parseConstitution = (rawText) => {
             return {
                 tag: 'h2',
                 content: text,
-                className: 'text-2xl font-bold mt-6 mb-2 text-blue-800 uppercase'
+                className: 'section-header article-title'
             };
         }
 
         if (sectionPattern.test(text)) {
             return {
                 tag: 'div',
-                content: text.replace(/(Section\s+[0-9\.])[:\.]?(.+)/, '<h3>$1</h3><p>$2</p>'),
-                className: 'text-xl font-semibold mt-4 mb-2 text-gray-700'
+                content: `
+                    <h3 class="section-title">${text.replace(sectionPattern, '$1')}</h3>
+                    <p class="section-content">${text.replace(sectionPattern, '$2')}</p>
+                `,
+                className: 'section-container'
             };
         }
 
         if (listPattern.test(text)) {
             return {
                 tag: 'div', // Using div for list items to avoid complex <ul> logic
-                content: text,
-                className: 'ml-6 pl-2 border-l-2 border-gray-300 italic mb-1'
+                content: `<p class="section-content">${text}</p>`,
+                className: 'section-container'
             };
         }
 
         // Default fallback: Standard Paragraph
         return {
-            tag: 'p',
-            content: text,
-            className: 'leading-relaxed text-gray-800 mb-2'
+            tag: 'div',
+            content: `<p class="stray-content">${text}</p>`,
+            className: 'section-container'
         };
     });
 };
