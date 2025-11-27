@@ -1,19 +1,13 @@
-NJIT ACM Constitution 
 Article I. Name
 Section 1: The name of this organization shall be the “Association for Computing Machinery (ACM)”. In reference to the ACM, when in the context of the international organization, the name shall be the New Jersey Institute of Technology Chapter of the Association for Computing Machinery (NJIT ACM). 
 
-Section 2: NJIT student organizations are not official components or agents of NJIT. Official
-recognition does not permit a campus organization to use or act in NJIT's name or engage in
-any contractual obligation in the name of NJIT. Off-campus activities of a recognized student
-organizations are the sole responsibility of the organization, officers, and members, unless
-expressly approved in writing and in advance by NJIT.
+Section 2: NJIT student organizations are not official components or agents of NJIT. Official recognition does not permit a campus organization to use or act in NJIT's name or engage in any contractual obligation in the name of NJIT. Off-campus activities of a recognized student organizations are the sole responsibility of the organization, officers, and members, unless expressly approved in writing and in advance by NJIT.
 
-Section 3: This organization has no external affiliations at this time other than NJIT and will not
-have ties to other organizations unless they have clear and explicit written consent from NJIT.
+Section 3: This organization has no external affiliations at this time other than NJIT and will not have ties to other organizations unless they have clear and explicit written consent from NJIT.
 Article II. Purpose
-The purpose of this chapter is to organize NJIT students with interests in computing and the associated technologies, so that they may be able to share or expand their knowledge and skills with their peers. This student collaboration in the studies of computing technologies will result in a variety of events, projects, and services hosted by this chapter. 
+<p class="section-content">The purpose of this chapter is to organize NJIT students with interests in computing and the associated technologies, so that they may be able to share or expand their knowledge and skills with their peers. This student collaboration in the studies of computing technologies will result in a variety of events, projects, and services hosted by this chapter.</p>
 Article III. Non-Discrimination Policy
-Membership shall be open to all NJIT undergraduate/graduate students and comply as members with NJIT policies, including the Code of Student Conduct and the university's Title IX Sexual Harassment Policies, as well as federal and state anti-discrimination laws.
+<p class="section-content">Membership shall be open to all NJIT undergraduate/graduate students and comply as members with NJIT policies, including the Code of Student Conduct and the university's Title IX Sexual Harassment Policies, as well as federal and state anti-discrimination laws.</p>
 Article IV. Membership 
 Section 1. Membership in this chapter shall be open to any student currently enrolled at NJIT.
 Section 2. An active member shall be defined as any member who has attended at least one-half of all general body meetings at which attendance has been taken up to that point in the semester. 
@@ -42,7 +36,7 @@ Section 8. The Graphic Designer shall be responsible for designing promotional m
 Section 9. The SIG Master shall be responsible for the management of all Special Interest Groups. They shall be the point of contact for SIG leaders to act as an advisor and assistant, and will continue regular communication with SIG leaders. They shall also be responsible for recruiting SIG leaders. 
 Section 10. The Hackathon Master shall be responsible for creating and managing all Hackathons, including both our major events and smaller hacks throughout the semester. They will work closely with YWCC administration and other university faculty, and coordinate between them and the ACM-E-board. For our larger Hackathons, they will work alongside the President and Vice-President.
 Article VII. Meetings
-Meetings shall be held every week during the Friday common hour. Members will be notified prior to any change in the meeting time or location.
+<p class="section-content">Meetings shall be held every week during the Friday common hour. Members will be notified prior to any change in the meeting time or location.</p>
 Article VIII. Conduct
 Section 1. This chapter and its members agree to uphold and abide by the rules and regulations of New Jersey Institute of Technology. 
 Section 2. This chapter and its members agree to uphold and abide by the standard ethical guidelines outlined in the National ACM Code of Ethics and Professional Conduct.
@@ -56,33 +50,32 @@ Section 3. Robert's Rules of Order Revised shall be the final authority on any p
 Article X: Removal of Members from a Recognized Student Organization
 Section 1: Recognized student organizations at NJIT are open to enrolled students at NJIT. In some cases, organizations may need to remove an individual from their membership. Organizations must follow the below procedures when seeking or attempting to remove a member from their organization.
 Section 2: The executive board of a recognized student organization may revoke membership based on the following criteria:
-Being in violation of the group’s mission, purpose, and constitution,
-Failure to fulfill duties as outlined in the constitution,
-Engaging in alleged behavior that is in violation with NJIT’s Code of Student Conduct.*
+1. Being in violation of the group’s mission, purpose, and constitution,
+2. Failure to fulfill duties as outlined in the constitution,
+3. Engaging in alleged behavior that is in violation with NJIT’s Code of Student Conduct.*
 Section 3: Steps after an alleged violation has been identified are:
-The removal process begins with a meeting between the organization’s president and their Student Life Liaison. The president of the organization should set up a meeting with their OSL Liaison as soon as possible. 
-Following this meeting, the president and faculty/staff advisor must meet with the individual who is in potential violation of the above criteria to provide a written warning.
+1. The removal process begins with a meeting between the organization’s president and their Student Life Liaison. The president of the organization should set up a meeting with their OSL Liaison as soon as possible. 
+2. Following this meeting, the president and faculty/staff advisor must meet with the individual who is in potential violation of the above criteria to provide a written warning.
 Section 4: If documented violations continue after the written warning, the group’s executive board will vote on membership revocation. A vote of two-thirds in favor of removal is necessary to remove a member. An email is required to be sent to the removed member within 48 hours of the decision. This email should outline the initial violation and warning, as well as subsequent violations following that date. This email should be sent to the Director of Student Life (or their designee). 
 Section 5: Appeal Process: An individual may appeal their removal from an organization by filing their full and complete written appeal with the Director of Student Life (or their designee) within five business (5) days of the date of the letter of notification of the decision being appealed. Appeals may be based only on the following reasons: 
 1. A procedural irregularity that affected the outcome of the matter; 
 2. Or new evidence, which was not reasonably available at the time of the decision, that could affect the outcome of the matter 
 Section 6: The Director of Student Life (or his/her designee) will advise the non-appealing party in writing of the receipt of an appeal. The Director of Student Life (or his/her designee) will determine the disposition of the appeal and notify both parties of its decision including its rationale. The Director of Student Life (or their designee) shall review the written record of the case and the information submitted as part of the appeal request form. A new investigation shall not be conducted. It is expected that a decision will be rendered within five (5) days but may be extended for good cause. 
 
-All appeal decisions are final, and not subject to further appeal.
-
- *Any alleged violation (such as, but not limited to, stalking, sexual harassment, and bias) of the Code of Student Conduct should be directed to the Office of the Dean of Students
-NJIT ACM By-laws
+<p class="section-content">All appeal decisions are final, and not subject to further appeal. <br> *Any alleged violation (such as, but not limited to, stalking, sexual harassment, and bias) of the Code of Student Conduct should be directed to the Office of the Dean of Students
+</p>
+<h1 class="title">NJIT ACM By-laws</h1>
 Article I. Specialized Interest Groups
 Section 1. A Specialized Interest Group is a group of active members who share a common computing related interest. SIG is a valid abbreviation of Specialized Interest Group. Activities of a SIG include, but are not limited to, teaching, discussing, and creating projects related to their topic. 
 Section 2. SIGs of the NJIT ACM are not directly affiliated with the SIGs of the National ACM. Similarly, SIG student chapters of NJIT are not necessarily affiliated with the NJIT ACM. 
 Section 3. A SIG Leader is an Active Member of the ACM who has administrative control over a specific SIG. They also serve as the SIG’s liaison to the executive board. The election of a SIG Leader is determined by the SIG or, if necessary, the Executive Board. 
 Section 4. A SIG’s funding comes directly from NJIT ACM. This comes in the form of base funding as well as additional funding from participation in voting every other week. 
 Section 5. For a SIG to be considered active, it must possess the following qualities:
-At least one leader, whose responsibilities are defined above
-At least three active members, including the SIG leader
-Regular attendance of the weekly meetings by the SIG leader 
-Compliance with any additional requests of the executive board
+1. At least one leader, whose responsibilities are defined above
+2. At least three active members, including the SIG leader
+3. Regular attendance of the weekly meetings by the SIG leader 
+4. Compliance with any additional requests of the executive board
 Section 6. Any active member may form a SIG, as long as it fits the following criteria: 
-Approval of the current Executive Board 
-Fits the active SIG requirements 
-Does not infringe on any current SIGs’ or other clubs’ topic
+1. Approval of the current Executive Board 
+2. Fits the active SIG requirements 
+3. Does not infringe on any current SIGs’ or other clubs’ topic

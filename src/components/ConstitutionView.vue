@@ -37,7 +37,7 @@ export default {
   margin-block: 32px 64px;
 }
 
-.title {
+:deep(.title) {
   text-align: center;
 }
 
