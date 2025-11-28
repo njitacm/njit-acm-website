@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main class="TutoringView">
     <div v-show="tutoringCurrAvailable" class="container">
       <div class="tutoring-sidebar">
         <div class="title-and-subtitle">
@@ -119,14 +119,16 @@
     <div v-show="!tutoringCurrAvailable" class="no-tutoring">
       Tutoring is only offered during the Fall and Spring semeseters. Please check back later.
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
 import tutors from "../../assets/data/tutors.json";
 import business from "../../assets/data/business.json";
 import PrimaryButton from "../PrimaryButton.vue";
+
 export default {
+  name: "TutoringView",
   components: { PrimaryButton },
   methods: {
     async getTutors() {
