@@ -202,11 +202,6 @@ export default {
   margin-block: 8px;
 }
 
-hr {
-  border: none;
-  border-bottom: var(--gray) var(--border-width) solid;
-}
-
 .accordion-toggle.selected {
   background-color: var(--red);
   color: var(--bkg-color);

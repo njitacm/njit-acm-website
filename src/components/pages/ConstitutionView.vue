@@ -2,25 +2,28 @@
   <main class="ConstitutionView outer-container">
     <header class="header">
       <h1 class="title">ACM Constitution</h1>
-      <p>The following is NJIT ACM's official constitution. Our constitution defines the rules and regulations of our
-        ACM chapter and is upheld by the NJIT Student Senate. As stated in our constitution, we also abide by the
-        <a href="https://www.acm.org/code-of-ethics" target="_blank">
-          National ACM Code of Ethics and Professional
-          Conduct
-        </a>.
-      </p>
+      <div class="section-container">
+        <p>The following is NJIT ACM's official constitution. Our constitution defines the rules and
+          regulations of our
+          ACM chapter and is upheld by the NJIT Student Senate. As stated in our constitution, we also abide by the
+          <a href="https://www.acm.org/code-of-ethics" target="_blank">
+            National ACM Code of Ethics and Professional
+            Conduct
+          </a>.
+        </p>
+      </div>
     </header>
     <div>
-      <div v-for="(item, index) in constitution" :key="index">
+      <template v-for="(item, index) in constitution" :key="index">
         <component v-if="item != null" :is="item.tag" :class="item.className" v-html="item.content" />
-      </div>
+      </template>
     </div>
   </main>
 </template>
 
 <script>
-import { parseConstitution } from "../util";
-import rawConstTxt from "../assets/data/constitution.txt?raw";
+import { parseConstitution } from "../../util";
+import rawConstTxt from "../../assets/data/constitution.txt?raw";
 
 export default {
   name: "ConstitutionView",
@@ -34,7 +37,7 @@ export default {
 
 <style scoped>
 .header {
-  margin-block: 32px 64px;
+  margin-top: 32px;
 }
 
 :deep(.title) {

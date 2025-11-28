@@ -20,12 +20,12 @@ export default {
     title: {
       type: String,
       required: true,
-      default: "Title",
+      default: "",
     },
     desc: {
       type: String,
       required: true,
-      default: "Description",
+      default: "",
     },
     imgName: {
       type: String,
@@ -33,13 +33,8 @@ export default {
     },
     links: {
       type: Object,
-      default: {},
+      default: () => ({}),
     }
-  },
-  data() {
-    return {
-      // imagePath: new URL(`../assets/EventsPage/${this.$props.imgName}`, import.meta.url),
-    };
   },
 };
 </script>
@@ -52,20 +47,15 @@ export default {
   display: grid;
   align-content: start;
   gap: 32px;
-  text-align: center;
 }
 
 .title {
-  font-size: 2em;
+  text-align: center;
 }
 
 .links-container {
-  display: flex;
+  display: grid;
   gap: 16px;
-  flex-wrap: wrap;
-}
-
-.PrimaryButton {
-  flex-grow: 1;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 </style>

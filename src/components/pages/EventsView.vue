@@ -19,39 +19,61 @@
         </p>
       </template>
     </HorizontalSection>
-    <h2 v-show="upcomingEvents.length" class="section-header">Upcoming Events</h2>
-    <div class="upcoming-events">
-      <p>Event details are subject to change, so make sure to check back often!</p>
-      <div v-show="upcomingEvents.length" class="upcoming-events-grid">
-        <EventCard v-for="event in upcomingEvents" :key="event.id" :name="event.name" :datetime="event.datetime"
-          :location="event.location" :imageUrl="event.image" :desc="event.desc" :links="event.links">
-        </EventCard>
+    <section>
+      <h2 v-show="upcomingEvents.length" class="section-header">Upcoming Events</h2>
+      <div class="section-container upcoming-events">
+        <p class="info">Event details are subject to change, so make sure to check back often!</p>
+        <div v-show="upcomingEvents.length" class="upcoming-events-grid">
+          <div v-for="(event, index) in upcomingEvents" :key="index">
+            <UpcomingEventCard :name="event.name" :datetime="event.datetime" :location="event.location"
+              :imagePath="event.imagePath" :desc="event.desc" :links="event.links" />
+            <hr v-if="index < upcomingEvents.length - 1" />
+          </div>
+        </div>
       </div>
-    </div>
-    <h2 class="section-header">Events Calendar</h2>
-    <EmbeddedCalendar
-      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=MONTH&src=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23795548"
-      href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
-      buttonText="Add Calendar"></EmbeddedCalendar>
-    <div>
+    </section>
+    <section>
+      <h2 class="section-header">Events Calendar</h2>
+      <div class="section-container">
+        <EmbeddedCalendar
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=MONTH&src=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23795548"
+          href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+          buttonText="Add Calendar" />
+      </div>
+    </section>
+    <section>
       <h2 class="section-header">Annual Events</h2>
-      <div class="section-container main-events-container">
-        <AnnualEventCard v-for="event in mainEvents" :key="event.title" v-bind="event" />
+      <div class="section-container annual-events-container">
+        <AnnualEventCard v-for="(event, index) in annualEvents" :key="index" v-bind="event" />
       </div>
-    </div>
+    </section>
   </main>
 </template>
 
 <script>
 import HorizontalSection from "../HorizontalSection.vue";
 import AnnualEventCard from "../AnnualEventCard.vue";
-import eventsJSON from "../../assets/data/events.json";
-import EventCard from "../EventCard.vue";
+import UpcomingEventCard from "../UpcomingEventCard.vue";
 import EmbeddedCalendar from "../EmbeddedCalendar.vue";
 import upcomingEventsData from "../../assets/data/upcomingEvents.js";
+import annualEventsData from "../../assets/data/annualEvents.js";
 
 export default {
-  components: { HorizontalSection, AnnualEventCard, EventCard, EmbeddedCalendar },
+  name: "EventsView",
+  components: { HorizontalSection, AnnualEventCard, UpcomingEventCard, EmbeddedCalendar },
+  data() {
+    return {
+      currYear: '2025',
+      upcomingEventsRaw: upcomingEventsData['fa2025'],
+      upcomingEvents: [],
+      annualEvents: annualEventsData,
+    };
+  },
+  methods: {
+    isObject(o) {
+      return typeof (o) === 'object' && o !== null && !Array.isArray(o)
+    }
+  },
   mounted() {
     // filter out old events automatically (don't display them)
     for (let i = 0; i < this.upcomingEventsRaw.length; i++) {
@@ -60,13 +82,11 @@ export default {
       let times = event.times;
       let delim = event.delimiter;
 
-      if (dates === undefined)
+      if (dates == null)
         dates = [event.date];
-
-      if (times === undefined)
+      if (times == null)
         times = [event.time];
-
-      if (delim === undefined)
+      if (delim == null)
         delim = "; ";
 
       let evDate = new Date(dates[dates.length - 1] + ", " + this.currYear);
@@ -94,115 +114,37 @@ export default {
       }
 
       event['datetime'] = dt;
-
       // if the event hasn't already passed by more than 1 day
       if (diffDays <= 1) {
         this.upcomingEvents.push(event);
       }
     }
   },
-  data() {
-    return {
-      mainEvents: [
-        {
-          title: "HackNJIT",
-          desc: "HackNJIT is a 24-hour hackathon at the New Jersey Institute ofTechnology, run by its ACM student chapter in conjunction with the Ying Wu College of Computing.",
-          links: {
-            "Learn More": "https://hacknjit.org/"
-          },
-          // imgName: "hacknjit.png",
-        },
-        {
-          title: "JerseyCTF",
-          desc: "JerseyCTF is a beginner-friendly Capture the Flag competition that aims to inspire interest in cybersecurity. Hosted by the NJIT ACM and NICC organizations and NJIT SCI program, it is geared towards students, beginners, and professionals alike.",
-          // imgName: "jerseyctf.png",
-        },
-      ],
-      currYear: '2025',
-      upcomingEventsRaw: upcomingEventsData['fa2025'],
-      upcomingEvents: [],
-      events: eventsJSON,
-    };
-  },
-  methods: {
-    isObject(o) {
-      return typeof (o) === 'object' && o !== null && !Array.isArray(o)
-    }
-  }
 };
 </script>
 
 <style scoped>
-.EventsView {
-  --grid-side-padding: 32px;
-}
-
-.outer-container {
-  margin: 0 auto;
-}
-
-/* .main {
-  display: flex;
-  justify-content: center;
-  gap: 7.5rem;
-  flex-wrap: wrap;
-} */
-
-/*
-- Font sizes (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
-
-- Spacing system (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 /48 /64 /80 /96 / 128
-*/
-
-.no-events {
-  width: 100%;
-  text-align: center;
-  margin: auto 0;
-}
-
-.events-grid {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: repeat(4, 25%);
-}
-
-.main-events-container {
-  margin-top: 5rem;
-  justify-content: space-around;
-  gap: 32px;
-  display: grid;
-  grid-template-columns: auto auto;
-}
-
-.upcoming-events {
-  width: calc(100% - var(--grid-side-padding));
-  margin: 0 auto;
-  display: grid;
-  gap: 32px;
-}
-
-.upcoming-events p {
+.upcoming-events .info {
   padding-inline: 32px;
 }
 
 .upcoming-events-grid {
   display: grid;
   gap: 16px;
+}
+
+hr {
+  margin-top: 16px;
+}
+
+.annual-events-container {
+  gap: 32px;
+  display: grid;
   grid-template-columns: auto auto;
-  justify-content: space-around;
 }
 
 @media (max-width: 950px) {
-  .main-events-container {
-    grid-template-columns: auto;
-  }
-
-}
-
-@media (max-width: 1000px) {
-  .upcoming-events-grid {
+  .annual-events-container {
     grid-template-columns: auto;
   }
 }
