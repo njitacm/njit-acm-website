@@ -19,39 +19,46 @@
         </p>
       </template>
     </HorizontalSection>
-    <h2 v-show="upcomingEvents.length" class="section-header">Upcoming Events</h2>
-    <div class="upcoming-events">
-      <p>Event details are subject to change, so make sure to check back often!</p>
-      <div v-show="upcomingEvents.length" class="upcoming-events-grid">
-        <EventCard v-for="event in upcomingEvents" :key="event.id" :name="event.name" :datetime="event.datetime"
-          :location="event.location" :imageUrl="event.image" :desc="event.desc" :links="event.links">
-        </EventCard>
+    <section>
+      <h2 v-show="upcomingEvents.length" class="section-header">Upcoming Events</h2>
+      <div class="section-container upcoming-events">
+        <p>Event details are subject to change, so make sure to check back often!</p>
+        <div v-show="upcomingEvents.length" class="upcoming-events-grid">
+          <div v-for="(event, index) in upcomingEvents" :key="index">
+            <UpcomingEventCard :name="event.name" :datetime="event.datetime" :location="event.location"
+              :imagePath="event.image" :desc="event.desc" :links="event.links" />
+            <hr v-if="index < upcomingEvents.length - 1" />
+          </div>
+        </div>
       </div>
-    </div>
-    <h2 class="section-header">Events Calendar</h2>
-    <EmbeddedCalendar
-      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=MONTH&src=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23795548"
-      href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
-      buttonText="Add Calendar"></EmbeddedCalendar>
-    <div>
+    </section>
+    <section>
+      <h2 class="section-header">Events Calendar</h2>
+      <div class="section-container">
+        <EmbeddedCalendar
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=MONTH&src=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23795548"
+          href="https://calendar.google.com/calendar/u/0?cid=Y183N2U5ZWQ0Y2Q3NzZhOGM4ZDI1MmRiYTY5ODNkZmI4YmQ5ODQ5OGFhYzI2MzVkOTYwMTNjYjQ0MmEwMzAzMTFhQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+          buttonText="Add Calendar" />
+      </div>
+    </section>
+    <section>
       <h2 class="section-header">Annual Events</h2>
       <div class="section-container main-events-container">
         <AnnualEventCard v-for="event in mainEvents" :key="event.title" v-bind="event" />
       </div>
-    </div>
+    </section>
   </main>
 </template>
 
 <script>
 import HorizontalSection from "../HorizontalSection.vue";
 import AnnualEventCard from "../AnnualEventCard.vue";
-import eventsJSON from "../../assets/data/events.json";
-import EventCard from "../EventCard.vue";
+import UpcomingEventCard from "../UpcomingEventCard.vue";
 import EmbeddedCalendar from "../EmbeddedCalendar.vue";
 import upcomingEventsData from "../../assets/data/upcomingEvents.js";
 
 export default {
-  components: { HorizontalSection, AnnualEventCard, EventCard, EmbeddedCalendar },
+  components: { HorizontalSection, AnnualEventCard, UpcomingEventCard, EmbeddedCalendar },
   mounted() {
     // filter out old events automatically (don't display them)
     for (let i = 0; i < this.upcomingEventsRaw.length; i++) {
@@ -121,7 +128,6 @@ export default {
       currYear: '2025',
       upcomingEventsRaw: upcomingEventsData['fa2025'],
       upcomingEvents: [],
-      events: eventsJSON,
     };
   },
   methods: {
@@ -133,28 +139,13 @@ export default {
 </script>
 
 <style scoped>
-.EventsView {
-  --grid-side-padding: 32px;
+hr {
+  margin-top: 16px;
 }
 
 .outer-container {
   margin: 0 auto;
 }
-
-/* .main {
-  display: flex;
-  justify-content: center;
-  gap: 7.5rem;
-  flex-wrap: wrap;
-} */
-
-/*
-- Font sizes (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
-
-- Spacing system (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 /48 /64 /80 /96 / 128
-*/
 
 .no-events {
   width: 100%;
@@ -177,7 +168,6 @@ export default {
 }
 
 .upcoming-events {
-  width: calc(100% - var(--grid-side-padding));
   margin: 0 auto;
   display: grid;
   gap: 32px;
@@ -190,7 +180,6 @@ export default {
 .upcoming-events-grid {
   display: grid;
   gap: 16px;
-  grid-template-columns: auto auto;
   justify-content: space-around;
 }
 

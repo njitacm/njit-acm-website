@@ -148,6 +148,11 @@ button {
   user-select: none;
 }
 
+hr {
+  border: none;
+  border-bottom: var(--border-width) var(--gray) solid;
+}
+
 /* App-specific styles */
 .main-body {
   margin-top: var(--nav-height);

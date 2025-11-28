@@ -64,10 +64,3 @@ export default {
   components: { Banner, HorizontalSection, FAQ },
 };
 </script>
-
-<style scoped>
-hr {
-  border: none;
-  border-bottom: var(--border-width) var(--red) solid;
-}
-</style>

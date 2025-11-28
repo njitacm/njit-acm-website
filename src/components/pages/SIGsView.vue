@@ -104,8 +104,6 @@ export default {
 
 hr {
   margin-top: 16px;
-  border: none;
-  border-bottom: var(--border-width) var(--gray) solid;
 }
 
 @media (max-width: 750px) {

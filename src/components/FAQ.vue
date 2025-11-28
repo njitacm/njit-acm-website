@@ -71,11 +71,6 @@ export default {
   gap: 8px;
 }
 
-hr {
-  border: none;
-  border-bottom: var(--gray) var(--border-width) solid;
-}
-
 .faq {
   background-color: var(--bkg-color);
   width: 100%;
