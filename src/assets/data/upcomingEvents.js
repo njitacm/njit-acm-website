@@ -138,61 +138,62 @@ export default {
 
             }
         },
-        {
-            name: "Battlesnake Series: Intro to Web Dev (#1)",
-            location: "",
-            date: "Mon, Dec 1",
-            time: "6 - 7 PM",
-            imagePath: "",
-            desc: "",
-            links: {
+        // POSTPONED TO NEXT SEMESTER
+        // {
+        //     name: "Battlesnake Series: Intro to Web Dev (#1)",
+        //     location: "",
+        //     date: "Mon, Dec 1",
+        //     time: "6 - 7 PM",
+        //     imagePath: "",
+        //     desc: "",
+        //     links: {
 
-            }
-        },
-        {
-            name: "Pathfinding Workshop",
-            location: "Campus Center Ballroom B",
-            date: "Wed, Dec 3",
-            time: "11:30 AM - 1:45 PM",
-            imagePath: "",
-            desc: "Building, wire, and program robots with Path Planning Algorithms!",
-            links: {
+        //     }
+        // },
+        // {
+        //     name: "Pathfinding Workshop",
+        //     location: "Campus Center Ballroom B",
+        //     date: "Wed, Dec 3",
+        //     time: "11:30 AM - 1:45 PM",
+        //     imagePath: "",
+        //     desc: "Building, wire, and program robots with Path Planning Algorithms!",
+        //     links: {
 
-            }
-        },
-        {
-            name: "Battlesnake Series: Intro to Web Dev (#2)",
-            location: "",
-            date: "Wed, Dec 3",
-            time: "2:30 - 4 PM",
-            imagePath: "",
-            desc: "",
-            links: {
+        //     }
+        // },
+        // {
+        //     name: "Battlesnake Series: Intro to Web Dev (#2)",
+        //     location: "",
+        //     date: "Wed, Dec 3",
+        //     time: "2:30 - 4 PM",
+        //     imagePath: "",
+        //     desc: "",
+        //     links: {
 
-            }
-        },
-        {
-            name: "Battlesnake Series: Battlesnake",
-            location: "GITC 3700",
-            date: "Fri, Dec 5",
-            time: "11:30 AM - 1 PM",
-            imagePath: "",
-            desc: "A competitive weekend hackathon where you get to program a web server that responds to API requests for a game of competitive snake, known as Battlesnake!",
-            links: {
+        //     }
+        // },
+        // {
+        //     name: "Battlesnake Series: Battlesnake",
+        //     location: "GITC 3700",
+        //     date: "Fri, Dec 5",
+        //     time: "11:30 AM - 1 PM",
+        //     imagePath: "",
+        //     desc: "A competitive weekend hackathon where you get to program a web server that responds to API requests for a game of competitive snake, known as Battlesnake!",
+        //     links: {
 
-            }
-        },
+        //     }
+        // },
         {
             name: "Bring Your Own Joycon",
             location: "",
             date: "Fri, Dec 5",
             time: "6 - 7 PM",
-            imagePath: "sp2025/DesignJam.png",
+            imagePath: "",
             desc: "Come repair your broken joycons, relax, and game afterwards!",
-            links: {
-                "Register Now": "",
-                "Add to Calendar": ""
-            }
+            // links: {
+            //     "Register Now": "",
+            //     "Add to Calendar": ""
+            // }
         },
     ]
 };
