@@ -51,4 +51,10 @@ export default {
     background-color: var(--btn-hov-col);
   }
 }
+
+@media (max-width: 350px) {
+  .PrimaryButton {
+    font-size: 1em;
+  }
+}
 </style>

@@ -92,7 +92,6 @@ section {
   text-align: center;
   color: var(--text-color);
   border-bottom: var(--border-width) solid var(--red);
-  font-size: 2.25em;
   margin: 0 auto;
   margin-bottom: 32px;
 }
@@ -121,12 +120,12 @@ h2 {
 
 h3 {
   font-size: 1.9em;
-  line-height: 1.75em;
+  line-height: 2em;
 }
 
 h4 {
   font-size: 1.5em;
-  line-height: 1.25em;
+  line-height: 2em;
 }
 
 p,
@@ -193,6 +192,38 @@ button {
 @media (pointer: coarse) {
   a:active:not(.button-link, .router-link) {
     opacity: 0.625;
+  }
+}
+
+@media(max-width: 850px) {
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.5em;
+  }
+
+  h2 {
+    font-size: 2em;
+    line-height: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+
+  h4 {
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+}
+
+@media(max-width: 500px) {
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.75em;
   }
 }
 </style>

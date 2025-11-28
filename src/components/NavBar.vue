@@ -115,7 +115,7 @@ export default {
 }
 
 .header {
-  background-color: var(--bkg-color) !important;
+  background-color: var(--bkg-color);
   color: var(--text-color);
   z-index: 100;
   padding-inline: 8px;

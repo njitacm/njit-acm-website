@@ -65,4 +65,10 @@ img {
   font-weight: bold;
   font-size: 1.5em;
 }
+
+@media (max-width: 350px) {
+  .EBoardCard {
+    max-width: 250px;
+  }
+}
 </style>

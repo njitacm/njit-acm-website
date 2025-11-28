@@ -51,7 +51,7 @@ export default {
 
 <style scoped>
 .Footer {
-  padding: 64px;
+  padding: var(--indentation);
   display: flex;
   border-top: var(--red) var(--border-width) solid;
   align-items: center;
@@ -60,6 +60,7 @@ export default {
 }
 
 .njit-logo {
+  width: 100%;
   max-width: 300px;
 }
 

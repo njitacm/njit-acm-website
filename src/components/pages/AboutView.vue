@@ -257,4 +257,10 @@ p.pos-desc {
     width: 100%;
   }
 }
+
+@media (max-width: 500px) {
+  .accordion-toggle.pos-desc {
+    font-size: 1em;
+  }
+}
 </style>

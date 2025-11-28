@@ -1,5 +1,5 @@
 <template>
-  <main class="MainEboardCard">
+  <main class="FlippableEBoardCard">
     <div class="card" @mouseenter="toggleFrontHover" @mouseleave="toggleFrontHover" @click="toggleFrontClick"
       :class="{ flipped: id === $store.state.currEboardCardFlipped }">
       <div class="front">
@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style scoped>
-.MainEboardCard {
+.FlippableEBoardCard {
   width: 100%;
   max-width: 350px;
 }
@@ -173,5 +173,11 @@ export default {
   font-weight: bold;
   font-size: 1.5em;
   text-align: center;
+}
+
+@media (max-width: 350px) {
+  .FlippableEBoardCard {
+    max-width: 250px;
+  }
 }
 </style>
