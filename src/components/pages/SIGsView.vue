@@ -85,7 +85,7 @@ export default {
   components: { SIGsCard, HorizontalSection, EmbeddedCalendar },
   data() {
     return {
-      sigs: sigsData['sp2025'] ?? [],
+      sigs: sigsData['fa2025'] ?? [],
       discordLink: 'https://discord.gg/XR6qPze'
     };
   },
