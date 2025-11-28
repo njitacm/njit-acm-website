@@ -1,54 +1,52 @@
 <template>
   <div class="event-card">
-    <img :src="imageSrc" class="event-img">
+    <img v-if="imageUrl !== ''" :src="imageSrc" class="event-img">
     <div class="event-text">
       <h1>{{ name }}</h1>
-      <h2><span class="red">When?</span> {{ datetime }}</h2>
-      <h2><span class="red">Where?</span> {{ location }}</h2>
-      <p class="desc">{{ desc }}</p>
-      <a :href="url"></a>
+      <h2 vif="datetime !== ''"><span class="red">When?</span> {{ datetime }}</h2>
+      <h2 v-if="location !== ''"><span class="red">Where?</span> {{ location }}</h2>
+      <p class="desc" v-if="desc !== ''">{{ desc }}</p>
     </div>
-    <div v-if="links">
-      <div v-for="[text, link] in Object.entries(links)" :key="link.id" class="links">
-        <PrimaryButton class="primary-button">
-          <a :href="link.link" target="_blank" class="button-link">{{ text }}</a>
-        </PrimaryButton>
-      </div>
+    <div v-if="links && Object.keys(links).length > 0" class="links">
+      <PrimaryButton v-for="(href, text, index) in links" :key="index">
+        <a :href ="href" target="_blank">{{ text }}</a>
+      </PrimaryButton>
     </div>
-    
   </div>
 </template>
 
 <script>
+import { getImageUrl } from '../util';
 import PrimaryButton from './PrimaryButton.vue';
 
 export default {
   components: { PrimaryButton },
-  props: ['name', 'date', 'time', 'datetime', 'location', 'url', 'imageUrl', 'desc', 'links'],
+  props: ['name', 'date', 'time', 'datetime', 'location', 'imageUrl', 'desc', 'links'],
   data() {
     return {
-      imageSrc: new URL(`../assets/EventsPage/${this.$props.imageUrl}`, import.meta.url).href,
+      imageSrc: "",
     };
   },
-  mounted() {
-    console.log(this.$props.imageUrl)
+  async mounted() {
+    if (this.$props.imageUrl) {
+      this.imageSrc = await getImageUrl(`EventsPage/${this.$props.imageUrl}`);
+    }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .red {
   color: var(--red);
 }
 
 .event-card {
-  border: var(--border-width) lightcoral solid;
-  border-radius: var(--large-border-radius);
-  height: fit-content;
+  border: 1px var(--gray) solid;
+  border-radius: 10px;
 }
 
 .event-text {
-  padding: 1rem 2rem;
+  padding: 32px;
   display: grid;
   row-gap: 1rem;
   grid-template-columns: 100%;
@@ -56,24 +54,23 @@ export default {
 
 .event-img {
   width: 100%;
-  border-bottom: lightcoral var(--border-width) solid;
+  border-bottom: var(--gray) 1px solid;
   border-radius: calc(var(--large-border-radius) - var(--border-width)) calc(var(--large-border-radius) - var(--border-width)) 0 0;
 }
 
 .links {
-  display: grid;
-  gap: 2rem;
-  width: calc(100% - 2rem);
-  margin: 0 auto 1rem auto;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.PrimaryButton {
+  flex-grow: 1;
 }
 
 .event-card h1 {
   color: var(--red);
-}
-
-.event-card h2 {
-}
-
-.desc {
 }
 </style>

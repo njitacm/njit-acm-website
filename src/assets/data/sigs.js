@@ -140,6 +140,79 @@ export default {
         },
     ],
     'fa2025': [
+        {
+            name: "sig-ai",
+            leaders: "Eric Vargas, Rayan Khan",
+            desc: "Curious about AI? SIG-AI breaks down different AI domains with group learning sessions and hands-on workshops. Come in with little or no experience and leave having built your own real AI application!",
+            time: "Wed 2:30 PM",
+            loc: "GITC 3700",
+            filename: "Fall2025/sig-ai.png"
+        },
+        {
+            name: "sig-bot",
+            leaders: "Christopher Bandeli",
+            desc: "Learn how to automate messages, notifications, and more with your own personal social media bot! Whether you want to build a personal AI, a moderation tool, or an information hub, we've got you covered.",
+            time: "Mon 2:30 PM, Sat 3:30 PM",
+            loc: "GITC 3700",
+            filename: "Fall2025/sig-bot.png"
+        },
+        {
+            name: "sig-fin",
+            leaders: "Nandika Karnik",
+            desc: "Learn about computer science in the finance industry and build your own trading bot in python using popular data analysis and finance libraries, among other tools..",
+            time: "Mon 4:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2025/sig-fin.png"
+        },
+        {
+            name: "sig-hpc",
+            leaders: "Abdullah Imran, Garret Gonzalez-Rivas",
+            desc: "Design, build, and get hands-on experience with high-performance supercomputers! Work with cutting-edge tech, meet industry professionals, and compete in the national Student Cluster Competition.",
+            time: "Tue 4:30 PM, Sat 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2025/sig-hpc.png"
+        },
+        {
+            name: "sig-info",
+            leaders: "Michael Vornovitsky",
+            desc: "Explore the theory that so much of modern computing is built upon! Learn everything from data compression algorithms to neural networks!",
+            time: "Wed 9:00 PM",
+            loc: "GITC 3600",
+            filename: "Fall2025/sig-info.png"
+        },
+        {
+            name: "sig-infra",
+            leaders: "Nigel",
+            desc: "Get hands-on networking and IT experience by helping set up infrastructure in ACM's office! We will be working with Windows Active Directory, custom router firmware, and Network Attached Storages. This SIG serves as both a learning experience and a way to help out the greater NJIT ACM.",
+            time: "Thu 4:00 PM",
+            loc: "GITC 3704",
+            filename: "Fall2025/sig-infra.png"
+        },
+        {
+            name: "sig-math",
+            leaders: "Brandon Howe",
+            desc: "Interesting seminars on various topics on the intersection of CS and math. New topics every week and no background knowledge required!",
+            time: "Fri 4:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2025/sig-math.png"
+        },
+        {
+            name: "sig-quantum",
+            leaders: "Xhaiden D'Souza",
+            desc: "Explore the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms.",
+            time: "Fri 1:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2025/sig-quantum.png"
+        },
+        {
+            name: "sig-sql",
+            leader: "Erick Villavicencio",
+            desc: "Learn essential SQL data retrieval techniques, create hands-on projects, and solve complex problem to deepen and solidify your understanding in various database topics.",
+            time: "Fri 10:00 AM",
+            loc: "GITC 3700",
+            filename: "Fall2025/sig-sql.png"
+        },
+        
         // {
         //     name: "sig-quantum",
         //     desc: "[OLD] SIG Quantum explores the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. This SIG is perfect for anyone curious about quantum computing, with no background in physics or computing science required!",
