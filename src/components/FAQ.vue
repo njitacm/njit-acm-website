@@ -1,33 +1,37 @@
 <template>
-  <div class="outer">
-    <div class="inner" v-for="col in columns" :key="col">
-      <section v-for="(item, index) in col.data" :key="item.title">
-        <button @click="selectItem(index + col.offset)" :class="{ selected : selectedItem === index + col.offset}">
-          <p class="question">{{ item.title }}</p>
-        </button>
-        <Transition-expand>
-          <div v-if="index + col.offset === selectedItem" class="answer-box">
-            <p class="answer" v-if="index + col.offset === selectedItem">
-              {{ item.content }}
-            </p>
-          </div>
-        </Transition-expand>
-      </section>
+  <div class="FAQ outer-container">
+    <h1 class="title">FAQ</h1>
+    <div class="container">
+      <div v-for="(item, index) in faq" :key="item.title" class="faq-container">
+        <div>
+          <button @click="selectItem(index)" class="faq" :class="{ selected: selectedItem === index }">
+            {{ item.title }}
+          </button>
+          <TransitionExpand :duration="375">
+            <div v-if="index === selectedItem" class="answer-container">
+              <p class="answer" v-if="index === selectedItem">
+                {{ item.content }}
+              </p>
+            </div>
+          </TransitionExpand>
+        </div>
+        <hr v-if="index < faq.length - 1" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import TransitionExpand from "./TransitionExpand.vue";
+import faq from "../assets/data/faq.js";
 
 export default {
-  components: {
-    TransitionExpand,
-  },
+  name: "FAQ",
+  components: { TransitionExpand },
   data() {
     return {
       selectedItem: -1,
-      columns: this.createColumns(),
+      faq: faq,
     };
   },
   methods: {
@@ -38,97 +42,87 @@ export default {
         this.selectedItem = value;
       }
     },
-    createColumns() {
-      var columns = [];
-      var arraySplit = Math.ceil(this.$props.qas.length / this.$props.cols);
-      for (let i = 0; i < this.$props.cols; i++) {
-        columns.push({
-          offset: arraySplit * i,
-          data: this.$props.qas.slice(
-            arraySplit * i,
-            arraySplit * i + arraySplit
-          ),
-        });
-      }
-      return columns;
-    },
-  },
-  props: {
-    qas: Array,
-    cols: Number,
   },
 };
 </script>
 
 <style scoped>
-.outer {
-  width: 80%;
-  margin: 4.8rem auto;
-  background-color: none;
-  border: 4px red solid;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-around;
-}
-.inner {
-  width: 50%;
-  margin: 1.6rem;
-  display: flex;
-  flex-direction: column;
-  padding: 1.6rem;
-  gap: 0.8rem;
+.outer-container {
+  margin-top: 32px;
+  border: var(--border-width) var(--red) solid;
+  border-radius: 10px;
+  padding: 32px;
+  padding-top: 16px;
+  display: grid;
 }
 
-button {
+.container {
+  display: grid;
+  gap: 8px;
+}
+
+.title {
+  font-size: 3em;
+  text-align: center;
+}
+
+.faq-container {
+  display: grid;
+  gap: 8px;
+}
+
+hr {
+  border: none;
+  border-bottom: var(--gray) var(--border-width) solid;
+}
+
+.faq {
   background-color: var(--bkg-color);
   width: 100%;
-  padding: 0.8rem;
+  padding: 8px;
   text-align: center;
-  border: var(--text-color) 3px solid;
-  border-radius: 8px;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  transition: all var(--hover-speed) ease-in-out;
   color: var(--text-color);
 }
 
-button:not(.selected):hover {
-  background-color: var(--light-gray);
-}
-
-button.selected {
-  background-color: black;
-  color: white;
-}
-
-[data-theme="dark"] button.selected {
-  background-color: white;
-  color: black;
-}
-
-p.question {
-  
-}
-.answer-box {
-  overflow: hidden;
-  text-overflow: clip;
-}
-p.answer {
-  padding: 0.8rem;
-  overflow: hidden;
-  text-overflow: clip;
-}
-
-@media (max-width: 1200px) {
-  .outer {
-    flex-direction: column;
-    padding: 0.4rem;
-    gap: 0px;
+@media(hover: hover) and (pointer: fine) {
+  .faq {
+    transition: background-color var(--hover-speed) ease;
   }
-  .inner {
-    width: 100%;
-    margin: 0;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
+
+  .faq:not(.selected):hover {
+    background-color: var(--gray);
+  }
+}
+
+@media (pointer: coarse) {
+  .faq:not(.selected):active {
+    background-color: var(--gray);
+  }
+}
+
+.faq.selected {
+  background-color: var(--red);
+  color: var(--bkg-color);
+}
+
+.answer-container {
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+p.answer {
+  padding: 16px;
+  overflow: hidden;
+  text-overflow: clip;
+}
+
+@media (max-width: 500px) {
+  .outer-container {
+    border: none;
+    margin-top: 0;
   }
 }
 </style>

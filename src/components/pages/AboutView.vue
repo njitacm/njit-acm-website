@@ -1,9 +1,8 @@
 <template>
-  <div class="outer-container">
-    <!-- <HorizontalSection :imagePath="['eboard/2024/WholeBoard.png', 'eboard/2025/treasurer.png']" -->
-    <HorizontalSection :imagePath="['eboard/2025/WholeBoard.jpg', 'eboard/2024/WholeBoard.jpg']" :slideDuration="5000">
-      <template v-slot:title>About Us</template>
-      <template v-slot:content>
+  <main class="AboutView outer-container">
+    <HorizontalSection imagePath="eboard/2025/WholeBoard.jpg" objPosY="47.5%">
+      <template #title>About Us</template>
+      <template #content>
         <p>
           If you're new to clubs at NJIT, the e-board is the group of students,
           elected at the end of every Fall, that run ACM! We handle all event
@@ -13,137 +12,129 @@
         </p>
       </template>
     </HorizontalSection>
-    <h2 class="section-header">Current E-Board</h2>
-    <div class="spotlight">
-      <MainEboardCard v-for="(member, i) in getEboard(currEboardYear)" :key="member" :position="member.Role"
-        :name="member.Name" :personalDesc="member.Desc" :imageName="getImagePath(member.Role, member.Term)" :id="i">
-      </MainEboardCard>
-    </div>
-    <h2 class="section-header">Office Hours</h2>
-    <div class="office-hours">
-      <p>Every e-board member has office hours at the ACM Office (located in GITC 3700).
-        Check out the calendar below for the schedule and feel free to stop by and have a chat!</p>
-      <EmbeddedCalendar
-        src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20E-Board%20Office%20Hours&src=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233F51B5"
-        href="https://calendar.google.com/calendar/u/0?cid=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
-        buttonText="Add Calendar"></EmbeddedCalendar>
-    </div>
-    <div class="pastEboard">
-      <div v-for="year in years" :key="year">
-        <header @click="toggleEboard(year)" :class="{
-          'eboard-header': true,
-          'selected': showEboard[year]
-        }">
-          <h1>{{ year }} Eboard</h1>
-          <span class="svg material-symbols-outlined" :class="{ open: showEboard[year] }">keyboard_arrow_down</span>
-        </header>
+    <section>
+      <h2 class="section-header">Current E-Board</h2>
+      <div class="section-container curr-eboard-container">
+        <div class="curr-eboard-sub-container">
+          <FlippableEBoardCard v-for="(member, index) in getEboard(currEboardYear)" :key="index" :name="member.name"
+            :position="member.position" :desc="member.desc" :imagePath="getImagePath(member.position, member.term)"
+            :id="index" />
+        </div>
+        <button @click="togglePosDesc" class="accordion-toggle pos-desc" :class="{ selected: showPosDesc }">
+          Descriptions of E-Board Positions
+        </button>
         <TransitionExpand>
-          <div class="eboard-container" :ref="year.toString()" v-show="showEboard[year]" v-if="year < 2024">
-            <div class="spacer1"></div>
-            <div class="container">
-              <EBoardCard v-for="member in getEboard(year)" :key="member.Role" :position="member.Role"
-                :incumbent="member.Name" :incumbentDesc="member.Desc"
-                :imageName="getImagePath(member.Role, member.Term)" />
+          <div v-show="showPosDesc" class="section-container">
+            <div v-for="(pos, index) in EBOARD_POS" :key="index">
+              <h3>{{ pos }}</h3>
+              <p class="pos-desc">{{ eboardPosDesc[pos] }}</p>
             </div>
-            <div class="spacer2"></div>
-          </div>
-          <!-- 2024 and beyond uses list items instead of cards -->
-          <div v-else class="eboard-list-container" :ref="year.toString()" v-show="showEboard[year]">
-            <div class="spacer1"></div>
-            <div>
-              <EBoardListItem v-for="member in getEboard(year)" class="eboard-list-item" :key="member.Role"
-                :position="member.Role" :positionDesc="member.Desc" :incumbent="member.Name"
-                :incumbentDesc="member.Desc" :imageName="getImagePath(member.Role, member.Term)">
-              </EBoardListItem>
-            </div>
-            <div class="spacer2"></div>
           </div>
         </TransitionExpand>
       </div>
-    </div>
-  </div>
+    </section>
+    <section>
+      <h2 class="section-header">Office Hours</h2>
+      <div class="section-container office-hours">
+        <p>Every e-board member has office hours at the ACM Office (located in GITC 3700).
+          Check out the calendar below for the schedule and feel free to stop by and have a chat!</p>
+        <EmbeddedCalendar
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20E-Board%20Office%20Hours&src=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233F51B5"
+          href="https://calendar.google.com/calendar/u/0?cid=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20"
+          button-text="Add Calendar" />
+      </div>
+    </section>
+    <section>
+      <h2 class="section-header">Previous E-Board</h2>
+      <div class="section-container">
+        <div
+          v-for="year in Array.from({ length: currEboardYear - firstEboardYear }, (_, i) => i + firstEboardYear).reverse()"
+          :key="year">
+          <button @click="toggleEboard(year)" class="accordion-toggle" :class="{ 'selected': showEboard[year] }">
+            <h3>{{ year }}</h3>
+          </button>
+          <TransitionExpand>
+            <!-- 2024 and beyond uses list items instead of cards since they have desc -->
+            <div v-if="year >= 2024" v-show="showEboard[year]" class="section-container prev-eboard list-container">
+              <EBoardListItem v-for="(member, index) in getEboard(year)" :key="index" :name="member.name"
+                :position="member.position" :desc="member.desc"
+                :imagePath="getImagePath(member.position, member.term)" />
+            </div>
+            <!-- the older ones use cards since they don't have desc -->
+            <div v-else v-show="showEboard[year]" class="section-container prev-eboard">
+              <div class="spacer"></div>
+              <div class="card-sub-container">
+                <EBoardCard v-for="(member, index) in getEboard(year)" :key="index" :position="member.position"
+                  :name="member.name" :imagePath="getImagePath(member.position, member.term)" />
+              </div>
+              <div class="spacer"></div>
+            </div>
+          </TransitionExpand>
+          <hr v-if="year > firstEboardYear" />
+        </div>
+      </div>
+    </section>
+  </main>
 </template>
 
 <script>
-import "material-symbols";
-import EBoardCard from "../EBoardCard.vue";
-import jsonEboard from "../../assets/data/eboard.js";
+import eboardData from "../../assets/data/eboard.js";
+import defaultImgPaths from "../../assets/data/eboard_default_img_paths.js";
+import eboardPosDesc from "../../assets/data/eboard_pos_desc.js";
 import TransitionExpand from "../TransitionExpand.vue";
-import MainEboardCard from "../MainEboardCard.vue";
 import HorizontalSection from "../HorizontalSection.vue";
-import EBoardListItem from "../EBoardListItem.vue";
 import EmbeddedCalendar from "../EmbeddedCalendar.vue";
+import FlippableEBoardCard from "../FlippableEBoardCard.vue";
+import EBoardListItem from "../EBoardListItem.vue";
+import EBoardCard from "../EBoardCard.vue";
+
+// in constituion order
+const EBOARD_POS = ["President", "Vice President", "Treasurer", "Secretary", "Public Relations",
+  "Webmaster", "Graphic Designer", "SIG Master", "Event Master", "Hack Master"];
 
 export default {
+  name: "AboutView",
   components: {
-    EBoardCard,
-    TransitionExpand,
-    MainEboardCard,
-    HorizontalSection,
-    EBoardListItem,
-    EmbeddedCalendar
+    EBoardCard, TransitionExpand, FlippableEBoardCard,
+    HorizontalSection, EBoardListItem, EmbeddedCalendar
+  },
+  data() {
+    return {
+      EBOARD_POS,
+      selectedPosition: "President",
+      currEboardYear: 2025,
+      firstEboardYear: 2016,
+      showPosDesc: false,
+      showEboard: { 2024: true },
+      eboardPosDesc,
+      eboardData,
+    };
   },
   methods: {
     getImagePath(role, year) {
-      let path = "webmaster.png";
-      switch (role) {
-        case "President":
-          path = "president.png";
-          break;
-        case "Vice President":
-          path = "vice_president.png";
-          break;
-        case "Treasurer":
-          path = "treasurer.png";
-          break;
-        case "Secretary":
-          path = "secretary.png";
-          break;
-        case "Public Relations":
-          path = "public_relations.png";
-          break;
-        case "Graphic Designer":
-          path = "graphic_designer.png";
-          break;
-        case "SIG Master":
-          path = "sig_master.png";
-          break;
-        case "Event Master":
-          path = "event_master.png";
-          break;
-        case "Hack Master":
-          path = "hack_master.png";
-          break;
-        default:
-          break;
-      }
-
-      return year + "/" + path;
+      return `${year}/${defaultImgPaths[role]}`;
     },
     getEboard(year) {
-      return this.sortEboard(this.eboard.filter((member) => member.Term == year));
+      return this.sortEboard(this.eboardData.filter((member) => member.term == year));
     },
-    setPosition(position) {
-      this.selectedPosition = position;
-    },
+    // toggle methods for accordions
     toggleEboard(year) {
-      if (!this.showEboard[year]) {
-        this.showEboard[year] = false;
-      }
-
       this.showEboard[year] = !this.showEboard[year];
-      for (let index = 2000; index < this.currEboardYear; index++) {
+      for (let index = this.firstEboardYear; index < this.currEboardYear; index++) {
         if (index != year) {
           this.showEboard[index] = false;
         }
       }
     },
+    togglePosDesc() {
+      this.showPosDesc = !this.showPosDesc;
+    },
+    // sort into constitution order
     sortEboard(eboard) {
-      // constitution order
       const sorted = [];
 
-      for (const role of this.eboardPositions) {
-        const officer = eboard.find(officer => officer.Role.toLowerCase() === role.toLowerCase());
+      for (const pos of EBOARD_POS) {
+        const officer = eboard.find(officer => officer.position.toLowerCase() === pos.toLowerCase());
 
         if (officer) {
           sorted.push(officer);
@@ -151,266 +142,125 @@ export default {
       }
 
       if (sorted.length !== eboard.length) {
-        console.log(`Lost memebers for year ${eboard[0]?.Term}`);
+        console.log(`Lost members for year ${eboard[0]?.term}`);
       }
 
       return sorted;
     }
   },
-
-  data() {
-    return {
-      selectedPosition: "President",
-      currEboardYear: 2025,
-      years: [
-        // "2025",
-        "2024",
-        "2023",
-        "2022",
-        "2021",
-        "2020",
-        "2019",
-        "2018",
-        "2017",
-        "2016",
-      ],
-      showEboard: {
-        2024: true
-      },
-      // positions in constitution order
-      eboardPositions: [
-        "President",
-        "Vice President",
-        "Treasurer",
-        "Secretary",
-        "Public Relations",
-        "Webmaster",
-        "Graphic Designer",
-        "SIG Master",
-        "Event Master",
-        "Hack Master"
-      ],
-      // TODO: add section with general descriptions
-      eboardDescs: {
-        President:
-          "The President of ACM is responsible for leading the club. You'll see them take center stage during our general body meetings with a gavel passed down through generations of Presidents. The President presides over all functions of the club, with all other e-board officers reporting directly to and being managed by them.",
-
-        "Vice President":
-          "The Vice-President of ACM the second in command in the organization. They work directly alongside the President and take over for them if need be. They are also responsible for handling all tutoring done by ACM.",
-
-        Secretary:
-          "ACM's secretary managed all our out-of-school connections. They talk to outside organizations for the purposes of planning events and gathering sponsors.",
-
-        Treasurer:
-          "ACM's treasurer manages the club's budget and finances. They are responsible for procuring funding and overseeing the spending of that funding. It's thanks to them that we're able to support our SIGs financially, fund large-scale events, and buy computer parts for the office.",
-
-        "Graphic Designer":
-          "ACM's Graphic Designer oversees the creation of all promotional material and other art-work for the club, including SIG posters, social media posts, and event fliers. We have them to thank for much of our most iconic imagery, including the club logo and it's many variations.",
-
-        Webmaster:
-          "The Webmaster of ACM is responsible for building and maintaining ACM's websites, namely this ACM site, the Hacknjit site, and the JerseyCTF site. The websites are built in golang, vue, and bootstrap and can be viewed on our github.",
-
-        "Event Master":
-          "The event master is responsible for managing ACM's Special Interest Groups (SIGs) and is in charge of minor events. Organizations should feel free to reach out for collaboration!",
-
-        // TODO - Write PR Position Desc
-        "Public Relations":
-          "ACM's Head of Public Relations is responsible for all advertisting, including running our various social media accounts, putting up posters, and spreading ACM news by word of mouth. ",
-      },
-      eboard: jsonEboard,
-
-    };
-  },
 };
 </script>
 
 <style scoped>
-.outer-container {
-  margin: 0 auto;
-}
-
-header.page-header {
-  margin: 1rem auto;
-  display: flex;
-  justify-content: center;
-}
-
-.position-button {
-  background: none;
-  border: none;
-}
-
-.selected_position {
-  transform: scale(1.05);
-  color: red;
-}
-
-.spotlight {
-  margin: 0 auto;
+.curr-eboard-container {
   display: grid;
-  row-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, 25%);
+  justify-items: center;
+}
+
+.curr-eboard-sub-container,
+.prev-eboard .card-sub-container,
+.prev-eboard.list-container {
+  display: grid;
+  margin: 0 auto;
+}
+
+.curr-eboard-sub-container,
+.prev-eboard .card-sub-container {
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
   justify-items: center;
 }
 
-.office-hours p {
-  width: calc(100% - 4rem);
-  margin-left: inherit;
-  padding-left: 4rem;
+.curr-eboard-sub-container {
+  width: 100%;
 }
 
-.eboard-container>div {
-  display: grid;
-  /* grid-template-rows: 250px 250px; */
-  grid-template-columns: repeat(4, auto);
-  gap: 2rem;
-  width: 90%;
-  margin: 0 auto;
-  justify-content: space-evenly;
+.prev-eboard>*:first-child {
+  margin-top: 32px;
 }
 
-.eboard-container>div * {
-  justify-self: center;
+.prev-eboard>*:last-child {
+  margin-bottom: 64px;
 }
 
-.eboard-list-container>div {
-  display: grid;
-  width: 90%;
-  margin: 0 auto;
-  grid-template-columns: repeat(2, auto);
-  gap: 2rem;
-  justify-content: space-evenly;
+.prev-eboard.list-container {
+  height: fit-content;
+  gap: 64px;
 }
 
-
-.spacer1 {
-  height: 2rem;
-}
-
-.spacer2 {
-  height: 4rem;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 4rem;
-  border-bottom: red 4px solid;
-  padding-bottom: 1rem;
-  padding-top: 2rem;
-}
-
-.eboard-header {
-  transition: background-color var(--hover-speed) ease-in-out, color var(--hover-speed) ease-in-out;
-  border-radius: 1rem;
-  padding: 1em;
+.accordion-toggle {
+  font-size: 1em;
+  text-align: center;
+  color: var(--text-color);
   cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  display: flex;
-  align-items: center;
+  padding: 8px 16px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  border-radius: var(--border-radius);
+  margin-block: 8px;
 }
 
-.eboard-header.selected {
+hr {
+  border: none;
+  border-bottom: var(--gray) var(--border-width) solid;
+}
+
+.accordion-toggle.selected {
   background-color: var(--red);
   color: var(--bkg-color);
 }
 
+.accordion-toggle.pos-desc {
+  font-weight: bold;
+  width: fit-content;
+  font-size: 1.5em;
+  color: var(--red);
+  border: var(--border-width) solid var(--red);
+}
+
+.accordion-toggle.pos-desc.selected {
+  color: var(--bkg-color);
+}
+
+p.pos-desc {
+  margin-bottom: 16px;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .eboard-header:hover:not(.eboard-header.selected) {
+  .accordion-toggle {
+    transition: background-color var(--hover-speed) var(--hover-func), color var(--hover-speed) var(--hover-func);
+  }
+
+  .accordion-toggle:hover:not(.accordion-toggle.selected) {
+    background-color: var(--gray);
+  }
+
+  .accordion-toggle.pos-desc:hover:not(.accordion-toggle.selected) {
     background-color: var(--light-red);
   }
 }
 
 @media (pointer: coarse) {
-  .eboard-header:active:not(.eboard-header.selected) {
+  .accordion-toggle:active:not(.accordion-toggle.selected) {
+    background-color: var(--gray);
+  }
+
+  .accordion-toggle.pos-desc:active:not(.accordion-toggle.selected) {
     background-color: var(--light-red);
   }
 }
 
-.eboard-header.selected>.svg {
-  color: var(--bkg-color);
-}
-
-h2:not(.section-header) {}
-
-.svg {
-  transition: all 0.25s ease-in-out;
-  cursor: pointer;
-  align-self: center;
-}
-
-.open {
-  transform: rotate(180deg);
-}
-
-.v-enter-active,
-.v-leave-active {
-  transition: all 1s ease-in-out;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-  transform: translateY(-60px);
-}
-
-@media (max-width: 1800px) {
-  .spotlight {
-    grid-template-columns: repeat(3, 33%);
-  }
-}
-
-@media (max-width: 1700px) {
-  .eboard-container>div {
-    grid-template-columns: repeat(3, auto);
-  }
-}
-
-@media (max-width: 1400px) {
-  .spotlight {
-    grid-template-columns: repeat(2, 50%);
-  }
-}
-
-@media (max-width: 1350px) {
-  .card {
-    min-width: 30%;
-  }
-
-  .eboard-container>div {
-    grid-template-columns: repeat(2, auto);
-  }
-
-  .spacer1 {
-    display: none;
-  }
-
-  .spacer2 {
-    display: none;
-  }
-}
-
-@media (max-width: 1000px) {
-  .spotlight {
-    grid-template-columns: repeat(1, 100%);
-  }
-}
-
 @media (max-width: 750px) {
-  header {
-    margin: 0 1rem;
+  .accordion-toggle.pos-desc {
+    width: 100%;
   }
+}
 
-  h2:not(.section-header) {}
-
-  .eboard-container>div {
-    grid-template-columns: repeat(1, auto);
-  }
-
-  .eboard-list-container>div {
-    grid-template-columns: repeat(1, auto);
+@media (max-width: 500px) {
+  .accordion-toggle.pos-desc {
+    font-size: 1em;
   }
 }
 </style>

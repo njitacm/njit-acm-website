@@ -1,22 +1,26 @@
 <template>
-  <div>
-    <div v-show="tutoringCurrAvailable" class="container">
-      <div class="tutoring-sidebar">
-        <div class="title-and-subtitle">
-          <h1 class="title">YWCC Undergraduate Tutoring Schedule</h1>
-          <p class="subtitle">
-            Tutoring from 11:30 AM - 6:30 PM. Walk-in only, no reservations. Available in both in-person and virtual.
-          </p>
-        </div>
+  <main class="TutoringView">
+    <p v-if="!tutoringCurrAvailable" class="no-tutoring">
+      Tutoring is only offered during the Fall and Spring semesters. Please check back later.
+    </p>
+    <div v-else class="outer-container">
+      <header class="top-container">
+        <h1 class="title">YWCC Undergraduate Tutoring</h1>
+        <p class="info">
+          Tutoring from 11:30 AM - 6:30 PM. Walk-in only, no reservations. Available in both in-person and virtual.
+        </p>
         <div class="buttons-and-dropdown">
-          <PrimaryButton class="meet-link-button">
-            <a href="https://meet.google.com/tng-yefx-fqd" target="_blank">Google Meet Link</a>
-          </PrimaryButton>
-          <PrimaryButton class="meet-link-button">
-            <a href="https://computing.njit.edu/undergraduate-tutoring" target="_blank">YWCC Page</a>
-          </PrimaryButton>
+          <div class="buttons">
+            <PrimaryButton class="meet-link-button">
+              <a href="https://meet.google.com/tng-yefx-fqd" target="_blank">Google Meet Link</a>
+            </PrimaryButton>
+            <PrimaryButton class="meet-link-button">
+              <a href="https://computing.njit.edu/undergraduate-tutoring" target="_blank">YWCC Page</a>
+            </PrimaryButton>
+          </div>
           <div class="dropdown">
-            <select @change="selectClass" v-model="selectedCourse" :class="{ usingDefault: selectedCourse == -1 }">
+            <!-- TODO: eventually cool to have a custom dropdown -->
+            <select @change="selectClass" v-model="selectedCourse" :class="{ 'using-default': selectedCourse == -1 }">
               <option selected disabled value="-1" style="display: none">
                 Select a course...
               </option>
@@ -27,114 +31,122 @@
             <img class="reset-button" @click="reset" src="../../assets/reset.svg" alt="reset-button" />
           </div>
         </div>
-      </div>
-      <main>
+      </header>
+      <div class="main">
         <table class="tutoring-calendar" cellspacing="2.5rem" cellpadding="0">
           <thead>
             <tr>
               <th></th>
-              <th>M</th>
-              <th>T</th>
-              <th>W</th>
-              <th>T</th>
-              <th>F</th>
+              <th class="weekday">M</th>
+              <th class="weekday">T</th>
+              <th class="weekday">W</th>
+              <th class="weekday">R</th>
+              <th class="weekday">F</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(hour, index) in hoursPerDay" :key="index">
-              <!-- times, e.g. 12-13 -->
-              <th>
+              <th class="time">
                 {{ from24HrsTo12Hrs(startHour + index) }}
               </th>
-              <td v-for="day in numDays" :key="day">
+              <td v-for="day in numDays" :key="day" class="slot-container">
                 <button :ref="getIndexFromRowColumn(hour, day, numDays)"
-                  @click="selectDate(getIndexFromRowColumn(hour, day, numDays))">
-                  <!-- {{ timeIntToString(this.getTime(getIndexFromRowColumn(hour, day, numDays))) }} -->
+                  @click="selectDate(getIndexFromRowColumn(hour, day, numDays))" class="slot">
                 </button>
               </td>
             </tr>
           </tbody>
         </table>
-        <div class="details-panel">
-          <Transition mode="out-in">
-            <div v-if="dateSelected && classSelected && selectionInfo.empty" class="selection-info">
-              <h2 class="day-time">
-                {{ selectionInfo.day }} {{ selectionInfo.time }}
-              </h2>
-              <p v-if="selectedCourse == -1" class="no-tutors">
-                There is no tutoring available during this time slot
-              </p>
-              <p v-else class="no-tutors">
-                There is no tutoring available during this time slot for the course selected
-              </p>
-            </div>
-            <div v-else-if="dateSelected && classSelected" class="selection-info">
-              <h2 class="day-time">
-                {{ selectionInfo.day }} {{ selectionInfo.time }}
-              </h2>
-              <h3>In-Person AND Virtual</h3>
-              <br />
-              <h2>
-                Typically
-                <b :style="'color: ' + selectionInfo.businessColor">{{
-                  selectionInfo.business
-                }}</b>
-              </h2>
-              <br />
-              <h2>Tutors</h2>
-              <div class="tutors-container">
-                <p v-for="tutor in selectionInfo.tutors" :key="tutor">
-                  {{ tutor }}
-                </p>
+        <aside class="details">
+          <div v-if="selectionInfo.empty">
+            <p v-if="selectedCourse == -1" class="msg">
+              There is no tutoring available during this time slot.
+            </p>
+            <p v-else class="msg">
+              There is no tutoring available during this time slot for {{ selectedCourse }}.
+            </p>
+          </div>
+          <div v-else>
+            <div v-if="dateSelected || classSelected">
+              <div v-if="!dateSelected">
+                <p class="msg">Select a time slot to view details.</p>
+              </div>
+              <div v-if="dateSelected">
+                <h2 class="day-time">
+                  {{ selectionInfo.day }} {{ selectionInfo.time }}
+                </h2>
+              </div>
+              <div v-if="!classSelected">
+                <h3 class="courses-title">Tutoring Offered</h3>
+                <div class="courses-container">
+                  <p v-for="course in selectionInfo.courses" :key="course">
+                    {{ course }}
+                  </p>
+                </div>
+                <br />
+              </div>
+              <div v-if="dateSelected">
+                <h3 class="tutors-title">Tutors</h3>
+                <div class="tutors-container">
+                  <p v-for="tutor in selectionInfo.tutors" :key="tutor" class="tutor">
+                    {{ tutor }}
+                  </p>
+                </div>
               </div>
             </div>
-            <div v-else-if="dateSelected" class="selection-info">
-              <h2 class="day-time">
-                {{ selectionInfo.day }} {{ selectionInfo.time }}
-              </h2>
-              <h3>In-Person AND Virtual</h3>
-              <br />
-              <h2 class="courses-title">Tutoring Offered</h2>
-              <div class="courses-container">
-                <p v-for="course in selectionInfo.courses" :key="course">
-                  {{ course }}
-                </p>
-              </div>
-              <br />
-              <h2>Tutors</h2>
-              <div class="tutors-container">
-                <p v-for="tutor in selectionInfo.tutors" :key="tutor">
-                  {{ tutor }}
-                </p>
-              </div>
+            <div v-else>
+              <p class="msg">Select a time slot and/or course to view details.</p>
             </div>
-            <div v-else class="selection-info no-selection">
-              <p>Select a time slot and/or course to view details.</p>
-            </div>
-          </Transition>
-        </div>
-
-      </main>
+          </div>
+        </aside>
+      </div>
     </div>
-    <div v-show="!tutoringCurrAvailable" class="no-tutoring">
-      Tutoring is only offered during the Fall and Spring semeseters. Please check back later.
-    </div>
-  </div>
+  </main>
 </template>
 
 <script>
 import tutors from "../../assets/data/tutors.json";
-import business from "../../assets/data/business.json";
 import PrimaryButton from "../PrimaryButton.vue";
+
 export default {
+  name: "TutoringView",
   components: { PrimaryButton },
+  data() {
+    return {
+      tutoringCurrAvailable: true,   // true only during fall and spring semesters!
+      dateSelected: false,
+      selectionInfo: {},
+      // adjust this according to each new year's tutoring
+      numDays: 5,             // how many days of the week tutoring offered? e.g. Mon-Fri
+      hoursPerDay: 7,         // how long is tutoring offered (in hours)? e.g. 11 AM-7 PM
+      startHour: 11,          // when does tutoring start the earliest? e.g. 11 AM
+      offset: tutors.Meta.Offset,  // minute offset from the hour: xx:30, e.g. 11:30, 12:30, 1:30...
+      mondayIndex: 0,         // Mon = 0, Fri = 4
+      mondayCol: 1,           // Mon = column 1, Fri = column 5
+      // ---------------------------------------------------
+      headers: [
+        "Email",
+        "Last Name",
+        "First Name",
+        "Full Name",
+        "Time Slots",
+        "Parsed Time Slots",
+        "Courses",
+      ],
+      tutors: [],
+      courses: [],
+      selectedCourse: "-1",
+    };
+  },
+  computed: {
+    classSelected() {
+      return this.selectedCourse != "-1";
+    },
+  },
   methods: {
     async getTutors() {
       this.tutors = tutors.Tutors;
       this.getCourses();
-    },
-    async getBusiness() {
-      this.business = business;
     },
     displayDay(day) {
       // day = Mon, Tue, Wed, Thu, Fri
@@ -202,8 +214,6 @@ export default {
           coursesSet.add(course);
         });
       });
-      this.selectionInfo.business = this.getBusinessDescription(index);
-      this.selectionInfo.businessColor = this.getBusinessColor(index);
       this.selectionInfo.tutors = selectedTutors;
       this.selectionInfo.day = this.dayIntToString(day);
       this.selectionInfo.time = this.timeIntToString(time);
@@ -216,11 +226,9 @@ export default {
       }
     },
     undoStyle() {
-      console.log(this.$refs);
       for (var i = 1; i <= this.numDays * this.hoursPerDay; i++) {
         this.$refs[i][0].classList.remove("selected");
       }
-      console.log("bye");
     },
     dayIntToString(day) {
       switch (day) {
@@ -262,7 +270,6 @@ export default {
       var tutors = this.getTutorsByClass(this.selectedCourse);
       var selectedTutors = [];
       tutors.forEach((tutor) => {
-        console.log(this.selectedCourse, tutor.FirstName);
         selectedTutors.push(tutor.FirstName + " " + tutor.LastName);
       });
       this.selectionInfo.tutors = selectedTutors;
@@ -280,7 +287,6 @@ export default {
           courseSet.add(course);
         });
       });
-      // console.log(courseSet);
       this.courses = Array.from(courseSet);
     },
     reset() {
@@ -328,183 +334,82 @@ export default {
       }
     },
     colorDate(date) {
-      this.$refs[date][0].style.background = this.getColor(date);
+      this.$refs[date][0].classList.add("class-match");
     },
     uncolorDate(date) {
-      this.$refs[date][0].style.background = "var(--gray)";
-    },
-    getBusinessFromIndex(index) {
-      var row = this.getRow(index);
-      var col = this.getCol(index);
-      if (row >= this.business.length) {
-        console.log("Too large", row, col);
-        return 0;
-      }
-      return this.business[row].Data[col - 2];
-    },
-    getColor(index) {
-      return this.getBusinessColor(index);
-    },
-    getBusinessDescription() {
-      // var business = this.getBusinessFromIndex(index);
-      // var percent = business / this.maxBusiness;
-      return "Not Busy";
-      // if (percent < 0.33) {
-      //   return "Not Busy";
-      // } else if (percent < 0.67) {
-      //   return "Moderately Busy";
-      // } else {
-      //   return "Busy";
-      // }
-    },
-    getBusinessColor() {
-      return "#00bf5f";
-      // var business = this.getBusinessFromIndex(index);
-      // var percent = business / this.maxBusiness;
-      // if (percent < 0.33) {
-      //   return "#00bf5f";
-      // } else if (percent < 0.67) {
-      //   return "#faf25f";
-      // } else {
-      //   return "#e69407";
-      // }
-    },
-  },
-  data() {
-    return {
-      tutoringCurrAvailable: true,   // true only during fall and spring semesters!
-      dateSelected: false,
-      selectionInfo: {},
-      // adjust this according to each new year's tutoring
-      numDays: 5,             // how many days of the week tutoring offered? e.g. Mon-Fri
-      hoursPerDay: 7,         // how long is tutoring offered (in hours)? e.g. 11 AM-7 PM
-      startHour: 11,          // when does tutoring start the earliest? e.g. 11 AM
-      offset: tutors.Meta.Offset,  // minute offset from the hour: xx:30, e.g. 11:30, 12:30, 1:30...
-      mondayIndex: 0,         // Mon = 0, Fri = 4
-      mondayCol: 1,           // Mon = column 1, Fri = column 5
-      // ---------------------------------------------------
-      headers: [
-        "Email",
-        "Last Name",
-        "First Name",
-        "Full Name",
-        "Time Slots",
-        "Parsed Time Slots",
-        "Courses",
-      ],
-      tutors: [],
-      courses: [],
-      business: [],
-      selectedCourse: "-1",
-      maxBusiness: 32,
-    };
-  },
-  computed: {
-    classSelected() {
-      return this.selectedCourse != "-1";
+      this.$refs[date][0].classList.remove("class-match");
     },
   },
   mounted() {
-    this.getTutors();
-    this.getBusiness();
-    this.colorAllDates();
+    if (this.tutoringCurrAvailable) {
+      this.getTutors();
+      this.colorAllDates();
+    }
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-* {
-  transition: all var(--hover-speed) linear;
-  font-family: sans-serif;
-}
-
 .no-tutoring {
   text-align: center;
   align-content: center;
-  height: 100%;
-  text-wrap: balance;
+  margin-inline: auto;
 }
 
-/* container */
-.container {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+.outer-container {
+  padding-inline: 16px;
 }
 
-/* tutoring sidebar */
-.tutoring-sidebar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #780c0c;
-  width: 100%;
-  color: white;
-  padding: 1rem 2rem;
+.top-container {
+  margin-block: 32px;
 }
 
-.tutoring-sidebar h2 {
-  width: 65%;
+.title {
+  margin-bottom: 16px;
 }
 
-.tutoring-sidebar .subtitle {
-  width: 100%;
-  font-weight: initial;
+.title,
+.info {
+  text-align: center;
 }
 
-@media (max-width: 1450px) {
-  .tutoring-sidebar {
-    flex-direction: column;
-    justify-items: center;
-    text-align: center;
-    gap: 2rem;
-  }
+.info {
+  margin-bottom: 32px;
 }
 
-/* meet link and dropdown */
 .buttons-and-dropdown {
   display: flex;
-  gap: 1rem;
-  flex-grow: 2;
-  flex-shrink: 0;
+  gap: 16px;
   align-items: center;
-  justify-content: right;
-}
-
-div.dropdown {
-  margin: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
   justify-content: center;
 }
 
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.dropdown {
+  display: flex;
+  gap: 16px;
+}
+
 .dropdown select {
-  height: 50px;
-  padding: 1em;
+  font-size: 1.25em;
+  min-height: 50px;
+  padding-inline: 16px;
   border-radius: var(--border-radius);
   cursor: pointer;
+  background-color: var(--bkg-color);
+  color: var(--text-color);
 }
 
-@media(hover: hover) and (pointer: fine) {
-  .dropdown select:hover {
-    opacity: 0.75;
-  }
-}
-
-@media(pointer: coarse) {
-  .dropdown select:active {
-    opacity: 0.75;
-  }
-}
-
-.dropdown select.usingDefault {
+.dropdown select.using-default {
   font-style: italic;
-  font-weight: 100;
 }
 
 option {
-  background-color: white;
   font-style: initial;
 }
 
@@ -513,175 +418,175 @@ option {
   cursor: pointer;
 }
 
-.reset-button:hover {
-  opacity: var(--hover-opacity);
+[data-theme="light"] .reset-button {
+  filter: invert(1);
 }
 
-@media (max-width: 600px) {
-  .PrimaryButton {
-    width: 100%;
-  }
-
-  .dropdown {
-    width: 100%;
-  }
-
-  .buttons-and-dropdown {
-    flex-direction: column;
-  }
-
-  .dropdown {
-    width: 100%;
-  }
-
-  .dropdown select {
-    flex-grow: 2;
-  }
-}
-
-/* details panel */
-main {
+.main {
   display: flex;
-  gap: 2rem;
-  width: calc(100% - 20px);
-  margin: 1rem auto;
+  gap: 32px;
+  margin-bottom: 64px;
+  justify-content: center;
+  margin-inline: auto;
 }
 
-main .details-panel {
-  flex-basis: 30%;
-  overflow: hidden;
-  border: var(--border-width) var(--light-gray) solid;
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  display: flex;
-}
-
-.no-selection {
-  align-self: center;
-  margin: 0 auto;
-}
-
-.no-selection p {
-  text-align: center;
-}
-
-.selection-info {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.day-time {
-  text-align: center;
-}
-
-.selection-info h3 {
-  text-align: left;
-  font-weight: initial;
-  font-style: italic;
-}
-
-.selection-info h2 {
-  text-align: left;
-}
-
-.courses-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: start;
-}
-
-.courses-container p {
-  width: min-content;
-  text-align: left;
-}
-
-.tutors-container {
-  text-align: left;
-}
-
-.select-for-details {
-  text-align: center;
-  margin: auto;
-}
-
-@media (max-width: 1150px) {
-  main {
-    flex-direction: column;
-  }
-}
-
-/* tutoring calendar */
 .tutoring-calendar {
-  table-layout: fixed;
   height: fit-content;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border-spacing: 0;
-}
-
-.tutoring-calendar tr {
-  margin: 0;
-}
-
-.tutoring-calendar th {
-  color: var(--red);
-  /* padding: 1rem; */
-  margin-bottom: 1rem;
-}
-
-.tutoring-calendar thead th {
-  font-weight: normal;
-}
-
-.tutoring-calendar tbody th {
-  font-weight: normal;
   width: fit-content;
+}
+
+.weekday,
+.time {
+  color: var(--red);
+  font-size: 1.25em;
+}
+
+.weekday {
+  padding-bottom: 16px;
+}
+
+.time {
+  width: 175px;
   text-align: right;
-  padding-right: 1rem;
+  padding-right: 16px;
 }
 
-.tutoring-calendar td {
-  border: 1px solid var(--bkg-color);
+.slot-container {
+  width: 250px;
 }
 
-.tutoring-calendar button {
+.slot {
   box-sizing: border-box;
   width: 100%;
-  height: 5rem;
+  height: 50px;
   align-self: center;
   justify-self: center;
   cursor: pointer;
   border: none;
+  background-color: var(--bkg-color);
 }
 
-.tutoring-calendar button.selected {
-  border: 3px solid var(--text-color);
+.slot.class-match {
+  background-color: var(--gray);
+}
+
+.slot.selected {
+  background-color: var(--red);
+}
+
+.details {
+  overflow: auto;
+  width: 750px;
+  border: var(--border-width) var(--red) solid;
+  border-radius: var(--border-radius);
+  padding: 32px;
+}
+
+.msg {
+  text-align: center;
+}
+
+.day-time,
+.courses-title,
+.tutors-title {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.day-time {
+  font-size: 1.5em;
+}
+
+.courses-title,
+.tutors-title {
+  font-size: 1.25em;
+}
+
+.courses-container {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 16px;
+}
+
+.tutor {
+  text-align: center;
 }
 
 @media(hover: hover) and (pointer: fine) {
-  .tutoring-calendar button:hover {
+  .dropdown select:hover {
+    opacity: 0.75;
+  }
+
+  .reset-button:hover {
+    opacity: var(--hover-opacity);
+  }
+
+  .slot:hover {
     opacity: 0.75;
   }
 }
 
 @media(pointer: coarse) {
-  .tutoring-calendar button:active {
+  .dropdown select:active {
+    opacity: 0.75;
+  }
+
+  .reset-button:active {
+    opacity: var(--hover-opacity);
+  }
+
+  /* TODO: USE COLOR-MIX */
+  .slot:active {
     opacity: 0.75;
   }
 }
 
-.v-enter-active,
-.v-leave-active {
-  transition: all 0.25s ease-in-out;
+@media (max-width: 1150px) {
+  .main {
+    flex-direction: column;
+    align-content: stretch;
+    align-items: center;
+  }
+
+  .details {
+    width: 100%;
+  }
 }
 
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-  transform: translateY(-60px);
+@media (max-width: 800px) {
+  .buttons-and-dropdown {
+    flex-direction: column;
+  }
+
+  .buttons,
+  .dropdown,
+  .PrimaryButton,
+  .dropdown select {
+    width: 100%;
+  }
+
+  .weekday,
+  .time {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 525px) {
+  .slot-container {
+    width: 100px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .time {
+    width: 50px;
+  }
+
+  .courses-container {
+    grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+  }
 }
 </style>

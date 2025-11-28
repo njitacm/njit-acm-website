@@ -6,25 +6,28 @@
 
 <script>
 export default {
-
-}
+  name: "PrimaryButton",
+};
 </script>
 
 <style scoped>
-button {
-  --btn-hov-col: color-mix(in srgb, var(--btn-red), var(--text-color) 10%);
-  background-color: var(--btn-red);
+.PrimaryButton {
+  --btn-hov-col: color-mix(in srgb, var(--red), var(--bkg-color) 25%);
+  color: var(--bkg-color);
+  background-color: var(--red);
   border-radius: var(--border-radius);
   border: none;
   cursor: pointer;
   height: 50px;
-  transition: all var(--hover-speed) linear;
+  transition: all var(--hover-speed) var(--hover-func);
   user-select: none;
-  -webkit-tap-highlight-color: transparent;
   font-size: 1.25em;
 }
 
-:slotted(a), :slotted(.router-link), :slotted(span), :slotted(.red-button-text) {
+:slotted(a),
+:slotted(.router-link),
+:slotted(span),
+:slotted(.red-button-text) {
   border-radius: var(--border-radius);
   display: block;
   align-content: center;
@@ -32,7 +35,7 @@ button {
   padding: 0 1em;
   text-decoration: none;
   font-weight: bold;
-  color: var(--text-color);
+  color: inherit;
   width: 100%;
   height: 100%;
 }
@@ -42,10 +45,16 @@ button {
     background-color: var(--btn-hov-col);
   }
 }
+
 @media (pointer: coarse) {
   button:active {
     background-color: var(--btn-hov-col);
   }
 }
 
+@media (max-width: 350px) {
+  .PrimaryButton {
+    font-size: 1em;
+  }
+}
 </style>

@@ -1,75 +1,74 @@
 <template>
-  <div class="card">
-    <img :src="imagePath" />
-    <h1>{{ incumbent }}</h1>
-    <h2>{{ position }}</h2>
-  </div>
+  <main class="EBoardCard">
+    <img :src="imgSrc" />
+    <div class="info">
+      <h4 class="name">{{ name }}</h4>
+      <p class="position">{{ position }}</p>
+    </div>
+  </main>
 </template>
 
 <script>
 import { getImageUrl } from '../util';
 
-
 export default {
-  props: [
-    "position",
-    "incumbent",
-    "imageName",
-  ],
+  name: "EBoardCard",
+  props: {
+    name: {
+      type: String,
+      required: true,
+    },
+    position: {
+      type: String,
+      required: true,
+    },
+    imagePath: {
+      type: String,
+      default: "",
+    }
+  },
   data() {
     return {
-      imagePath: "",
+      imgSrc: "",
     };
   },
   async mounted() {
-    this.imagePath = await getImageUrl(`eboard/${this.$props.imageName}`);
+    const imgPath = this.$props.imagePath;
+    if (!imgPath || imgPath === "") {
+      this.imgSrc = await getImageUrl("blank-pfp.png");
+    } else {
+      this.imgSrc = await getImageUrl(`eboard/${this.$props.imagePath}`);
+    }
   }
 };
 </script>
 
 <style scoped>
-/*
-- Font sizes (px)
-10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74/ 86 / 98
-
-- Spacing system (px)
-2 / 4 / 8 / 12 / 16 / 24 / 32 /48 /64 /80 /96 / 128
-*/
-* {
-  transition: all 500ms ease-in-out;
-}
-
-.card {
-  margin-top: 0.8rem;
-  border-radius: 8px;
+.EBoardCard {
   text-align: center;
-  box-shadow: none;
-  transform: translateY(0);
-  box-shadow: none;
-  opacity: 0.9;
-  width: fit-content;
-  transform: translateY(1.6rem);
-  height: 100%;
+  width: 100%;
+  max-width: 350px;
 }
 
 img {
-  width: 20rem;
-  height: 20rem;
-  object-fit: cover;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
+  width: 100%;
+  aspect-ratio: 1;
+  border: var(--border-width) var(--red) solid;
 }
 
-@media (max-width: 600px) {
-  img {
-    width: 18rem;
-    height: 18rem;
-  }
+.name {
+  color: var(--red);
 }
 
-@media (max-width: 400px) {
-  img {
-    width: 15rem;
-    height: 15rem;
+.position {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+@media (max-width: 350px) {
+  .EBoardCard {
+    max-width: 250px;
   }
 }
 </style>

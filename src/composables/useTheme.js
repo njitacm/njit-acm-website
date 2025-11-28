@@ -1,36 +1,51 @@
-import { ref, onMounted } from "vue";
+import { ref, readonly } from "vue";
+const THEME_OPTIONS = ["auto", "light", "dark"];
 
 export function useTheme() {
-  const isDarkMode = ref(false);
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const theme = ref("auto");
+  const readonlyTheme = readonly(theme);
 
-  const applyTheme = (theme) => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
+  // sync to system
+  const onThemeUpdate = (e) => {
+    if (e.matches) {
+      // dark
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      // light
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }
+
+  // manually apply theme and update local storage
+  const applyTheme = (newTheme) => {
+    localStorage.setItem("theme", newTheme);
+
+    if (newTheme === "auto") {
+      onThemeUpdate({ matches: mq.matches });
+      mq.addEventListener("change", onThemeUpdate);
+    } else {
+      mq.removeEventListener("change", onThemeUpdate);
+      document.documentElement.setAttribute("data-theme", newTheme);
+    }
   };
 
-  onMounted(() => {
-    // Check for saved theme preference or default to system preference
-    const savedTheme = localStorage.getItem("theme");
+  // Retrieve saved theme
+  const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme) {
-      isDarkMode.value = savedTheme === "dark";
-      applyTheme(savedTheme);
-    } else {
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      isDarkMode.value = prefersDark;
-      applyTheme(prefersDark ? "dark" : "light");
-    }
-  });
+  if (savedTheme) {
+    theme.value = savedTheme;
+    applyTheme(savedTheme);
+  }
 
-  const toggleTheme = () => {
-    isDarkMode.value = !isDarkMode.value;
-    applyTheme(isDarkMode.value ? "dark" : "light");
+  const setTheme = (newTheme) => {
+    theme.value = newTheme;
+    applyTheme(theme.value);
   };
 
   return {
-    isDarkMode,
-    toggleTheme,
+    theme: readonlyTheme,
+    setTheme,
+    THEME_OPTIONS,
   };
 }
