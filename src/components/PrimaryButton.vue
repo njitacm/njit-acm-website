@@ -21,7 +21,6 @@ export default {
   height: 50px;
   transition: all var(--hover-speed) var(--hover-func);
   user-select: none;
-  -webkit-tap-highlight-color: transparent;
   font-size: 1.25em;
 }
 

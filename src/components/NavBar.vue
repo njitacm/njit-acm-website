@@ -145,7 +145,6 @@ a {
 
 .home-link {
   color: var(--text-color);
-  -webkit-tap-highlight-color: transparent;
   transition: color var(--hover-speed) linear;
   display: flex;
   align-items: center;

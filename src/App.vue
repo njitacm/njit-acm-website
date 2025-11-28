@@ -58,6 +58,7 @@ export default {
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -146,7 +147,6 @@ img {
 
 button {
   user-select: none;
-  -webkit-tap-highlight-color: transparent;
 }
 
 /* App-specific styles */
