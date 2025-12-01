@@ -185,15 +185,15 @@ export default {
         // },
         {
             name: "Bring Your Own Joycon",
-            location: "",
+            location: "GITC 3700",
             date: "Fri, Dec 5",
             time: "6 - 7 PM",
             imagePath: "",
             desc: "Come repair your broken joycons, relax, and game afterwards!",
-            // links: {
-            //     "Register Now": "",
-            //     "Add to Calendar": ""
-            // }
+            links: {
+                "RSVP Now": "https://njit.campuslabs.com/engage/event/11918452",
+                "Add to Calendar": "https://njit.campuslabs.com/engage/event/11918452/googlepublish"
+            }
         },
     ]
 };
