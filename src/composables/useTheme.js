@@ -33,15 +33,16 @@ export function useTheme() {
   // Retrieve saved theme
   const savedTheme = localStorage.getItem("theme");
 
-  if (savedTheme) {
-    theme.value = savedTheme;
-    applyTheme(savedTheme);
-  }
-
   const setTheme = (newTheme) => {
     theme.value = newTheme;
     applyTheme(theme.value);
   };
+
+  if (savedTheme) {
+    setTheme(savedTheme);
+  } else {
+    setTheme("auto");
+  }
 
   return {
     theme: readonlyTheme,
