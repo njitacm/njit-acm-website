@@ -82,13 +82,14 @@ export default {
   display: flex;
   height: fit-content;
   gap: 32px;
-  flex-grow: 1;
+  align-items: center;
 }
 
 .thumbnail {
   width: 250px;
   border: var(--red) var(--border-width) solid;
   border-radius: var(--border-radius);
+  height: fit-content;
 }
 
 .info,
@@ -125,8 +126,12 @@ export default {
   height: 25px;
 }
 
+[data-theme="dark"] .icon {
+  filter: invert(1);
+}
+
 .links {
-  width: 250px;
+  width: 600px;
   display: flex;
   flex-direction: column;
   gap: 16px;
