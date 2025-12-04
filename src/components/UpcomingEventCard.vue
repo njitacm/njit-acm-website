@@ -4,8 +4,16 @@
       <img v-if="imagePath !== ''" :src="imgSrc" class="thumbnail">
       <div class="info">
         <h3 class="title">{{ name }}</h3>
-        <p v-if="datetime !== ''" class="datetime">{{ datetime }}</p>
-        <p v-if="location !== ''" class="location">{{ location }}</p>
+        <div v-if="datetime !== '' || location !== ''" class="when-where">
+          <div v-if="datetime !== ''" class="datetime">
+            <img src="../assets/icons/date.svg" alt="Date" class="icon">
+            <span>{{ datetime }}</span>
+          </div>
+          <div v-if="location !== ''" class="location">
+            <img src="../assets/icons/location.svg" alt="Location" class="icon">
+            <span>{{ location }}</span>
+          </div>
+        </div>
         <p v-if="desc !== ''">{{ desc }}</p>
       </div>
     </div>
@@ -74,13 +82,14 @@ export default {
   display: flex;
   height: fit-content;
   gap: 32px;
-  flex-grow: 1;
+  align-items: center;
 }
 
 .thumbnail {
   width: 250px;
   border: var(--red) var(--border-width) solid;
   border-radius: var(--border-radius);
+  height: fit-content;
 }
 
 .info,
@@ -98,13 +107,31 @@ export default {
   color: var(--red);
 }
 
+.when-where {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 .datetime,
 .location {
   font-weight: bold;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.icon {
+  width: 25px;
+  height: 25px;
+}
+
+[data-theme="dark"] .icon {
+  filter: invert(1);
 }
 
 .links {
-  width: 250px;
+  width: 600px;
   display: flex;
   flex-direction: column;
   gap: 16px;

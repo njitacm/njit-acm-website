@@ -28,7 +28,8 @@
                 {{ course }}
               </option>
             </select>
-            <img class="reset-button" @click="reset" src="../../assets/reset.svg" alt="reset-button" />
+            <!-- TODO: CONVERT TO BUTTON WITH IMG IN IT -->
+            <img class="reset-button" @click="reset" src="../../assets/icons/x.svg" alt="reset-button" />
           </div>
         </div>
       </header>
