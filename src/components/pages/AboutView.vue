@@ -5,9 +5,8 @@
       <template #content>
         <p>
           If you're new to clubs at NJIT, the e-board is the group of students,
-          elected at the end of every Fall, that run ACM! We handle all event
-          planning and daily operations of the club. The current e-board is
-          comprised on eight position listed below. Scroll down further to find
+          elected at the end of every Fall, that runs ACM! We handle all event
+          planning and daily operations of the club. The current e-board consists of 10 position listed below. Scroll down further to find
           out more about out current e-board!
         </p>
       </template>
@@ -102,7 +101,7 @@ export default {
     return {
       EBOARD_POS,
       selectedPosition: "President",
-      currEboardYear: 2025,
+      currEboardYear: 2026,
       firstEboardYear: 2016,
       showPosDesc: false,
       showEboard: { 2024: true },

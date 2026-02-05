@@ -66,15 +66,7 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
 { name: "Abdullah Imran", position: "Webmaster", ucid: "ami8", year: "Sophmore", major: "CS/Math", term: 2024, desc: "Oh, hey. I'm Abdullah and I am a second-year  CS/Math dual major. In my free time I play DnD and read sci-fi novels. If you want to learn more about web development, or just want to talk (perferably about Jojo's Bizzare Adventure Part 7: Steel Ball Run), stop by the office for a yap-session!" },
 //{ name: "Darren Bonifacio", position: "Public Relations", ucid: "dab97", year: "Sophmore", major: "CS", term: 2024, desc: "What's up! I'm Darren and I'm a second-year computer science major. I love my cat Lettuce and games like Super Smash Bros, Fire Emblem, and Pokémon! I'm also into anime/manga (CSM and Frieren are fire) and PC gaming too. Hope you enjoy my posts for the ACM socials! See ya!!!" },
 { name: "Kapila Mane", position: "Graphic Designer", ucid: "km776", year: "Junior", major: "HCI", term: 2024, desc: "Hi! I'm Kapila (call me Cup if you'd like) and I'm a junior human-computer interaction (HCI) major. This is my second term as a graphic designer at ACM, and sure, you can say it's my passion. I also love tinkering: from cosplay props such as Yoru's mask from Valorant + Mistsplitter from Genshin Impact. Hope to see you around!" },
-{
-    name: "Abdullah Imran",
-    term: 2025,
-    position: "President",
-    ucid: "ami8",
-    year: "Sophmore",
-    major: "CS/Math",
-    desc: "Oh, hey. I'm Abdullah and I am a second-year  CS/Math dual major. In my free time I play DnD and read sci-fi novels. If you want to learn more about web development, or just want to talk (perferably about Jojo's Bizzare Adventure Part 7: Steel Ball Run), stop by the office for a yap-session!",
-},
+{name: "Abdullah Imran", term: 2025, position: "President", ucid: "ami8", year: "Sophmore", major: "CS/Math", desc: "Oh, hey. I'm Abdullah and I am a second-year  CS/Math dual major. In my free time I play DnD and read sci-fi novels. If you want to learn more about web development, or just want to talk (perferably about Jojo's Bizzare Adventure Part 7: Steel Ball Run), stop by the office for a yap-session!"},
 // OFFICER QUIT
 // {
 //     name: "Priya Patel",
@@ -86,85 +78,85 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
 //     desc: "Hey, I'm Priya! I am a second-year Data Science (Computing Option) major with an interest in bioinformatics! I like to watch anime, dance, and learn piano! I am always looking forward to meeting new people, so feel free to swing by our office hours and say hi :)",
 // },
 // NEW OFFICER
+{name: "Shikhar Verma",term: 2025,position: "Vice President",ucid: "sv2236",year: "Sophomore", major: "CS", desc: "Hey, I'm Shikhar. I'm a second year Computer Science major. I'm interested in software development. I enjoy Mindustry,  Severance, and The Batman (2022), and a bunch of other entertainment. Come say hello during my office hours : D"},
+{name: "Matthew Padilla",term: 2025,position: "Treasurer",ucid: "map289",year: "Freshman",major: "CE",desc: "Hey, I'm Matthew a current Freshman Computer Engineering major and ACM Treasurer if you like nerd stuff we'll probably be good friends"},
+{name: "Garrett Gonzalez-Rivas",term: 2025,position: "Secretary",ucid: "grg",year: "Junior?"},
+{name: "Xhaiden D'Souza",position: "SIG Master",term: 2025,ucid: "xyd",year: "Freshman",major: "CS + AAPH",desc: "Hey, I'm Xhaiden, a Computer Science and Physics double major. I am interested in quantum computing and running sig-quantum this semester! I also like making music, and I enjoy creating cool coding projects, especially in python and the desmos graphing calculator!"},
+{name: "Shivansh Dutta",term: 2025,position: "Event Master",ucid: "sd2386",year: "Freshman"},
+{name: "Krish A. Patel",term: 2025,position: "Webmaster",ucid: "kap225",year: "Freshman",major: "CS + AAPH",desc: "Hey y'all, I'm Krish! I'm pursuing a CS and Physics double major (both are such cool fields, so I couldn't just pick one!). Some of my smaller passions include tech, music, running, ancient history, linguistics, and ... (I've run out of space.) Basically, I'm a hodge-podge of things. If you want to come and chat with me, feel free to come during my office hours!"},
+{name: "Simon Leong",term: 2025,position: "Public Relations",ucid: "sl884"},
+{name: "Clarissa Furtado",term: 2025,position: "Graphic Designer",ucid: "caf25"},
+{name: "Rain Christian",term: 2025,position: "Hack Master",ucid: "erc",desc: "Hi! I'm Rain and I'm in my junior year studying computer science. In my free time I run a dnd game, play video games, and read books. I'm always looking to chat so swing by and say hi"},
+{
+    name: "Garrett Gonzalez-Rivas",
+    term: 2026,
+    position: "President",
+    ucid: "grg",
+    year: "Junior"
+},
 {
     name: "Shikhar Verma",
-    term: 2025,
+    term: 2026,
     position: "Vice President",
     ucid: "sv2236",
     year: "Sophomore",
-    major: "CS",
-    desc: "Hey, I'm Shikhar. I'm a second year Computer Science major. I'm interested in software development. I enjoy Mindustry,  Severance, and The Batman (2022), and a bunch of other entertainment. Come say hello during my office hours : D",
+    desc: "I’m a second-year Computer Science & Math major. I want to get better at software development. I enjoy a lot of things, from history & cities to anime & games. You name it, and I can probably say something about it. Come say hello during my office hours! :D"
 },
 {
     name: "Matthew Padilla",
-    term: 2025,
+    term: 2026,
     position: "Treasurer",
     ucid: "map289",
-    year: "Freshman",
-    major: "CE",
-    desc: "Hey, I'm Matthew a current Freshman Computer Engineering major and ACM Treasurer if you like nerd stuff we'll probably be good friends",
+    year: "Sophomore"
 },
 {
-    // Garret
-    name: "Garret Gonzalez-Rivas",
-    term: 2025,
+    name: "Marcus Victor Hilario",
+    term: 2026,
     position: "Secretary",
-    ucid: "grg",
-    year: "Junior?",
-    // major: "Biology + ? + ?",
-    // desc: "",
+    ucid: "mth42",
+    year: "Sophomore",
+    desc: "Hi, I'm Marcus. I'm a second-year CS major with a Robotics minor. I enjoy coding mini-projects, graphic design, and 3D printing! I'm pretty much always on campus, so feel free to chat anytime!"
 },
 {
-    // Xhaiden
     name: "Xhaiden D'Souza",
     position: "SIG Master",
-    term: 2025,
+    term: 2026,
     ucid: "xyd",
-    year: "Freshman",
+    year: "Sophomore",
     major: "CS + AAPH",
     desc: "Hey, I'm Xhaiden, a Computer Science and Physics double major. I am interested in quantum computing and running sig-quantum this semester! I also like making music, and I enjoy creating cool coding projects, especially in python and the desmos graphing calculator!"
 },
 {
-    name: "Shivansh Dutta",
-    term: 2025,
-    position: "Event Master",
-    ucid: "sd2386",
-    year: "Freshman",
-    // major: "?",
-    // desc: "",
-},
-{
-    // Krish
-    name: "Krish A. Patel",
-    term: 2025,
-    position: "Webmaster",
-    ucid: "kap225",
-    year: "Freshman",
-    major: "CS + AAPH",
-    desc: "Hey y'all, I'm Krish! I'm pursuing a CS and Physics double major (both are such cool fields, so I couldn't just pick one!). Some of my smaller passions include tech, music, running, ancient history, linguistics, and ... (I've run out of space.) Basically, I'm a hodge-podge of things. If you want to come and chat with me, feel free to come during my office hours!",
-},
-{
-    name: "Simon Leong",
-    term: 2025,
-    position: "Public Relations",
-    ucid: "sl884",
-    // major: "?",
-    // desc: "",
-},
-{
-    name: "Clarissa Furtado",
-    term: 2025,
-    position: "Graphic Designer",
-    ucid: "caf25",
-    // major: "?",
-    // desc: "",
-},
-{
     name: "Rain Christian",
-    term: 2025,
+    term: 2026,
     position: "Hack Master",
     ucid: "erc",
-    // major: "?",
-    desc: "Hi! I'm Rain and I'm in my junior year studying computer science. In my free time I run a dnd game, play video games, and read books. I'm always looking to chat so swing by and say hi",
+    desc: "Hi! I'm Rain and I'm in my junior year studying computer science. In my free time I run a dnd game, play video games, and read books. I'm always looking to chat so swing by and say hi"
+},
+{
+    name: "Elizabeth Soldatenkov",
+    term: 2026,
+    position: "Webmaster",
+    ucid: "es632",
+    desc: "Hihi I'm Elizabeth, a Math/Physics double major (and CS minor!!). I like practically everything, so you should come to the office and talk to me about things :) If you have some keychain or pin you don't need or want you should give it to me to add to my lanyard collection."
+},
+{
+    name: "Christopher Little",
+    term: 2026,
+    position: "Public Relations",
+    ucid: "cdl27"
+},
+{
+    name: "Christopher (Leo) Bandeli",
+    term: 2026,
+    position: "Event Master",
+    ucid: "chrizzy b"
+},
+{
+    name: "Krish A. Patel",
+    term: 2026,
+    position: "Graphic Designer",
+    ucid: "kap225",
+    decs: "Hey y'all! I'm Krish, majoring in CS + Applied Physics. I'm particularly interested in full-stack development. In my free time, I love following tech, learning new languages, and hanging out with friends. Oh, and I also love corny jokes."
 }
 ]
