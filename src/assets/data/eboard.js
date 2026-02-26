@@ -146,12 +146,14 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     position: "Public Relations",
     ucid: "cdl27"
 },
+/* OFFICER IMPEACHED
 {
     name: "Christopher (Leo) Bandeli",
     term: 2026,
     position: "Event Master",
     ucid: "chrizzy b"
 },
+*/
 {
     name: "Krish A. Patel",
     term: 2026,
