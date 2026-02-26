@@ -14,7 +14,7 @@
         </p>
         <br />
         <p>
-          SIGs are also a great way to start your own organization. You can
+          SIGs are a great way to start your own organization. You can
           utilize our resources to help you garner interest and grow your org
           before branching out into a stand-alone club! Other large
           organizations at NJIT, like SIGCHI and IGDA, were once SIGs!
@@ -54,7 +54,7 @@
         <ol>
           <li>Join the <a :href="discordLink" target="_blank">ACM Discord</a>.</li>
           <li>Go to <b>Channels & Roles</b>.</li>
-          <li>Assign yourself the role for the SIG you want to join.</li>
+          <li>Assign yourself the role(s) for the SIG(s) you want to join.</li>
           <li>Now you should have access to that SIG channel!
             Make sure to introduce yourself and communicate with the SIG leader(s)!</li>
         </ol>
@@ -85,7 +85,7 @@ export default {
   components: { SIGsCard, HorizontalSection, EmbeddedCalendar },
   data() {
     return {
-      sigs: sigsData['fa2025'] ?? [],
+      sigs: sigsData['sp2026'] ?? [],
       discordLink: 'https://discord.gg/XR6qPze'
     };
   },

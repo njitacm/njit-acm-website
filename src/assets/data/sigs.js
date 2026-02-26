@@ -221,5 +221,71 @@ export default {
         //     loc: "GITC 3700",
         //     filename: "Spring2025/sig-quantum.png",
         // },
+    ],
+    'sp2026' : [
+        {
+            name: "sig-ai",
+            leaders: "Rayan Khan, Eric Vargas",
+            desc: "Curious about AI? SIG-AI breaks down different AI domains with group learning sessions and hands-on workshops. Come in with little or no experience and leave having built your own real Al application!",
+            time: "Fri 2:30 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/sig-ai.png"
+        },
+        {
+            name: "sig-algo",
+            leaders: "Rachel Lindeblad",
+            desc: "SIG-Algo: Discover the wide world of algorithms as we explore their motivation, implementation, and theory! From Euler to Turing, these are algorithms you probably won't learn in class.",
+            time: "Fri 4:30 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/sig-algo.png"
+        },
+        {
+            name: "sig-DSP",
+            leaders: "Michael Vornovitsky",
+            desc: "Explore digital signal processing, from the basics of sampling to designing your own digital filters. No experience is required!",
+            time: "Wed 2:30 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/Sig-DSP.png"
+        },
+        {
+            name: "sig-hpc",
+            leaders: "Abdullah Imran, Garret Gonzalez-Rivas",
+            desc: "Design, build, and get hands-on experience with HPC and NJIT supercomputers! Work with cutting-edge technologies and industry professionals, and meet like-minded students.",
+            time: "Wed 2:30 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/sig-hpc.png"
+        },
+        {
+            name: "sig-quantum",
+            leaders: "Xhaiden D'Souza",
+            desc: "Explore the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. No experience required!",
+            time: "Wed 2:30 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/sig-quantum.png"
+        },
+        {
+            name: "sig-leet",
+            leaders: "Leo Bandeli",
+            desc: "Solve and be able to explain coding interview problems. Train in a beginner or intermediate section! Be prepared for anything and everything.",
+            time: "Fri 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/content.png"
+        },
+        {
+            name: "sig-office",
+            leaders: "Nigel Pressey",
+            desc: "SIG OFFICE/INFRA 2: COME TO THE OFFICE WE HAVE COOL STUFF. ALSO LEARN ABOUT LAN NETWORKING AND STUFF AND MAYBE SOME SYS ADMIN STUFF. RAHHHHHHHY",
+            time: "Thu 4:00 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/office2.png"
+        },
+        {
+            name: "sig-icpc",
+            leaders: "Dominic Attalienti",
+            desc: "Study data structures and algorithms and apply them to difficult programming puzzles. Test your skills against other schools during ICPC season in the Fall.",
+            time: "Wed 2:30 PM",
+            loc: "GITC 2315A",
+            filename: "Spring2026/programming-team.png"
+        }
     ]
 }
