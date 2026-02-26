@@ -256,12 +256,12 @@ export default {
             filename: "Spring2026/sig-hpc.png"
         },
         {
-            name: "sig-quantum",
-            leaders: "Xhaiden D'Souza",
-            desc: "Explore the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. No experience required!",
+            name: "sig-icpc",
+            leaders: "Dominic Attalienti",
+            desc: "Study data structures and algorithms and apply them to difficult programming puzzles. Test your skills against other schools during ICPC season in the Fall.",
             time: "Wed 2:30 PM",
-            loc: "GITC 3700",
-            filename: "Spring2026/sig-quantum.png"
+            loc: "GITC 2315A",
+            filename: "Spring2026/programming-team.png"
         },
         {
             name: "sig-leet",
@@ -280,12 +280,12 @@ export default {
             filename: "Spring2026/office2.png"
         },
         {
-            name: "sig-icpc",
-            leaders: "Dominic Attalienti",
-            desc: "Study data structures and algorithms and apply them to difficult programming puzzles. Test your skills against other schools during ICPC season in the Fall.",
+            name: "sig-quantum",
+            leaders: "Xhaiden D'Souza",
+            desc: "Explore the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. No experience required!",
             time: "Wed 2:30 PM",
-            loc: "GITC 2315A",
-            filename: "Spring2026/programming-team.png"
+            loc: "GITC 3700",
+            filename: "Spring2026/sig-quantum.png"
         }
     ]
 }
