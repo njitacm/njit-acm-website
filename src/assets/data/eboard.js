@@ -155,6 +155,12 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
 },
 */
 {
+    name: "Anthony Pereira-DeSouza",
+    term: 2026,
+    position: "Event Master",
+    ucid: "apd46"
+},
+{
     name: "Krish A. Patel",
     term: 2026,
     position: "Graphic Designer",
