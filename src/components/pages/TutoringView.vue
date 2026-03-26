@@ -48,7 +48,7 @@
           <tbody>
             <tr v-for="(hour, index) in hoursPerDay" :key="index">
               <th class="time">
-                {{ from24HrsTo12Hrs(startHour + index) }}
+                {{ from24HrsTo12Hrs(index) }}
               </th>
               <td v-for="day in numDays" :key="day" class="slot-container">
                 <button :ref="getIndexFromRowColumn(hour, day, numDays)"
@@ -117,9 +117,10 @@ export default {
       tutoringCurrAvailable: true,   // true only during fall and spring semesters!
       dateSelected: false,
       selectionInfo: {},
-      // adjust this according to each new year's tutoring
+      // adjust this according to each new year's tutoring 
+      // ADJUSTED TO INTERVALS OF HALF AN HOUR BECAUSE WHY DO PEOPLE NOT START ON THE HALF HOUR?? IDK - Yours truly, a very mad webmaster (Eli)
       numDays: 5,             // how many days of the week tutoring offered? e.g. Mon-Fri
-      hoursPerDay: 7,         // how long is tutoring offered (in hours)? e.g. 11 AM-7 PM
+      hoursPerDay: 14,         // how long is tutoring offered (in hours)? e.g. 11 AM-7 PM // THIS IS NOW HALF-HOURS PER DAY (14)
       startHour: 11,          // when does tutoring start the earliest? e.g. 11 AM
       offset: tutors.Meta.Offset,  // minute offset from the hour: xx:30, e.g. 11:30, 12:30, 1:30...
       mondayIndex: 0,         // Mon = 0, Fri = 4
@@ -127,11 +128,9 @@ export default {
       // ---------------------------------------------------
       headers: [
         "Email",
-        "Last Name",
-        "First Name",
-        "Full Name",
-        "Time Slots",
-        "Parsed Time Slots",
+        "Name",
+        "TimeSlots",
+        "ParsedTimeSlots",
         "Courses",
       ],
       tutors: [],
@@ -157,16 +156,24 @@ export default {
 
       return day;
     },
+    //i fucked this function up temporarily because i need it to increment by half an hour every time and i lowkey dont want to rename it because find and replace takes too long
+    // and im lazy
+    // so currently this takes in time since 11:30 in half hours and converts it to the actual time
     from24HrsTo12Hrs(time) {
-      const offsetStr = (this.offset !== 0) ? `:${this.offset}` : "";
-      if (time >= 12) {
-        if (time === 12) {
-          return `12${offsetStr} PM`;
-        } else {
-          return `${time % 12}${offsetStr} PM`;
-        }
+      //const offsetStr = (this.offset !== 0) ? `:${this.offset}` : "";
+      if (time === 0) {
+        return `11:30 AM`
+      }
+      if (time === 1) {
+        return `12:00 PM`;
+      } 
+      if (time === 2) {
+        return `12:30PM`;
+      }
+      if ((time % 2) === 1) {
+        return `${(this.startHour + ((time + 1) / 2)) % 12}:00 PM`;
       } else {
-        return `${time}${offsetStr} AM`;
+        return `${(this.startHour + (time / 2)) % 12}:30 PM`;
       }
     },
     getIndexFromRowColumn(row, col, ncol) {
@@ -184,10 +191,10 @@ export default {
       return this.getCol(index) - this.mondayCol;
     },
     getTime(index) {
-      return this.getRow(index) + (this.startHour - 1);
+      return this.getRow(index);
     },
     inTime(slot, time) {
-      return slot.StartTime <= time && slot.EndTime > time;
+      return slot.StartTime <= time && slot.EndTime >= time;
     },
     getTutorsBySlot(day, time) {
       return this.tutors.filter((tutor) =>
@@ -208,7 +215,7 @@ export default {
       tutors.forEach((tutor) => {
         if (this.selectedCourse == - 1 || tutor.Courses.find((c) => c == this.selectedCourse)) {
           selectedTutors.push(
-            tutor.FirstName + " " + tutor.LastName + " (" + tutor.Email + ")"
+            tutor.Name + " (" + tutor.Email + ")"
           );
         }
         tutor.Courses.forEach((course) => {
@@ -248,21 +255,21 @@ export default {
           return "SAT";
       }
     },
-    timeIntToString(timeStart) {
-      var timeEnd = timeStart + 1;
-      var startAmPm = this.getTimeOfDay(timeStart);
-      var endAmPm = this.getTimeOfDay(timeEnd);
-      if (timeStart > 12) timeStart -= 12;
-      if (timeEnd > 12) timeEnd -= 12;
-
-      if (this.offset === 0) {
-        return timeStart + startAmPm + "-" + timeEnd + endAmPm;
-      } else {
-        return `${timeStart}:${this.offset}` + startAmPm + "-" + `${timeEnd}:${this.offset}` + endAmPm;
+    timeIntToString(time) {
+      if (time === 1) {
+        return `11:30 AM-12:00 PM`
       }
-    },
-    getTimeOfDay(time) {
-      return time >= 12 ? "PM" : "AM";
+      if (time === 2) {
+        return `12:00 PM-12:30 PM`;
+      } 
+      if (time === 3) {
+        return `12:30PM-1:00 PM`;
+      }
+      if ((time % 2) === 0) {
+        return `${(this.startHour + ((time) / 2)) % 12}:00 PM-` + `${(this.startHour + ((time) / 2)) % 12}:30 PM`;
+      } else {
+        return `${(this.startHour + ((time -1) / 2)) % 12}:30 PM-` + `${((this.startHour + ((time-1) / 2)) % 12) + 1}:00 PM`;
+      }
     },
     selectClass() {
       this.dateSelected = false;
@@ -271,7 +278,7 @@ export default {
       var tutors = this.getTutorsByClass(this.selectedCourse);
       var selectedTutors = [];
       tutors.forEach((tutor) => {
-        selectedTutors.push(tutor.FirstName + " " + tutor.LastName);
+        selectedTutors.push(tutor.Name);
       });
       this.selectionInfo.tutors = selectedTutors;
       this.colorDatesByClass(this.selectedCourse);

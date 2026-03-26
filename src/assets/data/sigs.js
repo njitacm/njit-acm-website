@@ -274,7 +274,7 @@ export default {
         {
             name: "SIG-Office",
             leaders: "Nigel Pressey",
-            desc: "SIG OFFICE/INFRA 2: COME TO THE OFFICE WE HAVE COOL STUFF. ALSO LEARN ABOUT LAN NETWORKING AND STUFF AND MAYBE SOME SYS ADMIN STUFF. RAHHHHHHHY",
+            desc: "Get hands-on with network infrastructure and systems operations. Learn the fundamentals of LAN networking, system administration, and IT infrastructure. Explore how networks are built, managed, and secured plus access to cool equipment and resources along the way.",
             time: "Thu 4:00 PM",
             loc: "GITC 3700",
             filename: "Spring2026/office2.png"
