@@ -194,7 +194,7 @@ export default {
       return this.getRow(index);
     },
     inTime(slot, time) {
-      return slot.StartTime <= time && slot.EndTime >= time;
+      return slot.StartTime < time && slot.EndTime >= time;
     },
     getTutorsBySlot(day, time) {
       return this.tutors.filter((tutor) =>
