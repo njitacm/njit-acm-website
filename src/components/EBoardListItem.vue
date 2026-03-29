@@ -52,7 +52,7 @@ export default {
   display: flex;
   flex-direction: row;
   text-align: left;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   gap: 32px;
 }
