@@ -104,7 +104,7 @@ export default {
       currEboardYear: 2026,
       firstEboardYear: 2016,
       showPosDesc: false,
-      showEboard: { 2024: true },
+      showEboard: { 2025: true },
       eboardPosDesc,
       eboardData,
     };
