@@ -5,7 +5,7 @@
       <template v-slot:content>
         <p>
           ACM hosts a varierty of events throughout the year, both professional
-          and social. In addition to our biannual hackathon and capture the flag
+          and social. In addition to our yearly hackathon and capture the flag
           competition, we regularly host workshops, networking events, social
           events, and more!
         </p>

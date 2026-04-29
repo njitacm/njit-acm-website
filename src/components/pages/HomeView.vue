@@ -5,7 +5,7 @@
       <HorizontalSection imagePath="HomePage/Fall_2024_GBM.jpg" :keepFloating="true" :banner="false" objPosX="40%">
         <template #title>Who We Are</template>
         <template #content>
-          We are a part of the national organization, Association for Computing
+          We are a part of the national organization, the Association for Computing
           Machinery, which is the world's largest educational computer science
           organization. ACM is divided up into many student chapters, and we are
           the one that is located at, you guessed it, NJIT! If you're a student
@@ -22,14 +22,12 @@
         <template #title>What We Offer</template>
         <template #content>
           NJIT ACM offers many things to club members and other students.
-          Firstly, we provision free tutoring for CS, IT, and IS classes,
+          We provide free tutoring for CS, IT, and DS classes,
           offering assistance to students of all levels. We also run SIGs, or
           special interest groups, which are student run initiatives dedicated
           to teaching various computer science topics, or creating various
-          computer science-related projects. and works closely with the NJIT
-          YWCC department to host a number events including HackNJIT, NJIT's own
-          24-hour hackathon. We work closely with YWCC to host a number of
-          events, including HackNJIT, NJIT's own 24-hour hackathon, and
+          computer science-related projects. We work closely with YWCC to host a number of
+          events, including HackNJIT, NJIT's 24-hour hackathon, and
           JerseyCTF, a beginner-friendly Capture the Flag competition. More
           information on any of these services can be found on the site, or by
           asking any e-board member.

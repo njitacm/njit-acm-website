@@ -125,14 +125,14 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     year: "Sophomore",
     major: "CS + AAPH",
     desc: "Hey, I'm Xhaiden, a Computer Science and Physics double major. I am interested in quantum computing and running sig-quantum this semester! I also like making music, and I enjoy creating cool coding projects, especially in python and the desmos graphing calculator!"
-},
+},/* RESIGNED APRIL 2026
 {
     name: "Rain Christian",
     term: 2026,
     position: "Hack Master",
     ucid: "erc",
     desc: "Hi! I'm Rain and I'm in my junior year studying computer science. In my free time I run a dnd game, play video games, and read books. I'm always looking to chat so swing by and say hi"
-},
+},*/
 {
     name: "Elizabeth Soldatenkov",
     term: 2026,
@@ -146,7 +146,7 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     position: "Public Relations",
     ucid: "cdl27"
 },
-/* OFFICER IMPEACHED
+/* OFFICER IMPEACHED, lowkey like pls dont elect this guy again
 {
     name: "Christopher (Leo) Bandeli",
     term: 2026,

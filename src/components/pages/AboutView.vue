@@ -4,10 +4,10 @@
       <template #title>About Us</template>
       <template #content>
         <p>
-          If you're new to clubs at NJIT, the e-board is the group of students,
+          The ACM Executive Board is the group of students,
           elected at the end of every Fall, that runs ACM! We handle all event
-          planning and daily operations of the club. The current e-board consists of 10 position listed below. Scroll down further to find
-          out more about out current e-board!
+          planning and daily operations of the club. The current e-board consists of the 10 positions listed below. Scroll down further to find
+          out more about our current e-board!
         </p>
       </template>
     </HorizontalSection>
@@ -35,7 +35,7 @@
     <section>
       <h2 class="section-header">Office Hours</h2>
       <div class="section-container office-hours">
-        <p>Every e-board member has office hours at the ACM Office (located in GITC 3700).
+        <p>Every e-board member has office hours at the ACM Office (located in GITC 3704).
           Check out the calendar below for the schedule and feel free to stop by and have a chat!</p>
         <EmbeddedCalendar
           src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FNew_York&mode=WEEK&title=ACM%20E-Board%20Office%20Hours&src=Y19hMjMwMTgzOGVhZTU0YzE1YjkzODk0ZTE0ZTUxMWEyNmNkZWEwMGUyN2VmNThjNjIxNjYyMjNkMjk2NDg0M2MyQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&color=%233F51B5"

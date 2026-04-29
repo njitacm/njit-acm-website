@@ -10,5 +10,9 @@ export default [
     {
         title: "JerseyCTF",
         desc: "JerseyCTF is a beginner-friendly Capture the Flag competition that aims to inspire interest in cybersecurity. Hosted by the NJIT ACM and NICC organizations and NJIT SCI program, it is geared towards students, beginners, and professionals alike.",
+        links: {
+            "Learn More": "https://jerseyctf.com/",
+            "Register": "https://ctf.jerseyctf.com/register"
+        },
     },
 ];
