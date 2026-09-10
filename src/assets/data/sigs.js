@@ -292,7 +292,7 @@ export default {
         {
             name: "SIG-AI",
             leaders: "Rayan Khan, Eric Vargas",
-            desc: "Curious about AI? SIG-AI breaks down different AI domains with group learning sessions and hands-on workshops. Come in with little or no experience and leave having built your own real AI application!",
+            desc: "Curious about Al? SIG-Al breaks down different Al domains with group learning sessions and hands-on workshops. Come in with little or no experience and leave having built your own real Al application!",
             time: "Fri 4:00 PM",
             loc: "GITC 3700",
             filename: "Fall2026/sig-ai.png"
@@ -300,7 +300,7 @@ export default {
         {
             name: "SIG-AI-Safety",
             leaders: "Brandon Howe",
-            desc: "",
+            desc: "Reducing risks from advanced AI may be one of the most consequential problems of our time. We provide students with resources, events, and career-building opportunities in AI safety to NJIT students.",
             time: "Thu 6:00 PM",
             loc: "GITC 3700",
             filename: "Fall2026/sig-ai-safety.png"
@@ -308,7 +308,7 @@ export default {
         {
             name: "SIG-Full-Stack",
             leaders: "Shikhar Verma",
-            desc: "",
+            desc: "Make full fledged projects using different technologies. If you're interested in developing full-stack applications, come learn alongside us. No experience is needed.",
             time: "Wed 6:00 PM",
             loc: "GITC 3700",
             filename: "Fall2026/sig-fullstack.png"
@@ -316,7 +316,7 @@ export default {
         {
             name: "SIG-HPC",
             leaders: "Abdullah Imran, Garret Gonzalez-Rivas",
-            desc: "Design, build, and get hands-on experience with HPC and NJIT supercomputers! Work with cutting-edge technologies and industry professionals, and meet like-minded students.",
+            desc: "Design, build, and get hands-on experience with HPC and NJIT supercomputers! Work with cutting-edge technologies, industry professionals, and like-minded students. Learn about the technologies powering the next generation of computing, simulations, and machine learning.",
             time: "Tue 6:00 PM, Thu 4:30 PM, Fri 6:00 PM",
             loc: "GITC 3700",
             filename: "Fall2026/sig-hpc.png"
@@ -324,7 +324,7 @@ export default {
         {
             name: "SIG-ICPC",
             leaders: "Nintsi Chkhaidze",
-            desc: "",
+            desc: "Get involved in competitive programming and train for the ICPC! Tackle challenging algorithmic problems and learn key data structures and techniques as you team up with fellow competitive programmers to prepare for regional and international competitions. All skill levels welcome, from beginners to future World Finalists.",
             time: "Fri 5:30 PM",
             loc: "GITC 3700",
             filename: "Fall2026/sig-icpc.png"
@@ -332,7 +332,7 @@ export default {
         {
             name: "SIG-Infra",
             leaders: "Rain Christian, James De Veyra",
-            desc: "",
+            desc: "Learn and contribute to the infrastructure of the office. We'll be messing around with the router, AD, Windows, 3D printers, and Linux machines. No experience required!",
             time: "Mon 1:00 PM",
             loc: "GITC 3704",
             filename: "Fall2026/sig-infra.png"
@@ -348,7 +348,7 @@ export default {
         {
             name: "SIG-Sim",
             leaders: "Michael Vornovitsky",
-            desc: "",
+            desc: "Learn practical methods to model and simulate a variety of real-world systems. No prior experience is needed.",
             time: "Wed 4:00 PM",
             loc: "GITC 3700",
             filename: "Fall2026/sig-sim.svg"
@@ -356,7 +356,7 @@ export default {
         {
             name: "SIG-Surveillance",
             leaders: "Mehmet Alacatag, Gianfranco Martinez",
-            desc: "",
+            desc: "There are over a thousand automated license plate readers in NJ. Learn to find them via wireless signature detection, computer vision, geospatial mapping, and contributing to DeFlock! We'll also look at the laws governing all of it. No Experience required!",
             time: "Mon 6:00 PM",
             loc: "GITC 3700",
             filename: "Fall2026/sig-surveillance.png"
