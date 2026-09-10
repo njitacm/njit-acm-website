@@ -133,6 +133,7 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     ucid: "erc",
     desc: "Hi! I'm Rain and I'm in my junior year studying computer science. In my free time I run a dnd game, play video games, and read books. I'm always looking to chat so swing by and say hi"
 },*/
+/* RESIGNED AUGUST 2026
 {
     name: "Elizabeth Soldatenkov",
     term: 2026,
@@ -140,6 +141,7 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     ucid: "es632",
     desc: "Hihi I'm Elizabeth, a Math/Physics double major (and CS minor!!). I like practically everything, so you should come to the office and talk to me about things :) If you have some keychain or pin you don't need or want you should give it to me to add to my lanyard collection."
 },
+*/
 {
     name: "Christopher Little",
     term: 2026,

@@ -315,7 +315,7 @@ export default {
         },
         {
             name: "SIG-HPC",
-            leaders: "Abdullah Imran, Garret Gonzalez-Rivas",
+            leaders: "Abdullah Imran, Garrett Gonzalez-Rivas",
             desc: "Design, build, and get hands-on experience with HPC and NJIT supercomputers! Work with cutting-edge technologies, industry professionals, and like-minded students. Learn about the technologies powering the next generation of computing, simulations, and machine learning.",
             time: "Tue 6:00 PM, Thu 4:30 PM, Fri 6:00 PM",
             loc: "GITC 3700",
