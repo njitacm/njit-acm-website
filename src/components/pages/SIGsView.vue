@@ -83,7 +83,7 @@ export default {
   components: { SIGsCard, HorizontalSection, EmbeddedCalendar },
   data() {
     return {
-      sigs: sigsData['sp2026'] ?? [],
+      sigs: sigsData['fa2026'] ?? [],
       discordLink: 'https://njit.gg/acm'
     };
   },

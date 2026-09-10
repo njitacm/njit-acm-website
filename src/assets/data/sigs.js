@@ -287,5 +287,79 @@ export default {
             loc: "GITC 3700",
             filename: "Spring2026/sig-quantum.png"
         }
-    ]
+    ],
+    'fa2026' : [
+        {
+            name: "SIG-AI",
+            leaders: "Rayan Khan, Eric Vargas",
+            desc: "Curious about AI? SIG-AI breaks down different AI domains with group learning sessions and hands-on workshops. Come in with little or no experience and leave having built your own real AI application!",
+            time: "Fri 4:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-ai.png"
+        },
+        {
+            name: "SIG-AI-Safety",
+            leaders: "Brandon Howe",
+            desc: "",
+            time: "Thu 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-ai-safety.png"
+        },
+        {
+            name: "SIG-Full-Stack",
+            leaders: "Shikhar Verma",
+            desc: "",
+            time: "Wed 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-fullstack.png"
+        },
+        {
+            name: "SIG-HPC",
+            leaders: "Abdullah Imran, Garret Gonzalez-Rivas",
+            desc: "Design, build, and get hands-on experience with HPC and NJIT supercomputers! Work with cutting-edge technologies and industry professionals, and meet like-minded students.",
+            time: "Tue 6:00 PM, Thu 4:30 PM, Fri 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-hpc.png"
+        },
+        {
+            name: "SIG-ICPC",
+            leaders: "Nintsi Chkhaidze",
+            desc: "",
+            time: "Fri 5:30 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-icpc.png"
+        },
+        {
+            name: "SIG-Infra",
+            leaders: "Rain Christian, James De Veyra",
+            desc: "",
+            time: "Mon 1:00 PM",
+            loc: "GITC 3704",
+            filename: "Fall2026/sig-infra.png"
+        },
+        {
+            name: "SIG-Quantum",
+            leaders: "Xhaiden D'Souza",
+            desc: "Explore the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. No experience required!",
+            time: "Tue 6:30 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-quantum.png"
+        },
+        {
+            name: "SIG-Sim",
+            leaders: "Michael Vornovitsky",
+            desc: "",
+            time: "Wed 4:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-sim.svg"
+        },
+        {
+            name: "SIG-Surveillance",
+            leaders: "Mehmet Alacatag, Gianfranco Martinez",
+            desc: "",
+            time: "Mon 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-surveillance.png"
+        },
+    ],
 }
