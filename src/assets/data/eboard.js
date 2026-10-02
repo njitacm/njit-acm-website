@@ -102,13 +102,14 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     year: "Sophomore",
     desc: "I’m a second-year Computer Science & Math major. I want to get better at software development. I enjoy a lot of things, from history & cities to anime & games. You name it, and I can probably say something about it. Come say hello during my office hours! :D"
 },
-{
+/* RESIGNED OCTOBER 2026
+{ 
     name: "Matthew Padilla",
     term: 2026,
     position: "Treasurer",
     ucid: "map289",
     year: "Sophomore"
-},
+},*/
 {
     name: "Marcus Victor Hilario",
     term: 2026,
@@ -133,6 +134,13 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     ucid: "erc",
     desc: "Hi! I'm Rain and I'm in my junior year studying computer science. In my free time I run a dnd game, play video games, and read books. I'm always looking to chat so swing by and say hi"
 },*/
+{
+    name: "Mehmet Alacatag",
+    term: 2026,
+    position: "Hack Master",
+    ucid: "moa43",
+    year: "Junior"
+},
 /* RESIGNED AUGUST 2026
 {
     name: "Elizabeth Soldatenkov",
@@ -148,12 +156,12 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     position: "Public Relations",
     ucid: "cdl27"
 },
-/* OFFICER IMPEACHED, lowkey like pls dont elect this guy again
+/* OFFICER IMPEACHED FEBRUARY 2026
 {
     name: "Christopher (Leo) Bandeli",
     term: 2026,
     position: "Event Master",
-    ucid: "chrizzy b"
+    ucid: "clb46"
 },
 */
 {
