@@ -326,8 +326,16 @@ export default {
             leaders: "Nintsi Chkhaidze",
             desc: "Get involved in competitive programming and train for the ICPC! Tackle challenging algorithmic problems and learn key data structures and techniques as you team up with fellow competitive programmers to prepare for regional and international competitions. All skill levels welcome, from beginners to future World Finalists.",
             time: "Fri 5:30 PM",
-            loc: "GITC 3700",
+            loc: "GITC 1400",
             filename: "Fall2026/sig-icpc.png"
+        },
+        {
+            name: "SIG-iheartcomputer",
+            leaders: "Ryan Alport, Armen Deroian",
+            desc: "We do virtually anything computing! Topics range from security, to graphics, AI, systems, games, startups, careers, and whatever else we feel like. All experience levels. All majors. Anyone can join, and anyone can present.",
+            time: "Wed 2:30 PM",
+            loc: "TBA",
+            filename: "Fall2026/sig-iheartcomputer.png"
         },
         {
             name: "SIG-Infra",
@@ -342,7 +350,7 @@ export default {
             leaders: "Xhaiden D'Souza",
             desc: "Explore the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. No experience required!",
             time: "Tue 6:30 PM",
-            loc: "GITC 3700",
+            loc: "GITC 1100",
             filename: "Fall2026/sig-quantum.png"
         },
         {
