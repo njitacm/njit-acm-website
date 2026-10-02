@@ -67,7 +67,6 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
 //{ name: "Darren Bonifacio", position: "Public Relations", ucid: "dab97", year: "Sophmore", major: "CS", term: 2024, desc: "What's up! I'm Darren and I'm a second-year computer science major. I love my cat Lettuce and games like Super Smash Bros, Fire Emblem, and Pokémon! I'm also into anime/manga (CSM and Frieren are fire) and PC gaming too. Hope you enjoy my posts for the ACM socials! See ya!!!" },
 { name: "Kapila Mane", position: "Graphic Designer", ucid: "km776", year: "Junior", major: "HCI", term: 2024, desc: "Hi! I'm Kapila (call me Cup if you'd like) and I'm a junior human-computer interaction (HCI) major. This is my second term as a graphic designer at ACM, and sure, you can say it's my passion. I also love tinkering: from cosplay props such as Yoru's mask from Valorant + Mistsplitter from Genshin Impact. Hope to see you around!" },
 {name: "Abdullah Imran", term: 2025, position: "President", ucid: "ami8", year: "Sophmore", major: "CS/Math", desc: "Oh, hey. I'm Abdullah and I am a second-year  CS/Math dual major. In my free time I play DnD and read sci-fi novels. If you want to learn more about web development, or just want to talk (perferably about Jojo's Bizzare Adventure Part 7: Steel Ball Run), stop by the office for a yap-session!"},
-// OFFICER QUIT
 // {
 //     name: "Priya Patel",
 //     term: 2025,
@@ -125,7 +124,7 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     year: "Sophomore",
     major: "CS + AAPH",
     desc: "Hey, I'm Xhaiden, a Computer Science and Physics double major. I am interested in quantum computing and running sig-quantum this semester! I also like making music, and I enjoy creating cool coding projects, especially in python and the desmos graphing calculator!"
-},/* RESIGNED APRIL 2026
+},/* 
 {
     name: "Rain Christian",
     term: 2026,
@@ -133,7 +132,7 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     ucid: "erc",
     desc: "Hi! I'm Rain and I'm in my junior year studying computer science. In my free time I run a dnd game, play video games, and read books. I'm always looking to chat so swing by and say hi"
 },*/
-/* RESIGNED AUGUST 2026
+/*
 {
     name: "Elizabeth Soldatenkov",
     term: 2026,
@@ -148,7 +147,7 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     position: "Public Relations",
     ucid: "cdl27"
 },
-/* OFFICER IMPEACHED, lowkey like pls dont elect this guy again
+/*
 {
     name: "Christopher (Leo) Bandeli",
     term: 2026,
