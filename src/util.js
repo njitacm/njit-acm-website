@@ -51,7 +51,7 @@ const parseConstitution = (rawText) => {
         const articlePattern = /^Article\s+[IVX0-9]+/i;
 
         // Matches "Section 1", "Section 2.3", "Section 1:"
-        const sectionPattern = /(Section\s+[0-9\.])[:\.]?(.+)/i;
+        const sectionPattern = /(Section\s+[0-9\.]+)[:\.]?(.+)/i;
 
         // Matches lists like "a.", "1.", "i)" (Optional, for finer detail)
         const listPattern = /^[a-z0-9]+\.|^[a-z0-9]+\)/i;
