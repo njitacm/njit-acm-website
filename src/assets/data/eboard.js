@@ -87,7 +87,6 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
 {name: "Simon Leong",term: 2025,position: "Public Relations",ucid: "sl884"},
 {name: "Clarissa Furtado",term: 2025,position: "Graphic Designer",ucid: "caf25"},
 {name: "Rain Christian",term: 2025,position: "Hack Master",ucid: "erc",desc: "Hi! I'm Rain and I'm in my junior year studying computer science. In my free time I run a dnd game, play video games, and read books. I'm always looking to chat so swing by and say hi"},
-{name: "Urvi Akhouri",term: 2026,position: "Webmaster",ucid: "ua75",year: "Freshman",desc: "Hi everyone! I'm Urvi and I'm currently majoring in CS. I'm excited to explore new fields of computing and enjoy my time here. Let me know what you wanna see!"},
 {
     name: "Garrett Gonzalez-Rivas",
     term: 2026,
