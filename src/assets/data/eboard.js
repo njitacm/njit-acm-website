@@ -175,6 +175,15 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     term: 2026,
     position: "Graphic Designer",
     ucid: "kap225",
-    decs: "Hey y'all! I'm Krish, majoring in CS + Applied Physics. I'm particularly interested in full-stack development. In my free time, I love following tech, learning new languages, and hanging out with friends. Oh, and I also love corny jokes."
+    desc: "Hey y'all! I'm Krish, majoring in CS + Applied Physics. I'm particularly interested in full-stack development. In my free time, I love following tech, learning new languages, and hanging out with friends. Oh, and I also love corny jokes."
+},
+{
+    name: "Urvi Akhouri",
+    term: 2026,
+    position: "Webmaster",
+    ucid: "ua75",
+    year: "Freshman",
+    major: "CS",
+    desc: "Hi everyone, I'm Urvi and I'm a CS major. I'm excited to explore new fields of computing and enjoy my time here. Let me know what you wanna see on the site!"
 }
 ]
