@@ -292,10 +292,12 @@ export default {
       var courseSet = new Set();
       this.tutors.forEach((tutor) => {
         tutor.Courses.forEach((course) => {
-          courseSet.add(course);
+          courseSet.add(course.trim());
         });
       });
+      courseSet.delete("");
       this.courses = Array.from(courseSet);
+      this.courses.sort();
     },
     reset() {
       this.selectedCourse = "-1";
