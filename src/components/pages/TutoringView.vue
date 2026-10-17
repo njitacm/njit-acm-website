@@ -296,6 +296,7 @@ export default {
         });
       });
       this.courses = Array.from(courseSet);
+      this.courses.sort()
     },
     reset() {
       this.selectedCourse = "-1";
