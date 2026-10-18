@@ -1,5 +1,5 @@
 <template>
-  <main clas="NavBar">
+  <main class="NavBar">
     <Transition>
       <header class="header" :class="{ 'shadow': showShadow }" ref="pageHeader">
         <RouterLink to="/" class="home-link" @click="toTop">
@@ -33,7 +33,9 @@ export default {
       navData: {
         '/sigs': { id: 0, text: 'SIGs' },
         '/events': { id: 1, text: 'Events' },
-        '/tutoring': { id: 2, text: 'Tutoring' },
+        /*
+          '/tutoring': { id: 2, text: 'Tutoring' },
+        */
         '/about': { id: 3, text: 'About' }
       },
       showHeader: false,
