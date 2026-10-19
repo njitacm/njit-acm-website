@@ -221,5 +221,153 @@ export default {
         //     loc: "GITC 3700",
         //     filename: "Spring2025/sig-quantum.png",
         // },
-    ]
+    ],
+    'sp2026' : [
+        {
+            name: "SIG-AI",
+            leaders: "Rayan Khan, Eric Vargas",
+            desc: "Curious about AI? SIG-AI breaks down different AI domains with group learning sessions and hands-on workshops. Come in with little or no experience and leave having built your own real Al application!",
+            time: "Fri 2:30 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/sig-ai.png"
+        },/*
+        {
+            name: "sig-algo",
+            leaders: "Rachel Lindeblad",
+            desc: "SIG-Algo: Discover the wide world of algorithms as we explore their motivation, implementation, and theory! From Euler to Turing, these are algorithms you probably won't learn in class.",
+            time: "Fri 4:30 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/sig-algo.png"
+        },*/
+        {
+            name: "SIG-DSP",
+            leaders: "Michael Vornovitsky",
+            desc: "Explore digital signal processing, from the basics of sampling to designing your own digital filters. No experience is required!",
+            time: "Wed 2:30 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/Sig-DSP.png"
+        },
+        {
+            name: "SIG-HPC",
+            leaders: "Abdullah Imran, Garret Gonzalez-Rivas",
+            desc: "Design, build, and get hands-on experience with HPC and NJIT supercomputers! Work with cutting-edge technologies and industry professionals, and meet like-minded students.",
+            time: "Wed 2:30 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/sig-hpc.png"
+        },
+        {
+            name: "SIG-ICPC",
+            leaders: "Dominic Attalienti",
+            desc: "Study data structures and algorithms and apply them to difficult programming puzzles. Test your skills against other schools during ICPC season in the Fall.",
+            time: "Wed 2:30 PM",
+            loc: "GITC 2315A",
+            filename: "Spring2026/programming-team.png"
+        },
+        {
+            name: "SIG-Leet",
+            leaders: "Leo Bandeli",
+            desc: "Solve and be able to explain coding interview problems. Train in a beginner or intermediate section! Be prepared for anything and everything.",
+            time: "Fri 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/content.png"
+        },
+        {
+            name: "SIG-Office",
+            leaders: "Nigel Pressey",
+            desc: "Get hands-on with network infrastructure and systems operations. Learn the fundamentals of LAN networking, system administration, and IT infrastructure. Explore how networks are built, managed, and secured plus access to cool equipment and resources along the way.",
+            time: "Thu 4:00 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/office2.png"
+        },
+        {
+            name: "SIG-Quantum",
+            leaders: "Xhaiden D'Souza",
+            desc: "Explore the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. No experience required!",
+            time: "Wed 2:30 PM",
+            loc: "GITC 3700",
+            filename: "Spring2026/sig-quantum.png"
+        }
+    ],
+    'fa2026' : [
+        {
+            name: "SIG-AI",
+            leaders: "Rayan Khan, Eric Vargas",
+            desc: "Curious about Al? SIG-Al breaks down different Al domains with group learning sessions and hands-on workshops. Come in with little or no experience and leave having built your own real Al application!",
+            time: "Fri 4:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-ai.png"
+        },
+        {
+            name: "SIG-AI-Safety",
+            leaders: "Brandon Howe",
+            desc: "Reducing risks from advanced AI may be one of the most consequential problems of our time. We provide students with resources, events, and career-building opportunities in AI safety to NJIT students.",
+            time: "Thu 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-ai-safety.png"
+        },
+        {
+            name: "SIG-Full-Stack",
+            leaders: "Shikhar Verma",
+            desc: "Make full fledged projects using different technologies. If you're interested in developing full-stack applications, come learn alongside us. No experience is needed.",
+            time: "Wed 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-fullstack.png"
+        },
+        {
+            name: "SIG-HPC",
+            leaders: "Abdullah Imran, Garrett Gonzalez-Rivas",
+            desc: "Design, build, and get hands-on experience with HPC and NJIT supercomputers! Work with cutting-edge technologies, industry professionals, and like-minded students. Learn about the technologies powering the next generation of computing, simulations, and machine learning.",
+            time: "Tue 6:00 PM, Thu 4:30 PM, Fri 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-hpc.png"
+        },
+        {
+            name: "SIG-ICPC",
+            leaders: "Nintsi Chkhaidze",
+            desc: "Get involved in competitive programming and train for the ICPC! Tackle challenging algorithmic problems and learn key data structures and techniques as you team up with fellow competitive programmers to prepare for regional and international competitions. All skill levels welcome, from beginners to future World Finalists.",
+            time: "Fri 5:30 PM",
+            loc: "GITC 1400",
+            filename: "Fall2026/sig-icpc.png"
+        },
+        {
+            name: "SIG-iheartcomputer",
+            leaders: "Ryan Alport, Armen Deroian",
+            desc: "We do virtually anything computing! Topics range from security, to graphics, AI, systems, games, startups, careers, and whatever else we feel like. All experience levels. All majors. Anyone can join, and anyone can present.",
+            time: "Wed 2:30 PM",
+            loc: "TBA",
+            filename: "Fall2026/sig-iheartcomputer.png"
+        },
+        {
+            name: "SIG-Infra",
+            leaders: "Rain Christian, James De Veyra",
+            desc: "Learn and contribute to the infrastructure of the office. We'll be messing around with the router, AD, Windows, 3D printers, and Linux machines. No experience required!",
+            time: "Mon 1:00 PM",
+            loc: "GITC 3704",
+            filename: "Fall2026/sig-infra.png"
+        },
+        {
+            name: "SIG-Quantum",
+            leaders: "Xhaiden D'Souza",
+            desc: "Explore the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. No experience required!",
+            time: "Tue 6:30 PM",
+            loc: "GITC 1100",
+            filename: "Fall2026/sig-quantum.png"
+        },
+        {
+            name: "SIG-Sim",
+            leaders: "Michael Vornovitsky",
+            desc: "Learn practical methods to model and simulate a variety of real-world systems. No prior experience is needed.",
+            time: "Wed 4:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-sim.svg"
+        },
+        {
+            name: "SIG-Surveillance",
+            leaders: "Mehmet Alacatag, Gianfranco Martinez",
+            desc: "There are over a thousand automated license plate readers in NJ. Learn to find them via wireless signature detection, computer vision, geospatial mapping, and contributing to DeFlock! We'll also look at the laws governing all of it. No Experience required!",
+            time: "Mon 6:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-surveillance.png"
+        },
+    ],
 }

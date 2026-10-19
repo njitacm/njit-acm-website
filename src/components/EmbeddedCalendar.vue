@@ -1,47 +1,59 @@
 <template>
-  <div class="events-calendar">
-    <PrimaryButton class="button"><a target="_blank" :href="href">{{ buttonText }}</a></PrimaryButton>
+  <main class="EmbeddedCalendar">
+    <PrimaryButton class="button">
+      <a target="_blank" :href="href">{{ buttonText }}</a>
+    </PrimaryButton>
     <iframe :src="src" frameborder="0" scrolling="auto"></iframe>
-  </div>
+  </main>
 </template>
 
 <script>
 import PrimaryButton from './PrimaryButton.vue';
 
 export default {
+  name: "EmbeddedCalendar",
   components: { PrimaryButton },
-  props: [ 'src', 'href', 'buttonText' ],
+  props: {
+    src: {
+      type: String,
+      required: true,
+    },
+    href: {
+      type: String,
+      required: true,
+    },
+    buttonText: {
+      type: String,
+      required: true,
+    },
+  },
 }
 </script>
 
 <style scoped>
-.events-calendar {
-  margin: 5rem auto;
-  display: grid;
-  grid-template-columns: 100%;
-  justify-content: space-around;
-  max-width: 1250px;
+.EmbeddedCalendar {
+  margin: 64px auto;
 }
-.events-calendar iframe {
+
+.EmbeddedCalendar iframe {
   width: 100%;
   height: 600px;
   border-radius: var(--large-border-radius);
-  box-shadow: var(--light-shadow-gray) 0px 0px 10px;
+  filter: drop-shadow(0px var(--shadow-offset-y) var(--shadow-blur) var(--shadow-gray));
 }
 
-.events-calendar .button {
+.EmbeddedCalendar .PrimaryButton {
   margin: 0 auto;
-  margin-bottom: 2rem;
-  width: 80%;
+  width: calc(100% - var(--indentation));
   display: none;
 }
 
 @media (max-width: 750px) {
-  .events-calendar iframe {
+  .EmbeddedCalendar iframe {
     display: none;
   }
 
-  .events-calendar .button {
+  .EmbeddedCalendar .button {
     display: block;
   }
 }

@@ -1,18 +1,31 @@
 <template>
-  <transition
-    name="expand"
-    @enter="enter"
-    @after-enter="afterEnter"
-    @leave="leave"
-  >
-    <slot />
-  </transition>
+  <Transition name="expand" @enter="enter" @after-enter="afterEnter" @leave="leave">
+    <slot></slot>
+  </Transition>
 </template>
 
 <script>
 export default {
   name: "TransitionExpand",
   emits: ["leave"],
+  props: {
+    duration: {
+      type: Number,
+      default: 500
+    },
+    easingFunc: {
+      type: String,
+      default: 'ease'
+    }
+  },
+  computed: {
+    durationCSS() {
+      return `${this.$props.duration}ms`;
+    },
+    easingFuncCSS() {
+      return this.$props.easingFunc;
+    }
+  },
   methods: {
     enter(element) {
       const width = getComputedStyle(element).width;
@@ -67,13 +80,12 @@ export default {
 <style scoped>
 * {
   will-change: height;
-  transform: translateZ(0);
   backface-visibility: hidden;
-  perspective: 1000px;
 }
+
 .expand-enter-active,
 .expand-leave-active {
-  transition: height 0.5s ease-in-out;
+  transition: height v-bind(durationCSS) v-bind(easingFuncCSS);
   overflow: hidden;
 }
 
