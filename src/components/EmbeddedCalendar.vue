@@ -1,18 +1,22 @@
 <template>
   <main class="EmbeddedCalendar">
+    <iframe :src="embedSrc" title="Calendar" frameborder="0" scrolling="auto"></iframe>
     <PrimaryButton class="button">
       <a target="_blank" :href="href">{{ buttonText }}</a>
     </PrimaryButton>
-    <iframe :src="src" frameborder="0" scrolling="auto"></iframe>
   </main>
 </template>
 
 <script>
+import { useMediaQuery } from '@vueuse/core';
 import PrimaryButton from './PrimaryButton.vue';
 
 export default {
   name: "EmbeddedCalendar",
   components: { PrimaryButton },
+  setup() {
+    return { isNarrow: useMediaQuery('(max-width: 750px)') };
+  },
   props: {
     src: {
       type: String,
@@ -27,6 +31,15 @@ export default {
       required: true,
     },
   },
+  computed: {
+    embedSrc() {
+      if (!this.isNarrow) return this.src;
+
+      const url = new URL(this.src);
+      url.searchParams.set('mode', 'AGENDA');
+      return url.toString();
+    },
+  },
 }
 </script>
 
@@ -36,6 +49,7 @@ export default {
 }
 
 .EmbeddedCalendar iframe {
+  display: block;
   width: 100%;
   height: 600px;
   border-radius: var(--large-border-radius);
@@ -49,12 +63,9 @@ export default {
 }
 
 @media (max-width: 750px) {
-  .EmbeddedCalendar iframe {
-    display: none;
-  }
-
   .EmbeddedCalendar .button {
     display: block;
+    margin-top: 24px;
   }
 }
 </style>
