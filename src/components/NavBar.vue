@@ -33,8 +33,7 @@ export default {
       navData: {
         '/sigs': { id: 0, text: 'SIGs' },
         '/events': { id: 1, text: 'Events' },
-        '/tutoring': { id: 2, text: 'Tutoring' },
-        '/about': { id: 3, text: 'About' }
+        '/about': { id: 2, text: 'About' }
       },
       showHeader: false,
       lastScrollTop: 0
