@@ -42,6 +42,11 @@ export default {
   filter: drop-shadow(0px var(--shadow-offset-y) var(--shadow-blur) var(--shadow-gray));
 }
 
+/* Google's embed has no dark theme, so invert it and rotate hues back so event colors stay close to the originals */
+[data-theme="dark"] .EmbeddedCalendar iframe {
+  filter: invert(0.9) hue-rotate(180deg) drop-shadow(0px var(--shadow-offset-y) var(--shadow-blur) var(--shadow-gray));
+}
+
 .EmbeddedCalendar .PrimaryButton {
   margin: 0 auto;
   width: calc(100% - var(--indentation));
