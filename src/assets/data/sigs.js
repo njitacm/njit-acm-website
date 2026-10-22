@@ -323,7 +323,7 @@ export default {
         },
         {
             name: "SIG-ICPC",
-            leaders: "Nintsi Chkhaidze",
+            leaders: "Nintsi Chkhaidze, Berat Yigit",
             desc: "Get involved in competitive programming and train for the ICPC! Tackle challenging algorithmic problems and learn key data structures and techniques as you team up with fellow competitive programmers to prepare for regional and international competitions. All skill levels welcome, from beginners to future World Finalists.",
             time: "Fri 5:30 PM",
             loc: "GITC 1400",
