@@ -369,5 +369,29 @@ export default {
             loc: "GITC 3700",
             filename: "Fall2026/sig-surveillance.png"
         },
+        {
+            name: "SIG-A11Y",
+            leaders: "Rook M.",
+            desc: "Understand the importance of addressing the needs of disabled users, discuss how to implement various aspects of digital accessibility, and explore the steps we can take to make digital spaces that truly are open to everyone.",
+            time: "Wed 5:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-a11y.png"
+        },
+        {
+            name: "SIG-ALife",
+            leaders: "Cedric Desinor",
+            desc: "Ever wondered if life-like behavior could emerge from code? Explore Artificial Life through simulations, computational experiments, and discussions on emergence, evolution, swarm intelligence, and artificial ecosystems. No experience required!",
+            time: "Tue 12:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-alife.png"
+        },
+        {
+            name: "SIG-Python",
+            leaders: "Alay Shah, Yajur",
+            desc: "Start with the fundamentals, then explore advanced Python beyond the basics, Pythonic idioms, generators, decorators, and the industry-standard libraries like NumPy, Pandas, and Matplotlib. Whether you're new to Python or have experience, this SIG is for you. No experience required!",
+            time: "Fri 7:00 PM",
+            loc: "TBD",
+            filename: "Fall2026/sig-python.png"
+        }
     ],
 }
