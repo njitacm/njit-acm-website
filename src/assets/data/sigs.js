@@ -334,7 +334,7 @@ export default {
             leaders: "Ryan Alport, Armen Deroian",
             desc: "We do virtually anything computing! Topics range from security, to graphics, AI, systems, games, startups, careers, and whatever else we feel like. All experience levels. All majors. Anyone can join, and anyone can present.",
             time: "Wed 2:30 PM",
-            loc: "TBA",
+            loc: "GITC 3600",
             filename: "Fall2026/sig-iheartcomputer.png"
         },
         {
@@ -387,7 +387,7 @@ export default {
         },
         {
             name: "SIG-Python",
-            leaders: "Alay Shah, Yajur",
+            leaders: "Alay Shah, Yajur Reddy",
             desc: "Start with the fundamentals, then explore advanced Python beyond the basics, Pythonic idioms, generators, decorators, and the industry-standard libraries like NumPy, Pandas, and Matplotlib. Whether you're new to Python or have experience, this SIG is for you. No experience required!",
             time: "Fri 6:00 PM",
             loc: "TBD",
