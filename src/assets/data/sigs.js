@@ -301,7 +301,7 @@ export default {
             name: "SIG-AI-Safety",
             leaders: "Brandon Howe",
             desc: "Reducing risks from advanced AI may be one of the most consequential problems of our time. We provide students with resources, events, and career-building opportunities in AI safety to NJIT students.",
-            time: "Thu 6:00 PM",
+            time: "Mon 2:30 PM, Thu 6:00 PM",
             loc: "GITC 3700",
             filename: "Fall2026/sig-ai-safety.png"
         },
@@ -349,7 +349,7 @@ export default {
             name: "SIG-Quantum",
             leaders: "Xhaiden D'Souza",
             desc: "Explore the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. No experience required!",
-            time: "Tue 6:30 PM",
+            time: "Tue 4:00 PM, Tue 6:30 PM",
             loc: "GITC 1100",
             filename: "Fall2026/sig-quantum.png"
         },
