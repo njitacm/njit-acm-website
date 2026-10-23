@@ -389,7 +389,7 @@ export default {
             name: "SIG-Python",
             leaders: "Alay Shah, Yajur",
             desc: "Start with the fundamentals, then explore advanced Python beyond the basics, Pythonic idioms, generators, decorators, and the industry-standard libraries like NumPy, Pandas, and Matplotlib. Whether you're new to Python or have experience, this SIG is for you. No experience required!",
-            time: "Fri 7:00 PM",
+            time: "Fri 6:00 PM",
             loc: "TBD",
             filename: "Fall2026/sig-python.png"
         }
