@@ -301,7 +301,7 @@ export default {
             name: "SIG-AI-Safety",
             leaders: "Brandon Howe",
             desc: "Reducing risks from advanced AI may be one of the most consequential problems of our time. We provide students with resources, events, and career-building opportunities in AI safety to NJIT students.",
-            time: "Thu 6:00 PM",
+            time: "Mon 2:30 PM, Thu 6:00 PM",
             loc: "GITC 3700",
             filename: "Fall2026/sig-ai-safety.png"
         },
@@ -334,7 +334,7 @@ export default {
             leaders: "Ryan Alport, Armen Deroian",
             desc: "We do virtually anything computing! Topics range from security, to graphics, AI, systems, games, startups, careers, and whatever else we feel like. All experience levels. All majors. Anyone can join, and anyone can present.",
             time: "Wed 2:30 PM",
-            loc: "TBA",
+            loc: "GITC 3600",
             filename: "Fall2026/sig-iheartcomputer.png"
         },
         {
@@ -349,7 +349,7 @@ export default {
             name: "SIG-Quantum",
             leaders: "Xhaiden D'Souza",
             desc: "Explore the fascinating world of quantum computing, from understanding qubits and gates to making real coding projects with quantum algorithms. No experience required!",
-            time: "Tue 6:30 PM",
+            time: "Tue 4:00 PM, Tue 6:30 PM",
             loc: "GITC 1100",
             filename: "Fall2026/sig-quantum.png"
         },
@@ -369,5 +369,29 @@ export default {
             loc: "GITC 3700",
             filename: "Fall2026/sig-surveillance.png"
         },
+        {
+            name: "SIG-A11Y",
+            leaders: "Rook M.",
+            desc: "Understand the importance of addressing the needs of disabled users, discuss how to implement various aspects of digital accessibility, and explore the steps we can take to make digital spaces that truly are open to everyone.",
+            time: "Wed 5:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-a11y.png"
+        },
+        {
+            name: "SIG-ALife",
+            leaders: "Cedric Desinor",
+            desc: "Ever wondered if life-like behavior could emerge from code? Explore Artificial Life through simulations, computational experiments, and discussions on emergence, evolution, swarm intelligence, and artificial ecosystems. No experience required!",
+            time: "Tue 12:00 PM",
+            loc: "GITC 3700",
+            filename: "Fall2026/sig-alife.png"
+        },
+        {
+            name: "SIG-Python",
+            leaders: "Alay Shah, Yajur Reddy",
+            desc: "Start with the fundamentals, then explore advanced Python beyond the basics, Pythonic idioms, generators, decorators, and the industry-standard libraries like NumPy, Pandas, and Matplotlib. Whether you're new to Python or have experience, this SIG is for you. No experience required!",
+            time: "Fri 6:00 PM",
+            loc: "TBD",
+            filename: "Fall2026/sig-python.png"
+        }
     ],
 }
