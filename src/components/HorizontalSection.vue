@@ -1,6 +1,14 @@
 <template>
   <main class="HorizontalSection" :class="{ 'keep-floating': keepFloating, 'banner': banner }">
-    <img v-if="imagePath !== ''" :src="imgSrc" :style="{ 'object-position': objPosX + ' ' + objPosY }" />
+    <img
+      v-if="imagePath !== ''"
+      :src="imgSrc || undefined"
+      :class="{ loaded: imageLoaded }"
+      :style="{ 'object-position': objPosX + ' ' + objPosY }"
+      alt=""
+      @load="imageLoaded = true"
+      @error="imageLoaded = false"
+    />
     <div class="content">
       <h1 class="title">
         <slot name="title"></slot>
@@ -41,11 +49,14 @@ export default {
   },
   data() {
     return {
-      imgSrc: ""
+      imgSrc: "",
+      imageLoaded: false,
     };
   },
   async mounted() {
-    this.imgSrc = await getImageUrl(this.$props.imagePath);
+    if (this.imagePath) {
+      this.imgSrc = await getImageUrl(this.imagePath);
+    }
   }
 };
 </script>
@@ -66,10 +77,26 @@ export default {
 }
 
 img {
+  visibility: hidden;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-gray) 0px var(--shadow-offset-y) var(--shadow-blur);
   width: 400px;
   object-fit: cover;
+}
+
+img.loaded {
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  img.loaded {
+    animation: image-loaded 250ms ease-out;
+  }
+}
+
+@keyframes image-loaded {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .banner img {
