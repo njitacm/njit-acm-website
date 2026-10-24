@@ -38,7 +38,7 @@ export function useTheme() {
     applyTheme(theme.value);
   };
 
-  if (savedTheme) {
+  if (THEME_OPTIONS.includes(savedTheme)) {
     setTheme(savedTheme);
   } else {
     setTheme("auto");
