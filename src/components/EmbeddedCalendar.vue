@@ -53,10 +53,11 @@ export default {
 .EmbeddedCalendar iframe {
   display: block;
   width: 100%;
-  height: 70vh; 
+  height: 70vh;
   max-height: 600px;
   min-height: 400px;
   border-radius: var(--large-border-radius, 8px);
+  filter: drop-shadow(0px var(--shadow-offset-y) var(--shadow-blur) var(--shadow-gray));
 }
 
 .EmbeddedCalendar .button {
@@ -65,13 +66,13 @@ export default {
 
 @media (max-width: 750px) {
   .EmbeddedCalendar iframe {
-    display: block; 
-    height: 60vh;   
+    display: block;
+    height: 60vh;
   }
 
   .EmbeddedCalendar .button {
     display: block;
-    width: 100%;    
+    width: 100%;
     margin-top: 16px;
   }
 }
