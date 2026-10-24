@@ -2,6 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      // Apply the theme before the app and its styles load.
+      (() => {
+        let savedTheme;
+        try {
+          savedTheme = localStorage.getItem('theme');
+        } catch {
+          // Use the system preference when storage is unavailable.
+        }
+        const dark = savedTheme === 'dark' ||
+          (savedTheme !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      })();
+    </script>
+    <style>
+      html {
+        background-color: var(--bkg-color, whitesmoke);
+        color-scheme: light;
+      }
+
+      html[data-theme="dark"] {
+        background-color: var(--bkg-color, rgb(40, 40, 40));
+        color-scheme: dark;
+      }
+    </style>
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NJIT ACM</title>

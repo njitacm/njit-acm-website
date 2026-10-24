@@ -3,7 +3,7 @@
     <Transition>
       <header class="header" :class="{ 'shadow': showShadow }" ref="pageHeader">
         <RouterLink to="/" class="home-link" @click="toTop">
-          <img src="../assets/logos/NJIT_ACM_LOGO.svg" class="logo" />
+          <img src="../assets/logos/NJIT_ACM_LOGO.svg" class="logo" alt="ACM logo" data-no-image-fade/>
           <span class="home-link-text">Association for Computing Machinery</span>
         </RouterLink>
         <div class="right-container">

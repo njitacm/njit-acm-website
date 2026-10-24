@@ -144,6 +144,14 @@ img {
   user-select: none;
 }
 
+/* Reserve space while it is being loaded */
+/* PurgeCSS WILL remove this by default, pls keep it ignored :) */
+/* purgecss ignore */
+img:not([src]):not([srcset]),
+img[src=""]:not([srcset]) {
+  visibility: hidden;
+}
+
 button {
   user-select: none;
 }

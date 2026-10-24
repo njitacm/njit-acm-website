@@ -1,6 +1,6 @@
 <template>
   <footer class="Footer">
-    <img class="njit-logo" src="../assets/logos/NJIT.png" />
+    <img class="njit-logo" src="../assets/logos/NJIT.png" data-no-image-fade/>
     <div class="socials">
       <a href="https://njit.gg/acm" target="_blank" class="social-link">
         <img src="../assets/socials/discord.png" />
