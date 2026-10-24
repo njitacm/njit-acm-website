@@ -61,7 +61,7 @@ export function observeImageFade(root) {
     const animation = image.animate([
       { opacity: 0 },
       { opacity: getComputedStyle(image).opacity },
-    ], { duration: 450, easing: 'ease-out', fill: 'both' });
+    ], { duration: 500, easing: 'ease-out', fill: 'both' });
     animation.pause();
     animation.currentTime = 0;
 

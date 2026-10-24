@@ -90,7 +90,7 @@ img.loaded {
 
 @media (prefers-reduced-motion: no-preference) {
   img.loaded {
-    animation: image-loaded 250ms ease-out;
+    animation: image-loaded 500ms ease-out;
   }
 }
 
