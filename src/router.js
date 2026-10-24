@@ -6,6 +6,7 @@ import EventsView from './components/pages/EventsView.vue';
 import GitHubMCPEventView from './components/pages/GitHubMCPEventView.vue';
 import AboutView from './components/pages/AboutView.vue';
 import ConstitutionView from './components/pages/ConstitutionView.vue';
+import NotFoundView from './components/pages/NotFoundView.vue';
 
 const routes = [
     { path: '/', component: HomePage },
@@ -14,7 +15,7 @@ const routes = [
     { path: '/events/github-mcp-2025', component: GitHubMCPEventView },
     { path: '/constitution', component: ConstitutionView },
     { path: '/about', component: AboutView },
-    { path: '/:pathMatch(.*)*', component: HomePage },
+    { path: '/:pathMatch(.*)*', name: 'not-found', component: NotFoundView },
 ];
 
 const router = createRouter({
