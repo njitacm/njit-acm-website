@@ -45,27 +45,34 @@ export default {
 
 <style scoped>
 .EmbeddedCalendar {
-  margin: 64px auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .EmbeddedCalendar iframe {
   display: block;
   width: 100%;
-  height: 600px;
-  border-radius: var(--large-border-radius);
-  filter: drop-shadow(0px var(--shadow-offset-y) var(--shadow-blur) var(--shadow-gray));
+  height: 70vh; 
+  max-height: 600px;
+  min-height: 400px;
+  border-radius: var(--large-border-radius, 8px);
 }
 
-.EmbeddedCalendar .PrimaryButton {
-  margin: 0 auto;
-  width: calc(100% - var(--indentation));
+.EmbeddedCalendar .button {
   display: none;
 }
 
 @media (max-width: 750px) {
+  .EmbeddedCalendar iframe {
+    display: block; 
+    height: 60vh;   
+  }
+
   .EmbeddedCalendar .button {
     display: block;
-    margin-top: 24px;
+    width: 100%;    
+    margin-top: 16px;
   }
 }
 </style>
