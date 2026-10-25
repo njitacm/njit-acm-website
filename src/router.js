@@ -14,6 +14,14 @@ const routes = [
     { path: '/events/github-mcp-2025', component: GitHubMCPEventView },
     { path: '/constitution', component: ConstitutionView },
     { path: '/about', component: AboutView },
+    {
+        path: '/tutoring',
+        component: HomePage,
+        beforeEnter: () => {
+            window.location.replace('https://computing.njit.edu/undergraduate-tutoring');
+            return false;
+        },
+    },
     { path: '/:pathMatch(.*)*', component: HomePage },
 ];
 
