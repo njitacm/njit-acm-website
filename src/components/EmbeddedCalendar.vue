@@ -1,18 +1,22 @@
 <template>
   <main class="EmbeddedCalendar">
+    <iframe :src="embedSrc" title="Calendar" frameborder="0" scrolling="auto"></iframe>
     <PrimaryButton class="button">
       <a target="_blank" :href="href">{{ buttonText }}</a>
     </PrimaryButton>
-    <iframe :src="src" frameborder="0" scrolling="auto"></iframe>
   </main>
 </template>
 
 <script>
+import { useMediaQuery } from '@vueuse/core';
 import PrimaryButton from './PrimaryButton.vue';
 
 export default {
   name: "EmbeddedCalendar",
   components: { PrimaryButton },
+  setup() {
+    return { isNarrow: useMediaQuery('(max-width: 750px)') };
+  },
   props: {
     src: {
       type: String,
@@ -27,21 +31,34 @@ export default {
       required: true,
     },
   },
+  computed: {
+    embedSrc() {
+      if (!this.isNarrow) return this.src;
+
+      const url = new URL(this.src);
+      url.searchParams.set('mode', 'AGENDA');
+      return url.toString();
+    },
+  },
 }
 </script>
 
 <style scoped>
 .EmbeddedCalendar {
-  margin: 64px auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .EmbeddedCalendar iframe {
+  display: block;
   width: 100%;
-  height: 600px;
-  border-radius: var(--large-border-radius);
-  filter: drop-shadow(0px var(--shadow-offset-y) var(--shadow-blur) var(--shadow-gray));
+  height: 70vh; 
+  max-height: 600px;
+  min-height: 400px;
+  border-radius: var(--large-border-radius, 8px);
 }
-
+  
 /* Google's embed has no dark theme, so invert it and rotate hues back so event colors stay close to the originals */
 [data-theme="dark"] .EmbeddedCalendar iframe {
   filter: invert(0.9) hue-rotate(180deg) drop-shadow(0px var(--shadow-offset-y) var(--shadow-blur) var(--shadow-gray));
@@ -50,16 +67,22 @@ export default {
 .EmbeddedCalendar .PrimaryButton {
   margin: 0 auto;
   width: calc(100% - var(--indentation));
+}
+  
+.EmbeddedCalendar .button {
   display: none;
 }
 
 @media (max-width: 750px) {
   .EmbeddedCalendar iframe {
-    display: none;
+    display: block; 
+    height: 60vh;   
   }
 
   .EmbeddedCalendar .button {
     display: block;
+    width: 100%;    
+    margin-top: 16px;
   }
 }
 </style>

@@ -299,7 +299,7 @@ export default {
         },
         {
             name: "SIG-AI-Safety",
-            leaders: "Brandon Howe",
+            leaders: "Brandon Howe, Rachel Lindeblad",
             desc: "Reducing risks from advanced AI may be one of the most consequential problems of our time. We provide students with resources, events, and career-building opportunities in AI safety to NJIT students.",
             time: "Mon 2:30 PM, Thu 6:00 PM",
             loc: "GITC 3700",
@@ -323,7 +323,7 @@ export default {
         },
         {
             name: "SIG-ICPC",
-            leaders: "Nintsi Chkhaidze",
+            leaders: "Nintsi Chkhaidze, Berat Yigit",
             desc: "Get involved in competitive programming and train for the ICPC! Tackle challenging algorithmic problems and learn key data structures and techniques as you team up with fellow competitive programmers to prepare for regional and international competitions. All skill levels welcome, from beginners to future World Finalists.",
             time: "Fri 5:30 PM",
             loc: "GITC 1400",
