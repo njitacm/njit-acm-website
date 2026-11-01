@@ -299,7 +299,7 @@ export default {
         },
         {
             name: "SIG-AI-Safety",
-            leaders: "Brandon Howe, Rachel Lindeblad",
+            leaders: "Brandon Howe, Rachel Lindeblad, Nidhi Sakpal",
             desc: "Reducing risks from advanced AI may be one of the most consequential problems of our time. We provide students with resources, events, and career-building opportunities in AI safety to NJIT students.",
             time: "Mon 2:30 PM, Thu 6:00 PM",
             loc: "GITC 3700",
