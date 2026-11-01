@@ -52,8 +52,6 @@ export default {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  width: 100%;
-  height: 100%;
 }
 
 @media (hover: hover) and (pointer: fine) {
