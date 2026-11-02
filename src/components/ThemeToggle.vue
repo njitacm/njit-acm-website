@@ -1,7 +1,9 @@
 <template>
-  <button @click="toggleTheme" class="ThemeToggle" :title="themeTitle">
-    {{ themeIcon }}
-  </button>
+  <span :title="themeTitle" class="ThemeToggle-wrapper">
+    <button @click="toggleTheme" class="ThemeToggle" :aria-label="themeTitle">
+      {{ themeIcon }}
+    </button>
+  </span>
 </template>
 
 <script>

@@ -1,7 +1,5 @@
 <template>
-  <button class="NavButton" :class="{ selected: $store.state.navBtnSelected === id }">
-    <RouterLink :to="to" class="router-link">{{ text }}</RouterLink>
-  </button>
+    <RouterLink :to="to" class="NavButton router-link" :class="{ selected: $store.state.navBtnSelected === id }">{{ text }}</RouterLink>
 </template>
 
 <script>
@@ -39,6 +37,7 @@ export default {
 
 .NavButton.selected {
   background-color: var(--red);
+  color: var(--bkg-color);
 }
 
 .router-link {
@@ -53,22 +52,16 @@ export default {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  width: 100%;
-  height: 100%;
-}
-
-.NavButton.selected .router-link {
-  color: var(--bkg-color);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  button:hover:not(.selected) {
+  .NavButton:hover:not(.selected) {
     background-color: var(--light-red);
   }
 }
 
 @media (pointer: coarse) {
-  button:active:not(.selected) {
+  .NavButton:active:not(.selected) {
     background-color: var(--light-red);
   }
 }
