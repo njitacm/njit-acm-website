@@ -185,5 +185,13 @@ export default [{ name: "Eduardo Preciado", position: "President", ucid: "ejp9",
     year: "Freshman",
     major: "CS",
     desc: "Hi everyone, I'm Urvi and I'm a CS major. I'm excited to explore new fields of computing and enjoy my time here. Let me know what you wanna see on the site!"
+}, 
+{
+    name: "Rayan Khan",
+    term: 2026,
+    position: "Treasurer",
+    ucid: "rkk23",
+    major: "DS",
+    desc: "Hello! I’m Rayan and I am a Data Science major. I have co-lead Sig-AI for over a year now, and I enjoy stuff like math, EDM, games, as well as some anime too. I also love trivia and talking about random stuff, so feel free to chat whenever!"
 }
 ]
